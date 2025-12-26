@@ -1,0 +1,20 @@
+# AIML Service - Application Configuration
+
+spring:
+  config:
+    import: optional:file:../../../../config/application.yml
+
+server:
+  port: 8082
+
+logging:
+  level:
+    com.smart.aiml: DEBUG
+
+# MLflow Configuration
+mlflow:
+  tracking:
+    uri: ${MLFLOW_TRACKING_URI:http://127.0.0.1:5000}
+  experiment:
+    name: smart-aiml-experiments
+

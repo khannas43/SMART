@@ -1,0 +1,119 @@
+SMART/
+│
+├── portals/                          # Self-Contained Portal Applications
+│   │
+│   ├── citizen/                      # Citizen Portal (Complete)
+│   │   ├── frontend/                 # React Frontend
+│   │   │   ├── public/
+│   │   │   ├── src/
+│   │   │   ├── package.json
+│   │   │   └── tsconfig.json
+│   │   ├── backend/                  # Backend Services
+│   │   │   └── services/
+│   │   │       ├── citizen-service/
+│   │   │       ├── auth-service/
+│   │   │       ├── notification-service/
+│   │   │       └── file-service/
+│   │   ├── database/                 # Database Management
+│   │   │   ├── schemas/
+│   │   │   ├── migrations/
+│   │   │   ├── seeds/
+│   │   │   └── scripts/
+│   │   ├── config/                   # Configuration Files
+│   │   ├── i18n/                     # Internationalization
+│   │   │   └── locales/
+│   │   │       ├── en/
+│   │   │       ├── hi/
+│   │   │       └── rj/
+│   │   ├── scripts/                  # Utility Scripts
+│   │   │   ├── build/
+│   │   │   └── deploy/
+│   │   ├── docker/                   # Docker Configurations
+│   │   ├── k8s/                      # Kubernetes Configurations
+│   │   ├── tests/                    # Test Files
+│   │   │   ├── unit/
+│   │   │   ├── integration/
+│   │   │   └── e2e/
+│   │   └── README.md
+│   │
+│   ├── dept/                         # Departmental User Portal (Complete)
+│   │   ├── frontend/                 # React Frontend
+│   │   ├── backend/                  # Backend Services
+│   │   │   └── services/
+│   │   │       ├── dept-service/
+│   │   │       ├── auth-service/
+│   │   │       ├── user-service/
+│   │   │       ├── notification-service/
+│   │   │       └── file-service/
+│   │   ├── database/                 # Database Management
+│   │   ├── config/                   # Configuration Files
+│   │   ├── i18n/                     # Internationalization
+│   │   ├── scripts/                  # Utility Scripts
+│   │   ├── docker/                   # Docker Configurations
+│   │   ├── k8s/                      # Kubernetes Configurations
+│   │   ├── tests/                    # Test Files
+│   │   └── README.md
+│   │
+│   ├── aiml/                         # AI/ML Insight Portal (Complete)
+│   │   ├── frontend/                 # React Frontend
+│   │   ├── backend/                  # Backend Services
+│   │   │   └── services/
+│   │   │       ├── aiml-service/
+│   │   │       └── auth-service/
+│   │   ├── database/                 # Database Management
+│   │   ├── config/                   # Configuration Files
+│   │   ├── scripts/                  # Utility Scripts
+│   │   ├── docker/                   # Docker Configurations
+│   │   ├── k8s/                      # Kubernetes Configurations
+│   │   ├── tests/                    # Test Files
+│   │   └── README.md
+│   │
+│   └── monitor/                      # Administration & Monitoring Portal (Complete)
+│       ├── frontend/                 # React Frontend
+│       ├── backend/                  # Backend Services
+│       │   └── services/
+│       │       ├── monitor-service/
+│       │       └── auth-service/
+│       ├── database/                 # Database Management
+│       ├── config/                   # Configuration Files
+│       ├── scripts/                  # Utility Scripts
+│       ├── docker/                   # Docker Configurations
+│       ├── k8s/                      # Kubernetes Configurations
+│       ├── tests/                    # Test Files
+│       └── README.md
+│
+├── shared-services/                  # Shared Services (Used by Multiple Portals)
+│   ├── api-gateway/                  # API Gateway Service
+│   ├── auth-service/                 # Authentication & Authorization
+│   ├── user-service/                 # User Management
+│   ├── notification-service/         # Notifications
+│   ├── file-service/                 # File Upload/Download
+│   └── common-service/                # Shared Business Logic
+│
+├── ai-ml/                             # AI/ML Components (Shared)
+│   ├── models/                       # Trained ML Models
+│   ├── pipelines/                   # Data Processing Pipelines
+│   ├── use-cases/                   # 27 AI/ML Use Cases
+│   ├── training/                    # Model Training Scripts
+│   └── inference/                   # Inference Services
+│
+├── shared/                            # Shared Code & Utilities
+│   ├── common/                      # Common Java Utilities
+│   ├── components/                  # Shared React Components
+│   ├── hooks/                       # Shared React Hooks
+│   ├── utils/                       # Shared Utilities
+│   ├── constants/                   # Shared Constants
+│   └── types/                       # TypeScript Types/Interfaces
+│
+├── docs/                              # Documentation
+│   ├── api/                         # API Documentation
+│   ├── deployment/                  # Deployment Guides
+│   ├── architecture/                # Architecture Docs
+│   └── user-guides/                 # User Guides
+│
+├── README.md                          # Main README
+├── ARCHITECTURE.md                    # Architecture Documentation
+├── DEPLOYMENT.md                      # Deployment Guide
+├── project-structure.md               # Detailed Project Structure
+├── FOLDER-STRUCTURE.txt               # This File
+└── .gitignore                         # Git Ignore File

@@ -1,0 +1,23 @@
+while using Cursor,getting connection error.
+when executed Network Diagnosis, got 2 error -- Chat and Agent
+
+Chat
+Streaming response are being buffered by a proxy in your network environment
+Logs
+[2025-12-25T17:58:52.909Z] Starting stream
+[2025-12-25T17:58:54.995Z] Response: 'foo' in 2085ms
+[2025-12-25T17:58:55.994Z] Response: 'foo' in 999ms
+[2025-12-25T17:58:56.993Z] Response: 'foo' in 999ms
+[2025-12-25T17:58:57.995Z] Response: 'foo' in 1002ms
+[2025-12-25T17:58:58.994Z] Response: 'foo' in 999ms
+
+Agent
+Bidirectional streaming is not supported by the http2 proxy in your network envronment
+logs
+message
+[2025-12-25T17:58:56.643Z] Response: 'foo' in 829ms
+[2025-12-25T17:58:57.151Z] Pushing next message
+[2025-12-25T17:58:57.472Z] Response: 'foo' in 829ms
+[2025-12-25T17:58:57.982Z] Pushing next message
+[2025-12-25T17:58:58.305Z] Response: 'foo' in 833ms
+[2025-12-25T17:58:58.305Z] Result: Error: Bidirectional streaming is not supported by the http2 proxy in your network environment

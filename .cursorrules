@@ -1,0 +1,61 @@
+# SMART Platform - Cursor IDE Configuration
+
+## Python / AI-ML Environment
+
+**Environment for SMART AI/ML work:**
+- OS: Windows 11 with WSL2 (Ubuntu 24.04)
+- Project root (open this folder in Cursor):
+  - Windows: `C:\Projects\SMART\ai-ml`
+  - WSL path: `/mnt/c/Projects/SMART/ai-ml`
+
+**Python / venv:**
+- Python interpreter to use for this project:
+  `/mnt/c/Projects/SMART/ai-ml/.venv/bin/python`
+- Pip to use for extra packages:
+  `/mnt/c/Projects/SMART/ai-ml/.venv/bin/pip`
+
+**What is already installed in this venv:**
+- `torch`, `torchvision`, `torchaudio` (CPU builds)
+- `pandas`, `numpy`, `scikit-learn`, `pyarrow`
+- `mlflow[extras]` (MLflow UI runs at `http://127.0.0.1:5000`)
+- `jupyterlab`
+- `neo4j` Python driver
+
+**Expected behavior in Cursor:**
+- When creating Python files or notebooks in this workspace, use the interpreter at `/mnt/c/Projects/SMART/ai-ml/.venv/bin/python`
+- Do not attempt to use the Windows global Python; everything should run via WSL and this venv
+
+## Database Configuration
+
+**PostgreSQL:**
+- Host: localhost
+- Port: 5432
+- Database: smart
+- Username: sameer
+- Password: anjali143
+
+**Connection String:**
+```
+jdbc:postgresql://localhost:5432/smart
+```
+
+## MLflow Configuration
+
+**MLflow Tracking URI:**
+```
+http://127.0.0.1:5000/
+```
+
+## Project Structure
+
+- Frontend: React 18+, TypeScript (in portals/*/frontend/)
+- Backend: Java Spring Boot 3.x, Java 17+ (in portals/*/backend/)
+- Database: PostgreSQL 14+ (connection details above)
+- AI/ML: Python with WSL2 venv (see Python section above)
+
+## Build Tools
+
+- Java: Use Maven (mvn) or Maven Daemon (mvnd) - see memory
+- Node.js: Use npm for frontend packages
+- Python: Use pip from WSL venv (see Python section)
+

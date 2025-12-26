@@ -1,0 +1,49 @@
+# AI/ML Portal - Development Environment Configuration
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/smart
+    username: sameer
+    password: anjali143
+  
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+# MLflow Configuration
+mlflow:
+  tracking:
+    uri: http://127.0.0.1:5000
+
+server:
+  port: 8082
+
+logging:
+  level:
+    root: INFO
+    com.smart: DEBUG
+    org.springframework.web: DEBUG
+    org.hibernate.SQL: DEBUG
+    mlflow: DEBUG
+
+# CORS Configuration for Development
+cors:
+  allowed-origins:
+    - http://localhost:3000
+    - http://localhost:3003
+    - http://127.0.0.1:3000
+  allowed-methods:
+    - GET
+    - POST
+    - PUT
+    - DELETE
+    - PATCH
+    - OPTIONS
+  allowed-headers:
+    - "*"
+  allow-credentials: true
+

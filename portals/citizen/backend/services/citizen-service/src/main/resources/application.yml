@@ -1,0 +1,15 @@
+# Citizen Service - Application Configuration
+# This file can reference the portal-level config or override as needed
+
+spring:
+  config:
+    import: optional:file:../../../../config/application.yml
+
+# Service-specific overrides can go here
+server:
+  port: 8080
+
+logging:
+  level:
+    com.smart.citizen: DEBUG
+

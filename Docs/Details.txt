@@ -1,0 +1,11 @@
+DB details
+Host: localhost
+Port: 5432
+Database: smart
+Username: sameer
+Password: anjali143
+
+MLflow: http://127.0.0.1:5000/
+
+git config --global user.name "Sameer"
+git config --global user.email "skkhanna@gmail.com"
