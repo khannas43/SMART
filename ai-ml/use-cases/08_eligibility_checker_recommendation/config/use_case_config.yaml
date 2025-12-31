@@ -1,0 +1,50 @@
+use_case:
+  id: "AI-PLATFORM-08"
+  name: "Eligibility Checker & Recommendations"
+  version: "1.0"
+
+eligibility_checker:
+  enable_checker: true
+  guest_mode_enabled: true
+  anonymous_checks_allowed: true
+  max_guest_checks_per_session: 5
+
+recommendation:
+  top_recommendations_count: 5
+  min_eligibility_score_for_recommendation: 0.3
+  ranking_weights:
+    eligibility_score: 0.4
+    impact_score: 0.3
+    under_coverage_boost: 0.2
+    time_sensitivity: 0.1
+
+explanation:
+  max_explanation_length: 200
+  include_rule_details: true
+  include_next_steps: true
+  supported_languages:
+    - "en"
+    - "hi"
+    # Add more languages as needed
+
+scheme_ranking:
+  impact_scores:
+    HEALTH: 1.0
+    FOOD: 1.0
+    EDUCATION: 0.8
+    FINANCIAL: 0.7
+    HOUSING: 0.6
+    OTHER: 0.5
+  
+  urgency_weights:
+    IMMEDIATE: 1.0
+    HIGH: 0.8
+    MEDIUM: 0.5
+    LOW: 0.3
+
+analytics:
+  track_checks: true
+  track_recommendations: true
+  aggregate_metrics: true
+  anonymize_data: true
+

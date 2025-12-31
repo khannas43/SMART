@@ -1,0 +1,168 @@
+# Use Case Configuration for Auto Approval & Straight-through Processing
+# Use Case ID: AI-PLATFORM-06
+
+# Decision Configuration
+decision:
+  # Enable auto approval
+  enable_auto_approval: true
+  
+  # Default risk thresholds (can be overridden per scheme)
+  default_risk_thresholds:
+    low_risk_max: 0.3      # Auto approve if risk <= 0.3
+    medium_risk_min: 0.3   # Route to officer if 0.3 < risk <= 0.7
+    medium_risk_max: 0.7
+    high_risk_min: 0.7     # Route to fraud queue if risk > 0.7
+
+# Rule Engine Configuration
+rule_engine:
+  # Enable rule-based checks
+  enable_eligibility_checks: true
+  enable_authenticity_checks: true
+  enable_document_verification: true
+  enable_duplicate_checks: true
+  
+  # Auto reject on mandatory rule failure
+  auto_reject_on_critical_failure: true
+  
+  # Critical failures that require auto reject
+  critical_failures:
+    - "DECEASED_FLAG"
+    - "DUPLICATE_IDENTITY"
+    - "FRAUD_WATCHLIST"
+    - "BLACKLISTED"
+
+# Risk Scoring Configuration
+risk_scoring:
+  # Model configuration
+  model_type: "xgboost"  # xgboost, logistic_regression, random_forest
+  
+  # Feature engineering
+  features:
+    profile_features: true      # Age, gender, income, family size
+    benefit_history: true       # Number of schemes, total benefits
+    graph_analytics: true       # Centrality, cluster risk
+    application_behavior: true  # Channel, past rejections, timing
+  
+  # Model retraining
+  retrain_frequency: "monthly"  # daily, weekly, monthly, quarterly
+  min_training_samples: 1000
+  
+  # Explainability
+  generate_explanations: true
+  top_features_count: 5  # Number of top contributing factors to return
+
+# Routing Configuration
+routing:
+  # Routing logic
+  route_to_officer:
+    conditions:
+      - "medium_risk_score"
+      - "minor_data_issues"
+      - "manual_application"
+  
+  route_to_fraud:
+    conditions:
+      - "high_risk_score"
+      - "strong_red_flags"
+      - "fraud_watchlist_match"
+  
+  auto_approve:
+    conditions:
+      - "low_risk_score"
+      - "rules_pass"
+      - "documents_verified"
+      - "no_red_flags"
+
+# Governance Configuration
+governance:
+  # AI governance compliance
+  require_human_review_medium_risk: true
+  require_human_review_high_risk: true
+  
+  # Explainability
+  provide_citizen_reasons: true
+  provide_officer_explanations: true
+  
+  # Audit
+  enable_detailed_audit: true
+  log_input_snapshots: true
+  log_model_versions: true
+  
+  # Fairness monitoring
+  enable_fairness_checks: true
+  monitor_bias_metrics: true
+  
+  # Override requirements
+  require_override_justification: true
+  log_override_reasons: true
+
+# Scheme-Specific Configuration
+schemes:
+  # Example: Low-risk scheme
+  CHIRANJEEVI:
+    risk_thresholds:
+      low_risk_max: 0.4
+      medium_risk_max: 0.75
+    enable_auto_approval: true
+    require_document_verification: true
+  
+  # Example: Medium-risk scheme
+  OLD_AGE_PENSION:
+    risk_thresholds:
+      low_risk_max: 0.25
+      medium_risk_max: 0.65
+    enable_auto_approval: true
+    require_human_review_medium: true
+  
+  # Example: High-risk scheme
+  GRAMIN_AWAS:
+    risk_thresholds:
+      low_risk_max: 0.2
+      medium_risk_max: 0.6
+    enable_auto_approval: false  # Requires officer review
+    require_human_review_always: true
+
+# Payment/DBT Integration
+payment:
+  # Enable automatic payment trigger on auto approval
+  enable_auto_payment: true
+  
+  # Payment validation requirements
+  validate_bank_account: true
+  validate_name_match: true
+  validate_jan_aadhaar: true
+  
+  # Payment systems
+  dbt_system: "JAN_AADHAAR_DBT"
+  payment_gateway_url: ""  # To be configured when available
+
+# Notification Configuration
+notifications:
+  # Notify citizen on auto approval
+  notify_citizen_auto_approval: true
+  notify_citizen_officer_review: true
+  
+  # Notification channels
+  channels:
+    - "SMS"
+    - "mobile_app"
+    - "web_portal"
+  
+  # Notification templates
+  auto_approval_message: "Your application for {{scheme_name}} has been automatically approved. Benefit will be processed shortly."
+
+# Monitoring & Metrics
+monitoring:
+  # Track STP rates
+  track_stp_rates: true
+  
+  # Track override rates
+  track_override_rates: true
+  
+  # Track quality metrics
+  track_post_facto_errors: true
+  track_fraud_rates: true
+  
+  # Dashboard refresh interval
+  dashboard_refresh_minutes: 15
+

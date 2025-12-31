@@ -1,0 +1,44 @@
+# Database Configuration for Golden Record Use Case
+# Note: Golden Records will be created from multiple sources
+database:
+  host: 172.17.16.1
+  port: 5432
+  dbname: smart_warehouse  # Main database for Golden Records
+  user: sameer
+  password: anjali143
+  schema: public
+
+# Data sources for Golden Record creation
+data_sources:
+  jan_aadhaar:
+    enabled: true
+    priority: high
+  
+  raj_dex:
+    enabled: true
+    priority: high
+  
+  schemes:
+    enabled: true
+    table: schemes
+    priority: medium
+    # Schemes are in smart_warehouse (master data)
+  
+  citizens:
+    enabled: true
+    table: citizens
+    priority: high
+    # Citizens are in smart_warehouse (from master data we loaded)
+    # If not loaded, use smart_citizen portal database as fallback
+
+queries:
+  # Query to get all citizen records for deduplication
+  # Check if citizens table exists in warehouse, otherwise fallback to portal DB
+  all_citizens: "SELECT * FROM citizens WHERE status = 'active'"
+  
+  # Query to get citizen by Jan Aadhaar
+  citizen_by_aadhaar: "SELECT * FROM citizens WHERE jan_aadhaar = %s"
+  
+  # Query to get schemes data
+  schemes: "SELECT * FROM schemes WHERE status = 'active'"
+

@@ -1,0 +1,16 @@
+
+Eligibility Scoring Model for Scheme: CHIRANJEEVI
+
+This XGBoost model predicts eligibility probability (0-1) for scheme CHIRANJEEVI.
+
+Features: 9
+Training Samples: 10587
+Test Performance:
+  - Accuracy: 0.8734
+  - Precision: 0.2857
+  - Recall: 0.0122
+  - F1 Score: 0.0233
+  - ROC-AUC: 0.6456
+
+Top Features: benefits_received_1y, schemes_enrolled_count, district_id, age, gender_encoded, employment_type_encoded, education_level_encoded, caste_id_encoded, family_size
+                

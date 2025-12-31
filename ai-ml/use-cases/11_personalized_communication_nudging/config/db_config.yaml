@@ -1,0 +1,27 @@
+database:
+  host: 172.17.16.1  # Windows host IP from WSL (use localhost if running from Windows)
+  port: 5432
+  name: smart
+  user: sameer
+  password: anjali143
+
+external_databases:
+  golden_records:
+    host: 172.17.16.1  # Windows host IP from WSL
+    port: 5432
+    name: smart
+    user: sameer
+    password: anjali143
+  eligibility_checker:
+    host: 172.17.16.1  # Windows host IP from WSL
+    port: 5432
+    name: smart
+    user: sameer
+    password: anjali143
+  application_submission:
+    host: 172.17.16.1  # Windows host IP from WSL
+    port: 5432
+    name: smart
+    user: sameer
+    password: anjali143
+

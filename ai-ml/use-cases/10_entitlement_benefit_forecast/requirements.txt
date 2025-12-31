@@ -1,0 +1,18 @@
+# Requirements for Entitlement & Benefit Forecast (AI-PLATFORM-10)
+
+# Core dependencies
+pandas>=2.0.0
+numpy>=1.24.0
+pyyaml>=6.0
+psycopg2-binary>=2.9.0
+python-dateutil>=2.8.0
+
+# ML and Time-Series (for Tier 3 features)
+scikit-learn>=1.3.0
+statsmodels>=0.14.0  # For ARIMA
+prophet>=1.1.0  # For Prophet time-series forecasting
+
+# Web viewer
+flask>=3.0.0
+jinja2>=3.1.0
+

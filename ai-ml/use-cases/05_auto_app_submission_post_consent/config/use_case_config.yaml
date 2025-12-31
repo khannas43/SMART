@@ -1,0 +1,203 @@
+# Use Case Configuration for Auto Application Submission Post-Consent
+# Use Case ID: AI-PLATFORM-05
+
+# Application Creation Configuration
+application:
+  # Minimum eligibility score to create application
+  min_eligibility_score: 0.6
+  
+  # Default submission mode if not specified in scheme config
+  default_submission_mode: "review"  # auto, review, assisted
+  
+  # Auto-submission configuration
+  auto_submission:
+    enabled: true
+    # Conditions for auto submission
+    conditions:
+      min_eligibility_score: 0.9
+      require_all_documents: true
+      require_all_mandatory_fields: true
+  
+  # Review mode configuration
+  review_mode:
+    # Allow citizen to edit fields during review
+    allow_edits: true
+    # Fields that can be edited
+    editable_fields:
+      - "contact_mobile"
+      - "contact_email"
+      - "address_line1"
+      - "address_line2"
+      - "remarks"
+    # Fields that are read-only
+    read_only_fields:
+      - "full_name"
+      - "date_of_birth"
+      - "aadhaar_number"
+      - "scheme_code"
+
+# Validation Configuration
+validation:
+  # Enable pre-fraud checks for high-risk schemes
+  enable_fraud_checks: true
+  
+  # Fraud check configuration
+  fraud_checks:
+    duplicate_bank_account: true
+    conflicting_income: true
+    residence_verification: true
+  
+  # Validation strictness
+  strictness: "moderate"  # lenient, moderate, strict
+  
+  # Allow submission with warnings
+  allow_submission_with_warnings: true
+
+# Form Mapping Configuration
+mapping:
+  # Default source priority (if multiple sources available)
+  source_priority:
+    - "GR"  # Golden Record (highest priority)
+    - "PROFILE_360"  # 360° Profile
+    - "ELIGIBILITY"  # Eligibility snapshot
+    - "SYSTEM"  # System defaults
+    - "CITIZEN"  # Citizen input (lowest priority for auto-fill)
+  
+  # Default transformations
+  transformations:
+    # Date format conversions
+    date_format:
+      input_formats:
+        - "%Y-%m-%d"
+        - "%d/%m/%Y"
+        - "%d-%m-%Y"
+      output_format: "%Y-%m-%d"
+    
+    # Name formatting
+    name_format:
+      capitalize_words: true
+      trim_whitespace: true
+
+# Document Management
+documents:
+  # Document store configuration
+  document_store: "RAJ_EVAULT"  # RAJ_EVAULT, S3, AZURE_BLOB, LOCAL
+  
+  # Required documents per scheme category
+  required_documents:
+    HEALTH:
+      - "AADHAAR"
+      - "PHOTO"
+    EDUCATION:
+      - "AADHAAR"
+      - "PHOTO"
+      - "EDUCATION_CERT"
+    SOCIAL_SECURITY:
+      - "AADHAAR"
+      - "PHOTO"
+      - "INCOME_CERT"
+    PENSION:
+      - "AADHAAR"
+      - "PHOTO"
+      - "AGE_PROOF"
+    HOUSING:
+      - "AADHAAR"
+      - "PHOTO"
+      - "ADDRESS_PROOF"
+      - "INCOME_CERT"
+    LIVELIHOOD:
+      - "AADHAAR"
+      - "PHOTO"
+      - "IDENTITY_PROOF"
+  
+  # Document validation
+  validation:
+    verify_document_exists: true
+    verify_document_validity: false  # If document store provides validity info
+
+# Department Integration
+department:
+  # Default connector type
+  default_connector_type: "REST"  # REST, SOAP, API_SETU
+  
+  # Retry configuration
+  retry:
+    max_retries: 3
+    retry_delay_seconds: 5
+    retry_on_status_codes:
+      - 500
+      - 502
+      - 503
+      - 504
+      - 408  # Timeout
+  
+  # Timeout configuration
+  timeout:
+    connection_timeout_seconds: 30
+    read_timeout_seconds: 60
+
+# Scheme-Specific Configuration
+schemes:
+  # Example: CHIRANJEEVI scheme
+  CHIRANJEEVI:
+    submission_mode: "auto"
+    form_schema_version: "1.0"
+    auto_submission:
+      min_eligibility_score: 0.8
+      require_all_documents: true
+  
+  # Example: OLD_AGE_PENSION scheme
+  OLD_AGE_PENSION:
+    submission_mode: "review"
+    form_schema_version: "1.0"
+    review_mode:
+      require_citizen_review: true
+      editable_fields:
+        - "bank_account_number"
+        - "ifsc_code"
+        - "contact_mobile"
+  
+  # Example: GRAMIN_AWAS scheme
+  GRAMIN_AWAS:
+    submission_mode: "review"
+    form_schema_version: "1.0"
+    required_documents:
+      - "AADHAAR"
+      - "PHOTO"
+      - "ADDRESS_PROOF"
+      - "INCOME_CERT"
+      - "BPL_CARD"
+
+# Event Publishing
+events:
+  # Enable event publishing
+  enabled: true
+  
+  # Events to publish
+  publish_events:
+    - "APPLICATION_DRAFT_CREATED"
+    - "APPLICATION_SUBMITTED"
+    - "APPLICATION_REJECTED_BY_DEPT_VALIDATION"
+    - "APPLICATION_ACCEPTED_BY_DEPT"
+    - "APPLICATION_STATUS_UPDATED"
+  
+  # Event streaming configuration (if using Kafka/RabbitMQ)
+  # streaming:
+  #   enabled: false
+  #   broker_url: "localhost:9092"
+  #   topic_prefix: "smart.application"
+
+# Logging & Monitoring
+logging:
+  # Log level
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  
+  # Log detailed field mapping
+  log_field_mapping: false
+  
+  # Log validation details
+  log_validation_details: true
+  
+  # Log department requests/responses
+  log_department_interactions: true
+

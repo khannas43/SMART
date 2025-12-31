@@ -2,6 +2,19 @@
 
 ## Overview
 
+### Development/Testing Setup
+
+For development and testing, all portals are accessible via a **single port (3000)** with path-based routing using Nginx reverse proxy:
+
+- **Citizen Portal**: `http://localhost:3000/citizen`
+- **Departmental Portal**: `http://localhost:3000/dept`
+- **AI/ML Insight Portal**: `http://localhost:3000/insight`
+- **Administration & Monitoring Portal**: `http://localhost:3000/monitor`
+
+See [Portal Routing Configuration](PORTAL_ROUTING.md) for detailed setup.
+
+### Production Deployment
+
 Each portal in the SMART platform is **completely self-contained** and can be deployed independently to different network locations within Rajasthan State Government Data Centers. Each portal folder contains everything needed for deployment: frontend, backend services, database, configuration, and deployment scripts.
 
 ## Deployment Architecture

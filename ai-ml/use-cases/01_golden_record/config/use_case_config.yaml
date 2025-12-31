@@ -1,0 +1,155 @@
+# Golden Record Creation & Maintenance - Configuration
+# Use Case ID: AI-PLATFORM-01
+
+use_case:
+  id: AI-PLATFORM-01
+  name: Golden Record Creation & Maintenance
+  tier: 1
+  status: planning
+  description: "Create and maintain verified Golden Records as single source of truth for citizen attributes"
+
+# ML Model Configuration
+ml_models:
+  deduplication:
+    type: probabilistic_matching  # Options: fellegi_sunter, siamese_nn
+    thresholds:
+      auto_merge: 0.95  # >95% confidence
+      manual_review: 0.80  # 80-95% confidence
+      reject: 0.80  # <80% confidence
+    
+    features:
+      - fuzzy_string_matching  # Levenshtein, Jaro-Winkler
+      - phonetic_encoding  # Soundex
+      - geospatial_distance  # For addresses
+      - numeric_similarity  # For DOB, income
+    
+  conflict_reconciliation:
+    type: ensemble_classifier  # XGBoost + rules
+    ranking_factors:
+      - recency
+      - source_authority  # Aadhaar > passport > others
+      - completeness
+    output: confidence_scores_per_attribute
+  
+  best_truth_selection:
+    type: rule_based_ml_survival
+    retrain_frequency: weekly
+    training_source: admin_corrections
+
+# Data Sources
+data_sources:
+  jan_aadhaar:
+    enabled: true
+    priority: high
+    source_authority: 10  # Highest authority score
+  
+  raj_dex:
+    enabled: true
+    priority: high
+    source_authority: 8
+  
+  schemes:
+    count: 34  # 34+ schemes
+    enabled: true
+    priority: medium
+  
+  services:
+    count: 171  # 171+ services
+    enabled: true
+    priority: medium
+  
+  validation_sources:
+    - birth_records
+    - educational_certificates
+    - passports
+    - employment_ledgers
+
+# Key Attributes to Track
+attributes:
+  personal:
+    - date_of_birth
+    - full_name
+    - gender
+    - caste
+  
+  location:
+    - address
+    - district
+    - city_village
+    - pincode
+  
+  economic:
+    - occupation
+    - income
+    - employment_status
+  
+  relationships:
+    - family_tree
+    - dependents
+    - spouse
+
+# Governance Configuration
+governance:
+  dpdp_compliance:
+    consent_tracking: true
+    pii_minimization: true
+    data_retention_policy: "As per DPDP Act 2023"
+  
+  bias_monitoring:
+    enabled: true
+    demographic_parity_checks: true
+    metrics:
+      - age_distribution
+      - gender_distribution
+      - caste_distribution
+      - income_distribution
+  
+  manual_review:
+    threshold: 0.90  # >90% confidence for review
+    queue_size_limit: 1000
+    tat_target_hours: 24
+  
+  data_quality:
+    accuracy_target: 0.99  # >99%
+    false_positive_target: 0.01  # <1%
+    monitoring_enabled: true
+
+# Success Metrics
+success_metrics:
+  deduplication:
+    precision_target: 0.95
+    recall_target: 0.95
+  
+  coverage:
+    golden_record_coverage: 0.90  # >90% of Jan Aadhaar base
+  
+  performance:
+    conflict_resolution_tat_hours: 24
+  
+  accuracy:
+    downstream_eligibility_errors: 0.005  # <0.5%
+
+# Deployment
+deployment:
+  api_service:
+    type: fastapi
+    port: 8001
+    base_path: /api/v1/golden-record
+  
+  integration:
+    spring_boot_backend: true
+    rest_api_enabled: true
+    real_time_enabled: true
+  
+  storage:
+    primary: postgresql
+    embeddings: pgvector
+    document_store: jsonb  # PostgreSQL JSONB
+
+# OpenMetadata Integration
+lineage:
+  enabled: true
+  metadata_service: openmetadata
+  track_changes: true
+  track_sources: true
+

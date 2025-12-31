@@ -1,0 +1,171 @@
+# Auto Identification of Beneficiaries Use Case Configuration
+# Use Case ID: AI-PLATFORM-03
+
+use_case:
+  id: AI-PLATFORM-03
+  name: Auto Identification of Beneficiaries
+  tier: 1
+  status: development
+  description: "Automatically identify citizens/families potentially eligible for welfare schemes using JRDR + departmental databases"
+
+# Components
+components:
+  # Rule Engine (Deterministic)
+  rule_engine:
+    enabled: true
+    update_frequency: weekly  # Weekly batch + event-driven
+    cache_enabled: true
+    cache_ttl_hours: 24
+  
+  # ML Eligibility Scorer
+  ml_scorer:
+    enabled: true
+    model_type: xgboost  # Per scheme or scheme family
+    training_frequency: monthly
+    requires_golden_record: true
+    requires_360_profile: true
+  
+  # Hybrid Evaluator
+  hybrid_evaluator:
+    enabled: true
+    rule_weight: 0.6  # Weight for rule-based decisions
+    ml_weight: 0.4    # Weight for ML predictions
+    confidence_threshold: 0.7  # Minimum confidence for auto-identification
+  
+  # Prioritization
+  prioritization:
+    enabled: true
+    consider_vulnerability: true
+    consider_under_coverage: true
+    max_citizen_hints: 5  # Top N schemes per family for citizen portal
+
+# Scheme Integration
+schemes:
+  total_schemes: 157  # Cash and non-cash schemes
+  scheme_families:
+    - pensions
+    - pds
+    - health
+    - education
+    - disability
+    - housing
+    - agriculture
+    - employment
+  
+  # Rule-based only schemes (no ML model)
+  rule_only_schemes: []
+  
+  # ML-enabled schemes
+  ml_enabled_schemes:
+    - scheme_id: "SCHEME_001"
+      model_path: "models/eligibility_scheme_001.pkl"
+      training_data_source: "historical_beneficiaries"
+    - scheme_id: "SCHEME_002"
+      model_path: "models/eligibility_scheme_002.pkl"
+      training_data_source: "historical_beneficiaries"
+
+# Data Sources
+data_sources:
+  # Primary
+  jrdr:
+    enabled: true
+    description: "Jan Aadhaar Resident Data Repository"
+  
+  golden_records:
+    enabled: true
+    use_case: AI-PLATFORM-01
+    database: smart
+    schema: golden_record
+  
+  profile_360:
+    enabled: true
+    use_case: AI-PLATFORM-02
+    database: smart_warehouse
+    schema: smart_warehouse
+  
+  # Departmental
+  departmental_systems:
+    enabled: true
+    systems:
+      - pensions
+      - pds
+      - health
+      - education
+      - labour
+  
+  # Proxy Datasets (for stronger validation)
+  proxy_datasets:
+    enabled: true
+    requires_consent: true
+    datasets:
+      - land_records
+      - electricity_bills
+      - emitra_transactions
+      - transport_registrations
+      - mandi_transactions
+      - crop_yield_images
+      - school_enrollment
+      - exam_boards
+      - health_utilization
+      - insurance_chiranjeevi
+
+# Evaluation Triggers
+evaluation:
+  batch:
+    enabled: true
+    frequency: weekly  # Weekly batch run
+    target_time: "02:00"  # 2 AM
+  
+  event_driven:
+    enabled: true
+    triggers:
+      - age_threshold_crossed
+      - new_child_added
+      - disability_registered
+      - calamity_tagged
+      - income_band_changed
+      - household_composition_changed
+  
+  on_demand:
+    enabled: true
+    max_latency_ms: 200
+
+# Governance
+governance:
+  consent:
+    required: true
+    check_before_processing: true
+    respect_opt_out: true
+  
+  fairness:
+    bias_checks_enabled: true
+    bias_check_frequency: monthly
+    demographic_breakdowns:
+      - district
+      - gender
+      - social_group
+      - urban_rural
+  
+  explainability:
+    store_rule_path: true
+    store_top_features: true
+    max_features_to_store: 10
+    store_confidence_scores: true
+  
+  audit:
+    enabled: true
+    track_rule_changes: true
+    track_model_versions: true
+    track_threshold_changes: true
+
+# Success Metrics
+success_metrics:
+  coverage:
+    target_recall: 0.85  # 85% of actually eligible non-enrolled identified
+    target_precision: 0.90  # 90% of identified confirmed eligible
+  
+  operational:
+    batch_window_hours: 6  # Overnight batch completion
+    on_demand_latency_ms: 200
+    false_positive_rate: 0.01  # <1% false positives
+

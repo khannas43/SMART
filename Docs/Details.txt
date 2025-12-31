@@ -9,3 +9,83 @@ MLflow: http://127.0.0.1:5000/
 
 git config --global user.name "Sameer"
 git config --global user.email "skkhanna@gmail.com"
+
+
+Start Jupyterlab in ubuntu
+cd /mnt/c/Projects/SMART/ai-ml
+source .venv/bin/activate
+jupyter lab --no-browser
+
+URL Jupyter Lab -- http://127.0.0.1:8888/lab?token=df250a080aabce0467d6b63360920129c68676e3d3828314
+
+
+start Postgres n ML in ubuntu
+cd /mnt/c/Projects/SMART/
+.\scripts\start-services.ps1
+URL -MLFlow http://127.0.0.1:5000/
+
+ cd /mnt/c/Projects/SMART/ai-ml/use-cases/03_identification_beneficiary
+/c/Projects/SMART/ai-ml/.venv/bin/activate
+source /mnt/c/Projects/SMART/ai-ml/.venv/bin/activate
+rules_web.py(.venv) sameer@DESKTOP-BTUEFC0:/mnt/c/Projects/SMART/ai-ml/use-cases/03_identification_beneficiary$    python scripts/view_rules_web.py
+
+http://localhost:5001/--eligibility rule viewer
+
+
+Documents created
+1. AI_ML_USE_CASE_CAPABILITY_MATRIX.md
+Capability matrix for all 11 AI/ML use cases
+REST API documentation with examples
+Data output formats
+Integration patterns
+Portal screen mapping suggestions
+Ready to share with the Citizen Portal Agent
+2. CITIZEN_PORTAL_SCREEN_MAPPING_TEMPLATE.md
+Template for mapping 20 screens to use cases
+Sections: Screen details, use cases, API integration, data flow, UI components, user actions
+Summary matrix template
+Integration priority categorization
+Ready for the Portal Agent to fill out
+3. CITIZEN_PORTAL_INTEGRATION_ROADMAP.md
+Roadmap tracker
+Phases: Mapping → Planning → Implementation → Testing
+Innovation opportunities section (to be filled after review)
+
+Recommended workflow
+Step 1: Share with Portal Agent
+Share these files:
+AI_ML_USE_CASE_CAPABILITY_MATRIX.md — reference document
+CITIZEN_PORTAL_SCREEN_MAPPING_TEMPLATE.md — template to fill
+All 20 screen SRS documents
+Step 2: Portal Agent creates mapping
+The Portal Agent should:
+Review the capability matrix
+Map each of the 20 screens to relevant AI/ML use cases
+Fill out the mapping template
+Identify API integration points
+Document data flows
+Step 3: AI/ML team review
+After receiving the mapping document, I will:
+Review all 20 screen mappings
+Suggest innovative/advanced features
+Identify optimization opportunities
+Recommend additional AI/ML capabilities
+Create a detailed integration plan
+
+What to ask the Portal Agent
+"Please review the AI_ML_USE_CASE_CAPABILITY_MATRIX.md document and map all 20 Citizen Portal screens to the relevant AI/ML use cases. Use the CITIZEN_PORTAL_SCREEN_MAPPING_TEMPLATE.md template to document:
+Which screens use which AI/ML use cases
+What APIs need to be called
+How data flows through each screen
+What UI components will display AI/ML data
+What user actions trigger AI/ML operations
+
+Once complete, I'll review the mapping and suggest innovative features and enhancements."
+Expected outcomes
+After the Portal Agent completes the mapping, I can provide:
+Feature suggestions — AI/ML enhancements per screen
+Optimization recommendations — performance and UX improvements
+Integration patterns — reusable components and flows
+Advanced capabilities — ML-driven features not yet implemented
+Prioritization — which integrations to do first
+All documents are saved and ready. Share them with the Portal Agent to proceed. 

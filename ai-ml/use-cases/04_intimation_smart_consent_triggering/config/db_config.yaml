@@ -1,0 +1,57 @@
+# Database Configuration for Auto Intimation & Smart Consent Triggering
+# Use Case ID: AI-PLATFORM-04
+
+database:
+  # Primary database: smart_warehouse (shared with other use cases)
+  # Schema: intimation (separate schema for organization)
+  host: 172.17.16.1
+  port: 5432
+  name: smart_warehouse  # Consolidated database
+  user: sameer
+  password: anjali143
+  schema: intimation  # Schema within smart_warehouse
+
+# External Database Connections
+external_databases:
+  # Golden Records (AI-PLATFORM-01) - for contact information
+  golden_records:
+    host: 172.17.16.1
+    port: 5432
+    name: smart
+    user: sameer
+    password: anjali143
+    schema: golden_record
+  
+  # 360° Profiles (AI-PLATFORM-02) - for preferences and vulnerability indicators
+  profile_360:
+    host: 172.17.16.1
+    port: 5432
+    name: smart_warehouse
+    user: sameer
+    password: anjali143
+    schema: smart_warehouse
+  
+  # Eligibility (AI-PLATFORM-03) - for eligibility signals
+  eligibility:
+    host: 172.17.16.1
+    port: 5432
+    name: smart_warehouse
+    user: sameer
+    password: anjali143
+    schema: eligibility
+  
+  # JRDR (Jan Aadhaar) - for authentication
+  jrdr:
+    host: 172.17.16.1
+    port: 5432
+    name: smart
+    user: sameer
+    password: anjali143
+    schema: jrdr
+
+# Connection Pool Settings
+connection_pool:
+  min_connections: 2
+  max_connections: 20
+  idle_timeout_seconds: 300
+

@@ -116,3 +116,40 @@ kubectl apply -f k8s/
 - **auth-service**: Authentication and authorization
 - **notification-service**: Email/SMS notifications
 - **file-service**: File upload and download
+
+## Development Planning
+
+Comprehensive development planning documents are available:
+
+- **[Planning Summary](./PLANNING_SUMMARY.md)** - High-level overview and quick reference
+- **[Screens & Modules Map](./SCREENS_MODULES_MAP.md)** - Complete mapping of 40 screens across 10 modules
+- **[Development Plan](./DEVELOPMENT_PLAN.md)** - Comprehensive 21-week development plan with all phases
+- **[Implementation Roadmap](./IMPLEMENTATION_ROADMAP.md)** - Quick reference roadmap with priorities and milestones
+- **[Sprint Breakdown](./SPRINT_BREAKDOWN.md)** - Detailed task breakdown for each sprint
+- **[Technical Architecture](./TECHNICAL_ARCHITECTURE.md)** - System architecture and technical design
+
+These documents provide detailed information about:
+- **40 screens across 10 modules** - Complete screen specifications and mapping
+- Development phases and timeline
+- Feature breakdown and priorities
+- Technical architecture and design
+- Sprint planning and task breakdown
+- Risk assessment and mitigation
+- Success metrics and milestones
+
+## Portal Modules
+
+The Citizen Portal consists of 10 modules with 40 screens:
+
+1. **Authentication & Profile** (6 screens) - Jan Aadhaar, Raj SSO, MFA, Profile management
+2. **Scheme Discovery** (6 screens) - AI-driven discovery, eligibility, recommendations
+3. **Consent & Application** (5 screens) - Consent, applications, document upload
+4. **Benefits & Entitlements** (7 screens) - 360° profile, DBT tracking, forecasting
+5. **Documents & Certificates** (4 screens) - Document library, e-Vault, digital signatures
+6. **24 Hours Service Delivery** (4 screens) - Service catalog, requests, tracking
+7. **Notifications** (1 screen) - Multi-channel preferences
+8. **Opt-out & Preferences** (1 screen) - Scheme opt-out management
+9. **Account Management** (2 screens) - Account and security settings
+10. **Help & Support** (4 screens) - FAQ, tickets, routing
+
+See [SCREENS_MODULES_MAP.md](./SCREENS_MODULES_MAP.md) for complete details.

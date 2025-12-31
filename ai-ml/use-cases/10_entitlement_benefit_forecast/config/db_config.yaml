@@ -1,0 +1,41 @@
+database:
+  host: 172.17.16.1
+  port: 5432
+  name: smart_warehouse
+  schema: forecast
+  user: sameer
+  password: anjali143
+
+external_databases:
+  golden_records:
+    host: 172.17.16.1
+    port: 5432
+    name: smart_warehouse
+    schema: golden_records
+    user: sameer
+    password: anjali143
+  
+  profile_360:
+    host: 172.17.16.1
+    port: 5432
+    name: smart_warehouse
+    schema: profile_360
+    user: sameer
+    password: anjali143
+  
+  eligibility:
+    host: 172.17.16.1
+    port: 5432
+    name: smart_warehouse
+    schema: eligibility
+    user: sameer
+    password: anjali143
+  
+  eligibility_checker:
+    host: 172.17.16.1
+    port: 5432
+    name: smart_warehouse
+    schema: eligibility_checker
+    user: sameer
+    password: anjali143
+

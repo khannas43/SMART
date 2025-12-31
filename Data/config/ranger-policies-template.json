@@ -1,0 +1,126 @@
+{
+  "policies": [
+    {
+      "name": "mask-aadhaar-in-cdc",
+      "service": "kafka",
+      "description": "Mask Aadhaar and Jan Aadhaar numbers in warehouse-to-citizen CDC topics",
+      "resources": {
+        "topic": {
+          "values": [
+            "warehouse-to-citizen-cdc.golden_records"
+          ],
+          "isExcludes": false
+        }
+      },
+      "maskingPolicy": {
+        "accessTypes": ["consume"],
+        "maskingConditions": [
+          {
+            "field": "after.jan_aadhaar",
+            "maskType": "partial",
+            "maskCharCount": 8,
+            "unmaskCharCount": 4,
+            "maskChar": "*",
+            "unmaskCharPosition": "right"
+          },
+          {
+            "field": "after.aadhaar_number",
+            "maskType": "partial",
+            "maskCharCount": 8,
+            "unmaskCharCount": 4,
+            "maskChar": "*",
+            "unmaskCharPosition": "right"
+          }
+        ]
+      },
+      "isEnabled": true
+    },
+    {
+      "name": "mask-income-in-cdc",
+      "service": "kafka",
+      "description": "Mask income data in warehouse-to-citizen CDC topics",
+      "resources": {
+        "topic": {
+          "values": [
+            "warehouse-to-citizen-cdc.profile_360"
+          ],
+          "isExcludes": false
+        }
+      },
+      "maskingPolicy": {
+        "accessTypes": ["consume"],
+        "maskingConditions": [
+          {
+            "field": "after.inferred_income_band",
+            "maskType": "full",
+            "maskValue": "CONFIDENTIAL"
+          }
+        ]
+      },
+      "isEnabled": true
+    },
+    {
+      "name": "citizen-portal-consumer-access",
+      "service": "kafka",
+      "description": "Allow citizen portal consumer to read from warehouse CDC topics",
+      "resources": {
+        "topic": {
+          "values": [
+            "warehouse-to-citizen-cdc.*"
+          ],
+          "isExcludes": false
+        }
+      },
+      "policyItems": [
+        {
+          "accesses": [
+            {
+              "type": "consume",
+              "isAllowed": true
+            }
+          ],
+          "users": ["citizen-portal-consumer"],
+          "groups": [],
+          "conditions": [],
+          "delegateAdmin": false
+        }
+      ],
+      "isEnabled": true
+    },
+    {
+      "name": "warehouse-sync-consumer-access",
+      "service": "kafka",
+      "description": "Allow warehouse sync consumer to read from citizen CDC topics",
+      "resources": {
+        "topic": {
+          "values": [
+            "citizen-to-warehouse-cdc.*"
+          ],
+          "isExcludes": false
+        }
+      },
+      "policyItems": [
+        {
+          "accesses": [
+            {
+              "type": "consume",
+              "isAllowed": true
+            }
+          ],
+          "users": ["warehouse-sync-consumer"],
+          "groups": [],
+          "conditions": [],
+          "delegateAdmin": false
+        }
+      ],
+      "isEnabled": true
+    }
+  ],
+  "notes": [
+    "These are template policies for Apache Ranger.",
+    "Import these into Ranger Admin UI or via Ranger REST API.",
+    "Update user/group names as per your environment.",
+    "Test masking policies in development before production."
+  ]
+}
+

@@ -41,7 +41,7 @@ spring:
 server:
   port: 8080
   servlet:
-    context-path: /api/v1
+    context-path: /citizen/api/v1
 
 management:
   endpoints:

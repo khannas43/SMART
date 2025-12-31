@@ -1,0 +1,67 @@
+# Database Configuration for Ineligible/Mistargeted Beneficiary Detection
+# Use Case ID: AI-PLATFORM-07
+
+database:
+  host: 172.17.16.1
+  port: 5432
+  name: smart_warehouse
+  user: sameer
+  password: anjali143
+  schema: detection
+
+# External Database Connections
+external_databases:
+  # Golden Records (AI-PLATFORM-01)
+  golden_records:
+    host: 172.17.16.1
+    port: 5432
+    name: smart_warehouse
+    user: sameer
+    password: anjali143
+    schema: golden_records
+  
+  # 360° Profiles (AI-PLATFORM-02)
+  profile_360:
+    host: 172.17.16.1
+    port: 5432
+    name: smart_warehouse
+    user: sameer
+    password: anjali143
+    schema: profile_360
+  
+  # Eligibility (AI-PLATFORM-03)
+  eligibility:
+    host: 172.17.16.1
+    port: 5432
+    name: smart_warehouse
+    user: sameer
+    password: anjali143
+    schema: eligibility
+  
+  # Applications (AI-PLATFORM-05)
+  application:
+    host: 172.17.16.1
+    port: 5432
+    name: smart_warehouse
+    user: sameer
+    password: anjali143
+    schema: application
+  
+  # Decisions (AI-PLATFORM-06)
+  decision:
+    host: 172.17.16.1
+    port: 5432
+    name: smart_warehouse
+    user: sameer
+    password: anjali143
+    schema: decision
+  
+  # Scheme Master
+  scheme_master:
+    host: 172.17.16.1
+    port: 5432
+    name: smart_warehouse
+    user: sameer
+    password: anjali143
+    schema: public
+

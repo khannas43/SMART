@@ -1,0 +1,90 @@
+# Eligibility Scoring & 360° Profiles Use Case Configuration
+# Use Case ID: AI-PLATFORM-02
+# Combined: Eligibility Scoring + 360° Profiles + Network Analytics
+
+use_case:
+  id: AI-PLATFORM-02
+  name: Eligibility Scoring & 360° Profiles with Network Benefit Analytics
+  tier: 1
+  status: development
+  description: "ML-powered eligibility scoring and enriched 360° profiles with network analytics for citizen/family/business benefit optimization"
+
+# Components
+components:
+  # Eligibility Scoring
+  eligibility_scoring:
+    enabled: true
+    model_type: xgboost  # Options: xgboost, lightgbm, random_forest
+    output_type: regression  # Score 0-100
+    requires_golden_record: true
+  
+  # 360° Profile Builder
+  profile_360:
+    enabled: true
+    update_frequency: event_driven  # event_driven + hourly batch
+    requires_golden_record: true
+  
+  # Income Band Inference
+  income_band_inference:
+    enabled: true
+    model_type: random_forest
+    requires_consent: true
+  
+  # Graph Clustering
+  graph_clustering:
+    enabled: true
+    algorithm: louvain
+    update_frequency: daily
+  
+  # Anomaly Detection
+  anomaly_detection:
+    enabled: true
+    methods: [isolation_forest, rules]
+
+# Success Metrics
+success_metrics:
+  eligibility_scoring:
+    accuracy: 0.90  # >90% agreement with manual decisions
+    processing_speed_ms: 200  # <200ms per eligibility check
+    scheme_coverage: 1.0  # Support all 34+ schemes
+    explainability: true  # Provide clear reasons
+  
+  coverage:
+    profile_coverage: 0.90  # ≥90% of Golden Records have 360° profiles
+    timeframe_months: 3  # Within 3 months
+  
+  quality:
+    income_band_accuracy: 0.75  # ≥75% within one band
+    anomaly_precision: 0.80  # ≥80% precision for flags
+  
+  impact:
+    under_coverage_reduction: 0.20  # 20% reduction in eligible-but-not-enrolled
+    flag_investigation_rate: 0.70  # 70% of flags lead to action
+  
+  operational:
+    profile_update_latency_minutes: 15  # ≤15 minutes after new data
+    api_response_time_ms: 200  # <200ms for profile API
+
+# Governance
+governance:
+  consent:
+    required_for_income_inference: true
+    required_for_risk_analytics: true
+    required_for_relationship_inference: true
+  
+  fairness:
+    audit_frequency: quarterly
+    demographic_parity_checks: true
+    bias_threshold: 0.10  # Max 10% difference in flag rates across groups
+  
+  transparency:
+    show_explanations: true
+    explainability_method: shap
+    citizen_facing_explanations: simplified
+
+# Data Retention
+data_retention:
+  profile_history_days: 365  # Keep 1 year of profile history
+  benefit_history_days: 1825  # Keep 5 years of benefit history
+  audit_log_days: 2555  # Keep 7 years of audit logs (DPDP compliance)
+

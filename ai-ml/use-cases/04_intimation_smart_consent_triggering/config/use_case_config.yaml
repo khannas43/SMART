@@ -1,0 +1,241 @@
+# Use Case Configuration for Auto Intimation & Smart Consent Triggering
+# Use Case ID: AI-PLATFORM-04
+
+# Campaign Configuration
+campaign:
+  # Intake frequency (cron expression or seconds)
+  intake_schedule: "0 2 * * *"  # Daily at 2 AM
+  intake_batch_size: 1000
+  intake_max_daily_batches: 10
+  
+  # Eligibility thresholds
+  min_eligibility_score: 0.6  # Minimum score to trigger intimation
+  priority_threshold: 0.8  # High priority threshold
+  
+  # Campaign batching
+  batch_by_scheme: true
+  batch_by_geography: true  # Group by district/block
+  max_campaign_size: 10000
+
+# Message Configuration
+messaging:
+  # Supported channels
+  channels:
+    - sms
+    - mobile_app
+    - web_portal
+    - whatsapp
+    - email
+    - ivr
+  
+  # Default channel priority (first available)
+  default_channel_priority:
+    - mobile_app
+    - sms
+    - web_portal
+    - whatsapp
+    - email
+    - ivr
+  
+  # Channel-specific settings
+  channel_settings:
+    sms:
+      max_length: 160
+      include_deep_link: true
+      response_short_code: "SMART"
+    
+    mobile_app:
+      rich_cards_enabled: true
+      include_faq: true
+      include_privacy_info: true
+    
+    web_portal:
+      widget_enabled: true
+      inbox_integration: true
+    
+    whatsapp:
+      template_required: true
+      media_support: true
+    
+    email:
+      html_enabled: true
+      include_documents: false
+    
+    ivr:
+      voice_language: "hi"  # Hindi default
+      timeout_seconds: 30
+
+# Fatigue Management
+fatigue:
+  # Max messages per family per month
+  max_messages_per_month: 10
+  max_messages_per_scheme_per_month: 3
+  
+  # Quiet hours (respect user preferences)
+  respect_quiet_hours: true
+  default_quiet_hours:
+    start: "21:00"  # 9 PM
+    end: "08:00"    # 8 AM
+  
+  # Minimum time between messages (hours)
+  min_interval_hours: 24
+
+# Retry Configuration
+retry:
+  # Retry schedule (days after first send)
+  schedule: [1, 7, 30]  # 1 day, 1 week, 1 month
+  max_retries: 3
+  
+  # Retry conditions
+  retry_on_no_response: true
+  retry_on_partial_completion: true  # OTP not entered, etc.
+  
+  # Escalation after max retries
+  escalate_to_field_worker: true
+  flag_for_offline_outreach: true
+
+# Consent Configuration
+consent:
+  # Consent types by scheme category
+  consent_types:
+    low_risk:
+      categories:
+        - "HEALTH"
+        - "EDUCATION"
+        - "LIVELIHOOD"
+      type: "soft"  # Single click/tap
+    
+    high_risk:
+      categories:
+        - "FINANCIAL"
+        - "SOCIAL_SECURITY"
+        - "PENSION"
+      type: "strong"  # OTP/e-sign required
+  
+  # Strong consent requirements
+  strong_consent:
+    require_otp: true
+    require_e_sign: false  # Only for very high-value schemes
+    otp_validity_minutes: 10
+    e_sign_provider: "jan_aadhaar"
+  
+  # Consent validity
+  validity_period_days: 365  # 1 year default
+  renewal_reminder_days: 30  # Remind 30 days before expiry
+  
+  # Consent audit
+  audit_retention_days: 2555  # 7 years for compliance
+
+# Personalization Rules
+personalization:
+  # Language detection
+  language_sources:
+    - "jan_aadhaar_profile"
+    - "portal_settings"
+    - "app_settings"
+  default_language: "hi"  # Hindi
+  
+  # Vulnerability prioritization
+  prioritize_vulnerable: true
+  vulnerability_indicators:
+    - "under_coverage"
+    - "low_income_band"
+    - "single_parent"
+    - "elderly_only"
+    - "disability"
+  
+  # Message template selection
+  use_personalized_templates: true
+  include_benefit_amount: true
+  include_eligibility_reason: true
+
+# Event Integration
+events:
+  # Input events (from AI-PLATFORM-03)
+  eligibility_event: "POTENTIALLY_ELIGIBLE_IDENTIFIED"
+  
+  # Output events
+  output_events:
+    - "INTIMATION_SENT"
+    - "CONSENT_GIVEN"
+    - "CONSENT_REJECTED"
+    - "CONSENT_REVOKED"
+    - "CONSENT_EXPIRED"
+  
+  # Event stream configuration
+  event_stream_enabled: true
+  event_retention_days: 90
+
+# Governance & Compliance
+governance:
+  # DPDP compliance
+  dpdp_aligned: true
+  explicit_consent_required: true
+  data_usage_disclosure: true
+  
+  # Fairness monitoring
+  monitor_reach_distribution: true
+  track_demographic_segments: true
+  alert_on_under_reach: true
+  
+  # Offline/assisted options
+  enable_offline_consent: true
+  enable_field_worker_capture: true
+  e_mitra_integration: true
+
+# Monitoring & Alerts
+monitoring:
+  # Delivery rate thresholds
+  min_delivery_rate: 0.95  # 95%
+  alert_on_low_delivery: true
+  
+  # Response rate thresholds
+  min_response_rate: 0.10  # 10%
+  alert_on_low_response: true
+  
+  # Complaint/opt-out thresholds
+  max_complaint_rate: 0.01  # 1%
+  alert_on_high_complaints: true
+  
+  # Campaign health
+  max_queue_backlog: 10000
+  max_processing_latency_ms: 5000
+
+# Integration Endpoints (for external services)
+integrations:
+  # SMS Gateway
+  sms:
+    provider: "twilio"  # or "msg91", "nexmo", etc.
+    endpoint: ""  # Configure per provider
+    api_key: ""  # Set via environment variable
+  
+  # WhatsApp
+  whatsapp:
+    provider: "twilio"  # or "meta_business_api"
+    endpoint: ""
+    api_key: ""
+  
+  # Email
+  email:
+    provider: "smtp"  # or "sendgrid", "ses", etc.
+    smtp_host: ""
+    smtp_port: 587
+  
+  # IVR
+  ivr:
+    provider: "twilio"  # or custom IVR system
+    endpoint: ""
+    api_key: ""
+  
+  # Jan Aadhaar / OTP Service
+  authentication:
+    otp_provider: "jan_aadhaar"
+    endpoint: ""
+    api_key: ""
+  
+  # e-Sign Service
+  e_sign:
+    provider: "jan_aadhaar"
+    endpoint: ""
+    api_key: ""
+

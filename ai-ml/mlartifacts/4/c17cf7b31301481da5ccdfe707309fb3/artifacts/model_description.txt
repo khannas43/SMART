@@ -1,0 +1,16 @@
+
+Eligibility Scoring Model for Scheme: OLD_AGE_PENSION
+
+This XGBoost model predicts eligibility probability (0-1) for scheme OLD_AGE_PENSION.
+
+Features: 9
+Training Samples: 10529
+Test Performance:
+  - Accuracy: 0.8712
+  - Precision: 0.1176
+  - Recall: 0.0061
+  - F1 Score: 0.0117
+  - ROC-AUC: 0.6064
+
+Top Features: benefits_received_1y, schemes_enrolled_count, caste_id_encoded, district_id, age, gender_encoded, family_size, education_level_encoded, employment_type_encoded
+                

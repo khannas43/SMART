@@ -1,0 +1,1703 @@
+1.	Citizen Facing Portal
+The Citizen Portal is designed to address the complexities and fragmentation in accessing government welfare schemes, social benefits, and citizen services. Traditionally, citizens faced numerous challenges including the need to navigate multiple websites, inconsistent eligibility checks, complex application forms, repeated document submissions, poor visibility into scheme status, and lack of consolidated personal records.
+Problems Solved by the Citizen Portal:
+•	Eliminates the need for citizens to visit several portals or departments to discover, apply for, and monitor government schemes and benefits.
+•	Resolves issues of duplicate document requests and manual verification.
+•	Simplifies consent management and reduces confusion over data usage and privacy.
+•	Addresses poor visibility into overall benefits and family eligibility.
+•	Tackles notification and communication gaps regarding scheme changes, payments, and deadlines.
+How the Portal Solves These Problems:
+•	Provides a unified, authenticated gateway (Jan Aadhaar, Raj SSO, MFA) for all eligible citizens, powered by secure login and profile management.image.jpg
+•	Delivers AI-driven scheme discovery, eligibility prediction, and personalized recommendations, so citizens see only relevant options and know why they're eligible or ineligible.
+•	Offers consent-driven applications, profile and document management, and transparent status tracking so citizens control their participation and data sharing for schemes.
+•	Aggregates citizen and family benefits into an intuitive dashboard, showing real-time status, history, and forecasting tools so users understand their entitlements fully.
+•	Enables fast communication, notifications, and help/support, with multi-language and accessibility features for maximum inclusion.
+•	Incorporates security, regulatory validations, error handling, and audit logging throughout all major workflows.
+By centralizing discovery, application, status monitoring, documentation, notifications, support, and analytics, the portal transforms fragmented government processes into an integrated digital experience that is efficient, transparent, and user-centric.
+I.	List of Screens for Citizen-Facing Portal
+
+Module Name	Screen ID	Screen Name	Access	Notes
+Authentication & Profile	CIT-AUTH-01	Unified Login & SSO	Public	Jan Aadhaar OTP + Raj SSO in single tabbed interface
+Authentication & Profile	CIT-AUTH-02	MFA & Security Challenge	Authenticated	OTP/TOTP/biometric verification for sensitive actions
+Authentication & Profile	CIT-PROF-03	Profile Dashboard & 360° view	Authenticated	Golden Record + family graph with ML confidence badges
+Authentication & Profile	CIT-PROF-04	Profile Edit & Verification	Authenticated	Edit attributes + source selection + verification status
+Schemes	CIT-SCHEME-05	Scheme Catalog & Search	Authenticated	Browse + AI recommendations + compare up to 3 schemes
+Schemes	CIT-SCHEME-06	Scheme Details	Authenticated	Eligibility info + benefits + apply + related schemes
+Schemes	CIT-SCHEME-07	Eligibility & Recommendations	Authenticated	Questionnaire + live eligible/ recommended schemes list
+Consent & Applications	CIT-CONSENT-08	Consent & Clarifications	Authenticated	Scheme consents + app clarification responses
+Consent & Applications	CIT-APP-09	Applications Hub	Authenticated	Active tracking + historical applications unified view
+Documents	CIT-DOC-10	Document Center	Authenticated	Upload/library/ signed/ eVault/downloads unified hub
+Benefits	CIT-BEN-11	Benefits & Entitlements	Authenticated	Current/family/history/forecast unified timeline
+Benefits	CIT-BEN-12	Payments & Ledger	Authenticated	DBT transactions + monthly/yearly summaries
+Service Delivery	CIT-SERV-13	Service Catalog	Authenticated	Browse government services by category
+Service Delivery	CIT-SERV-14	Service Request	Authenticated	Multi-step service request form + uploads
+Service Delivery	CIT-SERV-15	Service Status & Feedback	Authenticated	Request tracking + inline feedback ratings
+Settings	CIT-USER-16	Notification Preferences	Authenticated	Email/SMS/app alerts + quiet hours
+Settings	CIT-USER-17	Opt-Out Schemes	Authenticated	Scheme participation opt-out with impact preview
+Settings	CIT-USER-18	Account & Security Settings	Authenticated	Profile/password/MFA/sessions unified hub
+Help & Support	CIT-HELP-19	Help & Support Hub	Public	FAQs + search + announcements + basic tickets
+Help & Support	CIT-HELP-20	Tickets & Status	Authenticated	Ticket timeline + agent communication + feedback
+
+II.	Module 1: Authentication & Profile
+Screen 1: Unified Login & SSO
+Screen ID: CIT-AUTH-01
+User Type: Citizen
+Purpose: Provide unified secure authentication via Jan Aadhaar OTP or Raj SSO with seamless session creation and identity unification.
+Functional Description
+Primary Layout (Single Screen):
+•	Top Section: Branding + Portal Title + Multi-language selector
+•	Center Section: Tabbed Authentication Options:
+Tab 1: "Jan Aadhaar Login"	Tab 2: "Raj SSO Login"
+•	Jan Aadhaar ID input
+•	"Send OTP" button
+•	OTP input (auto-fill)
+•	Resend timer (60s)
+•	"Login" button (OTP validated)
+•	Biometric option (if supported)	•	"Login with Raj SSO" prominent button
+•	Loading spinner during redirect
+•	Post-redirect: Profile summary + "Link to Jan Aadhaar" option
+•	Bottom Section: Help links ("Forgot Jan Aadhaar?", "Need Help?", Helpline)
+•	Success State: Full-screen redirect to CIT-PROF-04 (Profile Dashboard)
+
+•	State Flows:
+Public → Jan Aadhaar Tab → OTP Verified → [Optional MFA] → Profile Dashboard
+     ↓
+Public → Raj SSO Tab → External Redirect → Callback → Profile Summary → [Link Jan Aadhaar] → Profile Dashboard
+Business Rules & Validations
+•	Jan Aadhaar Flow:
+o	Jan Aadhaar ID mandatory, 12-digit format validation (regex: ^\d{12}$)
+o	OTP valid 5 minutes; max 3 resends/hour per IP/device
+o	Account lockout after 5 failed logins (30 min configurable)
+o	Capture IP, User-Agent, device fingerprint for audit
+
+•	Raj SSO Flow:
+o	OAuth 2.0/SAML token exchange with Raj SSO (PKCE for SPA security)
+o	Token expiry validation + auto-refresh per Raj SSO specs
+o	Session consistency: SSO session → Portal JWT (max-age 8h)
+
+•	Unified Rules:
+o	Both flows trigger optional MFA (CIT-AUTH-03) for sensitive actions
+o	Post-login role determination from Golden Record/profile service
+o	Account linking: Raj SSO → Jan Aadhaar creates unified identity in profile360
+Data Inputs
+Source	Data Elements
+User Input	Jan Aadhaar ID, OTP code
+Raj SSO	id_token, access_token, user claims (name, mobile, role hints)
+Device	Biometrics (WebAuthn), geolocation (optional)
+Backend	OTP verification response, Jan Aadhaar validation, token refresh status
+Data Outputs
+Target	Data Elements
+Session	JWT token, refresh_token, user_profile (minimal)
+Profile Service	Unified identity record (Jan Aadhaar ↔ Raj SSO link)
+Audit Log	login_method, ip_address, device_fingerprint, success/failure
+User	Welcome message, profile summary (post-SSO)
+Integration Points
+ 
+Core Integrations:
+1.	Jan Aadhaar Authentication Service (OTP generation/verification)
+2.	Raj SSO Service (OAuth 2.0 token exchange)
+3.	User Profile Microservice (Golden Record sync, identity linking)
+4.	Security & Audit Logging (all auth events)
+5.	MFA Service (step-up authentication)
+RBAC & Access Control
+Access Level	Jan Aadhaar Tab	Raj SSO Tab
+Public	Full access	Full access
+Authenticated	N/A (pre-auth)	N/A (pre-auth)
+Post-Login	Role-based dashboard redirect	Role-based dashboard redirect
+Error Handling & Messaging
+Scenario	Message	Action
+Invalid Jan Aadhaar	"Please enter valid 12-digit Jan Aadhaar ID"	Shake input + focus
+OTP Expired	"OTP expired. Resend new OTP?" [60s timer]	Enable resend
+SSO Cancelled	"Login cancelled. Choose another method?"	Show both tabs
+Token Invalid	"SSO session expired. Login again?"	Retry SSO button
+Rate Limited	"Too many attempts. Try after 30 min"	CAPTCHA + countdown
+Network Error	"Connection issue. Check internet?"	Retry all buttons
+Note: CAPTCHA Trigger: 3+ failed attempts or suspicious IP/device
+Accessibility & Usability
+•	WCAG 2.1 AA compliant
+•	Keyboard navigation: Tab between tabs → inputs → buttons
+•	Screen reader: ARIA labels for tabs, live regions for messages/timers
+•	Multi-language: Hindi, English, Rajasthani (RTL support)
+•	Responsive: Mobile-first (stacked tabs on <768px)
+•	High contrast mode + reduced motion support
+Functional Tests:
+•	Jan Aadhaar flow: ID → OTP → Login → Dashboard
+•	Raj SSO flow: Button → Redirect → Callback → Profile
+•	Account linking: SSO → Link Jan Aadhaar → Unified profile
+•	Error scenarios: Invalid ID/OTP, expired tokens, network fail
+Security Tests:
+•	Brute force protection (lockout, rate limiting)
+•	Token validation (SSO replay attacks)
+•	Device fingerprint consistency
+•	XSS/CSRF protection on callback
+Performance Tests:
+•	<2s OTP delivery
+•	<500ms SSO callback processing
+•	✓ Session creation <1s
+
+Screen 2: MFA Verification
+Screen ID: CIT-AUTH-02
+User Type: Citizen
+Purpose: Provide an additional layer of security through multi-factor authentication during login or sensitive transactions.
+Functional Description:
+•	Prompt user to complete MFA after successful primary authentication (Jan Aadhaar or Raj SSO).
+•	Support multiple MFA methods:
+o	OTP via SMS or email
+o	Time-based One-Time Password (TOTP) apps (Google Authenticator, etc.)
+o	Biometric verification (fingerprint, facial recognition) if device supports
+•	Input fields to enter OTP or scan biometric for verification.
+•	Support retry and resend OTP options with cooldown timers.
+•	Clearly indicate success or failure and guide next steps accordingly.
+Business Rules & Validations:
+•	Enforce MFA based on configured security policies (mandatory for certain actions).
+•	OTP validity limited duration (e.g., 5 minutes).
+•	Limit OTP resend attempts to prevent abuse.
+•	Biometric verification requires compatible device and secure capture.
+•	Log all MFA attempts with success/failure status for audit.
+Data Inputs:
+•	OTP codes generated and verified by backend MFA service.
+•	Biometric authentication data from device hardware/software.
+Data Outputs:
+•	MFA verification result to authentication/session manager.
+•	Audit logs for MFA events.
+Integration Points:
+•	Backend MFA Service for OTP generation and validation.
+•	Device biometric APIs.
+RBAC:
+•	Enforced post-primary authentication for all eligible users.
+Error Handling & Messaging:
+•	Inform users of invalid or expired OTPs.
+•	Provide clear error messages and help links for biometric failures.
+Accessibility & Usability:
+•	Support accessible input controls for OTP entry.
+•	Provide alternate MFA methods when biometrics unavailable.
+Testability:
+•	Validate OTP delivery, expiry, and verification.
+•	Test biometric capture and verification flows.
+•	Security testing for fraud prevention.
+Screen 3: Profile Dashboard & 360° View
+Screen ID: CIT-PROF-03
+User Type: Citizen
+Purpose: Deliver comprehensive Golden Record dashboard with summary insights, interactive 360° family network visualization, ML confidence transparency, benefit aggregation, and one-click profile actions—all in a single unified view.
+
+Functional Description
+•	Primary Layout (Tabbed Single Screen):
+
+Tab 1: Summary	Tab 2: 360o View
+•	Key Details
+•	Alerts
+•	Benefits
+•	Notifications
+•	Quick CTAs	•	Interactive Family Graph (Neo4j)       
+•	3-Level Network + Confidence Edges
+•	Scheme Aggregation Sankey
+•	Consent Controls
+•	GR Change Timeline                     
+
+•	Summary Tab (Compact Dashboard):
+o	Personal details + confidence badges (Green/Yellow/Red)
+o	Family snapshot carousel (3-5 members, clickable → 360° tab)
+o	Active schemes pie chart + predicted entitlements
+o	Profile alerts + ML nudges
+o	4 prominent CTAs: "Edit Profile", "AI Eligibility", "Verify Data", "View 360° Profile" (switches tab)
+•	360° View Tab (Deep Analytics):
+o	Full Golden Record attributes + per-field source badges
+o	Interactive graph: 3-level family tree (vis.js/D3) with node popovers
+o	Family benefit Sankey + overlap analysis
+o	Consent toggles + GR audit timeline
+o	"Add Family" + ML-suggested relations
+•	Real-time Features:
+o	WebSocket updates for GR changes, new alerts, benefit status
+o	Hover tooltips: "DOB confidence 95% from Passport+UIDAI"
+Business Rules & Validations
+•	Unified Data Rules:
+o	Real-time sync from Golden Record API (5min poll + Kafka CDC events)
+o	Confidence thresholds: Green ≥95%, Yellow 80-95%, Red <80%
+o	Family display: 1st-degree auto, 2nd/3rd-degree consent-gated
+o	Masking: Income "₹XX,XXX", full view requires explicit consent
+o	Graph validation: No cycles, age inversion detection via ML
+•	Tab-Specific Rules:
+Summary Tab	360° Tab
+Load <2s, cached OK	Load <3s, WebGL viz
+1st-degree family only	3-level + ML suggestions
+Aggregated benefits	Individual + family breakdowns
+Masked sensitive data	Consent-gated full view
+Offline Support: PWA cache (24h TTL) with staleness indicator
+Data Inputs
+API Endpoint	Tab Usage	Data Elements
+GET /golden-record/{gr_id}?summary=true	Summary	Core attributes + confidence metadata
+GET /golden-record/{gr_id}?depth=3	360°	Full profile + 3-level family graph
+GET /family-graph/{gr_id}?include_predictions=true	360°	ML-suggested relations + edges
+GET /benefits/family/{gr_id}	Both	Active/pending schemes + predictions
+WebSocket /notifications/{gr_id}	Both	Real-time nudges + GR updates
+Data Outputs
+Target	Events/Actions
+Golden Record	POST /golden-record/{id}/consent, POST /family-corrections/{gr_id}
+Analytics	Profile views, tab switches, node clicks, consent changes
+Audit Log	All GR interactions with timestamps + confidence deltas
+Integration Points
+ 
+Core Services:
+1.	Golden Record FastAPI (AI-PLATFORM-01) - Primary data source
+2.	Neo4j Family Graph - Network visualization + ML relations
+3.	Benefits Microservice - Scheme aggregation + predictions
+4.	Kafka CDC - Real-time GR → UI sync
+5.	Consent Microservice - Granular data sharing controls
+RBAC & Access Control
+Role	Summary Tab	360° Tab
+Citizen	Own GR + 1st-degree family	Own GR + consented family subtree
+Family Head	Full family summary	Full consented family network
+Guest	Masked public info only	Access denied
+Error Handling & Messaging
+Scenario	Message	Fallback
+GR Unavailable	"Profile syncing... Last update: 2h ago"	Cached view + refresh button
+Graph Render Fail	"Using text family list"	Collapsible text hierarchy
+Partial Consent	"3/5 family members consented"	Mask non-consented nodes
+Low Confidence	"DOB needs verification [Select best source]"	Source picker modal
+Network Fail	"Offline mode active"	PWA sync queue
+Accessibility & Usability
+•	WCAG 2.1 AA:
+o	ARIA tabs + live regions for real-time updates
+o	Keyboard nav: Tab tree nodes, arrow keys for graph pan/zoom
+o	Screen reader: "Node: Father [Ram, 65y, 92% confidence, 2 schemes]"
+o	SVG alt text + focus outlines on confidence badges
+•	Mobile-First:
+o	<768px: Summary tab = carousel, 360° tab = radial tree + swipe
+o	>768px: Side-by-side tabs with full graph viz
+•	Performance:
+o	Summary tab: <2s load (cached)
+o	360° tab: <3s load (1K nodes), <100ms WebSocket updates
+Testability Requirements
+•	Functional E2E Tests:
+o	Summary → 360° tab switch preserves state
+o	Family node click → popover → GR update → real-time refresh
+o	Consent toggle → assert data masking in both tabs
+o	Offline → online sync → assert update propagation
+o	ML nudge click → AI Eligibility Checker navigation
+•	AI/ML Tests:
+o	Confidence badge colors match thresholds (95/80/<80)
+o	Graph edge colors match relation confidence
+o	Suggested relations → verification workflow
+o	Benefit predictions update on GR changes
+•	Load/Performance:
+o	10K concurrent citizens: <2s Summary tab
+o	1K node family graphs: <3s render
+o	WebSocket: 100 updates/sec without lag
+
+Screen 4: Profile Edit & Verification
+Screen ID: CIT-PROF-04
+User Type: Citizen
+Purpose: Unified workspace for editing Golden Record attributes, viewing verification statuses, managing source consents, and previewing ML confidence impacts—all in one screen with real-time validation and workflow guidance.
+
+Functional Description
+•	Primary Layout (Tabbed Single Screen):
+
+Tab 1: Edit	Tab 2: Verification
+•	Editable
+•	Fields + Confidence
+•	ML Source Selector
+•	Doc Upload
+•	Preview/Save  	•	Status Dashboard (Green/Yellow/Red)
+•	Source Attribution + Confidence
+•	Progress Bar + Expiry Alerts
+•	One-Click Edit Links → Edit Tab
+•	Consent Toggles
+
+•	Edit Tab (Action-Oriented):
+o	Editable Golden Record fields with inline confidence badges
+o	ML Source Selector dropdowns for conflicted attributes
+o	Document upload + OCR auto-extract proposals
+o	Real-time confidence preview: "New confidence: 98% ↑+6%"
+o	Save/Preview/Reset buttons + consent matrix
+•	Verification Tab (Status Dashboard):
+o	Attribute table: Status (Verified/Pending/Rejected) + confidence scores
+o	Source badges (UIDAI/Passport/Manual) + verification timestamps
+o	Overall progress bar + expiry alerts
+o	One-click "Edit This Field" → switches to Edit tab with field pre-focused
+o	Consent toggles per attribute/source
+•	Unified Features:
+o	Real-time validation across both tabs
+o	WebSocket updates for verification status changes
+o	Mobile stepper: Edit → Preview → Consent → Save
+Business Rules & Validations
+•	Unified Validation Rules:
+Field Type	Edit Requirements	Verification Display
+Basic (Name, Mobile)	Format validation	≥80% confidence
+Sensitive (DOB, Income)	2+ sources OR document	OTP-gated changes
+Policy (Aadhaar ID)	Edit locked	Admin-only
+Address	PIN validation + ML staleness	Expiry warnings
+•	Core Rules:
+o	Partial saves flagged in GR metadata; full save → ML reconciliation
+o	Changes versioned: {old_value, new_value, source, confidence_delta}
+o	Verification statuses update via Kafka events (<30s latency)
+o	DPDP consent: Explicit opt-in per source; revocable with impact preview
+Data Inputs
+API Endpoint	Tab Usage	Data Elements
+GET /golden-record/{gr_id}?editable=true	Edit	Current attrs + conflicts/sources
+GET /verification-status/{gr_id}	Verification	Statuses, timestamps, confidence
+POST /document/ocr-extract	Edit	Extracted fields + ML scores
+POST /ai-reconcile/preview	Edit	Simulated confidence delta
+WebSocket /profile-updates/{gr_id}	Both	Real-time status + GR changes
+Data Outputs
+Target	Events/Actions
+Golden Record	PATCH /golden-record/{gr_id}, POST /family-corrections
+Verification Services	Document submissions, re-verification triggers
+Consent Service	Per-attribute/source consent updates
+Audit Log	Versioned diffs + confidence changes
+Integration Points
+ 
+Core Services:
+1.	Golden Record FastAPI - Edit + reconciliation
+2.	Document OCR Service - Auto-extraction + proposals
+3.	Multiple Verifiers - UIDAI, Passport, Utilities
+4.	Consent Service - Granular DPDP controls
+5.	Kafka Events - Real-time status sync
+RBAC & Access Control
+Role	Edit Tab	Verification Tab
+Citizen	Own GR (OTP for sensitive)	Own profile + consented family
+Family Head	Shared fields (consent)	Full consented family statuses
+Admin	Emergency override	View-only assistance
+Error Handling & Messaging
+Scenario	Message	Action
+Validation Fail	"Invalid PIN: Expected 6 digits"	Inline shake + focus
+Low Confidence	"DOB conflicts 3 sources - select best"	Source selector dropdown
+Save Conflict	"Reconciliation in progress (ID:gr-123)"	Refresh in 30s
+Doc Rejected	"Low OCR confidence (65%) - clearer scan"	Retry upload
+Verifier Down	"UIDAI temporarily unreachable"	Show cached status
+Consent Revoke	"Revoking Passport → Confidence -12%"	Confirmation modal
+Accessibility & Usability
+•	WCAG 2.1 AA:
+o	ARIA live regions: "Confidence updated to 98%", "Verification complete"
+o	Keyboard: Tab order = logical flow, Enter = Save, Esc = Cancel
+o	Color + icons: Green check/Yellow clock/Red X + text equivalents
+o	Screen reader: "DOB field: Pending verification [85% confidence from Aadhaar]"
+
+•	Mobile Stepper (<768px):
+Step 1: Edit Fields → Step 2: Review Sources → Step 3: Consent → Step 4: Save
+Desktop Tabs (>768px): Side-by-side Edit + Verification panels
+Testability Requirements
+•	Functional E2E Tests:
+o	Edit DOB → Source selection → Preview confidence ↑ → Save → Verification tab shows update
+o	Upload document → OCR extract → Auto-populate fields → Save → Status → Pending→Verified
+o	Consent toggle → Edit tab hides fields → Verification shows masked data
+o	Offline edit → Online sync → GR update propagates to CIT-PROF-04
+•	AI/ML Tests:
+o	Source selector: Assert confidence delta calculations
+o	OCR extraction: Mock document → Extracted fields match
+o	Real-time: Verification status change → Both tabs update <2s
+•	Load/Performance:
+o	5K concurrent edits: ML inference <500ms
+o	Document upload: <3s OCR processing
+o	WebSocket: 100 status updates/sec
+
+III.	Module 2: Schemes
+Screen 5: Scheme Catalog & Search 
+Screen ID: CIT-SCHEME-05
+User Type: Citizen
+Purpose: Unified scheme discovery screen combining browsing, advanced search, filtering, AI recommendations, comparison, and sorting—all in a single intuitive interface without tabs.
+
+Functional Description
+•	Single Unified Layout (No Tabs):
+[Search Bar + Autocomplete]       [Saved Filters]
+[Filter Panel]
+Category  
+Department
+Benefit Type
+Location
+[Apply Filters]	[Sort ▼]
+Popularity
+Relevance
+Latest
+Expiry Date
+[Clear All]	AI Recommendations
+•	Scheme X (92% match)
+•	Scheme Y (85%)
+[Scheme Results Grid/List]    [Compare Panel (up to 3 schemes)]
+•	Scheme Card 1 [★ Recommended] → Details/Apply
+•	Scheme Card 2                                 → [X]
+•	Scheme Card 3                                 → [X]
+•	(Pagination + Total: 1,247 schemes)
+•	Key Integrated Features:
+o	Persistent Search Bar (top): Autocomplete + keyword search
+o	Collapsible Filter Panel (left): Multi-select category/department/benefit/location
+o	AI Recommendations (top-right): Profile-matched schemes with match scores
+o	Dynamic Results (center): Cards with highlights, real-time filter updates
+o	Compare Panel (right): Drag/drop up to 3 schemes for side-by-side eligibility/benefit view
+o	Saved Filters (dropdown): "My Recent Filters" + "Popular Filters"
+Business Rules & Validations
+•	Unified Discovery Rules:
+o	Real-time results update on filter/search changes (debounced 300ms)
+o	Show only schemes matching citizen profile/location/consent
+o	AI recommendations: ≥80% profile match, updated daily via ML batch job
+o	Compare limit: Max 3 schemes; auto-remove lowest relevance on overflow
+o	Personalization: Prioritize schemes where citizen has ≥90% eligibility probability
+•	Search & Filter Logic:
+o	Search: Exact → Partial → Synonym → AI Semantic Match
+o	Filters: AND between categories, OR within multi-select
+o	Sort: Stable across search/filter changes
+Data Inputs
+API Endpoint	Usage	Data Elements
+GET /schemes?search={q}&filters=
+{json}&sort={field}&page={n}&limit=20	Results	Scheme cards + metadata + eligibility hints
+GET /schemes/ai-recommendations/{gr_id}?limit=5	Recommendations	Profile-matched schemes + confidence scores
+GET /user/filters/{session_id}	Saved Filters	Recent + popular filter sets
+POST /schemes/compare	Compare Panel	Side-by-side eligibility/benefit analysis
+Data Outputs
+Target	Events/Actions
+Analytics	Search queries, filter usage, compare selections, scheme clicks
+Session	Saved filter preferences (localStorage + backend sync)
+Navigation	Scheme details (CIT-SCHEME-08), Apply flow
+Integration Points
+ 
+•	Core Services:
+1.	Scheme Catalog - Elasticsearch + relational metadata
+2.	AI Recommendation Engine - Profile-based scheme matching
+3.	Profile Service - Location/consent filtering
+4.	Search Index - Synonym expansion + relevance ranking
+RBAC & Access Control
+Access	Features Available
+Authenticated Citizen	Full catalog + personalization + compare
+Guest	Basic browse (no AI recs, limited filters)
+Error Handling & Messaging
+Scenario	Message	Action
+No Results	"No schemes match your filters. Try: [Broader category]"	Suggest popular filters
+Search Error	"Search temporarily unavailable. Showing popular schemes"	Fallback to curated list
+AI Reco Fail	"Recommendations loading..."	Progressive enhancement
+Too Many Compares	"Max 3 schemes. Remove one to add [Scheme X]"	Highlight overflow scheme
+Accessibility & Usability
+•	WCAG 2.1 AA:
+o	Keyboard: Arrow keys for results navigation, Enter = View Details
+o	ARIA: Live region for result count "Showing 1-20 of 1,247 schemes"
+o	Screen reader: "Scheme: PM Awas Yojana [Recommended, 92% match]"
+o	Focus: Clear filter chips, sort dropdown, compare panel management
+•	Responsive Breakpoints:
+o	<480px: Vertical stack (Search → Filters → Results)
+o	480-1024px: Filter sidebar + results
+o	>1024px: 3-column (Filters + Results + Compare)
+•	Mobile Gestures:
+o	Swipe left/right: Compare panel toggle
+o	Long press scheme card: Quick compare add
+Testability Requirements
+•	Functional E2E Tests:
+o	Search "housing" → Autocomplete → Results → Filter "Rajasthan" → Results update
+o	Drag Scheme A,B,C → Compare panel → Eligibility side-by-side
+o	AI recs click → Same filtering as manual search
+o	Saved filter → Restore → Same results as previous session
+•	Performance Tests:
+o	<200ms search/filter response
+o	<500ms initial catalog load (1K schemes)
+o	Infinite scroll: Seamless pagination
+•	AI Integration Tests:
+o	Profile match scores → Visual highlighting
+o	Recommendations respect consent → No masked schemes
+o	Semantic search: "free education" → Post-Matric schemes
+
+Screen 6: Scheme Details
+Screen ID: CIT-SCHEME-06
+User Type: Citizen
+Purpose: Provide detailed information about a selected government scheme including eligibility, benefits, required documents, and application process.
+Functional Description:
+•	Display scheme name, department, and category prominently.
+•	Show detailed description covering objectives, benefits, eligibility criteria, and timelines.
+•	List required documents with download links or format specifications.
+•	Provide FAQs specific to the scheme.
+•	Display contact information for scheme helpdesk or officials.
+•	Show application status if the citizen has applied previously.
+•	Provide “Apply Now” button with eligibility check and consent prompts as necessary.
+•	Include related scheme suggestions and links.
+Business Rules & Validations:
+•	Access allowed to authenticated citizens only.
+•	Eligibility checks performed before enabling apply actions.
+•	Document requirements validated per scheme policies.
+•	Display language localized as per user preferences.
+Data Inputs:
+•	Scheme details API including metadata and documents.
+•	User profile and eligibility status.
+•	Localization service.
+Data Outputs:
+•	Application initiation or request for additional action.
+•	Navigation to related schemes.
+Integration Points:
+•	Scheme Management Service.
+•	Eligibility and Consent Services.
+•	Document Repository and Download APIs.
+RBAC:
+•	Authenticated citizens with role-based visibility of scheme details.
+Error Handling & Messaging:
+•	Inform users if scheme details cannot be loaded or applied to.
+•	Provide fallback and guidance for eligibility failures.
+Accessibility & Usability:
+•	Responsive and well-structured layout.
+•	Readable fonts and accessible navigation.
+Testability:
+•	Validate detailed data accuracy and loading.
+•	Test eligibility enforcement and apply flow.
+•	Verify document download and display.
+Screen 7: Eligibility & Recommendation
+Screen ID: CIT-SCHEME-7
+User Type: Citizen
+Purpose: Let citizens answer an adaptive AI questionnaire and immediately see eligible, suggested, and last-check schemes in one unified view, with clear next steps to view details or apply. 
+
+Functional Description
+Layout (Single Page, Two Zones):
+1.	Top Zone: “Answer a few questions” (Eligibility Questionnaire)
+o	Multi-step, adaptive questions (age, income, family, location, disability, life events, etc.), pre-filled from Golden Record with “Confirm / Change just for this check” options.
+o	Progress indicator (e.g., Step 2 of 7), back/next controls, autosave of each step with resume across devices.
+o	Consent and data-use banner on first use, with link to profile update if key Golden Record attributes are missing or wrong.
+o	Behind the scenes, each answer is sent (debounced) to the AI Eligibility Engine and Auto-ID service to recompute scheme-wise scores in near real time, with a guard on call frequency.
+2.	Bottom Zone: “Your schemes” (Live Results Panel)
+o	Single consolidated scheme list, grouped via inline chips instead of tabs:
+	Chip filters: Eligible now, Suggested for you, From my last check, All (multi-select chips).
+o	Each scheme card shows:
+	Name, department, short benefit summary.
+	Status pill: Eligible / Potential / Not eligible, with confidence % and last evaluated timestamp.
+	Tag for origin: “Auto-identified”, “From questionnaire”, or “Recommended”.
+	“Why shown?” link:
+	Eligible: key drivers (age, location, income, family context).
+	Suggested: profile/behaviour/similar-user explanation.
+	CTAs: “View details”, “Apply now”, “Track application” (if in progress), plus bookmark / “Not relevant”.
+o	Sorting and filtering bar above cards: category, department, benefit, life-event tags, recency, priority, amount.
+o	Optional inline banner: “Last full check run on 28 Dec, 7:45 PM – Run again” if citizen is viewing an older eligibility RunId.
+3.	Eligibility Run Handling
+o	On “Finish questionnaire”, the system creates an Eligibility Assessment Run with snapshot of answers, scheme list, scores, and origin labels; the list below is tagged “From this run”.
+o	“From my last check” chip reloads the latest completed run even in a future session, reusing stored results but clearly showing date/time and offering “Refresh with latest data”.
+Business Rules & Validations
+•	Golden Record values are default; overrides are session-only unless citizen explicitly taps “Update my profile” (deep link to CIT-PROF-05).
+•	Questionnaire branches based on profile gaps, scheme criteria, and model features; if AI or Auto-ID is unavailable, the results panel falls back to rule-only evaluation with a notice.
+•	Only schemes active for citizen’s geography and not blocked by consent appear; “Eligible now” set requires confidence ≥ configured threshold (e.g., 80%) and active status in Scheme Master.
+•	Watchlist/bookmarks persist across sessions and devices; “Not relevant” feedback feeds recommendation models but does not hide a scheme if it is strictly eligible and mandated to show.
+•	Assisted channels (CSC, call centre) can run for a selected family member with explicit consent and full audit.
+Data Inputs
+•	Questionnaire responses (current run + any resumed draft).
+•	Golden Record and 360° family profile (demographics, income band, location, vulnerability, benefit history).
+•	Scheme rules and master metadata (age, income, geo, category, status).
+•	AI Eligibility Engine outputs (scheme-wise scores, reasons, model version) + Auto-ID hints.
+•	Past Eligibility Assessment Runs and application history (for “From my last check” and status).
+Data Outputs
+•	Eligibility Assessment Run object with citizen ID, timestamp, answers snapshot, scheme list, eligibility statuses, confidence, explanations, and override flags.
+•	Flags for overridden vs Golden Record-based attributes (later used to nudge profile updates).
+•	Analytics events: question flows, drop-offs, completion time, clicks on “Why shown?”, applies, bookmarks, “Not relevant”.
+Integration Points
+•	Eligibility Prediction Engine (AI PLATFORM 08) for scoring and explanations.
+•	Auto Identification service (AI PLATFORM 03) for pre-populated eligible schemes.
+•	Golden Record / 360° Profile for baseline data (AI PLATFORM 01/02).
+•	Scheme Management for master data and rule metadata.
+•	Profile & Consent for reading attributes, consent, and optional updates.
+•	Application / Workflow for “Apply now” and “Track application” deep links.
+RBAC
+•	Authenticated citizens only (Jan Aadhaar / Raj SSO).
+•	Family head can switch “member context” (dropdown) where allowed by policy and consent.
+•	CSC/assisted operators act on behalf of citizen with explicit consent and strong audit trail.
+Error Handling & Messaging
+•	Incomplete/invalid answers: inline messages and disabled “Next/Finish” until corrected.
+•	AI/Auto-ID down: “Personalised scoring is temporarily unavailable. Showing rule-based matches only.” with retry option.
+•	No eligible schemes: friendly state with options to explore all schemes and update profile.
+•	Stale data: “Results last updated on [date] – Refresh with latest profile and rules?” banner.
+Accessibility & Usability
+•	Multi-step, mobile-first questionnaire with clear progress, simple questions, and plain-language explanations; aligned to GovStack “check eligibility” pattern.
+•	High-contrast scheme cards and tags (“Eligible”, “Suggested”, “Last check”) understandable without color.
+•	Full keyboard navigation, ARIA labels on questions, results, and “Why shown?”; WCAG 2.1 AA target.
+Testability
+•	Branching logic unit tests, including rule changes between runs.
+•	E2E tests: questionnaire → eligibility run creation → schemes render below with correct statuses and explanations.
+•	Performance tests: debounced AI calls under load, acceptable response times for recalculation.
+•	Accessibility and localization tests across all supported languages. 
+
+IV.	Module 3: Consent and Application
+Screen 8: Consent & Clarifications
+Screen ID: CIT-CONSENT-8
+User Type: Citizen
+Purpose: Unified workspace for scheme consent submission and application clarification responses, with clear progress tracking, document handling, and notifications for both workflows.
+Functional Description
+•	Single Unified Layout (Collapsible Sections, No Tabs):
+Consent & Clarifications
+Progress: 2/5 Consents • 1/3 Clarifications
+
+▼ 1. Scheme Consents (2 Pending)
+•	Scheme X: [ ] Share family data [Mandatory]
+•	Scheme Y: [ ] Share income docs [OTP Required]
+      [Privacy Policy] [Download PDF] [Submit All]
+
+▼ 2. Application Clarifications (1 Pending)
+•	App #1234: Address proof needed by Dec 30
+      [Text response] [Upload docs] [Previous submissions]
+      [Save Draft] [Submit Response]
+
+[Digital Signature / OTP] [Submit All Changes]
+
+•	Section 1: Scheme Consents
+o	List of pending consents grouped by scheme
+o	Toggle/checkbox per data type (personal, family, documents) with mandatory flags
+o	Plain-language explanations + privacy policy links
+o	Digital signature/OTP verification for confirmation
+•	Section 2: Application Clarifications
+o	List of pending clarifications by application ID with deadlines
+o	Text response fields + multi-file upload (with size/format validation)
+o	Previous submissions history + status timeline
+o	Draft save + final submission
+•	Unified Features:
+o	Overall progress bar across both sections
+o	Bulk "Submit All" with final OTP/digital signature
+o	Download/print individual or combined PDFs
+o	Real-time notifications on submission
+Business Rules & Validations
+•	Consent Rules:
+o	Mandatory consents block application submission
+o	Time-stamped, versioned records per DPDP standards
+o	Policy changes trigger re-consent
+o	Withdrawal shows impact preview
+•	Clarification Rules:
+o	Only for eligible/pending applications
+o	Deadline tracking with overdue escalation
+o	Mandatory fields validated before submission
+o	Audit trail for all responses/documents
+•	Unified Rules:
+o	Submit All: All mandatory consents + complete clarifications → Single OTP
+o	Partial Save: Draft state preserved across sessions
+o	Bulk Download: Combined PDF with all consents + clarifications
+Data Inputs
+Source	Data Elements
+Scheme Service	Consent requirements, legal texts, scheme metadata
+Application Service	Pending clarifications, deadlines, previous responses
+User Input	Consent toggles, text responses, document uploads
+Profile Service	Consent history, application status
+Data Outputs
+Target	Events/Actions
+Consent Service	Consent records (timestamped, versioned)
+Application Service	Clarification responses + documents
+Notification Service	Submission confirmations + status updates
+Document Service	Uploaded files with metadata
+Audit Log	All actions with timestamps + IP
+Integration Points
+ 
+Core Services:
+1.	Consent Management - Versioned consent records
+2.	Application Processing - Clarification handling
+3.	Document Management - File upload/validation
+4.	Digital Signature/OTP - Final verification
+5.	Notification Service - Confirmations + status updates
+RBAC & Access Control
+Role	Access Level
+Citizen	Own consents + own applications
+Family Head	Family consents (where consented)
+CSC Operator	Assisted mode with explicit consent logging
+Error Handling & Messaging
+Scenario	Message	Action
+Incomplete Consent	"Scheme X requires family data consent"	Highlight mandatory toggle
+Missing Clarification	"Address proof needed by Dec 30"	Focus text field + upload
+File Validation	"Max 5MB, PDF/JPG only"	Clear upload + retry
+OTP Fail	"Invalid OTP. Resend? [60s]"	Countdown timer
+Submit Fail	"Consent #2 recorded. Submit remaining?"	Partial success + continue
+Accessibility & Usability
+•	WCAG 2.1 AA:
+o	ARIA progress: "2 of 5 consents complete"
+o	Screen reader: "Checkbox: Share income documents for PM Awas [Mandatory]"
+o	Keyboard: Tab through sections → toggles → buttons
+o	High-contrast mandatory indicators + focus outlines
+•	Responsive Design:
+o	<480px: Vertical accordion (Consents → Clarifications)
+o	>768px: Side-by-side sections + bulk actions
+•	Mobile Gestures:
+o	Swipe to collapse/expand sections
+o	Long press document → Quick preview
+Testability Requirements
+•	Functional E2E Tests:
+o	Consent toggle → Consent service records → Status updates
+o	File upload → Validation → Document service → Clarification status
+o	Bulk Submit → Single OTP → All services updated
+o	Draft save → Session timeout → Resume → Submit
+o	Withdrawal → Impact preview → Consent revoked
+•	Edge Cases:
+o	Policy change → Existing consents flagged for re-consent
+o	Overdue clarification → Escalation warning + deadline
+o	Partial submit → Correct partial records + remaining items
+o	Multi-device → Draft sync across sessions
+
+Screen 9: Applications and History
+Screen ID: CIT-APP-9
+User Type: Citizen
+Purpose: Unified dashboard showing all current applications (real-time tracking) and past applications (historical record) with filtering, document access, notifications, and action links—all in one screen. 
+
+Functional Description
+Single Unified Layout (Smart Grouping, No Tabs):
+
+Applications Hub
+[Filters ▼]
+Scheme    Date 
+Status   Range
+[Apply Filters]	[Notify ▼]
+Email SMS
+
+[Save Prefs]	[Progress: 2 Active • 5 Past]
+📍ACTIVE (2) ────────────────────── PAST (5)
+App#1234 PM Awas ──▸▸▸▸─ Under Review ── 📄Download ── 🔔On
+App#5678 Pension ──▸▸▸─── Approved ───── 📄Receipt ─── 🔔On
+
+Click app → Detailed timeline + documents + actions        
+
+
+•	Smart Dual-Section Layout:
+o	ACTIVE Section: Current applications (Submitted → Approved/Rejected) with live progress bars, real-time status updates
+o	PAST Section: Completed applications (Approved, Rejected, Withdrawn, Completed) with final outcomes
+o	Unified Filters: Apply to both sections simultaneously (scheme, date range, status)
+o	Expandable Rows: Click any app → Inline detailed timeline + documents + actions
+•	Key Features:
+o	Real-time status updates via WebSocket (active apps only)
+o	Document status badges + one-click downloads
+o	Notification preferences (email/SMS per app or global)
+o	Appeal/Re-apply links where applicable
+Business Rules & Validations
+•	Unified Application Rules:
+o	ACTIVE: Status IN (Submitted, Under Review, Pending Docs, Approved, Rejected)
+o	PAST:   Status IN (Approved, Rejected, Withdrawn, Completed) 
+o	Filters: Cross-section (e.g., "PM Awas + Rejected" shows in both if matches)
+o	Sorting: Active first → Submission date DESC → Status priority
+•	Data Refresh:
+o	Active apps: Real-time WebSocket + 30s fallback poll
+o	Past apps: Cached + hourly refresh
+o	Immutable audit trail for all historical records
+Data Inputs
+API Endpoint	Section	Data Elements
+GET /applications/active/{citizen_id}?filters={json}	Active	Live status, progress, documents
+GET /applications/history/{citizen_id}?filters={json}	Past	Final outcomes, decision notes
+WebSocket /app-status/{app_id}	Active	Real-time status changes
+GET /notifications/preferences/{citizen_id}	Both	Email/SMS settings per app
+Data Outputs
+Target	Events/Actions
+Notification Service	Status change alerts + preference updates
+Document Service	Receipt/decision letter downloads
+Application Service	Appeal/re-apply workflow triggers
+Audit Log	All views, downloads, filter usage
+Integration Points
+ 
+•	Core Services:
+1.	Application Management - Status + history APIs
+2.	Document Management - Receipts + decision letters
+3.	Notification Service - Email/SMS preferences + alerts
+4.	WebSocket - Real-time active app updates
+5.	Audit Service - Immutable interaction logs
+RBAC & Access Control
+Role	Access
+Citizen	Own applications only
+Family Head	Linked family apps (consent-gated)
+CSC Operator	Assisted view with full audit
+Error Handling & Messaging
+Scenario	Message	Action
+No Apps	"No applications match your filters. Submit your first?"	CTA to scheme catalog
+Status Delay	"Last update 15min ago – Refreshing..."	Auto-retry + manual refresh
+Doc Unavailable	"Receipt generating – try in 5min"	Retry link + timer
+API Error	"Loading backup data from cache"	Graceful degradation
+Accessibility & Usability
+•	WCAG 2.1 AA:
+o	ARIA live: "App#1234 status changed to Approved"
+o	Screen reader: "Active • PM Awas Yojana • App#1234 • Under Review [85% progress]"
+o	Keyboard: Arrow keys navigate apps, Enter expands details
+•	Visual Indicators:
+o	▸▸▸▸ Progress bars (Active only)
+o	📄 Document badges (Ready / Generating)
+o	🔔 Notification status (On / Off)
+•	Responsive:
+o	<480px: Stacked sections + swipe to expand
+o	>768px: Side-by-side Active + Past
+Testability Requirements
+•	Functional E2E Tests:
+o	✓ Filter "PM Awas + Rejected" → Shows matching apps in both sections
+o	✓ WebSocket status change → Active section updates live
+o	✓ Expand app → Timeline + documents load inline
+o	✓ Notification toggle → Preference saved + next status sends alert
+o	✓ Download receipt → Correct PDF for app ID
+•	Edge Cases:
+o	✓ No active apps → Clean empty state + CTA
+o	✓ No past apps → "Your application history will appear here"
+o	✓ Filter clears all → Reset to default view
+o	✓ Offline → Cached data with sync indicator
+
+V.	Module 4: Dcuments
+
+Screen 10: Document Center
+Screen ID: CIT-DOC-10
+User Type: Citizen
+Purpose: Unified document management hub combining application-required uploads, personal library, Raj-e-Sign verification, and e-Vault integration—all controlled by a single filter bar with real-time status sync across all document types.
+Functional Description
+•	Single Unified Layout (Horizontal Workflow + Unified Filters, No Tabs):
+Document Center
+[Source ▼]
+All Local
+eVault Signed
+[Apply Filters] 	[Type ▼]         
+All ID Income
+Receipts
+[Clear] [Search]	[Status ▼] [Progress]
+All Valid Expired
+Pending [14/20 reday]
+📎 REQ'D ─── 📋 LIBRARY ─── 🔒 SIGNED ─── 🗄️ E-VAULT ─── 📥 DL
+
+App#1234  │ Aadhaar [✅]   │ Pension [✅ Raj-eSign] │ PAN [Valid] │ Income [Ready]
+ • Addr [↑] │ Income [⚠Exp] │ PM Awas [⚠12/25]        │ Aadhaar [↑]  │ Ration [Ready]
+
+ [Drag here]  │ [Bulk ↓]        │ [Verify][Preview]     │ [Sync Now]     │ [ZIP ↓]
+•	Horizontal 5-Pane Workflow:
+1.	📎 REQ'D: Application-specific uploads (3/5 needed for App#1234)
+2.	📋 LIBRARY: Personal certificates/receipts (status + expiry alerts)
+3.	🔒 SIGNED: Raj-e-Sign docs with live validation
+4.	🗄️ E-VAULT: External vault sync + upload
+5.	📥 DL: Ready-to-download files (single/bulk ZIP)
+•	Unified Filter Magic:
+o	"Income + Expired" → Shows income certs across ALL 5 panes
+o	"eVault only" → Entire screen = eVault content
+o	"App#1234" → REQ'D pane prominent + related docs highlighted
+Business Rules & Validations
+•	Unified Document Lifecycle:
+o	Upload → Processing → LIBRARY → SIGNED (if applicable) → eVAULT → DOWNLOAD
+o	Filters: Cross-pane (Source+Type+Status combinations)
+o	Drag-drop: Auto-targets correct pane (App Req / Library / eVault)
+o	Status Sync: All panes update simultaneously via WebSocket
+
+•	Smart Validation Matrix:
+Source	Size	Formats	Mandatory
+Required	10MB	PDF/JPG/DOC	App-specific
+Signed	5MB	PDF (Raj-eSign)	Signature validation
+eVault	15MB	PDF/JPG/PNG	External API limits
+Data Inputs
+API Endpoint	Source	Data Elements
+GET /documents/required/{app_id}	REQ'D	Pending uploads + app requirements
+GET /documents/library/{citizen_id}	LIBRARY	Personal certs + expiry metadata
+GET /raj-e-sign/documents/{citizen_id}	SIGNED	Signature status + CA details
+GET /evault/documents/{citizen_id}?token={}	E-VAULT	Vault contents + sync status
+WebSocket /documents/{doc_id}/status	ALL	Real-time processing across sources
+Data Outputs
+Target	Events/Actions
+Document Service	Uploads + metadata + source tagging
+Raj-e-Sign	Signature verification requests
+e-Vault API	Sync + new uploads
+Application Service	Required doc completion
+Export Service	Single PDF / Bulk ZIP
+Audit Log	All cross-source interactions
+Integration Points
+ 
+•	Core Services:
+1.	Document Hub - Unified storage + metadata
+2.	Raj-e-Sign API - Signature verification
+3.	e-Vault API - External sync
+4.	Application Service - Req completion
+5.	WebSocket - Cross-source status
+RBAC & Access Control
+Role	REQ'D	LIBRARY	SIGNED	E-VAULT
+Citizen	Own apps	Own docs	Own sigs	Own vault
+Family Head	Consent apps	Shared docs	Shared sigs	Consent vault
+Error Handling & Messaging
+Scenario	Message	Action
+Sig Invalid	"Pension tampered – download original"	[Original] [Report]
+eVault Sync Fail	"Vault sync failed – retry"	[Manual Sync]
+Upload Rejected	"10MB limit – compress file"	Compression tips
+No Matches	"No docs match filters"	Broaden suggestions
+Bulk Limit	"Max 100 docs/ZIP"	Clear + retry
+Accessibility & Usability
+•	WCAG 2.1 AA:
+o	ARIA live: "Income cert: Signature verified [Raj-e-Sign]"
+o	Screen reader: "eVault • PAN Card • Valid [Sync complete]"
+o	Keyboard: Tab through panes → Drag equivalent → Actions
+o	Unified search: Single field finds across ALL sources
+
+•	Visual Source Indicators:
+📎 App Required | 📋 Personal Library | 🔒 Raj-e-Sign | 🗄️ e-Vault | 📥 Download Ready
+Status badges + progress bars + expiry warnings across all
+•	Responsive:
+o	<480px: Vertical panes + swipe navigation
+o	768px: 3-pane (Req/Library | Signed/eVault | Download)
+o	>1024px: Full 5-pane horizontal workflow
+Testability Requirements
+•	Functional E2E Tests:
+o	"Income + Expired" → Shows across Library/Signed/eVault panes
+o	Drag file → Auto-targets Required pane → Status syncs to Library
+o	eVault sync → New docs appear in Library + Download panes
+o	Bulk ZIP → Mixed sources (Signed + eVault + Local) 
+o	Filter "App#1234" → Required prominent + related docs highlighted
+
+•	Cross-Source Validation:
+o	Upload → Required → Library → Signed verification → eVault sync → Download 
+o	Source filter "eVault only" → Entire screen = eVault content
+o	Real-time status → All relevant panes update simultaneously
+
+•	Performance:
+o	<300ms filter across 1K+ docs (4 sources)
+o	<1s eVault sync + display
+o	Bulk ZIP <5s (100 mixed docs)
+
+
+VI.	Module 5: Benefits and Entitlement
+Screen 11: Benefits and Entitlements
+Screen ID: CIT-BEN-11
+User Type: Citizen
+Purpose: Unified dashboard showing current benefits, family breakdowns, historical trends, and AI forecasts in one screen with cross-cutting filters for time, family scope, and status—complete benefit lifecycle visibility.
+Functional Description
+•	Single Unified Layout (Horizontal Timeline Flow, No Tabs):
+Benefits Overview
+[Time ▼]
+All, Active
+Past, Forecast 
+ [Apply Filters]	[Family ▼] 
+Me, Family
+All, Members
+[Clear]	[Status ▼] [Export]
+Active, Pending, Expired
+
+[₹45K/mo | ₹2.3L Total]
+📊 CURRENT (₹45K/mo) ── 📈 FORECAST ── 📋 HISTORY (₹2.3L Total)
+Pension ₹12K [Active]
+Health ₹5K [Pending]
+[Family: 5 members]
+[Renew Alert ⚠]	2026: +₹22K [92%]
+New: PM Awas [85%]
+[Age 60 → Senior]	2024: ₹1.1L [Pension]
+2023: ₹1.2L [Housing]
+[Export CSV/PDF]
+•	Horizontal Timeline Sections:
+1.	📊 CURRENT: Active + pending benefits (CIT-BEN-18/21) with family allocation
+2.	📈 FORECAST: AI predictions + new eligibility (CIT-BEN-23) with confidence bars
+3.	📋 HISTORY: Past payments + trends (CIT-BEN-22) with export options
+•	Unified Cross-Filters Apply To ALL Sections:
+o	Time: All / Active / Past / Forecast → Shows relevant section prominently
+o	Family: Me / Family / All Members → Proportional breakdowns
+o	Status: Active / Pending / Expired → Status badges across timeline
+Business Rules & Validations
+•	Unified Data Rules:
+o	Filters: Cross-section (e.g., "Family + Forecast" = family projections)
+o	Current: Only active/valid benefits (≥80% confidence)
+o	Forecast: AI predictions with confidence thresholds
+o	History: Immutable audit trail, retention-compliant
+o	Family: Consent-gated aggregation (mask non-consented members)
+•	Smart Aggregations:
+Filter Combo	Display Logic
+Me + Current	Personal active benefits
+Family + Forecast	Aggregated family projections
+All + History	Complete payment timeline
+Data Inputs
+API Endpoint	Section	Data Elements
+GET /benefits/current/{gr_id}?family_scope={scope}	Current	Active schemes + family allocation
+GET /benefits/forecast/{gr_id}?time_horizon={horizon}	Forecast	AI predictions + confidence + scenarios
+GET /benefits/history/{gr_id}?date_range={range}	History	Payment records + trends
+WebSocket /benefit-updates/{gr_id}	All	Real-time status + expiry alerts
+Data Outputs
+Target	Events/Actions
+Analytics	Filter usage, section views, export downloads
+Notification	Expiry alerts, new forecast opportunities
+Export Service	CSV/PDF reports (filtered data)
+Audit Log	All interactions with timestamps
+Integration Points
+ 
+•	Core Services:
+1.	Benefits Management - Current + status APIs
+2.	AI/ML Forecasting - Future entitlements + confidence
+3.	Payment History - Immutable transaction records
+4.	Family Graph - Consent-gated aggregation
+5.	Notification Service - Expiry + opportunity alerts
+RBAC & Access Control
+Filter	Access Control
+Me	Full personal data
+Family	Consent-gated family aggregation
+All Members	Masked non-consented + admin override
+Error Handling & Messaging
+Scenario	Message	Action
+No Current	"No active benefits. Check eligibility?"	Link to CIT-SCHEME-10
+Forecast Unavailable	"Predictions updating... Showing trends"	Fallback to history
+Family Consent Missing	"2/5 members consented"	Consent nudge
+Stale Data	"Last sync 2h ago – Refreshing"	Auto-retry button
+Accessibility & Usability
+•	WCAG 2.1 AA:
+o	ARIA live: "Pension status changed to Active"
+o	Screen reader: "Current • Pension ₹12K/mo [Active, Family: 3 members]"
+o	Keyboard: Arrow keys navigate timeline sections
+o	Colorblind: Status icons + text (🔴 Active / 🟡 Pending / ⚫ Expired)
+•	Visual Timeline:
+o	Status badges + progress bars + confidence bars + amount indicators
+o	Hover: Detailed breakdowns (family allocation, eligibility drivers)
+•	Responsive:
+o	<768px: Vertical timeline (Current → Forecast → History)
+o	>1024px: Horizontal 3-section layout
+Testability Requirements
+•	Functional E2E Tests:
+o	"Family + Forecast" → Aggregated projections across 5 members
+o	Time filter "2024" → History + Current (2024 active) + Forecast (2024)
+o	Status "Expired" → Shows across all time periods
+o	Export → CSV contains filtered data only
+o	WebSocket update → All relevant sections refresh
+•	AI/ML Validation:
+o	Forecast confidence bars match model outputs
+o	Family aggregation respects consent masking
+o	Cross-filter consistency (no data loss)
+•	Performance:
+o	<2s initial load (all 3 sections)
+o	Filter changes <500ms across timeline
+o	100 concurrent family aggregations
+
+Screen 12: Payments & Ledger
+Screen ID: CIT-BEN-12
+User Type: Citizen
+Purpose: Unified payment tracking dashboard combining DBT transaction details with month/year ledger views, featuring cross-filters, real-time updates, export capabilities, and failure alerts.
+Functional Description
+•	Single Unified Layout (Dual-Pane Transaction Timeline, No Tabs):
+Payments & Ledger
+[Scheme ▼]
+All, Pension   
+Health, PM Awas  	[Time ▼] 
+Month, Year   
+Success, Failed, Pending	[Status ▼] [Export]
+[Apply Filters]  
+[₹1.2L Total | 15 Txns]
+📊 TRANSACTIONS (15) ────────────── 📈 LEDGER SUMMARY
+#TXN001 Pension ₹12K [✅ Dec'25] ── 2025: ₹1.2L [▰▰▱▱]
+#TXN002 Health ₹5K  [⚠ Pending]  ── 2024: ₹1.1L [▰▰▰▱]
+#TXN003 PM Awas ₹20K[❌ Failed]   ── 2023: ₹0.9L [▰▰▰▰]
+[Download Receipt]                 │ [Export CSV/PDF]
+•	Dual-Pane Design:
+o	📊 TRANSACTIONS Pane (Left): DBT payments list with scheme, amount, status, txn ID, date
+o	📈 LEDGER Pane (Right): Month/year summary with progress bars + totals
+o	Unified Filters: Apply across both panes (scheme, time range, status)
+o	Expandable Rows: Click txn → Full details + receipt + linked application
+o	Smart Alerts: Failed/pending payments highlighted with action guidance
+•	Key Features:
+o	Real-time DBT status updates (WebSocket)
+o	Bulk export filtered transactions + ledger
+o	Drill-down: Txn → Ledger period → Benefit details
+o	Failure resolution: "Failed? Check bank / Resubmit claim"
+Business Rules & Validation
+•	Unified Payment Rules:
+o	TRANSACTIONS: Individual DBT records (real-time)
+o	LEDGER: Monthly/Yearly aggregates from same source
+o	Filters: Cross-pane (e.g., "Pension + Failed" = matching txns + ledger impact)
+Status: ✅ Success / ⚠ Pending / ❌ Failed / 📱 Reversed
+•	Data Sync:
+o	DBT transactions: Real-time from bank APIs
+o	Ledger: Aggregated view of transactions + daily reconciliation
+o	Audit trail: Immutable txn history + export verification
+Data Inputs
+API Endpoint	Pane	Data Elements
+GET /payments/transactions/{citizen_id}?filters={json}	Transactions	Txn ID, scheme, amount, status, date
+GET /payments/ledger/{citizen_id}?time_range={range}	Ledger	Monthly/yearly totals + breakdowns
+WebSocket /payment-status/{txn_id}	Both	Real-time status changes
+GET /bank/dbt-status/{account}	Transactions	Latest bank confirmation
+Data Outputs
+Target	Events/Actions
+Export Service	CSV/PDF (filtered txns + ledger)
+Notification	Failed payment alerts + resolution guidance
+Application Service	Resubmit claim / Appeal links
+Audit Log	All views, filters, downloads
+Integration Points
+ 
+•	Core Services:
+1.	Payment Management - Txn + ledger APIs
+2.	Bank DBT APIs - Real-time status
+3.	Benefits Service - Scheme linkages
+4.	Export Service - Reports generation
+5.	Notification - Failure alerts
+RBAC & Access Control
+Role	Access
+Citizen	Own bank account + scheme payments
+Family Head	Aggregated family ledger (consent-gated)
+Error Handling & Messaging
+Scenario	Message	Action
+Payment Failed	"₹20K PM Awas failed. Check bank?"	[Check Bank] [Resubmit Claim]
+No Transactions	"No payments match filters"	Suggest popular schemes
+Bank Sync Delay	"Last bank sync 2h ago"	Manual refresh
+Ledger Mismatch	"1 txn reconciling – refresh in 5min"	Auto-retry timer
+Accessibility & Usability
+•	WCAG 2.1 AA:
+o	ARIA live: "TXN001 status: Success"
+o	Screen reader: "Transaction • Pension • ₹12K • Success [Dec 2025]"
+o	Keyboard: Arrow through txns, Enter expands details
+o	Status icons + text: ✅ Success / ⚠ Pending / ❌ Failed
+•	Visual Indicators:
+o	Progress bars: Monthly completion (▰▰▱▱ = 50%)
+o	Status badges with actions
+o	Amount highlighting: Positive / Failed / Pending
+•	Responsive:
+o	<480px: Stacked panes + swipe navigation
+o	>768px: Side-by-side Transactions + Ledger
+Testability Requirements
+•	Functional E2E Tests:
+o	Filter "Pension + 2025" → Matching txns + ledger summary
+o	WebSocket status change → Both panes update instantly
+o	Export → CSV contains filtered data + correct aggregates
+o	Failed payment → Click → Resolution workflow
+o	Drill-down txn → Shows linked application + benefit details
+•	Data Validation:
+o	Ledger totals = Sum of filtered transactions 
+o	Bank sync → Status updates propagate correctly
+o	Multi-scheme filter → Correct cross-scheme aggregation
+•	Performance:
+o	<1s filter response across 1K+ transactions
+o	Real-time updates <100ms latency
+o	Export <5s for 500 txns
+
+VII.	Module 6: Service Delivery 
+Screen 13: Service Catalog
+Screen ID: CIT-SERV-13
+User Type: Citizen
+Purpose: Provide citizens with a browsable catalog of 25+ government services available for online access.
+Functional Description:
+•	Display categorized list of government services with icons and brief descriptions.
+•	Enable search and filtering by department, service type, and eligibility.
+•	Show service status indicators (active, maintenance, upcoming).
+•	Allow navigation to service request forms and additional information.
+•	Highlight popular and recently added services.
+•	Provide links to service policies, user guides, and FAQs.
+•	Support multi-language display and accessibility features.
+Business Rules & Validations:
+•	Only services relevant to citizen location and profile are shown.
+•	Regularly update catalog with new and retired services.
+•	Access controls based on eligibility and user roles.
+Data Inputs:
+•	Service Management APIs with service metadata.
+•	User profile and location data.
+Data Outputs:
+•	User navigation and selection events logged.
+Integration Points:
+•	Service Management Microservices.
+•	Profile and Consent Services.
+RBAC:
+•	Authenticated citizens.
+Error Handling & Messaging:
+•	Inform users when services are temporarily unavailable.
+•	Provide fallback lists or support contacts.
+Accessibility & Usability:
+•	Responsive grid/list layouts adaptable to device sizes.
+•	Accessible input controls and navigation.
+Testability:
+•	Validate service metadata accuracy and updates.
+•	Test UI responsiveness and filtering.
+•	Accessibility compliance.
+Screen 14: Service Request
+Screen ID: CIT-SERV-14
+User Type: Citizen
+Purpose: Enable citizens to submit requests for various government services with required details and document uploads.
+Functional Description:
+•	Display dynamic service request forms tailored per service with required fields and validations.
+•	Support multi-step forms with progress indicators.
+•	Provide contextual help, field-level instructions, and tooltips.
+•	Allow upload of supporting documents with validation on size and formats.
+•	Preview filled form before submission.
+•	Save draft option for completing later.
+•	Submit button triggers backend workflow initiation and assigns application ID.
+•	Confirmation message with reference number and next steps.
+Business Rules & Validations:
+•	Validate mandatory fields before allowing submission.
+•	Enforce business rules specific to each service (eligibility, duplicate requests, etc.).
+•	Support electronic signatures or OTP verification as needed.
+•	Auto-save form data periodically.
+Data Inputs:
+•	Service request metadata and templates.
+•	User profile data for pre-filling.
+•	Uploaded documents.
+Data Outputs:
+•	Submitted service requests with attachments.
+•	Notifications and tracking information.
+Integration Points:
+•	Service Request Processing Microservices.
+•	Document Management System.
+•	Authentication and Authorization Services.
+RBAC:
+•	Authenticated citizens with appropriate permissions.
+Error Handling & Messaging:
+•	Inform users of validation errors and guide corrections.
+•	Handle submission failures and retries.
+Accessibility & Usability:
+•	Responsive and accessible multi-step forms.
+•	Support keyboard navigation and screen readers.
+Testability:
+•	Validate form field validations and workflow triggers.
+•	Test document upload and draft save functionality.
+•	Accessibility checks.
+Screen 15: Service Status & Feedback
+Screen ID: CIT-SERV-15
+User Type: Citizen
+Purpose: Unified service request dashboard combining real-time status tracking with embedded feedback collection for completed requests, featuring progress timelines, notifications, and ratings in one screen.
+Functional Description
+•	Single Unified Layout (Smart Status Groupings, No Tabs):
+Service Status & Feedback
+[Service ▼]
+All, Ration
+License, Water
+[Apply Filters]	[Status ▼]
+Active, Complete
+Feedback Due
+[Clear]	[Progress: 3 Active]
+2 Feedback Pending
+
+📍 ACTIVE (3) ────────────── ✅ COMPLETED (5) ─ 📝 FEEDBACK
+#REQ001 Ration [▰▰▱] ── In Processing ── 📄Ack ── 🔔On
+#REQ002 License [▰▰▰▱] ── Document Review ── 📄Ack ── 🔔On
+#REQ003 Water [✅ Complete] ── ⭐⭐⭐⭐⭐ "Great service" ─ 📄Letter
+#REQ004 Ration [✅ Complete] ── ⭐⭐⭐ "Slow but ok" ── 📄Letter
+•	Smart Three-Section Layout:
+o	📍 ACTIVE: In-progress requests with live progress bars + documents
+o	✅ COMPLETED: Recently finished requests with embedded feedback controls
+o	📝 FEEDBACK DUE: Completed requests awaiting rating/comments
+o	Unified Filters: Apply across all sections (service type, status)
+o	Expandable Rows: Click → Timeline + documents + feedback form (for completed)
+•	Key Features:
+o	Real-time status updates (WebSocket)
+o	Inline feedback stars + comments for completed requests
+o	Bulk feedback submission for multiple services
+o	Document downloads + notification toggles
+Business Rules & Validations
+•	Unified Service Rules:
+o	ACTIVE: Status IN (Received, Processing, Document Review)
+o	COMPLETED: Status = Complete + feedback window open (30 days)
+o	FEEDBACK DUE: Completed + no feedback submitted
+o	Filters: Cross-section across all request states
+o	Feedback: 1 per request ID, moderate inappropriate content
+•	Smart Feedback Triggers:
+o	Status → Complete → Auto-move to Feedback Due (7 days)
+o	Feedback Submitted → Move to Completed archive
+o	Duplicate Feedback → Prevented by request ID
+Data Inputs
+API Endpoint	Section	Data Elements
+GET /service-requests/{citizen_id}?status_filter={json}	All	Request details, status, timeline
+WebSocket /service-status/{req_id}	Active	Real-time progress updates
+POST /feedback/{req_id}	Completed	Ratings, comments, attachments
+GET /feedback/pending/{citizen_id}	Feedback Due	Eligible completed requests
+Data Outputs
+Target	Events/Actions
+Service Management	Status updates, document requests
+Feedback Service	Ratings + comments + moderation
+Notification Service	Status changes + feedback receipts
+Document Service	Acknowledgment/decision downloads
+Audit Log	All interactions + feedback analytics
+Integration Points
+ 
+•	Core Services:
+1.	Service Request Management - Status + timeline APIs
+2.	Feedback Management - Ratings + moderation
+3.	Document Management - Acknowledgments + letters
+4.	Notification Service - Status + feedback alerts
+5.	WebSocket - Real-time updates
+RBAC & Access Control
+Role	Access Level
+Citizen	Own requests + feedback
+Anonymous	Submit feedback only (completed requests)
+Error Handling & Messaging
+Scenario	Message	Action
+No Requests	"No service requests. Need help?"	Service catalog CTA
+Status Delay	"Last update 10min ago"	Refresh button
+Feedback Duplicate	"Already rated this service"	Show existing rating
+Content Moderation	"Comment flagged – review guidelines"	Edit/resubmit
+Doc Unavailable	"Letter generating – retry later"	Timer + retry
+Accessibility & Usability
+•	WCAG 2.1 AA:
+o	ARIA live: "Request #001: Document Review [60%]"
+o	Screen reader: "Active • Ration Card • Request #001 • In Processing"
+o	Keyboard: Tab through sections → Enter expands → Stars feedback
+o	Feedback: 5-star ARIA slider + text area
+•	Visual Status System:
+o	▰▰▱ Progress bars (Active only)
+o	⭐⭐⭐⭐⭐ Inline ratings (Completed)
+o	✅ Complete / 📝 Feedback Due / 📍 Active
+•	Responsive:
+o	<480px: Vertical sections + swipe to expand
+o	>768px: Horizontal 3-section layout
+Testability Requirements
+•	Functional E2E Tests:
+o	Filter "Ration + Complete" → Move to Feedback Due → Submit rating
+o	WebSocket status → Active section updates live
+o	Bulk feedback → Multiple ratings submitted
+o	Expand request → Timeline + documents + feedback form
+o	Moderation → Flagged comment blocked + edit option
+•	Edge Cases:
+o	Feedback window expires → Request archives to Completed
+o	Anonymous feedback → No user linkage
+o	Document download → Correct file for request ID
+o	Offline → Cached status + sync on reconnect
+
+VIII.	Module 7: Settings
+Screen 16: Notification Settings
+Screen ID: CIT-USER-16
+User Type: Citizen
+Purpose: Enable citizens to customize their notification preferences for alerts, reminders, and messages.
+Functional Description:
+•	Display options to opt-in or opt-out of different notification types:
+o	Scheme updates and deadlines
+o	Application status changes
+o	Payment and benefit alerts
+o	Security events and login alerts
+o	Feedback and survey invitations
+•	Support notification channels selection: email, SMS, in-app push notifications.
+•	Allow setting quiet hours or do-not-disturb periods.
+•	Provide test notifications to verify settings.
+•	Show notification history summary with delivery status
+Business Rules & Validations:
+•	Follow user consents and regulatory guidelines for communication preferences.
+•	Ensure critical alerts cannot be disabled if mandated by policy.
+•	Validate contact details before enabling channels.
+Data Inputs:
+•	Current notification subscriptions and user contacts.
+•	Notification events metadata.
+Data Outputs:
+•	Updated preferences stored in Notification Management system.
+•	Logs of sent and received notifications.
+Integration Points:
+•	Notification Delivery Systems.
+•	User Profile and Consent Services.
+RBAC:
+•	Authenticated citizens managing their own notification preferences.
+Error Handling & Messaging:
+•	Inform users of invalid contact details or delivery failures.
+•	Provide confirmation on changes saved.
+Accessibility & Usability:
+•	Accessible controls with keyboard and screen reader support.
+•	Responsive design for all devices.
+Testability:
+•	Validate preference changes and channel selections.
+•	Test delivery and logging of notifications.
+•	Accessibility compliance.
+
+Screen 17: Opt-Out Schemes Screen
+Screen ID: CIT-USER-17
+User Type: Citizen
+Purpose: Allow citizens to select schemes/programs to opt-out, review existing participation, and manage scheme exit preferences.
+Functional Description:
+•	List all active schemes/programs for which the citizen is enrolled
+•	Display scheme descriptions, benefits, opt-out implications
+•	Allow opt-out selection with confirmation and impact summary
+•	Record reasons for opt-out (optional)
+•	Show history of scheme participation and opt-outs
+Business Rules & Validations:
+•	Require confirmation and impact acknowledgement for opt-out actions
+•	Prevent opt-out from mandatory schemes
+•	Log all opt-out actions with timestamp/audit details
+Data Inputs:
+•	Active scheme participation records
+Data Outputs:
+•	Updated scheme status, opt-out audit records
+Integration Points:
+•	Scheme Management Systems
+•	Notification Delivery (for opt-out confirmations)
+RBAC:
+Authenticated citizens for their own scheme management
+Error Handling & Messaging:
+•	Confirm opt-out actions, display errors for ineligible schemes
+Testability:
+•	Validate opt-out flow, audit trail generation, history display
+
+
+Screen 18: Account & Security Settings
+Screen ID: CIT-USER-18
+User Type: Citizen
+Purpose: Unified account management dashboard combining profile updates, communication preferences, data consents, accessibility, password/MFA controls, session management, and security monitoring in one comprehensive settings hub.
+Functional Description
+•	Single Unified Layout (Collapsible Sections, No Tabs):
+
+Account & Security Settings
+[Progress: 8/12 Settings Complete]
+
+▼ 1. Profile & Contact
+         Name • Mobile • Email • Language [Hindi] • Accessibility
+
+▼ 2. Notifications & Consent
+         Email ✓ SMS ✓ App Alerts [Quiet: 10PM-6AM] • Data Sharing
+
+▼ 3. Password & MFA
+         Password Strength: Strong [🔒] • MFA: OTP+Biometric [On]  
+
+▼ 4. Sessions & Security
+         Active: 2 Devices • Last Login: Today 10:23AM [India]
+         Suspicious: None [View History]                           
+
+[Save All Changes] [Export Data] [Deactivate Account] 
+•	Four Collapsible Sections (Logical Grouping):
+1.	Profile & Contact: Name, mobile, email, language, accessibility
+2.	Notifications & Consent: Channels, quiet hours, data sharing opt-ins
+3.	Password & MFA: Password change, MFA methods (OTP/biometric)
+4.	Sessions & Security: Active sessions, login history, suspicious activity
+•	Unified Features:
+o	Overall completion progress bar
+o	Bulk "Save All Changes" with final OTP confirmation
+o	Real-time validation + strength meters
+o	Export personal data + account deactivation
+Business Rules & Validations
+•	Unified Settings Rules:
+o	Profile: Email/OTP validation on change
+o	Security: Password strength ≥ 12 chars + MFA mandatory
+o	Notifications: At least 1 channel active
+o	Consent: Granular opt-in/out with impact preview
+o	Sessions: Critical changes → All sessions invalidated
+•	Smart Validation:
+Section	Validation	Confirmation
+Profile	Email format + OTP	Email link
+Password	Strength meter + match	OTP
+MFA	Method selection	Test code
+Sessions	Device trust toggle	Biometric
+Data Inputs
+API Endpoint	Section	Data Elements
+GET /user/profile/{citizen_id}?full=true	Profile	Name, contact, preferences
+GET /user/security/{citizen_id}	Security	Password status, MFA, sessions
+GET /notifications/preferences/{citizen_id}	Notifications	Channels, quiet hours, consents
+WebSocket /security-events/{citizen_id}	Sessions	Live session + suspicious activity
+Data Outputs
+Target	Events/Actions
+Profile Service	Updated contact + preferences
+Auth Service	Password + MFA changes
+Notification Service	Channel + consent updates
+Audit Log	All changes + session invalidations
+Export Service	Personal data portability package
+Integration Points
+ 
+•	Core Services:
+1.	User Profile - Contact + preferences
+2.	Authentication - Password + MFA
+3.	Notification - Channels + consents
+4.	Session Management - Devices + security events
+5.	Accessibility APIs - UI preferences
+RBAC & Access Control
+Role	Access Level
+Citizen	Full own account control
+Family Head	Limited family profile view
+Error Handling & Messaging
+Scenario	Message	Action
+Weak Password	"Password too weak: Add numbers/symbols"	Strength meter + examples
+MFA Fail	"OTP incorrect. Resend? [60s]"	Countdown + retry
+Email Invalid	"Invalid email format"	Inline correction
+Session Risk	"New device detected – verify?"	Step-up MFA
+Consent Conflict	"Opting out hides eligibility"	Impact preview
+Accessibility & Usability
+•	WCAG 2.1 AA:
+o	ARIA live: "Password strength: Strong"
+o	Screen reader: "Section 2 • Notifications • Email: On [Toggle]"
+o	Keyboard: Tab through sections → Enter expands → Save
+o	Real-time: Strength meters + validation messages
+•	Visual Progress:
+o	✅ Complete • ⚠️ Needs Attention • ⏳ Saving
+o	Collapsible sections with expand/collapse icons
+•	Responsive:
+o	<480px: Vertical accordion sections
+o	>768px: 2-column (Settings + Preview/Security info)
+Testability Requirements
+•	Functional E2E Tests:
+o	Password change → Strength validation → OTP confirm → All sessions logged out
+o	MFA toggle → Test code sent → Enable/disable works
+o	Notification quiet hours → No alerts during DND
+o	Bulk Save → All valid changes applied + audit logged
+o	Export Data → GDPR-compliant package generated
+•	Security Tests:
+o	Weak password → Rejected with guidance
+o	Session invalidation → All devices logged out
+o	Suspicious login → Step-up authentication
+o	Consent change → Impact reflected in other screens
+•	Performance:
+o	<200ms real-time validation across all fields
+o	Bulk save <2s for 12 settings
+o	WebSocket security events <100ms
+
+IX.	Module 8: Help and Support
+Screen 19: Help 
+Screen ID: CIT-HELP-19
+User Type: Citizen / Guest
+Purpose: Unified support center combining self-service FAQs, knowledge base search, contact options, announcements, and embedded ticket creation/tracking—all in one comprehensive help experience.
+Functional Description
+•	Single Unified Layout (Smart Contextual Sections, No Tabs):
+Help & Support Hub
+[Search Help]
+"Ration card"   
+
+[Search]	[Category ▼] 
+All Schemes  
+Portal Issues 
+Contact     	[My Tickets: 2 Active] 
+#TKT001 [Processing]
+#TKT002 [Complete]
+[Create New Ticket]
+🔍 TOP HELP ARTICLES ── 📢 ANNOUNCEMENTS ── 📞 CONTACT
+•	Ration Card Status [5min read]
+•	Scheme Application [Step-by-step]
+•	PM Awas Eligibility [Most viewed]
+[+] CREATE TICKET
+Subject ▼ • Description • Category ▼ • Attachments [Drag]
+ [Submit Ticket]
+•	Smart Unified Sections:
+1.	🔍 Search + Top Articles: Instant FAQ search + most relevant articles
+2.	📢 Announcements: Latest service updates + advisories
+3.	📞 Contact: Helpline, chat, callback options
+4.	[+] CREATE TICKET: Embedded multi-step form (collapses by default)
+5.	My Tickets: Personalized tracking (authenticated users only)
+•	Progressive Enhancement:
+o	Guest: Search + Articles + Contact + Basic ticket form
+o	Citizen: + My Tickets + Auto-populate + Personalized recs
+Business Rules & Validations
+•	Unified Support Rules:
+o	Guest Access: FAQs + Contact + Basic ticket (no history)
+o	Citizen Access: + My Tickets + Auto-fill + Ticket tracking
+o	Ticket Form: Mandatory subject + description + category
+o	Search: Real-time + AI ranking + synonyms
+o	Moderation: Ticket content + attachments scanned
+
+•	Smart Routing:
+o	Category → Auto-assign to department/agent queue
+o	Urgency → Priority escalation + SLAs
+o	Attachments → Virus scan + size limits (10MB)
+Data Inputs
+API Endpoint	Section	Data Elements
+GET /help/search?q={query}&category={cat}	Search	Ranked articles + snippets
+GET /announcements/active	Announcements	Latest updates + advisories
+GET /tickets/{citizen_id}?status={filter}	My Tickets	Active + history + status
+POST /tickets	Create Ticket	New ticket + attachments
+Data Outputs
+ 
+Target	Events/Actions
+Ticketing System	New tickets + status updates
+Notification Service	Ticket confirmations + status changes
+Analytics	Search queries, article views, ticket conversions
+Audit Log	All ticket interactions + downloads
+Integration Points
+
+•	Core Services:
+1.	Customer Support System - Tickets + knowledge base
+2.	AI Search/NLP - Smart FAQ matching
+3.	Notification Service - Status updates
+4.	Chatbot - Self-service resolution
+5.	Document Management - Attachments + receipts
+RBAC & Access Control
+Access Level	Features
+Guest	Search + Articles + Contact + Basic ticket
+Citizen	+ My Tickets + Auto-fill + History + Attachments
+Error Handling & Messaging
+Scenario	Message	Action
+No Search Results	"No matches. Try: [Ration status]?"	Suggested queries
+Ticket Validation	"Description required (min 20 chars)"	Inline focus
+Attachment Fail	"Max 10MB, PDF/JPG only"	Clear + retry
+Ticket Limit	"Max 5 open tickets. Close one first?"	Show open tickets
+Service Down	"Support temporarily unavailable"	Contact alternatives
+Accessibility & Usability
+•	WCAG 2.1 AA:
+o	ARIA live: "Ticket #001: Processing [45%]"
+o	Screen reader: "Top article • Ration Card Status • 5min read [View]"
+o	Keyboard: Tab → Search → Categories → Ticket form → Submit
+o	Multi-language: Auto-detect + manual selector
+
+•	Visual Hierarchy:
+o	🔍 Prominent search bar (60% width)
+o	📢 Announcement banners (color-coded)
+o	📞 Contact cards (helpline/chat prominent)
+o	[+] Collapsible ticket form (guest-friendly)
+•	Responsive:
+o	<480px: Vertical stack + swipe categories
+o	>768px: 3-column (Search + Content + Tickets)
+
+Testability Requirements
+•	Functional E2E Tests:
+o	Guest search → Articles → Basic ticket → Confirmation
+o	Citizen login → Auto-fill ticket → My Tickets appears
+o	Category filter → Correct articles + auto-select in ticket
+o	Attachment upload → Virus scan → Ticket submission
+o	Status WebSocket → My Tickets live update
+•	Progressive Enhancement:
+o	Guest → Login → Ticket form auto-populates
+o	Search "ration" → Top 3 articles + ticket category pre-select
+o	No results → Suggested queries + contact escalation
+
+Screen 20: Tickets & Status
+Screen ID: CIT-HELP-20
+User Type: Citizen
+Purpose: Unified ticket management dashboard combining citizen ticket tracking, status updates, follow-up communication, and departmental routing visibility—all in one transparent workflow.
+Functional Description
+•	Single Unified Layout (Smart Ticket Timeline, No Tabs):
+Support Tickets & Status
+[Status ▼]
+All Active
+Resolved Closed
+[Apply Filters]	[Service ▼]
+All Schemes
+Portal Ration
+[Clear]	[My Tickets: 3 Active]
+#TKT001 [Processing]
+#TKT002 [Resolved]
+
+#TKT001 Ration Card [Processing → Benefits Dept]
+📅 Submitted: Dec 29 │ 👤 Agent: Priya S │ ⏳ ETA: Jan 2 
+
+Timeline: Submitted → Routed → In Progress [Agent Reply]
+Reply: "Doc received, verifying..." [📎 Attachment]
+ [Add Comment] [Download Docs] [Rate Resolution]
+[+] NEW TICKET • Subject ▼ • Description • Attachments [Drag]
+•	Unified Ticket Timeline Design:
+o	Ticket List: Filtered by status/service with departmental assignment visible
+o	Expandable Timeline: Click ticket → Full history (Submitted → Routed → Resolved)
+o	Communication Panel: Agent replies + citizen follow-ups + attachments
+o	Actions: Comment, download docs, rate resolution (post-close)
+o	[+] NEW TICKET: Embedded form at bottom (collapses by default)
+•	Key Features:
+o	Real-time departmental routing visibility
+o	Bidirectional communication (citizen ↔ agent)
+o	Automated status notifications + escalation
+o	Resolution feedback + audit transparency
+Business Rules & Validations
+•	Unified Ticket Rules:
+o	Citizen View: Own tickets + agent communications
+o	Routing: Category/keywords → Departmental queue
+o	Status Flow: Submitted → Routed → In Progress → Resolved → Closed
+o	Feedback: Post-resolution only, 1 per ticket
+o	Escalation: Auto-alert after SLA breach (48h)
+
+•	Smart Routing + Escalation:
+o	Category: "Ration Card" → Benefits Dept → Agent Priya S
+o	Urgency: High → Manager CC + SMS alert
+o	SLA Breach: 48h → Supervisor escalation
+Data Inputs
+API Endpoint	Section	Data Elements
+GET /tickets/{citizen_id}?filters={json}	Ticket List	Status, dept, agent, timeline
+WebSocket /ticket-updates/{ticket_id}	Timeline	Real-time status + comments
+POST /tickets/{ticket_id}/comment	Communication	Follow-up replies + attachments
+POST /tickets	New Ticket	Subject, category, description
+Data Outputs
+Target	Events/Actions
+Ticketing System	Status updates + comments + attachments
+Notification Service	Status changes + escalations + agent replies
+Department Dashboards	New tickets + SLA alerts
+Feedback Service	Post-resolution ratings
+Audit Log	Complete ticket lifecycle
+Integration Points
+ 
+•	Core Services:
+1.	Ticketing/CRM - Core ticket lifecycle
+2.	Departmental Dashboards - Agent assignment
+3.	Notification Service - Multi-channel alerts
+4.	Feedback Service - Resolution ratings
+5.	Audit Trail - Immutable history
+RBAC & Access Control
+Role	Citizen View	Agent View
+Citizen	Own tickets + communication	N/A
+Agent	Assigned tickets	Full access
+Supervisor	Team tickets + escalations	Dashboard
+Error Handling & Messaging
+Scenario	Message	Action
+No Tickets	"No open tickets. Need help?"	New ticket CTA
+Routing Delay	"Ticket assigned within 2h"	Live status
+Comment Moderation	"Held for review"	Edit/resubmit
+SLA Breach	"Escalated to supervisor"	Auto-notification
+Closed Feedback	"Rated ✓ Thanks for feedback"	Archive
+Accessibility & Usability
+•	WCAG 2.1 AA:
+o	ARIA live: "Ticket #001: Agent replied [New comment]"
+o	Screen reader: "Timeline • Processing → Agent: Priya S [Reply available]"
+o	Keyboard: Tab → Expand ticket → Reply form → Submit
+o	Multi-language: Auto-detect + manual override
+
+•	Visual Timeline:
+o	📅 Submitted → 🚀 Routed → 👤 In Progress → ✅ Resolved → ⭐ Feedback
+o	Agent avatars + reply bubbles + attachment previews
+
+•	Responsive:
+o	<480px: Vertical timeline + swipe tickets
+o	>768px: 2-column (List + Timeline)
+Testability Requirements
+•	Functional E2E Tests:
+o	Submit ticket → Auto-route → Dept notification → Status update
+o	Agent reply → Citizen notification → Timeline update
+o	SLA breach → Supervisor escalation
+o	Resolution → Feedback form → Rating submission
+o	Filter "Active + Ration" → Correct tickets displayed
+
+•	Workflow Validation:
+o	Category → Correct dept assignment
+o	Comment → Bidirectional notification
+o	Attachment → Virus scan + storage
+o	Escalation → Multi-level alerts

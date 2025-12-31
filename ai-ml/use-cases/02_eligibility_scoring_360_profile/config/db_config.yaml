@@ -1,0 +1,80 @@
+# Database Configuration
+# Eligibility Scoring & 360° Profiles Use Case
+
+database:
+  host: 172.17.16.1
+  port: 5432
+  dbname: smart_warehouse
+  user: sameer
+  password: anjali143
+  schema: public
+
+# Data sources for Eligibility Scoring
+data_sources:
+  # Golden Records (prerequisite from AI-PLATFORM-01)
+  golden_records:
+    enabled: true
+    table: golden_records
+    priority: high
+  
+  # Relationships for network analytics
+  relationships:
+    enabled: true
+    table: gr_relationships
+    priority: high
+  
+  # Benefits for eligibility and analytics
+  benefits:
+    enabled: true
+    table: benefit_events
+    priority: high
+  
+  # Applications for eligibility training
+  applications:
+    enabled: true
+    table: application_events
+    priority: high
+  
+  # Schemes master data
+  schemes:
+    enabled: true
+    table: scheme_master
+    priority: high
+  
+  # Legacy citizens table (for eligibility scoring)
+  citizens:
+    enabled: true
+    table: citizens
+    priority: medium
+  
+  # Legacy schemes table (for eligibility scoring)
+  scheme_criteria:
+    enabled: true
+    table: scheme_eligibility_criteria
+    priority: medium
+
+# Neo4j Configuration (for graph operations and community detection)
+# Note: From WSL, must use Windows host IP (172.17.16.1) instead of localhost
+neo4j:
+  uri: bolt://172.17.16.1:7687  # Windows host IP for WSL access (not localhost!)
+  user: neo4j
+  password: anjali143  # Your Neo4j password
+  database: smartgraphdb  # Using smartgraphdb database
+  enabled: true  # Enable Neo4j for graph clustering
+
+# Queries
+queries:
+  # Golden Records
+  all_golden_records: "SELECT * FROM golden_records WHERE status = 'active'"
+  golden_record_by_id: "SELECT * FROM golden_records WHERE gr_id = %s"
+  relationships_for_gr: "SELECT * FROM gr_relationships WHERE from_gr_id = %s OR to_gr_id = %s"
+  benefits_for_gr: "SELECT * FROM benefit_events WHERE gr_id = %s ORDER BY txn_date DESC"
+  applications_for_gr: "SELECT * FROM application_events WHERE gr_id = %s ORDER BY application_date DESC"
+  family_members: "SELECT * FROM golden_records WHERE family_id = %s AND status = 'active'"
+  
+  # Eligibility Scoring
+  all_citizens: "SELECT * FROM citizens WHERE status = 'active'"
+  all_schemes: "SELECT * FROM schemes WHERE status = 'active'"
+  scheme_criteria: "SELECT * FROM scheme_eligibility_criteria WHERE scheme_id = %s"
+  applications_with_scores: "SELECT * FROM applications WHERE eligibility_score IS NOT NULL"
+

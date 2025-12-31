@@ -1,0 +1,91 @@
+use_case:
+  id: "AI-PLATFORM-09"
+  name: "Proactive Inclusion & Exception Handling"
+  version: "1.0"
+
+inclusion_detection:
+  enable_detection: true
+  inclusion_gap_threshold: 0.6  # Minimum gap score to flag as priority
+  vulnerability_boost_weight: 0.3  # Weight for vulnerability indicators
+  coverage_gap_weight: 0.5  # Weight for eligibility vs uptake gap
+  benchmark_weight: 0.2  # Weight for local coverage benchmarks
+
+exception_detection:
+  enable_exception_detection: true
+  anomaly_threshold: 0.75  # Anomaly score threshold for exception flags
+  require_human_review: true  # Route exceptions to human review
+  exception_categories:
+    - "RECENTLY_DISABLED"
+    - "MIGRANT_WORKER"
+    - "HOMELESS_INFORMAL_SETTLEMENT"
+    - "DROPOUT_STUDENT"
+    - "OTHER_ATYPICAL"
+
+nudge_generation:
+  max_nudges_per_household: 3
+  nudge_priority_levels:
+    - "HIGH"  # High impact, high urgency
+    - "MEDIUM"  # Medium impact
+    - "LOW"  # Informational
+  channel_preferences:
+    portal: true
+    mobile_app: true
+    sms: true
+    field_worker: true
+    email: false
+
+priority_segmentation:
+  segments:
+    - name: "TRIBAL"
+      weight: 1.2  # Higher priority multiplier
+      vulnerability_tags: ["tribal", "remote_hamlet"]
+    
+    - name: "PWD"
+      weight: 1.2
+      vulnerability_tags: ["disability", "chronic_illness"]
+    
+    - name: "SINGLE_WOMAN"
+      weight: 1.1
+      vulnerability_tags: ["widow", "single_woman_head", "female_headed"]
+    
+    - name: "UNEMPLOYED_YOUTH"
+      weight: 1.0
+      vulnerability_tags: ["unemployed", "youth", "low_skilling"]
+    
+    - name: "ELDERLY_ALONE"
+      weight: 1.1
+      vulnerability_tags: ["elderly", "alone", "no_caregiver"]
+    
+    - name: "REMOTE_GEOGRAPHY"
+      weight: 1.0
+      vulnerability_tags: ["remote_block", "low_connectivity"]
+
+nudge_channels:
+  portal:
+    enabled: true
+    priority: ["HIGH", "MEDIUM"]
+  
+  mobile_app:
+    enabled: true
+    priority: ["HIGH", "MEDIUM"]
+  
+  sms:
+    enabled: true
+    priority: ["HIGH"]
+    requires_consent: true
+  
+  field_worker:
+    enabled: true
+    priority: ["HIGH", "MEDIUM"]
+    for_segments: ["TRIBAL", "REMOTE_GEOGRAPHY", "ELDERLY_ALONE"]
+  
+  email:
+    enabled: false
+    priority: ["LOW"]
+
+analytics:
+  track_nudge_effectiveness: true
+  track_conversion_rates: true
+  monitor_bias: true
+  aggregate_by_segment: true
+

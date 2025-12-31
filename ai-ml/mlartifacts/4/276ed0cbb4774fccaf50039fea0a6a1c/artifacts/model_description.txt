@@ -1,0 +1,16 @@
+
+Eligibility Scoring Model for Scheme: DISABILITY_PENSION
+
+This XGBoost model predicts eligibility probability (0-1) for scheme DISABILITY_PENSION.
+
+Features: 9
+Training Samples: 10605
+Test Performance:
+  - Accuracy: 0.8707
+  - Precision: 0.2632
+  - Recall: 0.0150
+  - F1 Score: 0.0283
+  - ROC-AUC: 0.6420
+
+Top Features: benefits_received_1y, schemes_enrolled_count, age, employment_type_encoded, family_size, education_level_encoded, district_id, gender_encoded, caste_id_encoded
+                

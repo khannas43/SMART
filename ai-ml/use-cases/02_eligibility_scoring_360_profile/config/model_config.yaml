@@ -1,0 +1,240 @@
+# Model Configuration
+# Eligibility Scoring & 360° Profiles
+
+mlflow:
+  experiment_name: smart/eligibility_scoring_360_profile
+  tracking_uri: http://127.0.0.1:5000
+
+# ============================================================
+# ELIGIBILITY SCORING MODEL
+# ============================================================
+eligibility_scoring:
+  model_type: xgboost  # Options: xgboost, lightgbm, random_forest
+  output_type: regression  # Regression: score 0-100 OR classification: binary
+  
+  # XGBoost parameters
+  params:
+    n_estimators: 200
+    max_depth: 8
+    learning_rate: 0.1
+    subsample: 0.8
+    colsample_bytree: 0.8
+    random_state: 42
+    objective: reg:squarederror  # For score prediction (0-100)
+    eval_metric: rmse
+  
+  # Score interpretation thresholds
+  score_thresholds:
+    highly_eligible: 80  # ≥80: Highly eligible, fast-track approval
+    eligible: 60  # 60-79: Eligible, standard processing
+    conditional: 40  # 40-59: Conditional eligibility, manual review
+    not_eligible: 40  # <40: Not eligible, reject
+
+# ============================================================
+# INCOME BAND INFERENCE MODEL
+# ============================================================
+income_band:
+  model_type: random_forest  # Options: random_forest, gradient_boosting
+  params:
+    n_estimators: 200
+    max_depth: 10
+    min_samples_split: 20
+    min_samples_leaf: 10
+    random_state: 42
+    class_weight: balanced
+  
+  # Income bands
+  bands:
+    - VERY_LOW  # < ₹50,000
+    - LOW       # ₹50,000 - ₹2,00,000
+    - MEDIUM    # ₹2,00,000 - ₹5,00,000
+    - HIGH      # > ₹5,00,000
+    - UNCERTAIN # Confidence < 0.6
+  
+  # Confidence threshold
+  confidence_threshold: 0.6  # Below this → UNCERTAIN
+  
+  # Features
+  features:
+    # Benefit history
+    - benefit_total_1y
+    - benefit_total_3y
+    - benefit_count_1y
+    - benefit_count_3y
+    - schemes_enrolled_count
+    
+    # Socio-economic
+    - education_level
+    - employment_type
+    - house_type
+    - family_size
+    
+    # Geography
+    - is_urban
+    - district_id
+
+# ============================================================
+# GRAPH CLUSTERING
+# ============================================================
+graph_clustering:
+  library: networkx
+  algorithm: louvain  # Options: louvain, label_propagation, spectral
+  
+  # Community detection parameters
+  resolution: 1.0  # Higher = more communities
+  random_state: 42
+  
+  # Relationship weights
+  relationship_weights:
+    SPOUSE: 10.0
+    CHILD: 8.0
+    PARENT: 8.0
+    SIBLING: 6.0
+    CO_RESIDENT: 5.0
+    CO_BENEFIT: 4.0
+    EMPLOYEE_OF: 3.0
+    BUSINESS_PARTNER: 3.0
+  
+  # Centrality measures (degree is fast, others are expensive for large graphs)
+  centrality_metrics:
+    - degree
+    - pagerank
+    # - betweenness  # Expensive - uncomment only for small graphs (<10K nodes)
+    # - closeness    # Expensive - uncomment only for small graphs (<10K nodes)
+
+# ============================================================
+# ANOMALY DETECTION
+# ============================================================
+anomaly_detection:
+  # Over-concentration detection
+  over_concentration:
+    method: isolation_forest  # Options: isolation_forest, local_outlier_factor
+    contamination: 0.05  # Expected proportion of outliers (5%)
+    n_estimators: 100
+    max_samples: 256
+    
+    # Rule-based thresholds
+    rules:
+      benefit_vs_income_multiplier: 3.0  # Flag if benefits > 3x income
+      benefit_vs_local_avg_multiplier: 3.0  # Flag if > 3x local average
+      schemes_count_threshold: 8  # Flag if enrolled in > 8 schemes
+  
+  # Under-coverage detection
+  under_coverage:
+    eligibility_threshold: 0.8  # Eligibility probability > 0.8
+    benefit_threshold: 0  # Benefits = 0 or very low
+    time_window_days: 365  # Check last 1 year
+    
+    # Comparison metrics
+    compare_with: cluster  # cluster, district, family
+    min_cluster_size: 5  # Minimum cluster size for comparison
+
+# ============================================================
+# FEATURE ENGINEERING
+# ============================================================
+feature_engineering:
+  # Categorical features (for eligibility scoring)
+  categorical:
+    features:
+      - gender
+      - caste_id
+      - district_id
+      - education_id
+      - employment_id
+      - house_type_id
+      - scheme_id
+    encoding: one_hot
+  
+  # Numerical features
+  numerical:
+    features:
+      - age
+      - family_income
+      - family_size
+    normalization: standard_scaler
+  
+  # Eligibility match features (derived)
+  eligibility_matches:
+    - age_in_range  # Boolean: age within scheme min/max
+    - income_below_limit  # Boolean: income below scheme max
+    - caste_match  # Boolean: caste matches target
+    - bpl_match  # Boolean: BPL requirement met
+    - farmer_match  # Boolean: farmer requirement met
+    - education_match  # Boolean: education level meets requirement
+    - gender_match  # Boolean: gender matches target
+  
+  # Derived features
+  derived:
+    - income_per_person  # family_income / family_size
+    - age_category  # Categorical: child/adult/senior
+    - income_category  # Categorical: low/middle/high
+
+# ============================================================
+# TRAINING CONFIGURATION
+# ============================================================
+training:
+  test_size: 0.2
+  validation_split: 0.1
+  cross_validation_folds: 5
+  early_stopping_rounds: 20
+  batch_size: 1000
+  random_state: 42
+  
+  data_preprocessing:
+    handle_missing: median  # For numerical
+    handle_missing_categorical: mode  # For categorical
+    encode_categorical: one_hot
+    normalize_numeric: standard
+    remove_outliers: true
+    outlier_method: iqr  # Interquartile Range
+
+# ============================================================
+# EVALUATION METRICS
+# ============================================================
+evaluation:
+  eligibility_scoring:
+    metrics:
+      - accuracy
+      - precision
+      - recall
+      - f1_score
+      - roc_auc
+      - mean_squared_error
+      - mean_absolute_error
+      - r2_score
+    
+    target_metrics:
+      accuracy: 0.90  # >90%
+      precision: 0.85  # >85%
+      recall: 0.85  # >85%
+      mse: 100.0  # Mean squared error <100
+      mae: 8.0  # Mean absolute error <8 points
+  
+  income_band:
+    metrics:
+      - accuracy
+      - precision_macro
+      - recall_macro
+      - f1_macro
+      - confusion_matrix
+    
+    target_accuracy: 0.75  # ≥75% within one band
+  
+  anomaly_detection:
+    metrics:
+      - precision
+      - recall
+      - f1_score
+    
+    target_precision: 0.80  # ≥80% precision for flags
+
+# ============================================================
+# EXPLAINABILITY
+# ============================================================
+explainability:
+  enabled: true
+  method: shap
+  top_features: 10
+  generate_shap_plots: true
+  save_explanations: true
+

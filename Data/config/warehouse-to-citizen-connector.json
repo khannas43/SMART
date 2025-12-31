@@ -1,0 +1,45 @@
+{
+  "name": "warehouse-to-citizen-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "database.hostname": "172.17.16.1",
+    "database.port": "5432",
+    "database.user": "debezium_user",
+    "database.password": "CHANGE_ME_SECURE_PASSWORD",
+    "database.dbname": "smart_warehouse",
+    "database.server.name": "warehouse-server",
+    "plugin.name": "pgoutput",
+    
+    "table.include.list": "public.golden_records,public.profile_360,eligibility.eligibility_snapshots,public.scheme_master",
+    
+    "topic.prefix": "warehouse.cdc",
+    "schema.include.list": "public,eligibility",
+    
+    "transforms": "unwrap,route,maskPII",
+    "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
+    "transforms.unwrap.drop.tombstones": "false",
+    "transforms.unwrap.delete.handling.mode": "rewrite",
+    
+    "transforms.route.type": "org.apache.kafka.connect.transforms.RegexRouter",
+    "transforms.route.regex": "warehouse\\.cdc\\.(public|eligibility)\\.([^.]+)",
+    "transforms.route.replacement": "warehouse-to-citizen-cdc.$2",
+    
+    "transforms.maskPII.type": "org.apache.kafka.connect.transforms.ReplaceField$Value",
+    "transforms.maskPII.renames": "after.jan_aadhaar:after.jan_aadhaar_masked,after.inferred_income_band:after.inferred_income_band_masked",
+    
+    "snapshot.mode": "never",
+    "snapshot.fetch.size": 2000,
+    "max.batch.size": 2048,
+    "max.queue.size": 8192,
+    
+    "errors.tolerance": "all",
+    "errors.log.enable": true,
+    "errors.log.include.messages": true,
+    "errors.deadletterqueue.topic.name": "warehouse-cdc-dlq",
+    "errors.deadletterqueue.topic.replication.factor": 3,
+    
+    "heartbeat.interval.ms": 10000,
+    "heartbeat.action.query": "SELECT 1"
+  }
+}
+

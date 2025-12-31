@@ -1,0 +1,16 @@
+
+Eligibility Scoring Model for Scheme: GRAMIN_AWAS
+
+This XGBoost model predicts eligibility probability (0-1) for scheme GRAMIN_AWAS.
+
+Features: 9
+Training Samples: 10557
+Test Performance:
+  - Accuracy: 0.8739
+  - Precision: 0.3750
+  - Recall: 0.0182
+  - F1 Score: 0.0348
+  - ROC-AUC: 0.6264
+
+Top Features: benefits_received_1y, schemes_enrolled_count, gender_encoded, district_id, education_level_encoded, caste_id_encoded, age, employment_type_encoded, family_size
+                

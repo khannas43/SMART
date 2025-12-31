@@ -1,0 +1,170 @@
+# ML Model Configuration for Auto Identification of Beneficiaries
+# Use Case ID: AI-PLATFORM-03
+
+# MLflow Settings
+mlflow:
+  tracking_uri: http://127.0.0.1:5000
+  experiment_name: smart/identification_beneficiary
+  registered_model_prefix: EligibilityScorer
+
+# Eligibility Scoring Models (XGBoost per scheme or scheme family)
+eligibility_scoring:
+  model_type: xgboost
+  objective: binary  # binary classification or regression
+  output_type: probability  # probability (0-1) or score (0-100)
+  
+  # XGBoost Hyperparameters
+  hyperparameters:
+    n_estimators: 200
+    max_depth: 6
+    learning_rate: 0.1
+    subsample: 0.8
+    colsample_bytree: 0.8
+    min_child_weight: 3
+    gamma: 0.1
+    reg_alpha: 0.1
+    reg_lambda: 1.0
+    random_state: 42
+  
+  # Training Configuration
+  training:
+    train_test_split: 0.2
+    validation_split: 0.1
+    cross_validation_folds: 5
+    early_stopping_rounds: 20
+    eval_metric: auc  # or logloss, error, mse for regression
+  
+  # Feature Engineering
+  feature_engineering:
+    # Demographic Features
+    demographics:
+      - age
+      - gender
+      - marital_status
+      - district_id
+      - block_id
+      - village_id
+      - urban_rural
+      - caste_id
+      - category
+    
+    # Household Features
+    household:
+      - family_size
+      - household_type  # nuclear, joint, etc.
+      - number_of_children
+      - number_of_elderly
+      - number_of_disabled_members
+      - head_of_family_gender
+      - head_of_family_age
+    
+    # Income & Assets (from 360° Profile)
+    income_assets:
+      - income_band  # from AI-PLATFORM-02
+      - inferred_income_lower
+      - inferred_income_upper
+      - land_holding_category
+      - house_type
+      - electricity_connection
+      - bank_account
+    
+    # Education & Employment
+    education_employment:
+      - education_level
+      - employment_status
+      - employment_type
+      - skill_training
+    
+    # Health & Disability
+    health_disability:
+      - disability_status
+      - disability_type
+      - chronic_illness
+      - health_insurance_coverage
+    
+    # Prior Participation
+    prior_participation:
+      - schemes_enrolled_count
+      - schemes_enrolled_list
+      - benefits_received_total_1y
+      - benefits_received_total_3y
+      - application_rejection_count
+    
+    # Proxy Indicators (if available and consented)
+    proxy_indicators:
+      - land_records_value
+      - electricity_bill_amount
+      - transaction_frequency
+      - transport_registrations_count
+    
+    # Feature Transformations
+    transformations:
+      age_bins: [0, 18, 35, 50, 60, 75, 100]
+      income_bins: [0, 10000, 25000, 50000, 100000, 200000, 1000000]
+      family_size_bins: [1, 2, 4, 6, 10, 20]
+  
+  # Feature Selection
+  feature_selection:
+    method: importance_threshold  # importance_threshold, recursive_elimination, l1_regularization
+    importance_threshold: 0.01
+    max_features: 100
+
+# Scheme-Specific Model Configurations
+scheme_models:
+  # Example: Pension Scheme
+  SCHEME_001_PENSION:
+    model_type: xgboost
+    features:
+      required:
+        - age
+        - income_band
+        - district_id
+      optional:
+        - disability_status
+        - marital_status
+      excluded:
+        - gender  # If sensitive attribute should be excluded
+    thresholds:
+      min_age: 60
+      max_income_band: LOW
+      min_probability: 0.7
+  
+  # Example: Education Scheme
+  SCHEME_002_EDUCATION:
+    model_type: xgboost
+    features:
+      required:
+        - age
+        - education_level
+        - family_income_band
+      optional:
+        - caste_id
+        - disability_status
+    thresholds:
+      max_age: 25
+      max_family_income_band: MEDIUM
+      min_probability: 0.75
+
+# Evaluation Metrics
+evaluation_metrics:
+  classification:
+    - accuracy
+    - precision
+    - recall
+    - f1_score
+    - roc_auc
+    - pr_auc
+    - confusion_matrix
+  
+  ranking:
+    - ndcg_at_k  # Normalized Discounted Cumulative Gain
+    - map  # Mean Average Precision
+    - precision_at_k
+
+# Model Explainability
+explainability:
+  method: shap  # SHAP values for feature importance
+  top_features_count: 10
+  store_shap_values: true
+  generate_plots: true
+

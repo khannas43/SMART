@@ -1,0 +1,16 @@
+
+Eligibility Scoring Model for Scheme: TRIBAL_WELFARE
+
+This XGBoost model predicts eligibility probability (0-1) for scheme TRIBAL_WELFARE.
+
+Features: 9
+Training Samples: 10434
+Test Performance:
+  - Accuracy: 0.8701
+  - Precision: 0.2143
+  - Recall: 0.0091
+  - F1 Score: 0.0174
+  - ROC-AUC: 0.6153
+
+Top Features: benefits_received_1y, schemes_enrolled_count, age, district_id, family_size, employment_type_encoded, caste_id_encoded, gender_encoded, education_level_encoded
+                

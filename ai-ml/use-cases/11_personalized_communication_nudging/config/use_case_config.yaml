@@ -1,0 +1,168 @@
+use_case:
+  name: "Personalized Communication & Nudging"
+  id: "AI-PLATFORM-11"
+  version: "1.0"
+
+nudging:
+  # Channel configuration
+  channels:
+    enabled:
+      - "SMS"
+      - "APP_PUSH"
+      - "WEB_INBOX"
+      - "WHATSAPP"
+      - "IVR"
+      - "ASSISTED_VISIT"
+    
+    capabilities:
+      SMS:
+        max_length: 160
+        template_required: true
+        dlt_registered: true
+        cost_per_message: 0.1
+        delivery_tracking: true
+      
+      APP_PUSH:
+        max_length: 200
+        rich_content: true
+        deep_linking: true
+        delivery_tracking: true
+        open_tracking: true
+      
+      WEB_INBOX:
+        max_length: 1000
+        rich_content: true
+        attachments: true
+        read_tracking: true
+        click_tracking: true
+      
+      WHATSAPP:
+        max_length: 1000
+        template_required: true
+        rich_content: true
+        delivery_tracking: true
+        read_receipts: true
+      
+      IVR:
+        max_duration_seconds: 120
+        multilingual: true
+        callback_support: true
+        cost_per_call: 2.0
+      
+      ASSISTED_VISIT:
+        field_staff_required: true
+        cost_per_visit: 50.0
+        scheduling_required: true
+  
+  # Send time optimization
+  send_time_optimization:
+    enable_time_optimization: true
+    time_windows:
+      - name: "MORNING"
+        start_hour: 9
+        end_hour: 12
+      - name: "AFTERNOON"
+        start_hour: 12
+        end_hour: 17
+      - name: "EVENING"
+        start_hour: 17
+        end_hour: 20
+    
+    restrictions:
+      no_sms_after_hour: 20
+      no_sms_before_hour: 8
+      no_weekend_sms: false
+      no_holiday_sms: true
+  
+  # Content personalization
+  content_personalization:
+    enable_content_personalization: true
+    template_selection_strategy: "BANDIT" # BANDIT, AB_TEST, HEURISTIC
+    bandit_algorithm: "UCB" # UCB, THOMPSON_SAMPLING, EPSILON_GREEDY
+    ab_test_split: 0.5
+    
+    templates_per_action_type:
+      renewal: 3
+      missing_doc: 2
+      consent: 2
+      deadline: 2
+      informational: 2
+  
+  # Fatigue management
+  fatigue_management:
+    enable_fatigue_tracking: true
+    max_nudges_per_family_per_day: 3
+    max_nudges_per_family_per_week: 10
+    max_nudges_per_family_per_month: 30
+    
+    vulnerability_adjustments:
+      high_vulnerability:
+        max_per_day: 1
+        max_per_week: 3
+        max_per_month: 10
+        preferred_channels: ["ASSISTED_VISIT", "IVR", "SMS"]
+      
+      medium_vulnerability:
+        max_per_day: 2
+        max_per_week: 6
+        max_per_month: 20
+      
+      low_vulnerability:
+        max_per_day: 3
+        max_per_week: 10
+        max_per_month: 30
+    
+    cooldown_periods:
+      after_response: 7 # days
+      after_opt_out_request: 30 # days
+      after_complaint: 14 # days
+  
+  # Channel optimization
+  channel_optimization:
+    enable_channel_optimization: true
+    features:
+      - "past_engagement_by_channel"
+      - "past_engagement_by_time"
+      - "scheme_type"
+      - "urgency_level"
+      - "geography"
+      - "demographics"
+      - "vulnerability_category"
+      - "device_usage"
+      - "connectivity_pattern"
+    
+    model_type: "GRADIENT_BOOSTING" # GRADIENT_BOOSTING, RANDOM_FOREST, LOGISTIC_REGRESSION
+    
+    fallback_rules:
+      - if_no_digital_footprint: "ASSISTED_VISIT"
+      - if_high_vulnerability: "ASSISTED_VISIT"
+      - if_opt_out_sms: "APP_PUSH"
+      - if_no_app_usage: "SMS"
+  
+  # Learning and feedback
+  learning:
+    enable_feedback_loop: true
+    learning_window_days: 90
+    min_samples_for_learning: 10
+    
+    metrics:
+      - "delivered"
+      - "opened"
+      - "clicked"
+      - "responded"
+      - "completed"
+      - "ignored"
+  
+  # Governance and compliance
+  governance:
+    require_consent: true
+    respect_opt_out: true
+    transparent_purpose: true
+    easy_decline: true
+    
+    audit_required: true
+    compliance_review_days: 30
+    
+    marginalized_group_monitoring: true
+    digital_footprint_threshold: 0.3 # Minimum engagement score to avoid neglect
+

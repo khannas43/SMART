@@ -1,0 +1,246 @@
+# Use Case Configuration for Ineligible/Mistargeted Beneficiary Detection
+# Use Case ID: AI-PLATFORM-07
+
+# Detection Configuration
+detection:
+  # Enable detection runs
+  enable_detection: true
+  
+  # Re-scoring frequency
+  full_rescore_frequency: "quarterly"  # monthly, quarterly, yearly
+  incremental_rescore_enabled: true
+  
+  # Detection methods
+  enable_rule_based_detection: true
+  enable_ml_anomaly_detection: true
+  enable_hybrid_detection: true
+
+# Rule-Based Detection Configuration
+rule_detection:
+  # Eligibility re-checks
+  recheck_eligibility_rules: true
+  eligibility_failure_threshold: 0.5  # Min score to be considered eligible
+  
+  # Overlap checks
+  check_scheme_overlaps: true
+  check_mutually_exclusive: true
+  check_family_limits: true
+  
+  # Duplicate checks
+  check_duplicate_beneficiaries: true
+  duplicate_check_methods: ["GR_ID", "JAN_AADHAAR", "AADHAAR", "PAN", "BANK_ACCOUNT"]
+  
+  # Status checks
+  check_deceased_flags: true
+  check_migration_status: true
+  check_status_changes: true
+  
+  # Critical failures that require immediate action
+  critical_failures:
+    - "DECEASED_FLAG"
+    - "DUPLICATE_IDENTITY"
+    - "INCOME_ABOVE_LIMIT"
+    - "MUTUALLY_EXCLUSIVE_SCHEME"
+
+# ML Anomaly Detection Configuration
+ml_detection:
+  # Model configuration
+  model_types:
+    - "isolation_forest"  # Unsupervised anomaly detection
+    - "autoencoder"       # Deep learning anomaly detection
+    - "supervised_fraud"  # Supervised fraud model (if available)
+  
+  # Thresholds
+  anomaly_score_threshold: 0.7  # Minimum anomaly score to flag
+  risk_score_threshold: 0.6     # Minimum risk score to flag
+  
+  # Feature configuration
+  features:
+    benefit_amount_vs_income: true
+    benefit_mix_patterns: true
+    cluster_outlier_analysis: true
+    behavioral_patterns: true
+    household_size_vs_benefits: true
+  
+  # Model retraining
+  retrain_frequency: "monthly"
+  min_training_samples: 1000
+  
+  # Explainability
+  generate_explanations: true
+  top_features_count: 5
+
+# Case Classification
+case_classification:
+  # Confidence levels
+  high_confidence_threshold: 0.8
+  medium_confidence_threshold: 0.5
+  low_confidence_threshold: 0.3
+  
+  # Classification rules
+  hard_ineligible_threshold: 0.8  # High confidence + rule failure
+  likely_mistargeted_threshold: 0.6  # Medium confidence + anomaly
+  low_confidence_threshold: 0.3  # Low confidence anomalies
+
+# Prioritization Configuration
+prioritization:
+  # Priority calculation factors
+  financial_exposure_weight: 0.4
+  risk_score_weight: 0.3
+  vulnerability_weight: 0.2
+  time_since_flag_weight: 0.1
+  
+  # Thresholds
+  high_financial_exposure: 10000  # INR
+  high_risk_score: 0.7
+  high_vulnerability: 0.8  # Higher = more vulnerable, handle with caution
+  
+  # Priority levels (1=highest, 10=lowest)
+  immediate_priority: 1
+  high_priority: 3
+  medium_priority: 5
+  low_priority: 8
+
+# Worklist Configuration
+worklist:
+  # Worklist queues
+  queues:
+    - "HIGH_PRIORITY"
+    - "SCHEME_SPECIFIC"
+    - "REGIONAL"
+    - "VERIFICATION_PENDING"
+  
+  # Assignment rules
+  auto_assign: false  # Require manual assignment
+  assignment_by_scheme: true
+  assignment_by_region: true
+  
+  # Workload limits
+  max_cases_per_officer: 50
+  max_active_cases_per_officer: 20
+
+# Governance and Safeguards
+governance:
+  # No automatic benefit stoppage
+  require_human_approval_for_stoppage: true
+  require_verification_before_action: true
+  
+  # Appeals
+  enable_appeals: true
+  appeal_window_days: 30
+  
+  # Fairness monitoring
+  enable_fairness_checks: true
+  monitor_demographic_breakdown: true
+  bias_alert_threshold: 0.2  # Alert if deviation > 20%
+  
+  # Sample audits
+  enable_sample_audits: true
+  audit_sample_rate: 0.05  # 5% of flagged cases
+  
+  # Transparency
+  notify_beneficiaries_on_flag: true
+  provide_explanation_to_beneficiaries: true
+  provide_appeal_mechanism: true
+
+# Action Recommendations
+actions:
+  # Recommended actions by case type
+  hard_ineligible_actions:
+    - "VERIFY"
+    - "SUSPEND"
+    - "CANCEL"
+    - "RECOVER"
+  
+  likely_mistargeted_actions:
+    - "VERIFY"
+    - "RECALCULATE"
+    - "REVIEW"
+  
+  low_confidence_actions:
+    - "REVIEW"
+    - "MONITOR"
+    - "IGNORE"
+  
+  # Action urgency
+  immediate_actions: ["SUSPEND", "CANCEL"]
+  high_urgency_actions: ["VERIFY", "RECALCULATE"]
+  medium_urgency_actions: ["REVIEW", "MONITOR"]
+
+# Analytics and Reporting
+analytics:
+  # Aggregation levels
+  aggregate_by_scheme: true
+  aggregate_by_region: true
+  aggregate_by_demographic: true
+  
+  # Metrics to track
+  track_false_positive_rate: true
+  track_confirmation_rate: true
+  track_savings_estimated: true
+  track_action_outcomes: true
+  
+  # Dashboard refresh
+  dashboard_refresh_minutes: 15
+
+# Scheme-Specific Configuration
+schemes:
+  # Example: Pension scheme (strict eligibility)
+  OLD_AGE_PENSION:
+    detection:
+      enable_ml_detection: true
+      anomaly_threshold: 0.65  # Lower threshold for pensions
+    governance:
+      require_verification: true
+      require_appeal_review: true
+  
+  # Example: Health scheme (moderate threshold)
+  CHIRANJEEVI:
+    detection:
+      enable_ml_detection: true
+      anomaly_threshold: 0.7
+    governance:
+      require_verification: true
+  
+  # Example: Housing scheme (high threshold due to one-time benefit)
+  GRAMIN_AWAS:
+    detection:
+      enable_ml_detection: true
+      anomaly_threshold: 0.75  # Higher threshold
+      check_duplicates: true  # Critical for housing
+
+# Notification Configuration
+notifications:
+  # Notify on flagging
+  notify_on_flag: true
+  notify_beneficiaries: true
+  notify_officers: true
+  
+  # Notification channels
+  channels:
+    - "SMS"
+    - "mobile_app"
+    - "web_portal"
+  
+  # Notification templates
+  flag_notification: "Your benefits for {{scheme_name}} are under review. Please check your status or contact support."
+  appeal_notification: "You have the right to appeal this decision. Appeal window: {{days}} days."
+
+# Monitoring & Metrics
+monitoring:
+  # Track detection metrics
+  track_detection_rates: true
+  track_case_resolution_times: true
+  track_false_positive_rates: true
+  track_confirmation_rates: true
+  
+  # Track operational metrics
+  track_officer_workload: true
+  track_worklist_performance: true
+  track_appeal_outcomes: true
+  
+  # Alerts
+  alert_on_high_false_positive_rate: true
+  false_positive_alert_threshold: 0.1  # Alert if > 10%
+  alert_on_bias_detected: true
+

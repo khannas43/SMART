@@ -1,0 +1,112 @@
+# Model Configuration for Golden Record Creation & Maintenance
+# Use Case: AI-PLATFORM-01
+
+mlflow:
+  experiment_name: smart/golden_record/baseline_v1
+  run_name_prefix: golden_record
+  tracking_uri: http://127.0.0.1:5000
+
+# Deduplication Model Configuration
+deduplication:
+  model_type: fellegi_sunter  # Options: fellegi_sunter, siamese_nn
+  thresholds:
+    auto_merge: 0.95  # >95% confidence
+    manual_review: 0.80  # 80-95% confidence
+    reject: 0.80  # <80% confidence
+  
+  features:
+    - name: fuzzy_string_name
+      type: fuzzy_match
+      algorithm: jaro_winkler
+      weight: 0.3
+    
+    - name: phonetic_name
+      type: phonetic
+      algorithm: soundex
+      weight: 0.2
+    
+    - name: date_of_birth
+      type: exact_match
+      weight: 0.25
+    
+    - name: geospatial_address
+      type: geospatial
+      algorithm: haversine
+      threshold_km: 5.0
+      weight: 0.15
+    
+    - name: income_similarity
+      type: numeric_similarity
+      threshold_percent: 10.0
+      weight: 0.1
+
+# Conflict Reconciliation Model
+conflict_reconciliation:
+  model_type: xgboost_ensemble
+  params:
+    n_estimators: 200
+    max_depth: 8
+    learning_rate: 0.1
+    random_state: 42
+  
+  ranking_factors:
+    recency:
+      weight: 0.4
+      max_age_days: 365
+    
+    source_authority:
+      weights:
+        aadhaar: 10
+        passport: 8
+        birth_certificate: 7
+        employment_ledger: 6
+        educational_certificate: 6
+        scheme_data: 5
+        self_declared: 3
+    
+    completeness:
+      weight: 0.2
+      min_completeness: 0.7
+
+# Best Truth Selection Model
+best_truth_selection:
+  model_type: survival_analysis
+  retrain_frequency: weekly  # Retrain weekly on admin corrections
+  
+  rule_based:
+    source_priority: 
+      - aadhaar
+      - passport
+      - birth_certificate
+      - employment_ledger
+      - educational_certificate
+  
+  staleness_threshold_days: 365
+
+# Training Configuration
+training:
+  test_size: 0.2
+  validation_split: 0.1
+  cross_validation_folds: 5
+  batch_size: 1000
+  
+  data_preprocessing:
+    normalize_features: true
+    handle_missing: median
+    encode_categorical: one_hot
+
+# Model Evaluation Metrics
+evaluation:
+  metrics:
+    - precision
+    - recall
+    - f1_score
+    - accuracy
+    - roc_auc
+  
+  target_metrics:
+    deduplication_precision: 0.95
+    deduplication_recall: 0.95
+    conflict_resolution_accuracy: 0.99
+    false_positive_rate: 0.01
+

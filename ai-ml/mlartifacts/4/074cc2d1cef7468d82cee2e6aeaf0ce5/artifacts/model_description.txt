@@ -1,0 +1,16 @@
+
+Eligibility Scoring Model for Scheme: NREGA
+
+This XGBoost model predicts eligibility probability (0-1) for scheme NREGA.
+
+Features: 9
+Training Samples: 10539
+Test Performance:
+  - Accuracy: 0.8721
+  - Precision: 0.1111
+  - Recall: 0.0030
+  - F1 Score: 0.0059
+  - ROC-AUC: 0.6263
+
+Top Features: benefits_received_1y, schemes_enrolled_count, age, district_id, employment_type_encoded, caste_id_encoded, family_size, education_level_encoded, gender_encoded
+                

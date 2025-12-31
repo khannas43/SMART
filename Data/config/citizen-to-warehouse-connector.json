@@ -1,0 +1,41 @@
+{
+  "name": "citizen-to-warehouse-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "database.hostname": "172.17.16.1",
+    "database.port": "5432",
+    "database.user": "debezium_user",
+    "database.password": "CHANGE_ME_SECURE_PASSWORD",
+    "database.dbname": "smart_citizen",
+    "database.server.name": "citizen-server",
+    "plugin.name": "pgoutput",
+    
+    "table.include.list": "public.citizens,public.service_applications,public.documents",
+    
+    "topic.prefix": "citizen.cdc",
+    
+    "transforms": "unwrap,route",
+    "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
+    "transforms.unwrap.drop.tombstones": "false",
+    "transforms.unwrap.delete.handling.mode": "rewrite",
+    
+    "transforms.route.type": "org.apache.kafka.connect.transforms.RegexRouter",
+    "transforms.route.regex": "citizen\\.cdc\\.public\\.([^.]+)",
+    "transforms.route.replacement": "citizen-to-warehouse-cdc.$1",
+    
+    "snapshot.mode": "never",
+    "snapshot.fetch.size": 2000,
+    "max.batch.size": 2048,
+    "max.queue.size": 8192,
+    
+    "errors.tolerance": "all",
+    "errors.log.enable": true,
+    "errors.log.include.messages": true,
+    "errors.deadletterqueue.topic.name": "citizen-cdc-dlq",
+    "errors.deadletterqueue.topic.replication.factor": 3,
+    
+    "heartbeat.interval.ms": 10000,
+    "heartbeat.action.query": "SELECT 1"
+  }
+}
+

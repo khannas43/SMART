@@ -1,0 +1,48 @@
+# Database Configuration for Auto Identification of Beneficiaries
+# Use Case ID: AI-PLATFORM-03
+
+database:
+  # Primary database: smart_warehouse (shared with AI-PLATFORM-02)
+  # Schema: eligibility (separate schema for organization)
+  host: 172.17.16.1
+  port: 5432
+  name: smart_warehouse  # Consolidated database
+  user: sameer
+  password: anjali143
+  schema: eligibility  # Schema within smart_warehouse
+
+# External Database Connections
+external_databases:
+  # Golden Records (AI-PLATFORM-01)
+  golden_records:
+    host: 172.17.16.1
+    port: 5432
+    name: smart
+    user: sameer
+    password: anjali143
+    schema: golden_record
+  
+  # 360° Profiles (AI-PLATFORM-02)
+  profile_360:
+    host: 172.17.16.1
+    port: 5432
+    name: smart_warehouse
+    user: sameer
+    password: anjali143
+    schema: smart_warehouse
+  
+  # JRDR (Jan Aadhaar) - if separate database
+  jrdr:
+    host: 172.17.16.1
+    port: 5432
+    name: smart
+    user: sameer
+    password: anjali143
+    schema: jrdr
+
+# Connection Pool Settings
+connection_pool:
+  min_connections: 2
+  max_connections: 20
+  idle_timeout_seconds: 300
+

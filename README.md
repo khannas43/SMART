@@ -40,6 +40,17 @@ This structure allows each portal to be developed, tested, and deployed **indepe
 - **`ai-ml/`** - 27 AI/ML use cases (shared across portals)
 - **`shared/`** - Shared code and utilities (components, common, types)
 
+## Portal Access URLs
+
+All portals are accessible via a single port (default: **3000**) with path-based routing:
+
+- **Citizen Portal**: `http://localhost:3000/citizen`
+- **Departmental Portal**: `http://localhost:3000/dept`
+- **AI/ML Insight Portal**: `http://localhost:3000/insight`
+- **Administration & Monitoring Portal**: `http://localhost:3000/monitor`
+
+See [Portal Routing Configuration](PORTAL_ROUTING.md) for detailed setup instructions.
+
 ## Getting Started
 
 See individual portal README files for setup instructions:

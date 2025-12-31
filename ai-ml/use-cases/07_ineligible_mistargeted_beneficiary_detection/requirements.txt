@@ -1,0 +1,27 @@
+# Requirements for Ineligible/Mistargeted Beneficiary Detection
+# Use Case ID: AI-PLATFORM-07
+
+# Core dependencies
+pandas>=2.0.0
+numpy>=1.24.0
+psycopg2-binary>=2.9.9
+pyyaml>=6.0
+python-dateutil>=2.8.0
+
+# ML libraries (optional - for anomaly detection)
+scikit-learn>=1.3.0
+xgboost>=2.0.0
+
+# Database utilities
+# DBConnector from shared/utils
+
+# Optional: Deep learning for autoencoders
+# tensorflow>=2.13.0  # Uncomment if using autoencoder models
+# torch>=2.0.0  # Alternative to TensorFlow
+
+# MLflow for model tracking (if training models)
+mlflow>=2.7.0
+
+# Utilities
+python-dotenv>=1.0.0
+

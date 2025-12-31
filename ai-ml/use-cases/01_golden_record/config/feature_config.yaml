@@ -1,0 +1,145 @@
+# Feature Engineering Configuration for Golden Record
+
+# Attributes to extract and match
+attributes:
+  personal:
+    - name: date_of_birth
+      type: date
+      matching_method: exact
+      weight: 0.25
+    
+    - name: full_name
+      type: string
+      matching_method: fuzzy_phonetic
+      weight: 0.35
+    
+    - name: gender
+      type: categorical
+      matching_method: exact
+      weight: 0.05
+    
+    - name: caste_id
+      type: categorical
+      matching_method: exact
+      weight: 0.05
+  
+  location:
+    - name: address
+      type: string
+      matching_method: fuzzy_geospatial
+      weight: 0.15
+    
+    - name: district_id
+      type: categorical
+      matching_method: exact
+      weight: 0.05
+    
+    - name: pincode
+      type: string
+      matching_method: exact
+      weight: 0.05
+    
+    - name: city_village
+      type: string
+      matching_method: fuzzy
+      weight: 0.03
+  
+  economic:
+    - name: family_income
+      type: numeric
+      matching_method: similarity
+      threshold_percent: 10.0
+      weight: 0.10
+    
+    - name: employment_id
+      type: categorical
+      matching_method: exact
+      weight: 0.02
+
+# Feature Engineering Rules
+feature_engineering:
+  # Fuzzy string matching configurations
+  fuzzy_matching:
+    levenshtein:
+      max_distance: 3
+    
+    jaro_winkler:
+      threshold: 0.85
+    
+    jaro:
+      threshold: 0.90
+  
+  # Phonetic encoding
+  phonetic:
+    soundex:
+      enabled: true
+    
+    metaphone:
+      enabled: true
+    
+    double_metaphone:
+      enabled: true
+  
+  # Geospatial matching
+  geospatial:
+    coordinate_fields:
+      - latitude
+      - longitude
+    
+    distance_metric: haversine
+    max_distance_km: 5.0
+    
+    address_parsing:
+      enabled: true
+      use_nlp: true
+  
+  # Numeric similarity
+  numeric:
+    income:
+      tolerance_percent: 10.0
+      use_log_scale: true
+    
+    age:
+      tolerance_years: 1
+      exact_match_weight: 1.0
+
+# Data Quality Rules
+data_quality:
+  validation:
+    date_of_birth:
+      min_age: 0
+      max_age: 120
+      future_dates_allowed: false
+    
+    income:
+      min_value: 0
+      max_value: 10000000  # 1 crore
+      allow_negative: false
+    
+    mobile_number:
+      pattern: "^[6-9][0-9]{9}$"
+      required: false
+    
+    pincode:
+      pattern: "^[0-9]{6}$"
+      required: false
+  
+  completeness:
+    required_fields:
+      - jan_aadhaar
+      - full_name
+      - date_of_birth
+    
+    min_completeness_score: 0.7
+
+# Source Authority Weights
+source_authority:
+  aadhaar: 10.0
+  passport: 8.0
+  birth_certificate: 7.0
+  employment_ledger: 6.0
+  educational_certificate: 6.0
+  scheme_data: 5.0
+  self_declared: 3.0
+  unknown: 1.0
+

@@ -1,0 +1,38 @@
+# Golden Record Use Case Dependencies
+# Core ML Libraries
+pandas>=1.5.0
+numpy>=1.23.0
+scikit-learn>=1.2.0
+xgboost>=2.0.0
+
+# MLflow
+mlflow>=2.5.0
+
+# Database
+psycopg2-binary>=2.9.0
+
+# String Matching (Optional - install for better performance)
+rapidfuzz>=3.0.0
+
+# Phonetic Encoding (Optional)
+phonetics>=1.0.5
+
+# Geospatial (Optional)
+geopy>=2.3.0
+
+# Configuration
+pyyaml>=6.0
+
+# Neural Networks (Optional - for Siamese NN)
+# torch>=2.0.0
+# torchvision>=0.15.0
+
+# Visualization (for notebooks)
+matplotlib>=3.6.0
+seaborn>=0.12.0
+
+# Jupyter (for notebooks)
+jupyter>=1.0.0
+jupyterlab>=4.0.0
+ipykernel>=6.0.0
+

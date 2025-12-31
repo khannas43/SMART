@@ -1,0 +1,38 @@
+[
+  {
+    "feature": "benefits_received_1y",
+    "importance": 0.20505671203136444
+  },
+  {
+    "feature": "schemes_enrolled_count",
+    "importance": 0.14120928943157196
+  },
+  {
+    "feature": "age",
+    "importance": 0.1006377637386322
+  },
+  {
+    "feature": "district_id",
+    "importance": 0.09642904996871948
+  },
+  {
+    "feature": "family_size",
+    "importance": 0.09451710432767868
+  },
+  {
+    "feature": "employment_type_encoded",
+    "importance": 0.09278776496648788
+  },
+  {
+    "feature": "caste_id_encoded",
+    "importance": 0.09039898961782455
+  },
+  {
+    "feature": "gender_encoded",
+    "importance": 0.09026464074850082
+  },
+  {
+    "feature": "education_level_encoded",
+    "importance": 0.08869874477386475
+  }
+]

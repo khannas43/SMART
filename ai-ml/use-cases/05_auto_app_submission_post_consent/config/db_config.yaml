@@ -1,0 +1,75 @@
+# Database Configuration for Auto Application Submission Post-Consent
+# Use Case ID: AI-PLATFORM-05
+
+database:
+  # Primary database: smart_warehouse (shared with other use cases)
+  # Schema: application (separate schema for organization)
+  host: 172.17.16.1
+  port: 5432
+  name: smart_warehouse  # Consolidated database
+  user: sameer
+  password: anjali143
+  schema: application  # Schema within smart_warehouse
+
+# External Database Connections
+external_databases:
+  # Golden Records (AI-PLATFORM-01) - for personal, demographic, address, identifiers
+  golden_records:
+    host: 172.17.16.1
+    port: 5432
+    name: smart_warehouse
+    user: sameer
+    password: anjali143
+    schema: golden_records  # or public if consolidated
+  
+  # 360° Profiles (AI-PLATFORM-02) - for income, vulnerability, household composition
+  profile_360:
+    host: 172.17.16.1
+    port: 5432
+    name: smart_warehouse
+    user: sameer
+    password: anjali143
+    schema: smart_warehouse  # or specific schema if exists
+  
+  # Eligibility (AI-PLATFORM-03) - for eligibility snapshots and scores
+  eligibility:
+    host: 172.17.16.1
+    port: 5432
+    name: smart_warehouse
+    user: sameer
+    password: anjali143
+    schema: eligibility
+  
+  # Consent Records (AI-PLATFORM-04) - for consent records and events
+  intimation:
+    host: 172.17.16.1
+    port: 5432
+    name: smart_warehouse
+    user: sameer
+    password: anjali143
+    schema: intimation
+  
+  # Scheme Master - public schema
+  scheme_master:
+    host: 172.17.16.1
+    port: 5432
+    name: smart_warehouse
+    user: sameer
+    password: anjali143
+    schema: public
+  
+  # JRDR (Jan Aadhaar) - for authentication
+  jrdr:
+    host: 172.17.16.1
+    port: 5432
+    name: smart
+    user: sameer
+    password: anjali143
+    schema: jrdr
+
+# Connection Pool Settings
+connection_pool:
+  min_connections: 2
+  max_connections: 20
+  idle_timeout_seconds: 300
+

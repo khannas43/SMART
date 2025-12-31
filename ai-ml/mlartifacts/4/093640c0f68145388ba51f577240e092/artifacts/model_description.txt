@@ -1,0 +1,16 @@
+
+Eligibility Scoring Model for Scheme: SC_ST_SCHOLARSHIP
+
+This XGBoost model predicts eligibility probability (0-1) for scheme SC_ST_SCHOLARSHIP.
+
+Features: 9
+Training Samples: 10614
+Test Performance:
+  - Accuracy: 0.8730
+  - Precision: 0.0000
+  - Recall: 0.0000
+  - F1 Score: 0.0000
+  - ROC-AUC: 0.6433
+
+Top Features: benefits_received_1y, schemes_enrolled_count, age, district_id, gender_encoded, education_level_encoded, employment_type_encoded, family_size, caste_id_encoded
+                

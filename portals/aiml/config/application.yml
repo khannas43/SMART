@@ -46,7 +46,7 @@ mlflow:
 server:
   port: 8082
   servlet:
-    context-path: /api/v1
+    context-path: /insight/api/v1
 
 management:
   endpoints:

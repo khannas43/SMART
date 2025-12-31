@@ -1,0 +1,112 @@
+use_case:
+  id: "AI-PLATFORM-10"
+  name: "Entitlement & Benefit Forecast for Citizens"
+  version: "1.0"
+
+forecast:
+  default_horizon_months: 12
+  supported_horizons:
+    - 6  # 6 months
+    - 12  # 1 year
+    - 24  # 2 years
+    - 36  # 3 years
+  forecast_granularity: "MONTHLY"  # MONTHLY, QUARTERLY, ANNUAL
+
+baseline_forecast:
+  enable_baseline: true
+  assumptions:
+    - "Eligibility continues (no major demographic/income change)"
+    - "Known benefit schedules apply"
+    - "Current enrolment status maintained"
+  conservative_ranges: true  # Show ranges for uncertainty
+
+scenario_forecast:
+  enable_scenarios: true
+  scenarios:
+    - name: "STATUS_QUO"
+      description: "No new schemes / status quo"
+      include_recommendations: false
+    
+    - name: "ACT_ON_RECOMMENDATIONS"
+      description: "If you act on all top recommendations in next 3 months"
+      include_recommendations: true
+      recommendation_horizon_months: 3
+      recommendation_probability: 0.7  # 70% probability of applying
+    
+    - name: "POLICY_CHANGE"
+      description: "Under proposed policy changes"
+      include_policy_changes: true
+      for_planners_only: true
+
+time_series_forecast:
+  enable_time_series: true  # For aggregate forecasting (Tier 3)
+  models:
+    - "ARIMA"
+    - "PROPHET"
+    - "LSTM"  # Future
+
+scheme_benefit_schedules:
+  # Benefit frequency patterns
+  monthly:
+    - "PENSION"
+    - "DISABILITY_ALLOWANCE"
+  
+  annual:
+    - "SCHOLARSHIP"
+    - "ANNUAL_GRANT"
+  
+  seasonal:
+    - "CROP_SUPPORT"  # Based on crop season
+    - "SEASONAL_INPUT"
+  
+  conditional:
+    - "ATTENDANCE_BASED"  # Requires attendance/visits
+    - "PERFORMANCE_BASED"
+
+benefit_formulas:
+  # Formula types
+  fixed:
+    - "OLD_AGE_PENSION"  # Fixed amount per month
+  
+  slab_based:
+    - "INCOME_SUPPORT"  # Based on income slabs
+  
+  conditional:
+    - "EDUCATION_SCHOLARSHIP"  # Conditional on attendance
+
+policy_change_tracking:
+  enable_policy_tracking: true
+  track_announced_changes: true
+  track_rate_changes: true
+  track_new_schemes: true
+  track_sunsetting_schemes: true
+
+aggregation:
+  enable_aggregation: true  # For planning use cases (Tier 3)
+  aggregation_levels:
+    - "BLOCK"
+    - "DISTRICT"
+    - "STATE"
+
+probability_estimation:
+  enable_ml_estimation: true
+  use_historical_rates: true
+  use_user_behavior: true
+  use_recommendation_effectiveness: true
+  fallback_to_heuristic: true
+
+event_driven:
+  enable_event_driven_refresh: true
+  refresh_triggers:
+    - "ELIGIBILITY_UPDATE"
+    - "BENEFIT_CHANGE"
+    - "POLICY_CHANGE"
+    - "ENROLMENT_CHANGE"
+  auto_refresh_threshold: 0.1  # Refresh if change > 10%
+
+disclaimers:
+  citizen_facing: true
+  disclaimer_text: "Forecasts are estimates based on current rules and data. They are not guarantees of entitlements."
+  show_uncertainty: true
+  show_assumptions: true
+
