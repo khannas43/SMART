@@ -1,0 +1,67 @@
+/**
+ * i18n Configuration Template for SMART Citizen Portal
+ * 
+ * Install dependencies:
+ * npm install i18next react-i18next i18next-browser-languagedetector
+ */
+
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
+
+// Import translation files
+import enCommon from '../../i18n/locales/en/common.json';
+import enAuth from '../../i18n/locales/en/auth.json';
+// ... import other modules
+
+import hiCommon from '../../i18n/locales/hi/common.json';
+import hiAuth from '../../i18n/locales/hi/auth.json';
+// ... import other modules
+
+// Merge all translations
+const enResources = {
+  common: enCommon,
+  auth: enAuth,
+  // ... add other modules
+};
+
+const hiResources = {
+  common: hiCommon,
+  auth: hiAuth,
+  // ... add other modules
+};
+
+i18n
+  .use(LanguageDetector) // Detects user language from browser/device
+  .use(initReactI18next) // Passes i18n down to react-i18next
+  .init({
+    resources: {
+      en: enResources,
+      hi: hiResources,
+    },
+    fallbackLng: 'en', // Use English if translation missing
+    debug: process.env.NODE_ENV === 'development',
+    
+    interpolation: {
+      escapeValue: false, // React already escapes values
+    },
+    
+    // Namespace configuration (if using namespaces)
+    // defaultNS: 'common',
+    // ns: ['common', 'auth', 'profile', ...],
+    
+    // Language detection options
+    detection: {
+      // Order of language detection
+      order: ['localStorage', 'navigator', 'htmlTag'],
+      
+      // Keys to lookup language from
+      lookupLocalStorage: 'i18nextLng',
+      
+      // Cache user language
+      caches: ['localStorage'],
+    },
+  });
+
+export default i18n;
+

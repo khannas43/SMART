@@ -1,0 +1,635 @@
+[
+  {
+    "scheme_id": "SCHEME_376",
+    "scheme_code": "FOOD_376",
+    "scheme_name": "National Family Food Support Plan",
+    "scheme_category": "FOOD",
+    "department": "Food & Civil Supplies",
+    "natural_language_criteria": "Provides free food grains to Below Poverty Line families with valid BPL ration cards. Priority is given to households with up to 7 members in Jaipur district.",
+    "extracted_rules": [
+      {
+        "rule_type": "RATION_CARD",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "ration_card == 'BPL'",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.93
+      },
+      {
+        "rule_type": "FAMILY_SIZE",
+        "operator": "<=",
+        "value": 7,
+        "rule_expression": "family_size <= 7",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "DISTRICT",
+        "operator": "=",
+        "value": "JAIPUR",
+        "rule_expression": "district == 'JAIPUR'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_377",
+    "scheme_code": "FOOD_377",
+    "scheme_name": "Antyodaya Food Guarantee Program",
+    "scheme_category": "FOOD",
+    "department": "Food & Civil Supplies",
+    "natural_language_criteria": "Under this program, families holding AAY ration cards receive 35 kg of rice each month. The scheme is targeted at the poorest households in Ajmer district.",
+    "extracted_rules": [
+      {
+        "rule_type": "RATION_CARD",
+        "operator": "=",
+        "value": "AAY",
+        "rule_expression": "ration_card == 'AAY'",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "DISTRICT",
+        "operator": "=",
+        "value": "AJMER",
+        "rule_expression": "district == 'AJMER'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_378",
+    "scheme_code": "FOOD_378",
+    "scheme_name": "SC/ST Community Nutrition Program",
+    "scheme_category": "FOOD",
+    "department": "Food & Civil Supplies",
+    "natural_language_criteria": "Ensures distribution of subsidized cereals and pulses to Scheduled Caste and Scheduled Tribe families with valid BPL ration cards in rural Rajasthan blocks.",
+    "extracted_rules": [
+      {
+        "rule_type": "CATEGORY",
+        "operator": "IN",
+        "value": [
+          "SC",
+          "ST"
+        ],
+        "rule_expression": "category IN ['SC','ST']",
+        "confidence": 0.93
+      },
+      {
+        "rule_type": "RATION_CARD",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "ration_card == 'BPL'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_379",
+    "scheme_code": "FOOD_379",
+    "scheme_name": "Urban Food Safety Assistance Scheme",
+    "scheme_category": "FOOD",
+    "department": "Food & Civil Supplies",
+    "natural_language_criteria": "Provides monthly ration supplies to low-income households with white ration cards in the districts of Kota and Bundi. Family size should not exceed 6.",
+    "extracted_rules": [
+      {
+        "rule_type": "RATION_CARD",
+        "operator": "=",
+        "value": "WHITE",
+        "rule_expression": "ration_card == 'WHITE'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "DISTRICT",
+        "operator": "IN",
+        "value": [
+          "KOTA",
+          "BUNDI"
+        ],
+        "rule_expression": "district IN ['KOTA','BUNDI']",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "FAMILY_SIZE",
+        "operator": "<=",
+        "value": 6,
+        "rule_expression": "family_size <= 6",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_380",
+    "scheme_code": "FOOD_380",
+    "scheme_name": "Rural Gramin Annapurna Yojana",
+    "scheme_category": "FOOD",
+    "department": "Food & Civil Supplies",
+    "natural_language_criteria": "Covers Below Poverty Line households aged above 65 in rural areas. Ration entitlement includes free 10 kg rice per member for registered BPL families.",
+    "extracted_rules": [
+      {
+        "rule_type": "RATION_CARD",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "ration_card == 'BPL'",
+        "confidence": 0.93
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_381",
+    "scheme_code": "FOOD_381",
+    "scheme_name": "Women and Child Nutritional Support Plan",
+    "scheme_category": "FOOD",
+    "department": "Food & Civil Supplies",
+    "natural_language_criteria": "Provides nutritional ration kits for pregnant women and children below 14 years. Eligible if household income is under BPL norms with ration card valid in Bhilwara district.",
+    "extracted_rules": [
+      {
+        "rule_type": "DISTRICT",
+        "operator": "=",
+        "value": "BHILWARA",
+        "rule_expression": "district == 'BHILWARA'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_382",
+    "scheme_code": "FOOD_382",
+    "scheme_name": "PM National Ration Integration Scheme",
+    "scheme_category": "FOOD",
+    "department": "Food & Civil Supplies",
+    "natural_language_criteria": "Ensures ration portability for BPL and AAY ration cardholders across all Rajasthan blocks. Family size should not exceed 8 members.",
+    "extracted_rules": [
+      {
+        "rule_type": "RATION_CARD",
+        "operator": "IN",
+        "value": [
+          "BPL",
+          "AAY"
+        ],
+        "rule_expression": "ration_card IN ['BPL','AAY']",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "FAMILY_SIZE",
+        "operator": "<=",
+        "value": 8,
+        "rule_expression": "family_size <= 8",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_383",
+    "scheme_code": "FOOD_383",
+    "scheme_name": "District Grain Bank Project",
+    "scheme_category": "FOOD",
+    "department": "Food & Civil Supplies",
+    "natural_language_criteria": "Rations are distributed from local grain banks to Below Poverty Line families in drought-affected districts such as Barmer and Jaisalmer.",
+    "extracted_rules": [
+      {
+        "rule_type": "DISTRICT",
+        "operator": "IN",
+        "value": [
+          "BARMER",
+          "JAISALMER"
+        ],
+        "rule_expression": "district IN ['BARMER','JAISALMER']",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_384",
+    "scheme_code": "FOOD_384",
+    "scheme_name": "Special Nutrition for Tribal Blocks",
+    "scheme_category": "FOOD",
+    "department": "Food & Civil Supplies",
+    "natural_language_criteria": "Targets ST community residents in specific tribal blocks like Kushalgarh and Kherwara. Only families holding valid BPL ration cards are eligible.",
+    "extracted_rules": [
+      {
+        "rule_type": "BLOCK",
+        "operator": "IN",
+        "value": [
+          "KUSHALGARH",
+          "KHERWARA"
+        ],
+        "rule_expression": "block IN ['KUSHALGARH','KHERWARA']",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "CATEGORY",
+        "operator": "=",
+        "value": "ST",
+        "rule_expression": "category == 'ST'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "RATION_CARD",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "ration_card == 'BPL'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_385",
+    "scheme_code": "FOOD_385",
+    "scheme_name": "EWS Food Entitlement Program",
+    "scheme_category": "FOOD",
+    "department": "Food & Civil Supplies",
+    "natural_language_criteria": "For families classified under Economically Weaker Sections possessing valid EWS ration cards. Applicable to districts of Alwar and Sikar.",
+    "extracted_rules": [
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "EWS",
+        "rule_expression": "income_group == 'EWS'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "DISTRICT",
+        "operator": "IN",
+        "value": [
+          "ALWAR",
+          "SIKAR"
+        ],
+        "rule_expression": "district IN ['ALWAR','SIKAR']",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_386",
+    "scheme_code": "FOOD_386",
+    "scheme_name": "Mother and Infant Meal Scheme",
+    "scheme_category": "FOOD",
+    "department": "Food & Civil Supplies",
+    "natural_language_criteria": "Provides supplementary nutritional meals to pregnant and lactating women in BPL families. The scheme is active in the Tonk and Sawai Madhopur blocks.",
+    "extracted_rules": [
+      {
+        "rule_type": "BLOCK",
+        "operator": "IN",
+        "value": [
+          "TONK",
+          "SAWAI_MADHOPUR"
+        ],
+        "rule_expression": "block IN ['TONK','SAWAI_MADHOPUR']",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "RATION_CARD",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "ration_card == 'BPL'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_387",
+    "scheme_code": "FOOD_387",
+    "scheme_name": "Urban Antyodaya Kitchen Program",
+    "scheme_category": "FOOD",
+    "department": "Food & Civil Supplies",
+    "natural_language_criteria": "Provides cooked meals to poor families in urban areas under AAY ration category. Available across all city municipal blocks.",
+    "extracted_rules": [
+      {
+        "rule_type": "RATION_CARD",
+        "operator": "=",
+        "value": "AAY",
+        "rule_expression": "ration_card == 'AAY'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_388",
+    "scheme_code": "FOOD_388",
+    "scheme_name": "Integrated Tribal Food Safety Scheme",
+    "scheme_category": "FOOD",
+    "department": "Food & Civil Supplies",
+    "natural_language_criteria": "Delivers food grains and edible oils to ST households in selected tribal blocks of southern Rajasthan. Families must hold valid ration cards.",
+    "extracted_rules": [
+      {
+        "rule_type": "CATEGORY",
+        "operator": "=",
+        "value": "ST",
+        "rule_expression": "category == 'ST'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "RATION_CARD",
+        "operator": "=",
+        "value": true,
+        "rule_expression": "has_ration_card == true",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_389",
+    "scheme_code": "FOOD_389",
+    "scheme_name": "Senior Citizen Meal Subsidy Plan",
+    "scheme_category": "FOOD",
+    "department": "Food & Civil Supplies",
+    "natural_language_criteria": "Supports elderly individuals from Below Poverty Line families in providing subsidized rations. Available for family size less than or equal to four.",
+    "extracted_rules": [
+      {
+        "rule_type": "FAMILY_SIZE",
+        "operator": "<=",
+        "value": 4,
+        "rule_expression": "family_size <= 4",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_390",
+    "scheme_code": "FOOD_390",
+    "scheme_name": "National Unified Ration Scheme",
+    "scheme_category": "FOOD",
+    "department": "Food & Civil Supplies",
+    "natural_language_criteria": "Enables inter-state ration distribution portability for all approved cardholders. Includes both APL and BPL beneficiaries under One Nation One Ration system.",
+    "extracted_rules": [
+      {
+        "rule_type": "RATION_CARD",
+        "operator": "IN",
+        "value": [
+          "APL",
+          "BPL"
+        ],
+        "rule_expression": "ration_card IN ['APL','BPL']",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_391",
+    "scheme_code": "FOOD_391",
+    "scheme_name": "Rajasthan Community Kitchen Mission",
+    "scheme_category": "FOOD",
+    "department": "Food & Civil Supplies",
+    "natural_language_criteria": "Provides one-time subsidized cooked meals through public kitchens in selected rural blocks for BPL and AAY families.",
+    "extracted_rules": [
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "IN",
+        "value": [
+          "BPL",
+          "AAY"
+        ],
+        "rule_expression": "income_group IN ['BPL','AAY']",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_392",
+    "scheme_code": "FOOD_392",
+    "scheme_name": "Special Minority Nutrition Assistance",
+    "scheme_category": "FOOD",
+    "department": "Food & Civil Supplies",
+    "natural_language_criteria": "Ensures distribution of additional food items for registered minority community families under valid ration cards with family size not exceeding five.",
+    "extracted_rules": [
+      {
+        "rule_type": "CATEGORY",
+        "operator": "=",
+        "value": "MINORITY",
+        "rule_expression": "category == 'MINORITY'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "FAMILY_SIZE",
+        "operator": "<=",
+        "value": 5,
+        "rule_expression": "family_size <= 5",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_393",
+    "scheme_code": "FOOD_393",
+    "scheme_name": "Food Distribution for Disabled Individuals",
+    "scheme_category": "FOOD",
+    "department": "Food & Civil Supplies",
+    "natural_language_criteria": "Offers doorstep ration delivery to individuals with disabilities holding valid BPL cards in select Rajasthan districts.",
+    "extracted_rules": [
+      {
+        "rule_type": "DISABILITY",
+        "operator": "=",
+        "value": true,
+        "rule_expression": "is_disabled == true",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "RATION_CARD",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "ration_card == 'BPL'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_394",
+    "scheme_code": "FOOD_394",
+    "scheme_name": "Urban Family Grain Coupon Plan",
+    "scheme_category": "FOOD",
+    "department": "Food & Civil Supplies",
+    "natural_language_criteria": "Issues digital grain coupons to urban families holding valid white ration cards. Allows cashless collection of subsidized grains.",
+    "extracted_rules": [
+      {
+        "rule_type": "RATION_CARD",
+        "operator": "=",
+        "value": "WHITE",
+        "rule_expression": "ration_card == 'WHITE'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_395",
+    "scheme_code": "FOOD_395",
+    "scheme_name": "PM Tribal Block Nutrition Mission",
+    "scheme_category": "FOOD",
+    "department": "Food & Civil Supplies",
+    "natural_language_criteria": "Provides supplementary ration kits in tribal blocks for ST households with up to 6 members. Applicants should hold valid BPL ration cards.",
+    "extracted_rules": [
+      {
+        "rule_type": "BLOCK",
+        "operator": "IN",
+        "value": [
+          "DHARIAWAD",
+          "SALUMBER"
+        ],
+        "rule_expression": "block IN ['DHARIAWAD','SALUMBER']",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "CATEGORY",
+        "operator": "=",
+        "value": "ST",
+        "rule_expression": "category == 'ST'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "FAMILY_SIZE",
+        "operator": "<=",
+        "value": 6,
+        "rule_expression": "family_size <= 6",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_396",
+    "scheme_code": "FOOD_396",
+    "scheme_name": "Midday Family Grain Support",
+    "scheme_category": "FOOD",
+    "department": "Food & Civil Supplies",
+    "natural_language_criteria": "Offers monthly grain packages for families with schoolchildren from Below Poverty Line households. Only applicable with existing BPL ration card.",
+    "extracted_rules": [
+      {
+        "rule_type": "RATION_CARD",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "ration_card == 'BPL'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_397",
+    "scheme_code": "FOOD_397",
+    "scheme_name": "Rajasthan Nutrition for All Mission",
+    "scheme_category": "FOOD",
+    "department": "Food & Civil Supplies",
+    "natural_language_criteria": "Ensures regular food supply to poor and vulnerable families in urban and rural blocks. Supported through public distribution system for BPL ration holders.",
+    "extracted_rules": [
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_398",
+    "scheme_code": "FOOD_398",
+    "scheme_name": "Elderly BPL Ration Card Assistance",
+    "scheme_category": "FOOD",
+    "department": "Food & Civil Supplies",
+    "natural_language_criteria": "Distributes food grains at subsidized rates to elderly members of BPL households. Applicable for families with members aged above 60 years.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": ">=",
+        "value": 60,
+        "rule_expression": "age >= 60",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "RATION_CARD",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "ration_card == 'BPL'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_399",
+    "scheme_code": "FOOD_399",
+    "scheme_name": "National Food Safety Net Program",
+    "scheme_category": "FOOD",
+    "department": "Food & Civil Supplies",
+    "natural_language_criteria": "Offers food security benefits for Below Poverty Line households across all districts. Access only through valid ration card registration.",
+    "extracted_rules": [
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "RATION_CARD",
+        "operator": "=",
+        "value": true,
+        "rule_expression": "has_ration_card == true",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_400",
+    "scheme_code": "FOOD_400",
+    "scheme_name": "Low-Income Ration Subsidy Scheme",
+    "scheme_category": "FOOD",
+    "department": "Food & Civil Supplies",
+    "natural_language_criteria": "Provides ration coupons to low-income groups holding white or BPL cards. Family size must not exceed 10 members under eligibility rules.",
+    "extracted_rules": [
+      {
+        "rule_type": "RATION_CARD",
+        "operator": "IN",
+        "value": [
+          "WHITE",
+          "BPL"
+        ],
+        "rule_expression": "ration_card IN ['WHITE','BPL']",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "FAMILY_SIZE",
+        "operator": "<=",
+        "value": 10,
+        "rule_expression": "family_size <= 10",
+        "confidence": 0.9
+      }
+    ]
+  }
+]

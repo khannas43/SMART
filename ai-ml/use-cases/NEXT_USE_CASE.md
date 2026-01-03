@@ -14,7 +14,7 @@
 - ✅ Master data (100K citizens loaded)
 
 ### Remaining (Can be done later)
-- ⏳ FastAPI integration
+- ⏳ Spring Boot REST API implementation (if not already complete)
 - ⏳ Conflict reconciliation training
 - ⏳ Best truth selection implementation
 - ⏳ Production deployment

@@ -1,0 +1,19 @@
+{
+  "search": {
+    "title": "Search Results",
+    "placeholder": "Search schemes, applications, documents...",
+    "noResults": "No results found",
+    "resultsCount": "Found {{count}} results",
+    "enterQuery": "Enter at least 2 characters to search",
+    "all": "All",
+    "schemes": "Schemes",
+    "applications": "Applications",
+    "documents": "Documents",
+    "viewAll": "View all {{count}} results",
+    "errors": {
+      "notAuthenticated": "Please log in to search applications and documents",
+      "searchFailed": "Search failed. Please try again."
+    }
+  }
+}
+

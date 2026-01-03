@@ -1,0 +1,343 @@
+[
+  {
+    "scheme_id": "SCHEME_001",
+    "scheme_code": "PENSION_001",
+    "scheme_name": "Indira Gandhi National Old Age Pension Scheme",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "This scheme offers financial assistance to senior citizens aged 60 years and above belonging to Below Poverty Line (BPL) households. Beneficiaries must be permanent residents of Rajasthan and not receiving any other central pension benefits.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": ">=", "value": 60, "rule_expression": "age >= 60", "rule_type_category": "ELIGIBILITY", "confidence": 0.95},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "rule_type_category": "SOCIOECONOMIC", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "RAJASTHAN", "rule_expression": "state == 'RAJASTHAN'", "rule_type_category": "GEOGRAPHIC", "confidence": 0.92},
+      {"rule_type": "PRIOR_PARTICIPATION", "operator": "=", "value": "false", "rule_expression": "is_existing_pensioner == false", "rule_type_category": "EXCLUSION", "confidence": 0.88}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_002",
+    "scheme_code": "PENSION_002",
+    "scheme_name": "Widow Pension Yojana",
+    "scheme_category": "PENSION",
+    "department": "Women & Child Development",
+    "natural_language_criteria": "Provides monthly pension to widows aged between 40 and 70 years from Below Poverty Line families. The applicant must be a resident of Gujarat and not availing similar benefits under other schemes.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": ">=", "value": 40, "rule_expression": "age >= 40", "rule_type_category": "ELIGIBILITY", "confidence": 0.91},
+      {"rule_type": "AGE", "operator": "<=", "value": 70, "rule_expression": "age <= 70", "rule_type_category": "ELIGIBILITY", "confidence": 0.91},
+      {"rule_type": "MARITAL_STATUS", "operator": "=", "value": "WIDOWED", "rule_expression": "marital_status == 'WIDOWED'", "rule_type_category": "DEMOGRAPHIC", "confidence": 0.95},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "rule_type_category": "SOCIOECONOMIC", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "GUJARAT", "rule_expression": "state == 'GUJARAT'", "rule_type_category": "GEOGRAPHIC", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_003",
+    "scheme_code": "PENSION_003",
+    "scheme_name": "Senior Citizen Assistance Scheme",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "Financial support for citizens aged 65 years and above from Below Poverty Line families in Madhya Pradesh. Applicants with other government pensions are ineligible.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": ">=", "value": 65, "rule_expression": "age >= 65", "rule_type_category": "ELIGIBILITY", "confidence": 0.94},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "rule_type_category": "SOCIOECONOMIC", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "MADHYA_PRADESH", "rule_expression": "state == 'MADHYA_PRADESH'", "rule_type_category": "GEOGRAPHIC", "confidence": 0.89},
+      {"rule_type": "PRIOR_PARTICIPATION", "operator": "=", "value": "false", "rule_expression": "is_existing_pensioner == false", "rule_type_category": "EXCLUSION", "confidence": 0.87}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_004",
+    "scheme_code": "PENSION_004",
+    "scheme_name": "Divyang Pension Scheme",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "Provides pension to differently-abled individuals aged 18 years and above having at least 40% certified disability and belonging to Below Poverty Line families in Rajasthan.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": ">=", "value": 18, "rule_expression": "age >= 18", "rule_type_category": "ELIGIBILITY", "confidence": 0.93},
+      {"rule_type": "DISABILITY", "operator": ">=", "value": 40, "rule_expression": "disability_percent >= 40", "rule_type_category": "HEALTH", "confidence": 0.95},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "rule_type_category": "SOCIOECONOMIC", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "RAJASTHAN", "rule_expression": "state == 'RAJASTHAN'", "rule_type_category": "GEOGRAPHIC", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_005",
+    "scheme_code": "PENSION_005",
+    "scheme_name": "Samajik Suraksha Vridh Pension",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "For elderly persons aged 70 and above in Madhya Pradesh whose family annual income is below the poverty line threshold. No other pension benefits should be active.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": ">=", "value": 70, "rule_expression": "age >= 70", "rule_type_category": "ELIGIBILITY", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "rule_type_category": "SOCIOECONOMIC", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "MADHYA_PRADESH", "rule_expression": "state == 'MADHYA_PRADESH'", "rule_type_category": "GEOGRAPHIC", "confidence": 0.9},
+      {"rule_type": "PRIOR_PARTICIPATION", "operator": "=", "value": "false", "rule_expression": "is_existing_pensioner == false", "rule_type_category": "EXCLUSION", "confidence": 0.88}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_006",
+    "scheme_code": "PENSION_006",
+    "scheme_name": "National Widow Pension Scheme",
+    "scheme_category": "PENSION",
+    "department": "Women & Child Development",
+    "natural_language_criteria": "Supports widows aged between 18 and 59 years from Below Poverty Line households residing in Rajasthan. Not applicable to those already receiving family pensions.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": ">=", "value": 18, "rule_expression": "age >= 18", "rule_type_category": "ELIGIBILITY", "confidence": 0.92},
+      {"rule_type": "AGE", "operator": "<=", "value": 59, "rule_expression": "age <= 59", "rule_type_category": "ELIGIBILITY", "confidence": 0.92},
+      {"rule_type": "MARITAL_STATUS", "operator": "=", "value": "WIDOWED", "rule_expression": "marital_status == 'WIDOWED'", "rule_type_category": "DEMOGRAPHIC", "confidence": 0.94},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "rule_type_category": "SOCIOECONOMIC", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "RAJASTHAN", "rule_expression": "state == 'RAJASTHAN'", "rule_type_category": "GEOGRAPHIC", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_007",
+    "scheme_code": "PENSION_007",
+    "scheme_name": "Farmer Senior Pension Assistance",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "Financial relief for farmers aged 65 and above in Gujarat having annual income under the APL threshold. Applicants must not avail any central or state government pension.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": ">=", "value": 65, "rule_expression": "age >= 65", "rule_type_category": "ELIGIBILITY", "confidence": 0.93},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "APL", "rule_expression": "income_group == 'APL'", "rule_type_category": "SOCIOECONOMIC", "confidence": 0.82},
+      {"rule_type": "STATE", "operator": "=", "value": "GUJARAT", "rule_expression": "state == 'GUJARAT'", "rule_type_category": "GEOGRAPHIC", "confidence": 0.9},
+      {"rule_type": "PRIOR_PARTICIPATION", "operator": "=", "value": "false", "rule_expression": "is_existing_pensioner == false", "rule_type_category": "EXCLUSION", "confidence": 0.86}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_008",
+    "scheme_code": "PENSION_008",
+    "scheme_name": "Elderly Women Support Scheme",
+    "scheme_category": "PENSION",
+    "department": "Women & Child Development",
+    "natural_language_criteria": "Designed for women aged 65 years and above living alone or widowed in Madhya Pradesh. Priority given to those from BPL families with no adult children support.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": ">=", "value": 65, "rule_expression": "age >= 65", "rule_type_category": "ELIGIBILITY", "confidence": 0.93},
+      {"rule_type": "GENDER", "operator": "=", "value": "FEMALE", "rule_expression": "gender == 'FEMALE'", "rule_type_category": "DEMOGRAPHIC", "confidence": 0.94},
+      {"rule_type": "MARITAL_STATUS", "operator": "=", "value": "WIDOWED", "rule_expression": "marital_status == 'WIDOWED'", "rule_type_category": "DEMOGRAPHIC", "confidence": 0.91},
+      {"rule_type": "STATE", "operator": "=", "value": "MADHYA_PRADESH", "rule_expression": "state == 'MADHYA_PRADESH'", "rule_type_category": "GEOGRAPHIC", "confidence": 0.89}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_009",
+    "scheme_code": "PENSION_009",
+    "scheme_name": "Disabled Senior Pension Yojana",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "Applicable to citizens aged 60 years or older with a minimum of 40% disability and belonging to Below Poverty Line households in Rajasthan.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": ">=", "value": 60, "rule_expression": "age >= 60", "rule_type_category": "ELIGIBILITY", "confidence": 0.94},
+      {"rule_type": "DISABILITY", "operator": ">=", "value": 40, "rule_expression": "disability_percent >= 40", "rule_type_category": "HEALTH", "confidence": 0.95},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "rule_type_category": "SOCIOECONOMIC", "confidence": 0.91},
+      {"rule_type": "STATE", "operator": "=", "value": "RAJASTHAN", "rule_expression": "state == 'RAJASTHAN'", "rule_type_category": "GEOGRAPHIC", "confidence": 0.89}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_010",
+    "scheme_code": "PENSION_010",
+    "scheme_name": "Rajasthan Old Age Assistance",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "For Rajasthan residents aged 75 and above with annual income less than the state-defined BPL threshold. Must not be drawing any similar benefit elsewhere.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": ">=", "value": 75, "rule_expression": "age >= 75", "rule_type_category": "ELIGIBILITY", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "rule_type_category": "SOCIOECONOMIC", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "RAJASTHAN", "rule_expression": "state == 'RAJASTHAN'", "rule_type_category": "GEOGRAPHIC", "confidence": 0.92}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_011",
+    "scheme_code": "PENSION_011",
+    "scheme_name": "Mukhya Mantri Vidhwa Aarthik Sahay Yojana",
+    "scheme_category": "PENSION",
+    "department": "Women & Child Development",
+    "natural_language_criteria": "Provides monthly income support to widowed women aged above 40 years residing in Madhya Pradesh. Must not benefit from any central widow scheme.",
+    "extracted_rules": [
+      {"rule_type": "MARITAL_STATUS", "operator": "=", "value": "WIDOWED", "rule_expression": "marital_status == 'WIDOWED'", "rule_type_category": "DEMOGRAPHIC", "confidence": 0.95},
+      {"rule_type": "AGE", "operator": ">=", "value": 40, "rule_expression": "age >= 40", "rule_type_category": "ELIGIBILITY", "confidence": 0.92},
+      {"rule_type": "STATE", "operator": "=", "value": "MADHYA_PRADESH", "rule_expression": "state == 'MADHYA_PRADESH'", "rule_type_category": "GEOGRAPHIC", "confidence": 0.89}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_012",
+    "scheme_code": "PENSION_012",
+    "scheme_name": "Rajasthan Divyang Arthik Sahay",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "Offers monthly assistance to differently-abled residents of Rajasthan with 50% or more disability. Beneficiaries should be from economically weaker sections.",
+    "extracted_rules": [
+      {"rule_type": "DISABILITY", "operator": ">=", "value": 50, "rule_expression": "disability_percent >= 50", "rule_type_category": "HEALTH", "confidence": 0.94},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "rule_type_category": "SOCIOECONOMIC", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "RAJASTHAN", "rule_expression": "state == 'RAJASTHAN'", "rule_type_category": "GEOGRAPHIC", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_013",
+    "scheme_code": "PENSION_013",
+    "scheme_name": "Kisan Pension Sahayata Yojana",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "Pension for farmers aged 60 years and above in Madhya Pradesh belonging to BPL or marginal farmer categories.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": ">=", "value": 60, "rule_expression": "age >= 60", "rule_type_category": "ELIGIBILITY", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "rule_type_category": "SOCIOECONOMIC", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "MADHYA_PRADESH", "rule_expression": "state == 'MADHYA_PRADESH'", "rule_type_category": "GEOGRAPHIC", "confidence": 0.89}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_014",
+    "scheme_code": "PENSION_014",
+    "scheme_name": "National Disability Pension Scheme",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "Citizens aged 18 to 79 years from BPL families having at least 40% certified disability are eligible. Covers all states including Gujarat.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": ">=", "value": 18, "rule_expression": "age >= 18", "rule_type_category": "ELIGIBILITY", "confidence": 0.9},
+      {"rule_type": "AGE", "operator": "<=", "value": 79, "rule_expression": "age <= 79", "rule_type_category": "ELIGIBILITY", "confidence": 0.9},
+      {"rule_type": "DISABILITY", "operator": ">=", "value": 40, "rule_expression": "disability_percent >= 40", "rule_type_category": "HEALTH", "confidence": 0.95},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "rule_type_category": "SOCIOECONOMIC", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_015",
+    "scheme_code": "PENSION_015",
+    "scheme_name": "Old Age Pension for Desert Areas",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "For elderly residents aged 65 or above in desert regions of Rajasthan. Income limit applicable as per BPL norms.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": ">=", "value": 65, "rule_expression": "age >= 65", "rule_type_category": "ELIGIBILITY", "confidence": 0.91},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "rule_type_category": "SOCIOECONOMIC", "confidence": 0.92},
+      {"rule_type": "STATE", "operator": "=", "value": "RAJASTHAN", "rule_expression": "state == 'RAJASTHAN'", "rule_type_category": "GEOGRAPHIC", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_016",
+    "scheme_code": "PENSION_016",
+    "scheme_name": "Vrudh Sahay Pension Gujarat",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "Targets senior citizens over 70 years in Gujarat belonging to Below Poverty Line families. Not for persons availing government salary-related pensions.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": ">=", "value": 70, "rule_expression": "age >= 70", "rule_type_category": "ELIGIBILITY", "confidence": 0.91},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "rule_type_category": "SOCIOECONOMIC", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "GUJARAT", "rule_expression": "state == 'GUJARAT'", "rule_type_category": "GEOGRAPHIC", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_017",
+    "scheme_code": "PENSION_017",
+    "scheme_name": "Single Women Pension Scheme",
+    "scheme_category": "PENSION",
+    "department": "Women & Child Development",
+    "natural_language_criteria": "Assists single or widowed women aged between 40 and 60 years from BPL families in Rajasthan. Applicants should not be employed in government service.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": ">=", "value": 40, "rule_expression": "age >= 40", "rule_type_category": "ELIGIBILITY", "confidence": 0.92},
+      {"rule_type": "AGE", "operator": "<=", "value": 60, "rule_expression": "age <= 60", "rule_type_category": "ELIGIBILITY", "confidence": 0.92},
+      {"rule_type": "GENDER", "operator": "=", "value": "FEMALE", "rule_expression": "gender == 'FEMALE'", "rule_type_category": "DEMOGRAPHIC", "confidence": 0.94},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "rule_type_category": "SOCIOECONOMIC", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "RAJASTHAN", "rule_expression": "state == 'RAJASTHAN'", "rule_type_category": "GEOGRAPHIC", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_018",
+    "scheme_code": "PENSION_018",
+    "scheme_name": "Viklang Nagrik Sahay Yojana",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "Assistance for disabled citizens with over 60% disability belonging to BPL groups in Madhya Pradesh.",
+    "extracted_rules": [
+      {"rule_type": "DISABILITY", "operator": ">=", "value": 60, "rule_expression": "disability_percent >= 60", "rule_type_category": "HEALTH", "confidence": 0.96},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "rule_type_category": "SOCIOECONOMIC", "confidence": 0.91},
+      {"rule_type": "STATE", "operator": "=", "value": "MADHYA_PRADESH", "rule_expression": "state == 'MADHYA_PRADESH'", "rule_type_category": "GEOGRAPHIC", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_019",
+    "scheme_code": "PENSION_019",
+    "scheme_name": "Gramin Vridh Pension Scheme",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "Provides old age pension to elderly rural residents aged 60 years and above from Below Poverty Line households in Gujarat.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": ">=", "value": 60, "rule_expression": "age >= 60", "rule_type_category": "ELIGIBILITY", "confidence": 0.91},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "rule_type_category": "SOCIOECONOMIC", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "GUJARAT", "rule_expression": "state == 'GUJARAT'", "rule_type_category": "GEOGRAPHIC", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_020",
+    "scheme_code": "PENSION_020",
+    "scheme_name": "Widow Remarriage Welfare Pension",
+    "scheme_category": "PENSION",
+    "department": "Women & Child Development",
+    "natural_language_criteria": "Supports widows who have remarried and satisfy Below Poverty Line criteria in Madhya Pradesh. Applicable for women between 25 and 50 years.",
+    "extracted_rules": [
+      {"rule_type": "MARITAL_STATUS", "operator": "=", "value": "WIDOWED", "rule_expression": "marital_status == 'WIDOWED'", "rule_type_category": "DEMOGRAPHIC", "confidence": 0.93},
+      {"rule_type": "AGE", "operator": ">=", "value": 25, "rule_expression": "age >= 25", "rule_type_category": "ELIGIBILITY", "confidence": 0.9},
+      {"rule_type": "AGE", "operator": "<=", "value": 50, "rule_expression": "age <= 50", "rule_type_category": "ELIGIBILITY", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "MADHYA_PRADESH", "rule_expression": "state == 'MADHYA_PRADESH'", "rule_type_category": "GEOGRAPHIC", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_021",
+    "scheme_code": "PENSION_021",
+    "scheme_name": "Senior Women Citizen Scheme",
+    "scheme_category": "PENSION",
+    "department": "Women & Child Development",
+    "natural_language_criteria": "Provides monthly pension to women aged 70 years and above from low-income families in Rajasthan. Not eligible for women drawing other state pensions.",
+    "extracted_rules": [
+      {"rule_type": "GENDER", "operator": "=", "value": "FEMALE", "rule_expression": "gender == 'FEMALE'", "rule_type_category": "DEMOGRAPHIC", "confidence": 0.95},
+      {"rule_type": "AGE", "operator": ">=", "value": 70, "rule_expression": "age >= 70", "rule_type_category": "ELIGIBILITY", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "RAJASTHAN", "rule_expression": "state == 'RAJASTHAN'", "rule_type_category": "GEOGRAPHIC", "confidence": 0.89}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_022",
+    "scheme_code": "PENSION_022",
+    "scheme_name": "Seva Pension Yojana",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "For citizens aged 80 or above who have no source of income and reside in Gujarat. Not available to recipients of central pensions.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": ">=", "value": 80, "rule_expression": "age >= 80", "rule_type_category": "ELIGIBILITY", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "GUJARAT", "rule_expression": "state == 'GUJARAT'", "rule_type_category": "GEOGRAPHIC", "confidence": 0.9},
+      {"rule_type": "PRIOR_PARTICIPATION", "operator": "=", "value": "false", "rule_expression": "is_existing_pensioner == false", "rule_type_category": "EXCLUSION", "confidence": 0.87}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_023",
+    "scheme_code": "PENSION_023",
+    "scheme_name": "Senior Artisan Pension Scheme",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "Targets artisans aged 60 years and above belonging to economically weaker sections in Madhya Pradesh. Not for those availing commercial or industrial pensions.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": ">=", "value": 60, "rule_expression": "age >= 60", "rule_type_category": "ELIGIBILITY", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "rule_type_category": "SOCIOECONOMIC", "confidence": 0.89},
+      {"rule_type": "STATE", "operator": "=", "value": "MADHYA_PRADESH", "rule_expression": "state == 'MADHYA_PRADESH'", "rule_type_category": "GEOGRAPHIC", "confidence": 0.89}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_024",
+    "scheme_code": "PENSION_024",
+    "scheme_name": "Widow Empowerment Pension Yojana",
+    "scheme_category": "PENSION",
+    "department": "Women & Child Development",
+    "natural_language_criteria": "Empowers widows above 45 years of age in Gujarat by providing monthly financial support. Only for women from Below Poverty Line households.",
+    "extracted_rules": [
+      {"rule_type": "MARITAL_STATUS", "operator": "=", "value": "WIDOWED", "rule_expression": "marital_status == 'WIDOWED'", "rule_type_category": "DEMOGRAPHIC", "confidence": 0.94},
+      {"rule_type": "AGE", "operator": ">=", "value": 45, "rule_expression": "age >= 45", "rule_type_category": "ELIGIBILITY", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "rule_type_category": "SOCIOECONOMIC", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "GUJARAT", "rule_expression": "state == 'GUJARAT'", "rule_type_category": "GEOGRAPHIC", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_025",
+    "scheme_code": "PENSION_025",
+    "scheme_name": "National Senior Citizen Pension",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "Citizens aged 60 years and above, belonging to Below Poverty Line category and not receiving any other pension benefits, are eligible across participating states.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": ">=", "value": 60, "rule_expression": "age >= 60", "rule_type_category": "ELIGIBILITY", "confidence": 0.95},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "rule_type_category": "SOCIOECONOMIC", "confidence": 0.9},
+      {"rule_type": "PRIOR_PARTICIPATION", "operator": "=", "value": "false", "rule_expression": "is_existing_pensioner == false", "rule_type_category": "EXCLUSION", "confidence": 0.88}
+    ]
+  }
+]

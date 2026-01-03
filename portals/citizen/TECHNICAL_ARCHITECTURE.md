@@ -622,3 +622,316 @@ Citizen (1) ────< (N) Payment
    - Load testing
    - Stress testing
 
+## Internationalization (i18n)
+
+### Overview
+
+The Citizen Portal supports **English (en)** and **Hindi (hi)** languages. All UI text, error messages, notifications, and documents must be available in both languages.
+
+### Frontend i18n Implementation
+
+**Library:** `react-i18next`
+
+**Configuration:**
+```typescript
+// src/i18n/config.ts
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import en from './locales/en/common.json';
+import hi from './locales/hi/common.json';
+
+i18n
+  .use(initReactI18next)
+  .init({
+    resources: {
+      en: { translation: en },
+      hi: { translation: hi }
+    },
+    lng: 'en', // default language
+    fallbackLng: 'en',
+    interpolation: {
+      escapeValue: false
+    }
+  });
+```
+
+**Language Detection:**
+- Browser language preference
+- User preference (localStorage)
+- Default: English
+
+**Language Switcher Component:**
+```typescript
+// Located in header/navigation
+<LanguageSwitcher>
+  <option value="en">English</option>
+  <option value="hi">हिंदी</option>
+</LanguageSwitcher>
+```
+
+### Translation File Structure
+
+```
+i18n/locales/
+├── en/
+│   ├── common.json       # Common terms, buttons, labels, errors
+│   ├── auth.json         # Authentication screens
+│   ├── profile.json      # Profile screens
+│   ├── schemes.json      # Scheme discovery screens
+│   ├── applications.json # Application screens
+│   ├── documents.json    # Document screens
+│   ├── benefits.json     # Benefits screens
+│   ├── services.json     # Service delivery screens
+│   ├── settings.json     # Settings screens
+│   └── help.json         # Help & support screens
+└── hi/
+    └── [same structure]
+```
+
+### Hindi Font Support
+
+**Recommended Font:** Noto Sans Devanagari (Google Fonts)
+
+**Implementation:**
+```css
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap');
+
+body {
+  font-family: 'Noto Sans Devanagari', 'Mangal', 'Arial Unicode MS', sans-serif;
+}
+```
+
+### Date and Number Formatting
+
+**Date Formatting (Indian Locale):**
+- Format: `DD/MM/YYYY`
+- Library: `date-fns` with locale support
+
+**Number Formatting (Indian Numbering System):**
+- Format: `₹1,23,456.78` (Indian) vs `₹123,456.78` (US)
+- Use: `Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' })`
+
+### Backend i18n Support
+
+**Accept-Language Header:**
+```java
+@RequestHeader(value = "Accept-Language", defaultValue = "en") String lang
+```
+
+**API Response Translation:**
+- Error messages translated based on `Accept-Language` header
+- Content language indicated in response headers
+
+**Email/SMS Templates:**
+- Separate templates for English and Hindi
+- Template selection based on user preference
+
+**PDF/Document Generation:**
+- Hindi font support required
+- Use libraries that support Devanagari script (e.g., iText, PDFKit with font embedding)
+
+### AI/ML Content Translation
+
+**Challenge:** AI-generated content (explanations, recommendations) needs translation
+
+**Strategy:**
+1. Coordinate with AI/ML team for translation strategy
+2. Use translation APIs or services for dynamic content
+3. Cache translated content to avoid repeated translation calls
+
+---
+
+## Progressive Web App (PWA)
+
+### Overview
+
+The Citizen Portal is designed as a **Progressive Web App (PWA)** enabling:
+- Installation on mobile devices (Add to Home Screen)
+- Offline functionality with cached content
+- Native app-like experience
+- Push notifications
+- Background sync
+
+### PWA Manifest
+
+**Location:** `frontend/public/manifest.json`
+
+**Key Configuration:**
+- **Name:** SMART Citizen Portal
+- **Short Name:** SMART Citizen
+- **Start URL:** `/citizen/`
+- **Display Mode:** `standalone`
+- **Theme Color:** `#1976d2`
+- **Background Color:** `#ffffff`
+- **Orientation:** `portrait-primary`
+
+**Icons Required:**
+- 72x72, 96x96, 128x128, 144x144, 152x152, 192x192, 384x384, 512x512
+- Apple touch icon: 180x180
+- Maskable icons: 192x192, 512x512
+
+### Service Worker
+
+**Library:** Workbox (recommended) or custom implementation
+
+**Caching Strategies:**
+1. **Cache First:** Static assets (JS, CSS, images, fonts)
+2. **Network First with Cache Fallback:** API responses
+3. **Stale-While-Revalidate:** Dynamic content
+
+**Service Worker Registration:**
+```typescript
+// src/serviceWorker.ts
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(registration => {
+        console.log('SW registered:', registration);
+      })
+      .catch(error => {
+        console.log('SW registration failed:', error);
+      });
+  });
+}
+```
+
+### Offline Support Strategy
+
+**What Works Offline:**
+- ✅ View previously visited cached pages
+- ✅ View cached scheme details
+- ✅ View cached profile data
+- ✅ View cached application status
+- ✅ View cached documents
+
+**What Requires Online:**
+- ⚠️ Submit new applications
+- ⚠️ Upload documents
+- ⚠️ Make payments
+- ⚠️ Real-time eligibility checks
+- ⚠️ Authentication/login
+
+**Offline Detection:**
+```typescript
+// Detect online/offline status
+window.addEventListener('online', () => {
+  // Show online indicator
+  // Sync queued actions
+});
+
+window.addEventListener('offline', () => {
+  // Show offline indicator
+  // Enable offline mode
+});
+```
+
+### Background Sync
+
+**Use Cases:**
+- Queue form submissions when offline
+- Sync document uploads when connection restored
+- Sync consent submissions
+
+**Implementation:**
+```typescript
+// Register background sync
+navigator.serviceWorker.ready.then(registration => {
+  return registration.sync.register('submit-application');
+});
+```
+
+### Push Notifications
+
+**Use Cases:**
+- Application status updates
+- Payment confirmations
+- Eligibility notifications
+- Deadline reminders
+
+**Implementation:**
+```typescript
+// Request notification permission
+Notification.requestPermission().then(permission => {
+  if (permission === 'granted') {
+    // Register push subscription
+  }
+});
+```
+
+### Installation Prompt
+
+**Trigger Conditions:**
+- User visits portal multiple times
+- User engages with portal (scroll, click, interaction)
+- Not already installed
+
+**Implementation:**
+```typescript
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  // Show install button
+});
+
+// When user clicks install
+installButton.addEventListener('click', () => {
+  deferredPrompt.prompt();
+  deferredPrompt.userChoice.then((choiceResult) => {
+    if (choiceResult.outcome === 'accepted') {
+      console.log('User accepted install');
+    }
+    deferredPrompt = null;
+  });
+});
+```
+
+### Mobile Responsiveness
+
+**Breakpoints:**
+- **Mobile:** < 480px
+- **Tablet:** 480px - 1024px
+- **Desktop:** > 1024px
+
+**Mobile-First Approach:**
+- Design for mobile first, then scale up
+- Touch-friendly targets (minimum 44x44px)
+- Swipe gestures for navigation
+- Pull-to-refresh functionality
+
+**Touch Gestures:**
+- Swipe left/right: Navigation
+- Pull down: Refresh
+- Long press: Context menus
+
+### PWA Performance Targets
+
+**Lighthouse Scores:**
+- PWA: > 90
+- Performance: > 80
+- Accessibility: > 90
+- Best Practices: > 90
+- SEO: > 90
+
+**Bundle Size:**
+- Initial bundle: < 200KB (gzipped)
+- Code splitting by route
+- Lazy loading for images and components
+
+### PWA Testing
+
+**Test Platforms:**
+- Android Chrome
+- iOS Safari
+- Desktop Chrome/Edge
+- Desktop Firefox
+
+**Test Scenarios:**
+- Installation on all platforms
+- Offline functionality
+- Push notifications
+- Background sync
+- Service worker updates
+- Cache invalidation
+

@@ -1,0 +1,807 @@
+[
+  {
+    "scheme_id": "SCHEME_101",
+    "scheme_code": "FINANCIAL_101",
+    "scheme_name": "Pradhan Mantri Jan Dhan Yojana",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "Provides zero-balance bank accounts to citizens aged 18 to 60 with annual income below ₹150,000. Priority given to rural and economically weaker sections.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          60
+        ],
+        "rule_expression": "age >= 18 AND age <= 60",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 150000,
+        "rule_expression": "annual_income <= 150000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "EWS",
+        "rule_expression": "income_group == 'EWS'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_102",
+    "scheme_code": "FINANCIAL_102",
+    "scheme_name": "National Rural Livelihood Mission",
+    "scheme_category": "FINANCIAL",
+    "department": "Rural Development",
+    "natural_language_criteria": "Targets unemployed women aged 18 to 50 belonging to Below Poverty Line families in rural areas. Provides financial assistance and self-employment training.",
+    "extracted_rules": [
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "=",
+        "value": "UNEMPLOYED",
+        "rule_expression": "employment_status == 'UNEMPLOYED'",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "GENDER",
+        "operator": "=",
+        "value": "FEMALE",
+        "rule_expression": "gender == 'FEMALE'",
+        "confidence": 0.96
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          50
+        ],
+        "rule_expression": "age >= 18 AND age <= 50",
+        "confidence": 0.93
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_103",
+    "scheme_code": "FINANCIAL_103",
+    "scheme_name": "Stand Up India Scheme",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "Provides bank loans between ₹1 lakh and ₹10 lakh to women and SC/ST entrepreneurs aged 21 to 55 for setting up new enterprises.",
+    "extracted_rules": [
+      {
+        "rule_type": "CATEGORY",
+        "operator": "IN",
+        "value": [
+          "SC",
+          "ST"
+        ],
+        "rule_expression": "category IN ['SC','ST']",
+        "confidence": 0.94
+      },
+      {
+        "rule_type": "GENDER",
+        "operator": "=",
+        "value": "FEMALE",
+        "rule_expression": "gender == 'FEMALE'",
+        "confidence": 0.92
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          21,
+          55
+        ],
+        "rule_expression": "age >= 21 AND age <= 55",
+        "confidence": 0.91
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_104",
+    "scheme_code": "FINANCIAL_104",
+    "scheme_name": "Deendayal Antyodaya Yojana",
+    "scheme_category": "FINANCIAL",
+    "department": "Rural Development",
+    "natural_language_criteria": "Aims at financial upliftment of rural self-employed groups through credit linkages. Annual household income should not exceed ₹200,000.",
+    "extracted_rules": [
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "=",
+        "value": "SELF_EMPLOYED",
+        "rule_expression": "employment_status == 'SELF_EMPLOYED'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 200000,
+        "rule_expression": "annual_income <= 200000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_105",
+    "scheme_code": "FINANCIAL_105",
+    "scheme_name": "Atal Pension Yojana",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "A pension-focused scheme for citizens aged 18 to 40 from unorganized sectors. Annual income should be under ₹300,000.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          40
+        ],
+        "rule_expression": "age >= 18 AND age <= 40",
+        "confidence": 0.92
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 300000,
+        "rule_expression": "annual_income <= 300000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_106",
+    "scheme_code": "FINANCIAL_106",
+    "scheme_name": "PM Mudra Yojana",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "Provides microfinance loans up to ₹10 lakh for self-employed individuals aged 21 to 50. Prioritized for women and small entrepreneurs.",
+    "extracted_rules": [
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "=",
+        "value": "SELF_EMPLOYED",
+        "rule_expression": "employment_status == 'SELF_EMPLOYED'",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          21,
+          50
+        ],
+        "rule_expression": "age >= 21 AND age <= 50",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_107",
+    "scheme_code": "FINANCIAL_107",
+    "scheme_name": "Kisan Credit Card Scheme",
+    "scheme_category": "FINANCIAL",
+    "department": "Rural Development",
+    "natural_language_criteria": "Designed for small and marginal farmers aged 18 to 60 with annual income below ₹200,000. Ensures financial coverage for agriculture.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          60
+        ],
+        "rule_expression": "age >= 18 AND age <= 60",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 200000,
+        "rule_expression": "annual_income <= 200000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_108",
+    "scheme_code": "FINANCIAL_108",
+    "scheme_name": "Self-Employment Credit Support Scheme",
+    "scheme_category": "FINANCIAL",
+    "department": "Rural Development",
+    "natural_language_criteria": "Provides soft loans to youth aged 20 to 40 who are unemployed or self-employed. Household income should be less than ₹250,000.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          20,
+          40
+        ],
+        "rule_expression": "age >= 20 AND age <= 40",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "IN",
+        "value": [
+          "UNEMPLOYED",
+          "SELF_EMPLOYED"
+        ],
+        "rule_expression": "employment_status IN ['UNEMPLOYED','SELF_EMPLOYED']",
+        "confidence": 0.91
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 250000,
+        "rule_expression": "annual_income <= 250000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_109",
+    "scheme_code": "FINANCIAL_109",
+    "scheme_name": "National Minorities Development Finance Scheme",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "For minority community individuals aged 18 to 55 with annual income below ₹180,000. Offers subsidized business loans.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          55
+        ],
+        "rule_expression": "age >= 18 AND age <= 55",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 180000,
+        "rule_expression": "annual_income <= 180000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_110",
+    "scheme_code": "FINANCIAL_110",
+    "scheme_name": "Women Entrepreneurship Financial Aid Scheme",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "Empowers unemployed women aged 21 to 50 by providing financial aid to start small enterprises. Household income must not exceed ₹150,000.",
+    "extracted_rules": [
+      {
+        "rule_type": "GENDER",
+        "operator": "=",
+        "value": "FEMALE",
+        "rule_expression": "gender == 'FEMALE'",
+        "confidence": 0.96
+      },
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "=",
+        "value": "UNEMPLOYED",
+        "rule_expression": "employment_status == 'UNEMPLOYED'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 150000,
+        "rule_expression": "annual_income <= 150000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_111",
+    "scheme_code": "FINANCIAL_111",
+    "scheme_name": "PM Employment Generation Program",
+    "scheme_category": "FINANCIAL",
+    "department": "Rural Development",
+    "natural_language_criteria": "Aimed at youth entrepreneurs aged 18 to 45 to establish small-scale manufacturing units. Annual income should not exceed ₹300,000.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          45
+        ],
+        "rule_expression": "age >= 18 AND age <= 45",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 300000,
+        "rule_expression": "annual_income <= 300000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_112",
+    "scheme_code": "FINANCIAL_112",
+    "scheme_name": "National Handicraft Finance Scheme",
+    "scheme_category": "FINANCIAL",
+    "department": "Rural Development",
+    "natural_language_criteria": "For self-employed artisans aged 18 to 50 under Below Poverty Line. Provides low-interest loans to support traditional crafts.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          50
+        ],
+        "rule_expression": "age >= 18 AND age <= 50",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "=",
+        "value": "SELF_EMPLOYED",
+        "rule_expression": "employment_status == 'SELF_EMPLOYED'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_113",
+    "scheme_code": "FINANCIAL_113",
+    "scheme_name": "SC/ST Economic Empowerment Scheme",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "For individuals belonging to SC/ST category with income below ₹200,000. Offers financial aid for new employment or business opportunities.",
+    "extracted_rules": [
+      {
+        "rule_type": "CATEGORY",
+        "operator": "IN",
+        "value": [
+          "SC",
+          "ST"
+        ],
+        "rule_expression": "category IN ['SC','ST']",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 200000,
+        "rule_expression": "annual_income <= 200000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_114",
+    "scheme_code": "FINANCIAL_114",
+    "scheme_name": "PM Formalization of Micro Units Scheme",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "Encourages micro and small startups by providing loans to self-employed individuals aged 18 to 55 years with income under ₹250,000.",
+    "extracted_rules": [
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "=",
+        "value": "SELF_EMPLOYED",
+        "rule_expression": "employment_status == 'SELF_EMPLOYED'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          55
+        ],
+        "rule_expression": "age >= 18 AND age <= 55",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 250000,
+        "rule_expression": "annual_income <= 250000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_115",
+    "scheme_code": "FINANCIAL_115",
+    "scheme_name": "Widow Financial Assistance Scheme",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "Provides monthly income support to widowed women aged 30 to 60 with annual income under ₹100,000 from Below Poverty Line families.",
+    "extracted_rules": [
+      {
+        "rule_type": "GENDER",
+        "operator": "=",
+        "value": "FEMALE",
+        "rule_expression": "gender == 'FEMALE'",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          30,
+          60
+        ],
+        "rule_expression": "age >= 30 AND age <= 60",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 100000,
+        "rule_expression": "annual_income <= 100000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_116",
+    "scheme_code": "FINANCIAL_116",
+    "scheme_name": "National Youth Self Employment Scheme",
+    "scheme_category": "FINANCIAL",
+    "department": "Rural Development",
+    "natural_language_criteria": "For unemployed youth aged 18 to 35 seeking self-employment loans. Requires household income below ₹200,000.",
+    "extracted_rules": [
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "=",
+        "value": "UNEMPLOYED",
+        "rule_expression": "employment_status == 'UNEMPLOYED'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          35
+        ],
+        "rule_expression": "age >= 18 AND age <= 35",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 200000,
+        "rule_expression": "annual_income <= 200000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_117",
+    "scheme_code": "FINANCIAL_117",
+    "scheme_name": "PM Self Help Group Loan Scheme",
+    "scheme_category": "FINANCIAL",
+    "department": "Rural Development",
+    "natural_language_criteria": "Supports female Self-Help Groups where each member’s income is under ₹120,000. Groups must include adult members aged 21 to 55.",
+    "extracted_rules": [
+      {
+        "rule_type": "GENDER",
+        "operator": "=",
+        "value": "FEMALE",
+        "rule_expression": "gender == 'FEMALE'",
+        "confidence": 0.94
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          21,
+          55
+        ],
+        "rule_expression": "age >= 21 AND age <= 55",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 120000,
+        "rule_expression": "annual_income <= 120000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_118",
+    "scheme_code": "FINANCIAL_118",
+    "scheme_name": "Entrepreneur Credit Guarantee Scheme",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "Provides government-backed loan guarantees for self-employed entrepreneurs aged 21 to 60 with annual income below ₹300,000.",
+    "extracted_rules": [
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "=",
+        "value": "SELF_EMPLOYED",
+        "rule_expression": "employment_status == 'SELF_EMPLOYED'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          21,
+          60
+        ],
+        "rule_expression": "age >= 21 AND age <= 60",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 300000,
+        "rule_expression": "annual_income <= 300000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_119",
+    "scheme_code": "FINANCIAL_119",
+    "scheme_name": "PM SVANidhi Scheme",
+    "scheme_category": "FINANCIAL",
+    "department": "Urban Development",
+    "natural_language_criteria": "Offers microcredit to street vendors and hawkers aged 18 to 55 with income up to ₹150,000. Aimed at promoting self-employment.",
+    "extracted_rules": [
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "=",
+        "value": "SELF_EMPLOYED",
+        "rule_expression": "employment_status == 'SELF_EMPLOYED'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          55
+        ],
+        "rule_expression": "age >= 18 AND age <= 55",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 150000,
+        "rule_expression": "annual_income <= 150000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_120",
+    "scheme_code": "FINANCIAL_120",
+    "scheme_name": "Tribal Financial Inclusion Scheme",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "For tribal individuals aged 18 to 50 from Below Poverty Line families to access bank accounts and small business loans.",
+    "extracted_rules": [
+      {
+        "rule_type": "CATEGORY",
+        "operator": "=",
+        "value": "ST",
+        "rule_expression": "category == 'ST'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          50
+        ],
+        "rule_expression": "age >= 18 AND age <= 50",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_121",
+    "scheme_code": "FINANCIAL_121",
+    "scheme_name": "Women Self Employment Credit Scheme",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "Women aged 20 to 50 engaged in self-employment and earning below ₹200,000 per year are eligible for low-interest credit support.",
+    "extracted_rules": [
+      {
+        "rule_type": "GENDER",
+        "operator": "=",
+        "value": "FEMALE",
+        "rule_expression": "gender == 'FEMALE'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "=",
+        "value": "SELF_EMPLOYED",
+        "rule_expression": "employment_status == 'SELF_EMPLOYED'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 200000,
+        "rule_expression": "annual_income <= 200000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_122",
+    "scheme_code": "FINANCIAL_122",
+    "scheme_name": "PM Jeevan Jyoti Bima Yojana",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "Life insurance scheme for individuals aged 18 to 50 from low-income households with income under ₹250,000.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          50
+        ],
+        "rule_expression": "age >= 18 AND age <= 50",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 250000,
+        "rule_expression": "annual_income <= 250000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "LIG",
+        "rule_expression": "income_group == 'LIG'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_123",
+    "scheme_code": "FINANCIAL_123",
+    "scheme_name": "Rural Savings Promotion Scheme",
+    "scheme_category": "FINANCIAL",
+    "department": "Rural Development",
+    "natural_language_criteria": "Encourages small savings among rural individuals aged 18 to 60 with annual income below ₹150,000. Open to all income categories under BPL.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          60
+        ],
+        "rule_expression": "age >= 18 AND age <= 60",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 150000,
+        "rule_expression": "annual_income <= 150000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_124",
+    "scheme_code": "FINANCIAL_124",
+    "scheme_name": "PM Suraksha Bima Yojana",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "Accidental insurance for individuals between the age of 18 and 60 with annual income under ₹200,000.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          60
+        ],
+        "rule_expression": "age >= 18 AND age <= 60",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 200000,
+        "rule_expression": "annual_income <= 200000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_125",
+    "scheme_code": "FINANCIAL_125",
+    "scheme_name": "SC Women Financial Empowerment Program",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "Designed for Scheduled Caste women aged 25 to 55 with annual income under ₹180,000. Offers credit and training support for self-employment.",
+    "extracted_rules": [
+      {
+        "rule_type": "CATEGORY",
+        "operator": "=",
+        "value": "SC",
+        "rule_expression": "category == 'SC'",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "GENDER",
+        "operator": "=",
+        "value": "FEMALE",
+        "rule_expression": "gender == 'FEMALE'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          25,
+          55
+        ],
+        "rule_expression": "age >= 25 AND age <= 55",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 180000,
+        "rule_expression": "annual_income <= 180000",
+        "confidence": 0.9
+      }
+    ]
+  }
+]

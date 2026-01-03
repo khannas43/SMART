@@ -1,0 +1,324 @@
+[
+  {
+    "scheme_id": "SCHEME_051",
+    "scheme_code": "EDUCATION_051",
+    "scheme_name": "National Scholarship for Secondary Education",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "This scholarship provides financial aid to students studying in classes 9 and 10 from families with income less than ₹100,000 per year. Special priority is given to SC and ST students across Rajasthan.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [13, 17], "rule_expression": "age >= 13 AND age <= 17", "confidence": 0.92},
+      {"rule_type": "EDUCATION_LEVEL", "operator": "=", "value": "SECONDARY", "rule_expression": "education_level == 'SECONDARY'", "confidence": 0.95},
+      {"rule_type": "CATEGORY", "operator": "IN", "value": ["SC", "ST"], "rule_expression": "category IN ['SC','ST']", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "<=", "value": 100000, "rule_expression": "annual_income <= 100000", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_052",
+    "scheme_code": "EDUCATION_052",
+    "scheme_name": "Post-Matric Scholarship for OBC Students",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Provides scholarships to OBC students pursuing post-secondary education in government or recognized institutions. Annual income of parents should not exceed ₹150,000.",
+    "extracted_rules": [
+      {"rule_type": "CATEGORY", "operator": "=", "value": "OBC", "rule_expression": "category == 'OBC'", "confidence": 0.95},
+      {"rule_type": "EDUCATION_LEVEL", "operator": "=", "value": "GRADUATE", "rule_expression": "education_level == 'GRADUATE'", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "<=", "value": 150000, "rule_expression": "annual_income <= 150000", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_053",
+    "scheme_code": "EDUCATION_053",
+    "scheme_name": "Beti Bachao Beti Padhao Education Grant",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "This scheme provides educational support to female students aged 6 to 18 enrolled in recognized schools. Beneficiaries must belong to Below Poverty Line families.",
+    "extracted_rules": [
+      {"rule_type": "GENDER", "operator": "=", "value": "FEMALE", "rule_expression": "gender == 'FEMALE'", "confidence": 0.96},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [6, 18], "rule_expression": "age >= 6 AND age <= 18", "confidence": 0.94},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_054",
+    "scheme_code": "EDUCATION_054",
+    "scheme_name": "Chief Minister’s Higher Education Scholarship Scheme",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Meritorious graduate students with annual family income below ₹200,000 are eligible for tuition fee reimbursements. Available for students from all districts of Madhya Pradesh.",
+    "extracted_rules": [
+      {"rule_type": "EDUCATION_LEVEL", "operator": "=", "value": "GRADUATE", "rule_expression": "education_level == 'GRADUATE'", "confidence": 0.93},
+      {"rule_type": "INCOME_GROUP", "operator": "<=", "value": 200000, "rule_expression": "annual_income <= 200000", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_055",
+    "scheme_code": "EDUCATION_055",
+    "scheme_name": "Rajasthan Merit-cum-Means Scholarship",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Offers scholarships to students pursuing professional or technical degrees in Rajasthan universities. Family income should not exceed ₹180,000 annually.",
+    "extracted_rules": [
+      {"rule_type": "INCOME_GROUP", "operator": "<=", "value": 180000, "rule_expression": "annual_income <= 180000", "confidence": 0.91},
+      {"rule_type": "EDUCATION_LEVEL", "operator": "=", "value": "GRADUATE", "rule_expression": "education_level == 'GRADUATE'", "confidence": 0.9},
+      {"rule_type": "DISTRICT", "operator": "=", "value": "JAIPUR", "rule_expression": "district == 'JAIPUR'", "confidence": 0.87}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_056",
+    "scheme_code": "EDUCATION_056",
+    "scheme_name": "Girl Child Primary Education Incentive Scheme",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Provides financial incentives to girl students aged 5 to 12 enrolled in government primary schools. Only applicable for families with income up to ₹60,000 annually.",
+    "extracted_rules": [
+      {"rule_type": "GENDER", "operator": "=", "value": "FEMALE", "rule_expression": "gender == 'FEMALE'", "confidence": 0.95},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [5, 12], "rule_expression": "age >= 5 AND age <= 12", "confidence": 0.94},
+      {"rule_type": "EDUCATION_LEVEL", "operator": "=", "value": "PRIMARY", "rule_expression": "education_level == 'PRIMARY'", "confidence": 0.93},
+      {"rule_type": "INCOME_GROUP", "operator": "<=", "value": 60000, "rule_expression": "annual_income <= 60000", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_057",
+    "scheme_code": "EDUCATION_057",
+    "scheme_name": "SC/ST Free Coaching Assistance Scheme",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Eligible for SC/ST students preparing for government examinations with annual income under ₹150,000. Coaching fees are reimbursed on proof of attendance.",
+    "extracted_rules": [
+      {"rule_type": "CATEGORY", "operator": "IN", "value": ["SC", "ST"], "rule_expression": "category IN ['SC','ST']", "confidence": 0.96},
+      {"rule_type": "INCOME_GROUP", "operator": "<=", "value": 150000, "rule_expression": "annual_income <= 150000", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_058",
+    "scheme_code": "EDUCATION_058",
+    "scheme_name": "Pre-Matric Disability Scholarship",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "For differently-abled students aged 8 to 18 pursuing primary or secondary education. Annual family income should not exceed ₹120,000.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [8, 18], "rule_expression": "age >= 8 AND age <= 18", "confidence": 0.93},
+      {"rule_type": "EDUCATION_LEVEL", "operator": "IN", "value": ["PRIMARY", "SECONDARY"], "rule_expression": "education_level IN ['PRIMARY','SECONDARY']", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "<=", "value": 120000, "rule_expression": "annual_income <= 120000", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_059",
+    "scheme_code": "EDUCATION_059",
+    "scheme_name": "Tribal Student Education Promotion Scheme",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Provides scholarships to ST students aged 10 to 22 studying in secondary or higher education levels. Family income must not exceed ₹100,000.",
+    "extracted_rules": [
+      {"rule_type": "CATEGORY", "operator": "=", "value": "ST", "rule_expression": "category == 'ST'", "confidence": 0.95},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [10, 22], "rule_expression": "age >= 10 AND age <= 22", "confidence": 0.92},
+      {"rule_type": "INCOME_GROUP", "operator": "<=", "value": 100000, "rule_expression": "annual_income <= 100000", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_060",
+    "scheme_code": "EDUCATION_060",
+    "scheme_name": "National Minority Scholarship Program",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Available to students belonging to minority communities pursuing secondary and graduate education. Annual income must be below ₹250,000.",
+    "extracted_rules": [
+      {"rule_type": "EDUCATION_LEVEL", "operator": "IN", "value": ["SECONDARY", "GRADUATE"], "rule_expression": "education_level IN ['SECONDARY','GRADUATE']", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "<=", "value": 250000, "rule_expression": "annual_income <= 250000", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_061",
+    "scheme_code": "EDUCATION_061",
+    "scheme_name": "Rural Girl Education Support Program",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Provides financial grant to rural female students of primary and secondary education aged between 6 and 16. Family income should not exceed ₹80,000.",
+    "extracted_rules": [
+      {"rule_type": "GENDER", "operator": "=", "value": "FEMALE", "rule_expression": "gender == 'FEMALE'", "confidence": 0.95},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [6, 16], "rule_expression": "age >= 6 AND age <= 16", "confidence": 0.9},
+      {"rule_type": "EDUCATION_LEVEL", "operator": "IN", "value": ["PRIMARY", "SECONDARY"], "rule_expression": "education_level IN ['PRIMARY','SECONDARY']", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "<=", "value": 80000, "rule_expression": "annual_income <= 80000", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_062",
+    "scheme_code": "EDUCATION_062",
+    "scheme_name": "Madhya Pradesh Higher Study Abroad Scheme",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "For students pursuing higher education abroad with parental income less than ₹300,000. Applicants must be permanent residents of Madhya Pradesh.",
+    "extracted_rules": [
+      {"rule_type": "EDUCATION_LEVEL", "operator": "=", "value": "GRADUATE", "rule_expression": "education_level == 'GRADUATE'", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "<=", "value": 300000, "rule_expression": "annual_income <= 300000", "confidence": 0.9},
+      {"rule_type": "DISTRICT", "operator": "=", "value": "BHOPAL", "rule_expression": "district == 'BHOPAL'", "confidence": 0.85}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_063",
+    "scheme_code": "EDUCATION_063",
+    "scheme_name": "Pre-Matric SC Scholarship",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "For SC students aged 6 to 18 enrolled in recognized schools. Family income should be under ₹100,000 per annum.",
+    "extracted_rules": [
+      {"rule_type": "CATEGORY", "operator": "=", "value": "SC", "rule_expression": "category == 'SC'", "confidence": 0.95},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [6, 18], "rule_expression": "age >= 6 AND age <= 18", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "<=", "value": 100000, "rule_expression": "annual_income <= 100000", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_064",
+    "scheme_code": "EDUCATION_064",
+    "scheme_name": "Post-Graduate Excellence Fellowship",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "For graduate students with merit-based performance seeking advanced studies. Family income should not exceed ₹250,000.",
+    "extracted_rules": [
+      {"rule_type": "EDUCATION_LEVEL", "operator": "=", "value": "GRADUATE", "rule_expression": "education_level == 'GRADUATE'", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "<=", "value": 250000, "rule_expression": "annual_income <= 250000", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_065",
+    "scheme_code": "EDUCATION_065",
+    "scheme_name": "School Uniform Assistance Scheme",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Students aged 6 to 14 in government primary/secondary schools from families below the poverty line are eligible to receive uniform assistance.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [6, 14], "rule_expression": "age >= 6 AND age <= 14", "confidence": 0.9},
+      {"rule_type": "EDUCATION_LEVEL", "operator": "IN", "value": ["PRIMARY", "SECONDARY"], "rule_expression": "education_level IN ['PRIMARY','SECONDARY']", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_066",
+    "scheme_code": "EDUCATION_066",
+    "scheme_name": "Free Education for Girls Program",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Girls aged 5 to 15 years from Below Poverty Line families in Gujarat are eligible for free education in government institutions.",
+    "extracted_rules": [
+      {"rule_type": "GENDER", "operator": "=", "value": "FEMALE", "rule_expression": "gender == 'FEMALE'", "confidence": 0.95},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [5, 15], "rule_expression": "age >= 5 AND age <= 15", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "confidence": 0.9},
+      {"rule_type": "DISTRICT", "operator": "=", "value": "SURAT", "rule_expression": "district == 'SURAT'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_067",
+    "scheme_code": "EDUCATION_067",
+    "scheme_name": "Smart Learning Grant Program",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Meritorious students at secondary level with annual family income under ₹150,000 are eligible to receive digital learning devices.",
+    "extracted_rules": [
+      {"rule_type": "EDUCATION_LEVEL", "operator": "=", "value": "SECONDARY", "rule_expression": "education_level == 'SECONDARY'", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "<=", "value": 150000, "rule_expression": "annual_income <= 150000", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_068",
+    "scheme_code": "EDUCATION_068",
+    "scheme_name": "CM Talent Search Award Yojana",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Students of classes 9 to 12 with excellent academic scores and parental income below ₹200,000 are eligible statewide.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [14, 18], "rule_expression": "age >= 14 AND age <= 18", "confidence": 0.9},
+      {"rule_type": "EDUCATION_LEVEL", "operator": "=", "value": "SECONDARY", "rule_expression": "education_level == 'SECONDARY'", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "<=", "value": 200000, "rule_expression": "annual_income <= 200000", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_069",
+    "scheme_code": "EDUCATION_069",
+    "scheme_name": "Technical Education Scholarship",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Offers scholarships to students pursuing technical diplomas at graduate level. Annual income must not exceed ₹180,000.",
+    "extracted_rules": [
+      {"rule_type": "EDUCATION_LEVEL", "operator": "=", "value": "GRADUATE", "rule_expression": "education_level == 'GRADUATE'", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "<=", "value": 180000, "rule_expression": "annual_income <= 180000", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_070",
+    "scheme_code": "EDUCATION_070",
+    "scheme_name": "Education for All Mission",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Provides universal primary education for all children aged 6 to 12 in government schools across districts. Income group unrestricted.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [6, 12], "rule_expression": "age >= 6 AND age <= 12", "confidence": 0.9},
+      {"rule_type": "EDUCATION_LEVEL", "operator": "=", "value": "PRIMARY", "rule_expression": "education_level == 'PRIMARY'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_071",
+    "scheme_code": "EDUCATION_071",
+    "scheme_name": "OBC Technical Scholarship Program",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "OBC students pursuing graduate-level technical courses are eligible if income does not exceed ₹200,000 annually.",
+    "extracted_rules": [
+      {"rule_type": "CATEGORY", "operator": "=", "value": "OBC", "rule_expression": "category == 'OBC'", "confidence": 0.9},
+      {"rule_type": "EDUCATION_LEVEL", "operator": "=", "value": "GRADUATE", "rule_expression": "education_level == 'GRADUATE'", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "<=", "value": 200000, "rule_expression": "annual_income <= 200000", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_072",
+    "scheme_code": "EDUCATION_072",
+    "scheme_name": "PM Scholarship Scheme for Armed Forces Children",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Children of armed forces personnel receiving education at secondary or graduate level with annual income under ₹250,000 are eligible.",
+    "extracted_rules": [
+      {"rule_type": "EDUCATION_LEVEL", "operator": "IN", "value": ["SECONDARY", "GRADUATE"], "rule_expression": "education_level IN ['SECONDARY','GRADUATE']", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "<=", "value": 250000, "rule_expression": "annual_income <= 250000", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_073",
+    "scheme_code": "EDUCATION_073",
+    "scheme_name": "Digital Education Access Program",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "For secondary school students aged 12 to 18 with parental income below ₹150,000, providing online learning resources and tools.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [12, 18], "rule_expression": "age >= 12 AND age <= 18", "confidence": 0.9},
+      {"rule_type": "EDUCATION_LEVEL", "operator": "=", "value": "SECONDARY", "rule_expression": "education_level == 'SECONDARY'", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "<=", "value": 150000, "rule_expression": "annual_income <= 150000", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_074",
+    "scheme_code": "EDUCATION_074",
+    "scheme_name": "SC/ST Higher Education Grant",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Grants financial assistance to SC/ST students pursuing graduate degrees in recognized universities with income under ₹200,000.",
+    "extracted_rules": [
+      {"rule_type": "CATEGORY", "operator": "IN", "value": ["SC", "ST"], "rule_expression": "category IN ['SC','ST']", "confidence": 0.9},
+      {"rule_type": "EDUCATION_LEVEL", "operator": "=", "value": "GRADUATE", "rule_expression": "education_level == 'GRADUATE'", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "<=", "value": 200000, "rule_expression": "annual_income <= 200000", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_075",
+    "scheme_code": "EDUCATION_075",
+    "scheme_name": "Kanya Shiksha Protsahan Yojana",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Provides scholarships to girl students aged 10 to 20 pursuing secondary or graduate education. Family income must not exceed ₹120,000.",
+    "extracted_rules": [
+      {"rule_type": "GENDER", "operator": "=", "value": "FEMALE", "rule_expression": "gender == 'FEMALE'", "confidence": 0.95},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [10, 20], "rule_expression": "age >= 10 AND age <= 20", "confidence": 0.9},
+      {"rule_type": "EDUCATION_LEVEL", "operator": "IN", "value": ["SECONDARY", "GRADUATE"], "rule_expression": "education_level IN ['SECONDARY','GRADUATE']", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "<=", "value": 120000, "rule_expression": "annual_income <= 120000", "confidence": 0.9}
+    ]
+  }
+]

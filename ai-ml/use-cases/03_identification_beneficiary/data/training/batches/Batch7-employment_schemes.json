@@ -1,0 +1,716 @@
+[
+  {
+    "scheme_id": "SCHEME_151",
+    "scheme_code": "EMPLOYMENT_151",
+    "scheme_name": "Pradhan Mantri Kaushal Vikas Yojana",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Skill Development",
+    "natural_language_criteria": "Offers short-term skill training to unemployed youth aged 18 to 35. Candidates must have completed at least secondary education.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          35
+        ],
+        "rule_expression": "age >= 18 AND age <= 35",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "=",
+        "value": "UNEMPLOYED",
+        "rule_expression": "employment_status == 'UNEMPLOYED'",
+        "confidence": 0.94
+      },
+      {
+        "rule_type": "EDUCATION_LEVEL",
+        "operator": ">=",
+        "value": "SECONDARY",
+        "rule_expression": "education_level >= 'SECONDARY'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_152",
+    "scheme_code": "EMPLOYMENT_152",
+    "scheme_name": "Mahatma Gandhi National Rural Employment Guarantee Scheme",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Labour",
+    "natural_language_criteria": "Guarantees 100 days of wage employment per year to rural adults in need of work. Applicants must be unemployed and above 18 years of age.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": ">=",
+        "value": 18,
+        "rule_expression": "age >= 18",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "=",
+        "value": "UNEMPLOYED",
+        "rule_expression": "employment_status == 'UNEMPLOYED'",
+        "confidence": 0.93
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_153",
+    "scheme_code": "EMPLOYMENT_153",
+    "scheme_name": "Deen Dayal Upadhyaya Grameen Kaushalya Yojana",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Skill Development",
+    "natural_language_criteria": "Targets unemployed youth aged 18 to 35 from rural families. The applicant should belong to Below Poverty Line households.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          35
+        ],
+        "rule_expression": "age >= 18 AND age <= 35",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "=",
+        "value": "UNEMPLOYED",
+        "rule_expression": "employment_status == 'UNEMPLOYED'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_154",
+    "scheme_code": "EMPLOYMENT_154",
+    "scheme_name": "Rajasthan Skill Employment Mission",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Skill Development",
+    "natural_language_criteria": "Imparts specially designed vocational skills to jobless youth aged 18-30 from low-income households across Rajasthan.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          30
+        ],
+        "rule_expression": "age >= 18 AND age <= 30",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "EWS",
+        "rule_expression": "income_group == 'EWS'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "DISTRICT",
+        "operator": "=",
+        "value": "JAIPUR",
+        "rule_expression": "district == 'JAIPUR'",
+        "confidence": 0.88
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_155",
+    "scheme_code": "EMPLOYMENT_155",
+    "scheme_name": "National Career Service Program",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Labour",
+    "natural_language_criteria": "Connects unemployed youth with industries for job placements. Open to all applicants aged 21 to 40 with minimum secondary education.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          21,
+          40
+        ],
+        "rule_expression": "age >= 21 AND age <= 40",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "=",
+        "value": "UNEMPLOYED",
+        "rule_expression": "employment_status == 'UNEMPLOYED'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_156",
+    "scheme_code": "EMPLOYMENT_156",
+    "scheme_name": "Skill India Apprenticeship Scheme",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Skill Development",
+    "natural_language_criteria": "Provides apprenticeship and skill enhancement opportunities for youth aged 18 to 35 who possess graduate or technical qualification.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          35
+        ],
+        "rule_expression": "age >= 18 AND age <= 35",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "EDUCATION_LEVEL",
+        "operator": ">=",
+        "value": "GRADUATE",
+        "rule_expression": "education_level >= 'GRADUATE'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_157",
+    "scheme_code": "EMPLOYMENT_157",
+    "scheme_name": "Chief Minister Employment Assistance Scheme",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Labour",
+    "natural_language_criteria": "Financial aid for unemployed youth aged 18-40 belonging to Below Poverty Line families in Madhya Pradesh.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          40
+        ],
+        "rule_expression": "age >= 18 AND age <= 40",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_158",
+    "scheme_code": "EMPLOYMENT_158",
+    "scheme_name": "Women Skill Development Initiative",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Skill Development",
+    "natural_language_criteria": "Exclusively for women aged 18 to 45 who are unemployed. Applicants must have passed at least secondary education level.",
+    "extracted_rules": [
+      {
+        "rule_type": "GENDER",
+        "operator": "=",
+        "value": "FEMALE",
+        "rule_expression": "gender == 'FEMALE'",
+        "confidence": 0.94
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          45
+        ],
+        "rule_expression": "age >= 18 AND age <= 45",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "=",
+        "value": "UNEMPLOYED",
+        "rule_expression": "employment_status == 'UNEMPLOYED'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_159",
+    "scheme_code": "EMPLOYMENT_159",
+    "scheme_name": "PM Self Employment Loan Scheme",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Labour",
+    "natural_language_criteria": "Provides loans for unemployed youth aged 21-40 to establish small enterprises. Applicants should be registered job seekers.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          21,
+          40
+        ],
+        "rule_expression": "age >= 21 AND age <= 40",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "=",
+        "value": "UNEMPLOYED",
+        "rule_expression": "employment_status == 'UNEMPLOYED'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_160",
+    "scheme_code": "EMPLOYMENT_160",
+    "scheme_name": "SC/ST Skill Employment Grant Scheme",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Skill Development",
+    "natural_language_criteria": "Provides special skill training and employment support for SC/ST youth aged 18 to 35. Applicants must be unemployed and registered job seekers.",
+    "extracted_rules": [
+      {
+        "rule_type": "CATEGORY",
+        "operator": "IN",
+        "value": [
+          "SC",
+          "ST"
+        ],
+        "rule_expression": "category IN ['SC','ST']",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          35
+        ],
+        "rule_expression": "age >= 18 AND age <= 35",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "=",
+        "value": "UNEMPLOYED",
+        "rule_expression": "employment_status == 'UNEMPLOYED'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_161",
+    "scheme_code": "EMPLOYMENT_161",
+    "scheme_name": "Urban Employment Guarantee Scheme",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Labour",
+    "natural_language_criteria": "Provides 100 days of employment annually to urban unemployed individuals aged 18-45 under municipal limits.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          45
+        ],
+        "rule_expression": "age >= 18 AND age <= 45",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "=",
+        "value": "UNEMPLOYED",
+        "rule_expression": "employment_status == 'UNEMPLOYED'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_162",
+    "scheme_code": "EMPLOYMENT_162",
+    "scheme_name": "District Skill Development Program",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Skill Development",
+    "natural_language_criteria": "Focuses on district-level training for unemployed youth aged 20 to 40. Applicants must reside in registered district centers.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          20,
+          40
+        ],
+        "rule_expression": "age >= 20 AND age <= 40",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "DISTRICT",
+        "operator": "=",
+        "value": "KOTA",
+        "rule_expression": "district == 'KOTA'",
+        "confidence": 0.88
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_163",
+    "scheme_code": "EMPLOYMENT_163",
+    "scheme_name": "Youth Digital Skilling Initiative",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Skill Development",
+    "natural_language_criteria": "A digital skill program for unemployed youth aged 18 to 30. Applicants must possess secondary or above educational qualifications.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          30
+        ],
+        "rule_expression": "age >= 18 AND age <= 30",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "EDUCATION_LEVEL",
+        "operator": ">=",
+        "value": "SECONDARY",
+        "rule_expression": "education_level >= 'SECONDARY'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_164",
+    "scheme_code": "EMPLOYMENT_164",
+    "scheme_name": "Graduate Internship Employment Scheme",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Skill Development",
+    "natural_language_criteria": "Facilitates internship-based employment for unemployed graduates aged 21 to 35. Applicants must be registered with employment offices.",
+    "extracted_rules": [
+      {
+        "rule_type": "EDUCATION_LEVEL",
+        "operator": "=",
+        "value": "GRADUATE",
+        "rule_expression": "education_level == 'GRADUATE'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          21,
+          35
+        ],
+        "rule_expression": "age >= 21 AND age <= 35",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_165",
+    "scheme_code": "EMPLOYMENT_165",
+    "scheme_name": "PM Employment & Entrepreneurship Program",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Labour",
+    "natural_language_criteria": "Encourages entrepreneurship among unemployed youth aged 18 to 40. Applicants must have completed secondary or higher education.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          40
+        ],
+        "rule_expression": "age >= 18 AND age <= 40",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "EDUCATION_LEVEL",
+        "operator": ">=",
+        "value": "SECONDARY",
+        "rule_expression": "education_level >= 'SECONDARY'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_166",
+    "scheme_code": "EMPLOYMENT_166",
+    "scheme_name": "SC Youth Skill Employment Program",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Skill Development",
+    "natural_language_criteria": "Reserved training initiative for Scheduled Caste unemployed youth aged 18 to 35 with a minimum education of secondary level.",
+    "extracted_rules": [
+      {
+        "rule_type": "CATEGORY",
+        "operator": "=",
+        "value": "SC",
+        "rule_expression": "category == 'SC'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          35
+        ],
+        "rule_expression": "age >= 18 AND age <= 35",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_167",
+    "scheme_code": "EMPLOYMENT_167",
+    "scheme_name": "Rural Women Livelihood Scheme",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Labour",
+    "natural_language_criteria": "Empowers unemployed rural women aged 20 to 45 through self-employment and artisan-based job opportunities.",
+    "extracted_rules": [
+      {
+        "rule_type": "GENDER",
+        "operator": "=",
+        "value": "FEMALE",
+        "rule_expression": "gender == 'FEMALE'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          20,
+          45
+        ],
+        "rule_expression": "age >= 20 AND age <= 45",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_168",
+    "scheme_code": "EMPLOYMENT_168",
+    "scheme_name": "Entrepreneurship and Skill Incentive Scheme",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Skill Development",
+    "natural_language_criteria": "Incentivizes unemployed youth with technical background aged 18 to 35 to start new ventures under skill councils.",
+    "extracted_rules": [
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "=",
+        "value": "UNEMPLOYED",
+        "rule_expression": "employment_status == 'UNEMPLOYED'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          35
+        ],
+        "rule_expression": "age >= 18 AND age <= 35",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_169",
+    "scheme_code": "EMPLOYMENT_169",
+    "scheme_name": "Urban Youth Job Connect Program",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Labour",
+    "natural_language_criteria": "Facilitates job placement for urban unemployed youth aged 18 to 40. Candidates must have completed secondary education.",
+    "extracted_rules": [
+      {
+        "rule_type": "DISTRICT",
+        "operator": "=",
+        "value": "JODHPUR",
+        "rule_expression": "district == 'JODHPUR'",
+        "confidence": 0.88
+      },
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "=",
+        "value": "UNEMPLOYED",
+        "rule_expression": "employment_status == 'UNEMPLOYED'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_170",
+    "scheme_code": "EMPLOYMENT_170",
+    "scheme_name": "PM Rural Livelihood Employment Scheme",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Labour",
+    "natural_language_criteria": "For unemployed individuals aged 18 to 45 from rural families. Must fall under Below Poverty Line households.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          45
+        ],
+        "rule_expression": "age >= 18 AND age <= 45",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_171",
+    "scheme_code": "EMPLOYMENT_171",
+    "scheme_name": "State Artisan Employment Initiative",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Skill Development",
+    "natural_language_criteria": "Trains unemployed artisans aged 18-40 in modern skills to ensure steady employment opportunities.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          40
+        ],
+        "rule_expression": "age >= 18 AND age <= 40",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "=",
+        "value": "UNEMPLOYED",
+        "rule_expression": "employment_status == 'UNEMPLOYED'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_172",
+    "scheme_code": "EMPLOYMENT_172",
+    "scheme_name": "Minority Youth Training & Employment Scheme",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Skill Development",
+    "natural_language_criteria": "For unemployed minority youth aged 18 to 35 with secondary or above education. Provides placement-linked skill training.",
+    "extracted_rules": [
+      {
+        "rule_type": "CATEGORY",
+        "operator": "=",
+        "value": "MINORITY",
+        "rule_expression": "category == 'MINORITY'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          35
+        ],
+        "rule_expression": "age >= 18 AND age <= 35",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_173",
+    "scheme_code": "EMPLOYMENT_173",
+    "scheme_name": "State Industrial Skill Connect Scheme",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Skill Development",
+    "natural_language_criteria": "A collaborative program to bridge skill gaps and generate employment for youth aged 20 to 35 in industrial districts of Rajasthan.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          20,
+          35
+        ],
+        "rule_expression": "age >= 20 AND age <= 35",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "DISTRICT",
+        "operator": "=",
+        "value": "ALWAR",
+        "rule_expression": "district == 'ALWAR'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_174",
+    "scheme_code": "EMPLOYMENT_174",
+    "scheme_name": "Rajasthan Graduate Placement Scheme",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Skill Development",
+    "natural_language_criteria": "Facilitates job placement support for unemployed graduates aged 21 to 35 in private and public sectors.",
+    "extracted_rules": [
+      {
+        "rule_type": "EDUCATION_LEVEL",
+        "operator": "=",
+        "value": "GRADUATE",
+        "rule_expression": "education_level == 'GRADUATE'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          21,
+          35
+        ],
+        "rule_expression": "age >= 21 AND age <= 35",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_175",
+    "scheme_code": "EMPLOYMENT_175",
+    "scheme_name": "Youth Apprenticeship Training Scheme",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Skill Development",
+    "natural_language_criteria": "Provides training and apprenticeship to unemployed youth aged 18-30 with minimum secondary education qualification.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          30
+        ],
+        "rule_expression": "age >= 18 AND age <= 30",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "EDUCATION_LEVEL",
+        "operator": ">=",
+        "value": "SECONDARY",
+        "rule_expression": "education_level >= 'SECONDARY'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "=",
+        "value": "UNEMPLOYED",
+        "rule_expression": "employment_status == 'UNEMPLOYED'",
+        "confidence": 0.9
+      }
+    ]
+  }
+]

@@ -1,0 +1,316 @@
+[
+  {
+    "scheme_id": "SCHEME_301",
+    "scheme_code": "EDUCATION_301",
+    "scheme_name": "National School Development Scholarship",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Provides scholarships to students aged 10 to 16 enrolled in recognized secondary schools. Priority is given to SC and OBC category students with annual family income under ₹150,000.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [10, 16], "rule_expression": "age >= 10 AND age <= 16", "confidence": 0.94},
+      {"rule_type": "EDUCATION_LEVEL", "operator": "=", "value": "SECONDARY", "rule_expression": "education_level == 'SECONDARY'", "confidence": 0.9},
+      {"rule_type": "CATEGORY", "operator": "IN", "value": ["SC", "OBC"], "rule_expression": "category IN ['SC','OBC']", "confidence": 0.92},
+      {"rule_type": "ANNUAL_INCOME", "operator": "<=", "value": 150000, "rule_expression": "annual_income <= 150000", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_302",
+    "scheme_code": "EDUCATION_302",
+    "scheme_name": "Chief Minister Higher Study Support Scheme",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Offers financial aid to graduate students aged 17–25 belonging to Below Poverty Line families. Applicable to all districts across Rajasthan.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [17, 25], "rule_expression": "age >= 17 AND age <= 25", "confidence": 0.9},
+      {"rule_type": "EDUCATION_LEVEL", "operator": "=", "value": "GRADUATE", "rule_expression": "education_level == 'GRADUATE'", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_303",
+    "scheme_code": "EDUCATION_303",
+    "scheme_name": "Balika Protsahan Shiksha Yojana",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Designed for girls aged 5 to 15 studying in government schools. Only for students from families with income up to ₹120,000 per annum.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [5, 15], "rule_expression": "age >= 5 AND age <= 15", "confidence": 0.94},
+      {"rule_type": "GENDER", "operator": "=", "value": "FEMALE", "rule_expression": "gender == 'FEMALE'", "confidence": 0.95},
+      {"rule_type": "ANNUAL_INCOME", "operator": "<=", "value": 120000, "rule_expression": "annual_income <= 120000", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_304",
+    "scheme_code": "EDUCATION_304",
+    "scheme_name": "Tribal Area Education Development Program",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Aims at improving education access for ST community children aged 6 to 18 in Udaipur and Banswara districts. Must be studying in primary or secondary level.",
+    "extracted_rules": [
+      {"rule_type": "CATEGORY", "operator": "=", "value": "ST", "rule_expression": "category == 'ST'", "confidence": 0.9},
+      {"rule_type": "DISTRICT", "operator": "IN", "value": ["UDAIPUR", "BANSWARA"], "rule_expression": "district IN ['UDAIPUR','BANSWARA']", "confidence": 0.9},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [6, 18], "rule_expression": "age >= 6 AND age <= 18", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_305",
+    "scheme_code": "EDUCATION_305",
+    "scheme_name": "Meritorious Youth Academic Incentive Scheme",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Supports male and female secondary students aged 13–20 from low-income families. Criteria include annual income under ₹180,000 and a minimum academic score threshold.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [13, 20], "rule_expression": "age >= 13 AND age <= 20", "confidence": 0.9},
+      {"rule_type": "EDUCATION_LEVEL", "operator": "=", "value": "SECONDARY", "rule_expression": "education_level == 'SECONDARY'", "confidence": 0.9},
+      {"rule_type": "ANNUAL_INCOME", "operator": "<=", "value": 180000, "rule_expression": "annual_income <= 180000", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_306",
+    "scheme_code": "EDUCATION_306",
+    "scheme_name": "National Scholarship for OBC Students",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Available for OBC students aged 10–22 pursuing primary to graduate education. Parental income must be below ₹200,000 per year.",
+    "extracted_rules": [
+      {"rule_type": "CATEGORY", "operator": "=", "value": "OBC", "rule_expression": "category == 'OBC'", "confidence": 0.95},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [10, 22], "rule_expression": "age >= 10 AND age <= 22", "confidence": 0.9},
+      {"rule_type": "ANNUAL_INCOME", "operator": "<=", "value": 200000, "rule_expression": "annual_income <= 200000", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_307",
+    "scheme_code": "EDUCATION_307",
+    "scheme_name": "Rajasthan College Tuition Fee Waiver Scheme",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Provides tuition fee waivers for graduate-level students belonging to BPL families. Applicable to all public universities in Rajasthan.",
+    "extracted_rules": [
+      {"rule_type": "EDUCATION_LEVEL", "operator": "=", "value": "GRADUATE", "rule_expression": "education_level == 'GRADUATE'", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "RAJASTHAN", "rule_expression": "state == 'RAJASTHAN'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_308",
+    "scheme_code": "EDUCATION_308",
+    "scheme_name": "Girls Secondary School Admission Grant",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Incentive-based program for girls aged 12 to 17 enrolling in secondary education. Designed for Below Poverty Line families with preference to SC category.",
+    "extracted_rules": [
+      {"rule_type": "GENDER", "operator": "=", "value": "FEMALE", "rule_expression": "gender == 'FEMALE'", "confidence": 0.96},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [12, 17], "rule_expression": "age >= 12 AND age <= 17", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_309",
+    "scheme_code": "EDUCATION_309",
+    "scheme_name": "Special Coaching Assistance Scheme",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "For graduate students aged up to 25 preparing for competitive exams. Annual income cap is ₹200,000 and preference to OBC and SC categories.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "<=", "value": 25, "rule_expression": "age <= 25", "confidence": 0.9},
+      {"rule_type": "EDUCATION_LEVEL", "operator": "=", "value": "GRADUATE", "rule_expression": "education_level == 'GRADUATE'", "confidence": 0.9},
+      {"rule_type": "CATEGORY", "operator": "IN", "value": ["OBC", "SC"], "rule_expression": "category IN ['OBC','SC']", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_310",
+    "scheme_code": "EDUCATION_310",
+    "scheme_name": "Child Education Welfare Fund",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Provides basic financial support to primary school children aged 5–12 from SC/ST families with low annual income.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [5, 12], "rule_expression": "age >= 5 AND age <= 12", "confidence": 0.9},
+      {"rule_type": "CATEGORY", "operator": "IN", "value": ["SC", "ST"], "rule_expression": "category IN ['SC','ST']", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_311",
+    "scheme_code": "EDUCATION_311",
+    "scheme_name": "Rural Digital Literacy through Schools",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Introduces computer education for secondary students aged 12–18 in rural districts. Applicable to families classified under APL and BPL.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [12, 18], "rule_expression": "age >= 12 AND age <= 18", "confidence": 0.9},
+      {"rule_type": "EDUCATION_LEVEL", "operator": "=", "value": "SECONDARY", "rule_expression": "education_level == 'SECONDARY'", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "IN", "value": ["APL", "BPL"], "rule_expression": "income_group IN ['APL','BPL']", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_312",
+    "scheme_code": "EDUCATION_312",
+    "scheme_name": "Post-Graduate Merit Scholarship",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Awarded to students completing undergraduate studies with honors and enrolling in postgraduate courses. Annual income ceiling at ₹250,000.",
+    "extracted_rules": [
+      {"rule_type": "EDUCATION_LEVEL", "operator": "=", "value": "GRADUATE", "rule_expression": "education_level == 'GRADUATE'", "confidence": 0.9},
+      {"rule_type": "ANNUAL_INCOME", "operator": "<=", "value": 250000, "rule_expression": "annual_income <= 250000", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_313",
+    "scheme_code": "EDUCATION_313",
+    "scheme_name": "Minority Education Infrastructure Program",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Encourages education infrastructure improvements for minority students aged 6–18 in Banswara district schools. Special preference to OBC category students.",
+    "extracted_rules": [
+      {"rule_type": "DISTRICT", "operator": "=", "value": "BANSWARA", "rule_expression": "district == 'BANSWARA'", "confidence": 0.9},
+      {"rule_type": "CATEGORY", "operator": "=", "value": "OBC", "rule_expression": "category == 'OBC'", "confidence": 0.9},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [6, 18], "rule_expression": "age >= 6 AND age <= 18", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_314",
+    "scheme_code": "EDUCATION_314",
+    "scheme_name": "Kisan Children Education Grant",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Kids of farmers aged 6 to 18 from Below Poverty Line families are eligible for tuition fee reimbursement up to secondary level.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [6, 18], "rule_expression": "age >= 6 AND age <= 18", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_315",
+    "scheme_code": "EDUCATION_315",
+    "scheme_name": "Educate the Girl Child Initiative",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Supports girl students aged 8 to 20 across Rajasthan pursuing primary to graduate levels. Beneficiaries must have annual family income under ₹150,000.",
+    "extracted_rules": [
+      {"rule_type": "GENDER", "operator": "=", "value": "FEMALE", "rule_expression": "gender == 'FEMALE'", "confidence": 0.95},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [8, 20], "rule_expression": "age >= 8 AND age <= 20", "confidence": 0.9},
+      {"rule_type": "ANNUAL_INCOME", "operator": "<=", "value": 150000, "rule_expression": "annual_income <= 150000", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_316",
+    "scheme_code": "EDUCATION_316",
+    "scheme_name": "SC/ST Education Promotion Mission",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Provides financial grants to SC/ST students aged 10–25 pursuing secondary or graduate education in Jaipur district.",
+    "extracted_rules": [
+      {"rule_type": "CATEGORY", "operator": "IN", "value": ["SC", "ST"], "rule_expression": "category IN ['SC','ST']", "confidence": 0.95},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [10, 25], "rule_expression": "age >= 10 AND age <= 25", "confidence": 0.9},
+      {"rule_type": "DISTRICT", "operator": "=", "value": "JAIPUR", "rule_expression": "district == 'JAIPUR'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_317",
+    "scheme_code": "EDUCATION_317",
+    "scheme_name": "Digital Education Empowerment Fund",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Distributes tablets and e-learning materials to students aged 12–22 in OBC category with family income up to ₹200,000 annually.",
+    "extracted_rules": [
+      {"rule_type": "CATEGORY", "operator": "=", "value": "OBC", "rule_expression": "category == 'OBC'", "confidence": 0.9},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [12, 22], "rule_expression": "age >= 12 AND age <= 22", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_318",
+    "scheme_code": "EDUCATION_318",
+    "scheme_name": "Free Textbook Distribution Scheme",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Provides free textbooks to students aged 5–14 studying at primary and secondary levels. Beneficiaries must belong to SC or ST community.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [5, 14], "rule_expression": "age >= 5 AND age <= 14", "confidence": 0.9},
+      {"rule_type": "EDUCATION_LEVEL", "operator": "IN", "value": ["PRIMARY", "SECONDARY"], "rule_expression": "education_level IN ['PRIMARY','SECONDARY']", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_319",
+    "scheme_code": "EDUCATION_319",
+    "scheme_name": "Urban Talent Search Scholarship",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Meritorious urban students aged 13–18 with annual family income below ₹180,000 qualify for this special scholarship grant.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [13, 18], "rule_expression": "age >= 13 AND age <= 18", "confidence": 0.9},
+      {"rule_type": "ANNUAL_INCOME", "operator": "<=", "value": 180000, "rule_expression": "annual_income <= 180000", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_320",
+    "scheme_code": "EDUCATION_320",
+    "scheme_name": "Education for Orphaned Children Scheme",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Provides free schooling and hostel facilities for orphaned children aged 5–18. Beneficiaries must belong to BPL category families.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [5, 18], "rule_expression": "age >= 5 AND age <= 18", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_321",
+    "scheme_code": "EDUCATION_321",
+    "scheme_name": "Minority Students Hostel Scheme",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Provides hostel accommodation for minority students aged 10–20 pursuing studies in Rajasthan. Family income must be below ₹150,000.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [10, 20], "rule_expression": "age >= 10 AND age <= 20", "confidence": 0.9},
+      {"rule_type": "ANNUAL_INCOME", "operator": "<=", "value": 150000, "rule_expression": "annual_income <= 150000", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_322",
+    "scheme_code": "EDUCATION_322",
+    "scheme_name": "Scholarship for Rural Girl Graduates",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "For rural female students pursuing graduate degrees with family income up to ₹250,000 per year. Preference for SC category applicants.",
+    "extracted_rules": [
+      {"rule_type": "GENDER", "operator": "=", "value": "FEMALE", "rule_expression": "gender == 'FEMALE'", "confidence": 0.95},
+      {"rule_type": "EDUCATION_LEVEL", "operator": "=", "value": "GRADUATE", "rule_expression": "education_level == 'GRADUATE'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_323",
+    "scheme_code": "EDUCATION_323",
+    "scheme_name": "Public Library Education Incentive Program",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Encourages youth aged 15–25 to register in district public libraries for competitive study preparation. Applicable to APL and BPL families alike.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [15, 25], "rule_expression": "age >= 15 AND age <= 25", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "IN", "value": ["APL", "BPL"], "rule_expression": "income_group IN ['APL','BPL']", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_324",
+    "scheme_code": "EDUCATION_324",
+    "scheme_name": "Evening Study Scholarship Project",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Offers scholarship for students undertaking evening study programs aged 16–25 years. Available to all communities with special focus on OBC students.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [16, 25], "rule_expression": "age >= 16 AND age <= 25", "confidence": 0.9},
+      {"rule_type": "CATEGORY", "operator": "=", "value": "OBC", "rule_expression": "category == 'OBC'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_325",
+    "scheme_code": "EDUCATION_325",
+    "scheme_name": "Scholarship for High Achievers in Rural Schools",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Rewards academically excellent students in rural schools aged 10–18. Family income cap fixed at ₹180,000.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [10, 18], "rule_expression": "age >= 10 AND age <= 18", "confidence": 0.9},
+      {"rule_type": "ANNUAL_INCOME", "operator": "<=", "value": 180000, "rule_expression": "annual_income <= 180000", "confidence": 0.9}
+    ]
+  }
+]

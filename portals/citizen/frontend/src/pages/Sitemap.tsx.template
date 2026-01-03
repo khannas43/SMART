@@ -1,0 +1,229 @@
+/**
+ * Sitemap Page
+ * 
+ * Displays all available pages and sections of the Citizen Portal
+ */
+
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import './Sitemap.css';
+
+interface SitemapSection {
+  title: string;
+  links: Array<{
+    label: string;
+    path: string;
+    description?: string;
+  }>;
+}
+
+const Sitemap: React.FC = () => {
+  const { t } = useTranslation();
+  const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set());
+
+  const toggleSection = (sectionTitle: string) => {
+    const newExpanded = new Set(expandedSections);
+    if (newExpanded.has(sectionTitle)) {
+      newExpanded.delete(sectionTitle);
+    } else {
+      newExpanded.add(sectionTitle);
+    }
+    setExpandedSections(newExpanded);
+  };
+
+  // Sitemap structure matching the menu structure
+  const sitemapSections: SitemapSection[] = [
+    {
+      title: t('sitemap.sections.dashboard'),
+      links: [
+        {
+          label: t('menu.dashboard'),
+          path: '/citizen/dashboard',
+          description: t('sitemap.descriptions.dashboard'),
+        },
+      ],
+    },
+    {
+      title: t('sitemap.sections.profile'),
+      links: [
+        {
+          label: t('menu.profileDashboard'),
+          path: '/citizen/profile/dashboard',
+          description: t('sitemap.descriptions.profileDashboard'),
+        },
+        {
+          label: t('menu.editProfile'),
+          path: '/citizen/profile/edit',
+          description: t('sitemap.descriptions.editProfile'),
+        },
+      ],
+    },
+    {
+      title: t('sitemap.sections.schemes'),
+      links: [
+        {
+          label: t('menu.browseSchemes'),
+          path: '/citizen/schemes/browse',
+          description: t('sitemap.descriptions.browseSchemes'),
+        },
+        {
+          label: t('menu.eligibilityChecker'),
+          path: '/citizen/schemes/eligibility',
+          description: t('sitemap.descriptions.eligibilityChecker'),
+        },
+      ],
+    },
+    {
+      title: t('sitemap.sections.applications'),
+      links: [
+        {
+          label: t('menu.applicationsHub'),
+          path: '/citizen/applications',
+          description: t('sitemap.descriptions.applicationsHub'),
+        },
+        {
+          label: t('menu.consentClarifications'),
+          path: '/citizen/applications/consent',
+          description: t('sitemap.descriptions.consentClarifications'),
+        },
+      ],
+    },
+    {
+      title: t('sitemap.sections.documents'),
+      links: [
+        {
+          label: t('menu.documents'),
+          path: '/citizen/documents',
+          description: t('sitemap.descriptions.documents'),
+        },
+      ],
+    },
+    {
+      title: t('sitemap.sections.benefits'),
+      links: [
+        {
+          label: t('menu.benefitsEntitlements'),
+          path: '/citizen/benefits',
+          description: t('sitemap.descriptions.benefitsEntitlements'),
+        },
+        {
+          label: t('menu.paymentsLedger'),
+          path: '/citizen/benefits/payments',
+          description: t('sitemap.descriptions.paymentsLedger'),
+        },
+      ],
+    },
+    {
+      title: t('sitemap.sections.services'),
+      links: [
+        {
+          label: t('menu.serviceCatalog'),
+          path: '/citizen/services/catalog',
+          description: t('sitemap.descriptions.serviceCatalog'),
+        },
+        {
+          label: t('menu.requestService'),
+          path: '/citizen/services/request',
+          description: t('sitemap.descriptions.requestService'),
+        },
+        {
+          label: t('menu.serviceStatus'),
+          path: '/citizen/services/status',
+          description: t('sitemap.descriptions.serviceStatus'),
+        },
+      ],
+    },
+    {
+      title: t('sitemap.sections.settings'),
+      links: [
+        {
+          label: t('menu.notifications'),
+          path: '/citizen/settings/notifications',
+          description: t('sitemap.descriptions.notifications'),
+        },
+        {
+          label: t('menu.optOutSchemes'),
+          path: '/citizen/settings/opt-out',
+          description: t('sitemap.descriptions.optOutSchemes'),
+        },
+        {
+          label: t('menu.accountSecurity'),
+          path: '/citizen/settings/account',
+          description: t('sitemap.descriptions.accountSecurity'),
+        },
+      ],
+    },
+    {
+      title: t('sitemap.sections.help'),
+      links: [
+        {
+          label: t('menu.helpHub'),
+          path: '/citizen/help',
+          description: t('sitemap.descriptions.helpHub'),
+        },
+        {
+          label: t('menu.myTickets'),
+          path: '/citizen/help/tickets',
+          description: t('sitemap.descriptions.myTickets'),
+        },
+      ],
+    },
+  ];
+
+  return (
+    <div className="sitemap-page">
+      <div className="page-container">
+        <div className="page-header">
+          <h1>{t('sitemap.title')}</h1>
+          <p className="page-subtitle">{t('sitemap.subtitle')}</p>
+        </div>
+
+        <div className="sitemap-content">
+          {sitemapSections.map((section, index) => (
+            <div key={index} className="sitemap-section">
+              <button
+                className="sitemap-section-header"
+                onClick={() => toggleSection(section.title)}
+                aria-expanded={expandedSections.has(section.title)}
+                aria-controls={`sitemap-section-${index}`}
+              >
+                <h2>{section.title}</h2>
+                <span className="expand-icon" aria-hidden="true">
+                  {expandedSections.has(section.title) ? '▼' : '▶'}
+                </span>
+              </button>
+
+              <div
+                id={`sitemap-section-${index}`}
+                className={`sitemap-links ${expandedSections.has(section.title) ? 'expanded' : ''}`}
+              >
+                <ul>
+                  {section.links.map((link, linkIndex) => (
+                    <li key={linkIndex}>
+                      <Link to={link.path} className="sitemap-link">
+                        <span className="link-label">{link.label}</span>
+                        {link.description && (
+                          <span className="link-description">{link.description}</span>
+                        )}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="page-footer-actions">
+          <Link to="/citizen/dashboard" className="back-link">
+            {t('common.backToDashboard')}
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Sitemap;
+

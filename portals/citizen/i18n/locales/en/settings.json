@@ -1,0 +1,84 @@
+{
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Manage your account preferences and security settings",
+    "notAuthenticated": "Please log in to access settings.",
+    "notifications": {
+      "title": "Notification Preferences",
+      "channelPreferences": "Channel Preferences",
+      "channelDescription": "Choose how you want to receive different types of notifications",
+      "email": "Email",
+      "sms": "SMS",
+      "push": "Push",
+      "inApp": "In-App",
+      "quietHours": "Quiet Hours",
+      "quietHoursDescription": "Disable notifications during specific hours",
+      "enableQuietHours": "Enable Quiet Hours",
+      "startTime": "Start Time",
+      "endTime": "End Time",
+      "saved": "Notification preferences saved successfully!"
+    },
+    "optOut": {
+      "title": "Opt-Out Schemes",
+      "info": "Opting out of a scheme means you will not receive notifications or be automatically considered for that scheme. You can opt back in at any time.",
+      "noSchemes": "No active schemes available",
+      "schemeName": "Scheme Name",
+      "category": "Category",
+      "department": "Department",
+      "status": "Status",
+      "action": "Action",
+      "optedOut": "Opted Out",
+      "active": "Active",
+      "clearAll": "Clear All",
+      "saved": "Opt-out preferences saved successfully!"
+    },
+    "account": {
+      "title": "Account & Security",
+      "profileContact": "Profile & Contact",
+      "editProfile": "Edit Profile",
+      "name": "Name",
+      "email": "Email",
+      "mobile": "Mobile Number",
+      "aadhaar": "Aadhaar Number",
+      "passwordMFA": "Password & Multi-Factor Authentication",
+      "changePassword": "Change Password",
+      "mfaInfo": "Multi-Factor Authentication (MFA) will be available soon.",
+      "activeSessions": "Active Sessions",
+      "logoutAll": "Logout All",
+      "current": "Current",
+      "lastActive": "Last active",
+      "dangerZone": "Danger Zone",
+      "dangerZoneWarning": "These actions are irreversible. Please proceed with caution.",
+      "confirmDelete": "Are you sure you want to delete your account? This action cannot be undone.",
+      "deleteAccount": "Delete Account",
+      "deleteComingSoon": "Account deletion feature coming soon"
+    },
+    "password": {
+      "current": "Current Password",
+      "new": "New Password",
+      "confirm": "Confirm New Password",
+      "minLength": "Minimum 8 characters",
+      "mismatch": "Passwords do not match",
+      "changed": "Password changed successfully!",
+      "errors": {
+        "minLength": "Password must be at least 8 characters",
+        "mismatch": "Passwords do not match",
+        "changeFailed": "Failed to change password"
+      }
+    },
+    "sessions": {
+      "terminate": "Terminate Session",
+      "confirmTerminate": "Are you sure you want to terminate this session?",
+      "deleted": "Session terminated successfully",
+      "deleteFailed": "Failed to terminate session",
+      "confirmLogoutAll": "Logout from all devices?",
+      "loggedOutAll": "Logged out from all devices",
+      "logoutAllFailed": "Failed to logout from all devices"
+    },
+    "errors": {
+      "loadSchemesFailed": "Failed to load schemes",
+      "saveFailed": "Failed to save preferences"
+    }
+  }
+}
+

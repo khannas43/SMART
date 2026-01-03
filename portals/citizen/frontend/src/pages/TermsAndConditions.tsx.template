@@ -1,0 +1,76 @@
+/**
+ * Terms and Conditions Page
+ * 
+ * Content sourced from: https://rajasthan.gov.in/jankalyan-category-and-entry-type/0/51/88
+ */
+
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import './TermsAndConditions.css';
+
+const TermsAndConditions: React.FC = () => {
+  const { t } = useTranslation();
+
+  return (
+    <div className="terms-conditions-page">
+      <div className="page-container">
+        <div className="page-header">
+          <h1>{t('termsConditions.title')}</h1>
+          <p className="page-subtitle">{t('termsConditions.subtitle')}</p>
+        </div>
+
+        <div className="content-section">
+          {/* NOTE: Content needs to be copied from the Rajasthan.gov.in website */}
+          {/* URL: https://rajasthan.gov.in/jankalyan-category-and-entry-type/0/51/88 */}
+          
+          <div className="terms-content">
+            {/* Section 1 */}
+            <section className="terms-section">
+              <h2>{t('termsConditions.section1.title')}</h2>
+              <p>{t('termsConditions.section1.content')}</p>
+            </section>
+
+            {/* Section 2 */}
+            <section className="terms-section">
+              <h2>{t('termsConditions.section2.title')}</h2>
+              <p>{t('termsConditions.section2.content')}</p>
+            </section>
+
+            {/* Add more sections as needed based on the actual content from the website */}
+            
+            {/* Last Updated */}
+            <div className="last-updated">
+              <p>
+                <strong>{t('termsConditions.lastUpdated')}:</strong> {t('termsConditions.lastUpdatedDate')}
+              </p>
+            </div>
+          </div>
+
+          {/* Placeholder for actual content */}
+          <div className="content-note">
+            <p>
+              <strong>Note:</strong> This content needs to be copied from{' '}
+              <a 
+                href="https://rajasthan.gov.in/jankalyan-category-and-entry-type/0/51/88" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                Rajasthan.gov.in Terms and Conditions page
+              </a>
+              {' '}and formatted appropriately.
+            </p>
+          </div>
+        </div>
+
+        <div className="page-footer-actions">
+          <a href="/citizen/dashboard" className="back-link">
+            {t('common.backToDashboard')}
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default TermsAndConditions;
+

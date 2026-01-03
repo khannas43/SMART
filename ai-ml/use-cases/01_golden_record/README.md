@@ -160,8 +160,7 @@ features = engineer.compute_match_features(record1, record2)
 - [ ] Survival analysis model
 
 ### Phase 3: Integration
-- [ ] FastAPI microservice
-- [ ] Spring Boot integration
+- [ ] Spring Boot REST API implementation
 - [ ] Real-time APIs
 - [ ] Admin review interface
 
@@ -197,7 +196,7 @@ pyyaml
 1. Create initial notebook for data exploration
 2. Implement Fellegi-Sunter model
 3. Build conflict reconciliation pipeline
-4. Set up FastAPI service
+4. Set up Spring Boot REST API service
 
 ---
 

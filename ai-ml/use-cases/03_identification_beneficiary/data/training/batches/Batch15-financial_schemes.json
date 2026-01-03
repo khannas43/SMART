@@ -1,0 +1,765 @@
+[
+  {
+    "scheme_id": "SCHEME_351",
+    "scheme_code": "FINANCIAL_351",
+    "scheme_name": "PM Rural Micro Finance Yojana",
+    "scheme_category": "FINANCIAL",
+    "department": "Rural Development",
+    "natural_language_criteria": "Provides micro-finance support for rural women aged 21–50 belonging to Below Poverty Line families. Beneficiaries must be self-employed or members of self-help groups.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          21,
+          50
+        ],
+        "rule_expression": "age >= 21 AND age <= 50",
+        "confidence": 0.92
+      },
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "=",
+        "value": "SELF_EMPLOYED",
+        "rule_expression": "employment_status == 'SELF_EMPLOYED'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.93
+      },
+      {
+        "rule_type": "GENDER",
+        "operator": "=",
+        "value": "FEMALE",
+        "rule_expression": "gender == 'FEMALE'",
+        "confidence": 0.95
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_352",
+    "scheme_code": "FINANCIAL_352",
+    "scheme_name": "Chief Minister Startup Capital Aid Program",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "For youth entrepreneurs aged 18–40 launching startups in Rajasthan. Must have annual family income below ₹300,000 and belong to general or OBC category.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          40
+        ],
+        "rule_expression": "age >= 18 AND age <= 40",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 300000,
+        "rule_expression": "annual_income <= 300000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "CATEGORY",
+        "operator": "IN",
+        "value": [
+          "GENERAL",
+          "OBC"
+        ],
+        "rule_expression": "category IN ['GENERAL','OBC']",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_353",
+    "scheme_code": "FINANCIAL_353",
+    "scheme_name": "Women Financial Inclusion Grant Scheme",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "Financial literacy and grant provision for unemployed women aged 20–45 with annual income below ₹150,000. Beneficiaries should belong to Below Poverty Line households.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          20,
+          45
+        ],
+        "rule_expression": "age >= 20 AND age <= 45",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.93
+      },
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "=",
+        "value": "UNEMPLOYED",
+        "rule_expression": "employment_status == 'UNEMPLOYED'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "GENDER",
+        "operator": "=",
+        "value": "FEMALE",
+        "rule_expression": "gender == 'FEMALE'",
+        "confidence": 0.95
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_354",
+    "scheme_code": "FINANCIAL_354",
+    "scheme_name": "Gramin Small Trader Financial Support",
+    "scheme_category": "FINANCIAL",
+    "department": "Rural Development",
+    "natural_language_criteria": "Offers financial support to self-employed traders in rural Madhya Pradesh districts. Eligible applicants are aged between 22–55 and have family income under ₹200,000.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          22,
+          55
+        ],
+        "rule_expression": "age >= 22 AND age <= 55",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "=",
+        "value": "SELF_EMPLOYED",
+        "rule_expression": "employment_status == 'SELF_EMPLOYED'",
+        "confidence": 0.93
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 200000,
+        "rule_expression": "annual_income <= 200000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "STATE",
+        "operator": "=",
+        "value": "MADHYA_PRADESH",
+        "rule_expression": "state == 'MADHYA_PRADESH'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_355",
+    "scheme_code": "FINANCIAL_355",
+    "scheme_name": "Youth Self Employment Revolving Fund Scheme",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "Provides financial backing for unemployed youth aged 18–35 from Below Poverty Line households in Gujarat interested in self-employment ventures.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          35
+        ],
+        "rule_expression": "age >= 18 AND age <= 35",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "=",
+        "value": "UNEMPLOYED",
+        "rule_expression": "employment_status == 'UNEMPLOYED'",
+        "confidence": 0.93
+      },
+      {
+        "rule_type": "STATE",
+        "operator": "=",
+        "value": "GUJARAT",
+        "rule_expression": "state == 'GUJARAT'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_356",
+    "scheme_code": "FINANCIAL_356",
+    "scheme_name": "SC/ST Business Growth Assistance Scheme",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "Provides loan subsidies to SC/ST entrepreneurs aged 21–55 with annual income under ₹250,000. Applicants should already run a small business unit.",
+    "extracted_rules": [
+      {
+        "rule_type": "CATEGORY",
+        "operator": "IN",
+        "value": [
+          "SC",
+          "ST"
+        ],
+        "rule_expression": "category IN ['SC','ST']",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          21,
+          55
+        ],
+        "rule_expression": "age >= 21 AND age <= 55",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 250000,
+        "rule_expression": "annual_income <= 250000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_357",
+    "scheme_code": "FINANCIAL_357",
+    "scheme_name": "Rural Artisan Credit Assistance",
+    "scheme_category": "FINANCIAL",
+    "department": "Rural Development",
+    "natural_language_criteria": "Financially supports rural artisans aged 25–60 engaged in self-employment crafts. Annual family income must not exceed ₹200,000.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          25,
+          60
+        ],
+        "rule_expression": "age >= 25 AND age <= 60",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "=",
+        "value": "SELF_EMPLOYED",
+        "rule_expression": "employment_status == 'SELF_EMPLOYED'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_358",
+    "scheme_code": "FINANCIAL_358",
+    "scheme_name": "Women SHG Revolving Micro Credit Scheme",
+    "scheme_category": "FINANCIAL",
+    "department": "Rural Development",
+    "natural_language_criteria": "Provides micro-credit to women Self-Help Groups aged 18–55 residing in Rajasthan. Applicable for BPL households to start business ventures.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          55
+        ],
+        "rule_expression": "age >= 18 AND age <= 55",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "GENDER",
+        "operator": "=",
+        "value": "FEMALE",
+        "rule_expression": "gender == 'FEMALE'",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.92
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_359",
+    "scheme_code": "FINANCIAL_359",
+    "scheme_name": "Youth Unemployment Financial Subsidy Plan",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "Monetary allowance for unemployed youth aged 20–30 belonging to low-income BPL families. Residents of Jaipur district are prioritized.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          20,
+          30
+        ],
+        "rule_expression": "age >= 20 AND age <= 30",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "=",
+        "value": "UNEMPLOYED",
+        "rule_expression": "employment_status == 'UNEMPLOYED'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "DISTRICT",
+        "operator": "=",
+        "value": "JAIPUR",
+        "rule_expression": "district == 'JAIPUR'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_360",
+    "scheme_code": "FINANCIAL_360",
+    "scheme_name": "PM Financial Assistance for Handicraft Workers",
+    "scheme_category": "FINANCIAL",
+    "department": "Rural Development",
+    "natural_language_criteria": "Provides soft loan facilities to handicraft workers aged 25–60 with family income below ₹180,000 per annum. Preference to SC communities.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          25,
+          60
+        ],
+        "rule_expression": "age >= 25 AND age <= 60",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "CATEGORY",
+        "operator": "=",
+        "value": "SC",
+        "rule_expression": "category == 'SC'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 180000,
+        "rule_expression": "annual_income <= 180000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_361",
+    "scheme_code": "FINANCIAL_361",
+    "scheme_name": "Self Reliant Entrepreneur Assistance Scheme",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "Supports individuals aged 21–50 initiating small self-employment ventures. Income must not exceed ₹250,000, and applicant must be unemployed or self-employed.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          21,
+          50
+        ],
+        "rule_expression": "age >= 21 AND age <= 50",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "IN",
+        "value": [
+          "UNEMPLOYED",
+          "SELF_EMPLOYED"
+        ],
+        "rule_expression": "employment_status IN ['UNEMPLOYED','SELF_EMPLOYED']",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_362",
+    "scheme_code": "FINANCIAL_362",
+    "scheme_name": "PM Minority Youth Investment Scheme",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "Provides financial assistance to youth aged 18–40 from minority categories with annual income under ₹200,000. Encourages entrepreneurship and skill-based employment.",
+    "extracted_rules": [
+      {
+        "rule_type": "CATEGORY",
+        "operator": "=",
+        "value": "MINORITY",
+        "rule_expression": "category == 'MINORITY'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          40
+        ],
+        "rule_expression": "age >= 18 AND age <= 40",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_363",
+    "scheme_code": "FINANCIAL_363",
+    "scheme_name": "Gramin Women Cooperative Finance Project",
+    "scheme_category": "FINANCIAL",
+    "department": "Rural Development",
+    "natural_language_criteria": "Assists cooperative women societies operating in rural areas. Members must belong to Below Poverty Line families with average annual income below ₹150,000.",
+    "extracted_rules": [
+      {
+        "rule_type": "GENDER",
+        "operator": "=",
+        "value": "FEMALE",
+        "rule_expression": "gender == 'FEMALE'",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_364",
+    "scheme_code": "FINANCIAL_364",
+    "scheme_name": "Rural Youth Employment Assistance Grant",
+    "scheme_category": "FINANCIAL",
+    "department": "Rural Development",
+    "natural_language_criteria": "Eligible for unemployed rural youth aged 20–35. Income threshold for the applicant’s family should not exceed ₹180,000 annually.",
+    "extracted_rules": [
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "=",
+        "value": "UNEMPLOYED",
+        "rule_expression": "employment_status == 'UNEMPLOYED'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          20,
+          35
+        ],
+        "rule_expression": "age >= 20 AND age <= 35",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_365",
+    "scheme_code": "FINANCIAL_365",
+    "scheme_name": "OBC Financial Inclusion Advancement Scheme",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "Supports OBC individuals aged 18–45 through subsidized loans. Beneficiary’s annual income should not exceed ₹220,000.",
+    "extracted_rules": [
+      {
+        "rule_type": "CATEGORY",
+        "operator": "=",
+        "value": "OBC",
+        "rule_expression": "category == 'OBC'",
+        "confidence": 0.93
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 220000,
+        "rule_expression": "annual_income <= 220000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_366",
+    "scheme_code": "FINANCIAL_366",
+    "scheme_name": "Self Employment Empowerment Initiative",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "Provides capital assistance to individuals engaged in self-employment aged 25–50 residing in Jodhpur district. Income limit up to ₹200,000 per annum.",
+    "extracted_rules": [
+      {
+        "rule_type": "DISTRICT",
+        "operator": "=",
+        "value": "JODHPUR",
+        "rule_expression": "district == 'JODHPUR'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          25,
+          50
+        ],
+        "rule_expression": "age >= 25 AND age <= 50",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_367",
+    "scheme_code": "FINANCIAL_367",
+    "scheme_name": "Rural BPL Credit Access Scheme",
+    "scheme_category": "FINANCIAL",
+    "department": "Rural Development",
+    "natural_language_criteria": "Provides credit facilities to Below Poverty Line families for agricultural or trade purposes. Household income must not exceed ₹150,000 per year.",
+    "extracted_rules": [
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 150000,
+        "rule_expression": "annual_income <= 150000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_368",
+    "scheme_code": "FINANCIAL_368",
+    "scheme_name": "Senior Citizen Economic Strength Scheme",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "Covers senior citizens aged above 60 with household income under ₹200,000. Promotes sustainable financial safety among retirees.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": ">=",
+        "value": 60,
+        "rule_expression": "age >= 60",
+        "confidence": 0.93
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 200000,
+        "rule_expression": "annual_income <= 200000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_369",
+    "scheme_code": "FINANCIAL_369",
+    "scheme_name": "PM Urban SME Financial Boost Program",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "Supports self-employed entrepreneurs working in small and medium enterprises. Eligible beneficiaries are aged between 20–55 years.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          20,
+          55
+        ],
+        "rule_expression": "age >= 20 AND age <= 55",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "=",
+        "value": "SELF_EMPLOYED",
+        "rule_expression": "employment_status == 'SELF_EMPLOYED'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_370",
+    "scheme_code": "FINANCIAL_370",
+    "scheme_name": "Women Empowerment Finance Scheme",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "Provides loan and financial support to women aged 21–50 from low-income backgrounds. Targeted for Below Poverty Line households.",
+    "extracted_rules": [
+      {
+        "rule_type": "GENDER",
+        "operator": "=",
+        "value": "FEMALE",
+        "rule_expression": "gender == 'FEMALE'",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          21,
+          50
+        ],
+        "rule_expression": "age >= 21 AND age <= 50",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_371",
+    "scheme_code": "FINANCIAL_371",
+    "scheme_name": "Agricultural Worker Finance Aid Mission",
+    "scheme_category": "FINANCIAL",
+    "department": "Rural Development",
+    "natural_language_criteria": "Provides micro finance loans to agricultural laborers aged 18–60 with household income below ₹150,000 annually in Rajasthan.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          60
+        ],
+        "rule_expression": "age >= 18 AND age <= 60",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "STATE",
+        "operator": "=",
+        "value": "RAJASTHAN",
+        "rule_expression": "state == 'RAJASTHAN'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_372",
+    "scheme_code": "FINANCIAL_372",
+    "scheme_name": "Dalit Economic Uplift Fund",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "Provides soft loans to Dalit entrepreneurs aged 20–50 with annual family income below ₹220,000. Meant to encourage self-employment ventures.",
+    "extracted_rules": [
+      {
+        "rule_type": "CATEGORY",
+        "operator": "=",
+        "value": "SC",
+        "rule_expression": "category == 'SC'",
+        "confidence": 0.94
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          20,
+          50
+        ],
+        "rule_expression": "age >= 20 AND age <= 50",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_373",
+    "scheme_code": "FINANCIAL_373",
+    "scheme_name": "Village Microloan Assistance Yojana",
+    "scheme_category": "FINANCIAL",
+    "department": "Rural Development",
+    "natural_language_criteria": "For rural families with annual income under ₹160,000 engaged in farming or small business. Applicants must be residents of select districts.",
+    "extracted_rules": [
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 160000,
+        "rule_expression": "annual_income <= 160000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "DISTRICT",
+        "operator": "IN",
+        "value": [
+          "BARMER",
+          "CHURU"
+        ],
+        "rule_expression": "district IN ['BARMER','CHURU']",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_374",
+    "scheme_code": "FINANCIAL_374",
+    "scheme_name": "PM Mehnatkash Financial Security Program",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "Provides insurance-cum-investment support for informal sector workers aged 18–50 with income under ₹180,000 per annum.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          50
+        ],
+        "rule_expression": "age >= 18 AND age <= 50",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 180000,
+        "rule_expression": "annual_income <= 180000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_375",
+    "scheme_code": "FINANCIAL_375",
+    "scheme_name": "Urban Street Vendor Micro Finance Scheme",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "Offers micro-financing for self-employed street vendors aged 20–55 in urban areas. Applicable only for Below Poverty Line category workers.",
+    "extracted_rules": [
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "=",
+        "value": "SELF_EMPLOYED",
+        "rule_expression": "employment_status == 'SELF_EMPLOYED'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          20,
+          55
+        ],
+        "rule_expression": "age >= 20 AND age <= 55",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.93
+      }
+    ]
+  }
+]

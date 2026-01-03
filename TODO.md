@@ -25,7 +25,7 @@
 - [ ] Siamese neural network (future)
 - [ ] Conflict reconciliation training (needs training data)
 - [ ] Survival analysis for best truth selection
-- [ ] FastAPI integration
+- [ ] Spring Boot API implementation (if not already complete)
 - [ ] Production deployment
 
 ---
@@ -75,7 +75,7 @@
 
 #### ⏳ Optional Enhancements (Not Blocking)
 - [ ] Model training execution (when historical data available)
-- [ ] Complete Java DTOs for all endpoints
+- [x] Complete Java DTOs for all endpoints ✅ **COMPLETE** (23 DTOs created)
 - [ ] Event listeners (real-time infrastructure)
 - [ ] Monitoring and alerting setup
 - [x] Notebooks (data exploration, fairness audit) ✅ **COMPLETE**

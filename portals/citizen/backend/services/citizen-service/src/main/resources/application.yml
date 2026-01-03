@@ -1,15 +1,101 @@
-# Citizen Service - Application Configuration
-# This file can reference the portal-level config or override as needed
-
 spring:
-  config:
-    import: optional:file:../../../../config/application.yml
+  application:
+    name: citizen-service
 
-# Service-specific overrides can go here
+  profiles:
+    active: dev
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/smart_citizen
+    username: sameer
+    password: anjali143
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        use_sql_comments: true
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    validate-on-migrate: true
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
+      file-size-threshold: 2KB
+
 server:
-  port: 8080
+  port: 8081
+  servlet:
+    context-path: /citizen/api/v1
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: when-authorized
+
+# Swagger/OpenAPI Configuration
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+    operations-sorter: method
+    tags-sorter: alpha
+    doc-expansion: none
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
+
+# File Upload Configuration
+file:
+  upload-dir: ./uploads/documents
+  max-size: 10MB
+
+# Neo4j Configuration
+neo4j:
+  uri: bolt://172.17.16.1:7687
+  user: neo4j
+  password: anjali143
+  database: smartgraphdb
+
+# Family Relationships Cache Configuration
+family-relationships:
+  cache:
+    enabled: true
+    ttl-hours: 1  # Cache expires after 1 hour
+    auto-sync: true  # Auto-sync after Neo4j queries
+    cleanup-enabled: true  # Enable scheduled cleanup
 
 logging:
   level:
+    root: INFO
     com.smart.citizen: DEBUG
-
+    org.springframework.web: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"

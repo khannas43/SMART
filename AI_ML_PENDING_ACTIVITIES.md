@@ -62,6 +62,7 @@
 - [x] **Notebooks Development** ✅ **COMPLETE**
   - [x] Data exploration notebook ✅
   - [x] Fairness audit notebook ✅
+- [x] **Complete Java DTOs for all endpoints** ✅ **COMPLETE** (23 DTOs created)
 
 ### AI-PLATFORM-06: Auto Approval & STP
 - [ ] **Train Actual ML Models** (when historical data available)
@@ -96,13 +97,13 @@
 ## 🟢 Low Priority - Optional Enhancements
 
 ### AI-PLATFORM-01: Golden Records
-- [ ] FastAPI integration (alternative to Spring Boot)
+- [ ] Spring Boot API implementation (if not already complete)
 
 ### AI-PLATFORM-02: 360° Profiles
 - [ ] Advanced D3.js visualizations (beyond current React components)
 
 ### AI-PLATFORM-03: Eligibility Identification
-- [ ] Complete Java DTOs for all endpoints
+- [x] Complete Java DTOs for all endpoints ✅ **COMPLETE** (23 DTOs created)
 - [ ] Event listeners (real-time infrastructure integration)
 
 ### AI-PLATFORM-04: Auto Intimation & Consent
@@ -173,6 +174,7 @@
 
 ## 📝 Notes
 
+- **API Architecture**: All use cases use **Spring Boot REST APIs** as the standard API layer (FastAPI/Flask alternatives removed)
 - **Model Training**: Most ML model training tasks are pending historical data availability
 - **External Dependencies**: AI-PLATFORM-05 is the only use case blocked on external information
 - **Core Functionality**: All 11 use cases have core implementation complete

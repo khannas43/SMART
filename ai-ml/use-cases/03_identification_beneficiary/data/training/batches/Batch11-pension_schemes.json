@@ -1,0 +1,324 @@
+[
+  {
+    "scheme_id": "SCHEME_251",
+    "scheme_code": "PENSION_251",
+    "scheme_name": "National Senior Assistance Pension Plan",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "This pension plan supports people aged 65 years and above who belong to BPL families. Applicants must be residents of Maharashtra and not receiving any other pension benefits.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": ">=", "value": 65, "rule_expression": "age >= 65", "confidence": 0.94},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "confidence": 0.91},
+      {"rule_type": "STATE", "operator": "=", "value": "MAHARASHTRA", "rule_expression": "state == 'MAHARASHTRA'", "confidence": 0.9},
+      {"rule_type": "PRIOR_PARTICIPATION", "operator": "=", "value": false, "rule_expression": "previous_pension == false", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_252",
+    "scheme_code": "PENSION_252",
+    "scheme_name": "Women Pension Empowerment Yojana",
+    "scheme_category": "PENSION",
+    "department": "Women & Child Development",
+    "natural_language_criteria": "Offers financial aid to widowed women aged 45 to 70 years in Gujarat. The beneficiaries should belong to Below Poverty Line households.",
+    "extracted_rules": [
+      {"rule_type": "GENDER", "operator": "=", "value": "FEMALE", "rule_expression": "gender == 'FEMALE'", "confidence": 0.95},
+      {"rule_type": "MARITAL_STATUS", "operator": "=", "value": "WIDOWED", "rule_expression": "marital_status == 'WIDOWED'", "confidence": 0.93},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [45, 70], "rule_expression": "age >= 45 AND age <= 70", "confidence": 0.91},
+      {"rule_type": "STATE", "operator": "=", "value": "GUJARAT", "rule_expression": "state == 'GUJARAT'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_253",
+    "scheme_code": "PENSION_253",
+    "scheme_name": "Universal Old Age Pension Initiative",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "Residents aged 70 years or older from low-income households across Karnataka are eligible for a lifelong pension. Preference is given to those not covered under central pensions.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": ">=", "value": 70, "rule_expression": "age >= 70", "confidence": 0.92},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "confidence": 0.91},
+      {"rule_type": "STATE", "operator": "=", "value": "KARNATAKA", "rule_expression": "state == 'KARNATAKA'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_254",
+    "scheme_code": "PENSION_254",
+    "scheme_name": "Disability Pension Support Program",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "Residents aged 20 to 60 with a disability of at least 40% qualify for this pension. Applicants should belong to BPL categories within Tamil Nadu.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [20, 60], "rule_expression": "age >= 20 AND age <= 60", "confidence": 0.9},
+      {"rule_type": "DISABILITY", "operator": ">=", "value": 40, "rule_expression": "disability_percent >= 40", "confidence": 0.93},
+      {"rule_type": "STATE", "operator": "=", "value": "TAMIL_NADU", "rule_expression": "state == 'TAMIL_NADU'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_255",
+    "scheme_code": "PENSION_255",
+    "scheme_name": "Old Age Family Integrity Pension Scheme",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "Provides monthly pension benefits to families where both partners are aged 60 or above and belong to Below Poverty Line households of Madhya Pradesh.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": ">=", "value": 60, "rule_expression": "age >= 60", "confidence": 0.9},
+      {"rule_type": "FAMILY_SIZE", "operator": ">=", "value": 2, "rule_expression": "family_size >= 2", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "MADHYA_PRADESH", "rule_expression": "state == 'MADHYA_PRADESH'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_256",
+    "scheme_code": "PENSION_256",
+    "scheme_name": "Widow Rehabilitation Pension Mission",
+    "scheme_category": "PENSION",
+    "department": "Women & Child Development",
+    "natural_language_criteria": "Supports widows aged 30 to 65 who have no income source. Eligibility includes Below Poverty Line families residing in Delhi.",
+    "extracted_rules": [
+      {"rule_type": "MARITAL_STATUS", "operator": "=", "value": "WIDOWED", "rule_expression": "marital_status == 'WIDOWED'", "confidence": 0.94},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [30, 65], "rule_expression": "age >= 30 AND age <= 65", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "DELHI", "rule_expression": "state == 'DELHI'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_257",
+    "scheme_code": "PENSION_257",
+    "scheme_name": "Kisan Senior Support Scheme",
+    "scheme_category": "PENSION",
+    "department": "Agriculture",
+    "natural_language_criteria": "A scheme for retired farmers aged 65 and above owning agricultural land of less than 2 hectares. Applicable across Bihar state.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": ">=", "value": 65, "rule_expression": "age >= 65", "confidence": 0.93},
+      {"rule_type": "LAND_SIZE", "operator": "<=", "value": 5, "rule_expression": "land_size <= 5", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "BIHAR", "rule_expression": "state == 'BIHAR'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_258",
+    "scheme_code": "PENSION_258",
+    "scheme_name": "Divyangjan Welfare Pension Program",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "Provides special monthly benefits to persons aged 18 to 60 with more than 50% disability residing in Odisha. Applicable for both men and women.",
+    "extracted_rules": [
+      {"rule_type": "DISABILITY", "operator": ">=", "value": 50, "rule_expression": "disability_percent >= 50", "confidence": 0.94},
+      {"rule_type": "STATE", "operator": "=", "value": "ODISHA", "rule_expression": "state == 'ODISHA'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_259",
+    "scheme_code": "PENSION_259",
+    "scheme_name": "Rural Women Safety Pension Yojana",
+    "scheme_category": "PENSION",
+    "department": "Women & Child Development",
+    "natural_language_criteria": "Designed for rural women aged 40–70 without family support. Must belong to Below Poverty Line households in Rajasthan.",
+    "extracted_rules": [
+      {"rule_type": "GENDER", "operator": "=", "value": "FEMALE", "rule_expression": "gender == 'FEMALE'", "confidence": 0.95},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [40, 70], "rule_expression": "age >= 40 AND age <= 70", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "RAJASTHAN", "rule_expression": "state == 'RAJASTHAN'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_260",
+    "scheme_code": "PENSION_260",
+    "scheme_name": "Elderly Care Pension Support",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "Provides care-based pensions for elderly couples aged above 75 belonging to low-income groups in West Bengal. Applicants should not receive any related benefit.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": ">=", "value": 75, "rule_expression": "age >= 75", "confidence": 0.93},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "WEST_BENGAL", "rule_expression": "state == 'WEST_BENGAL'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_261",
+    "scheme_code": "PENSION_261",
+    "scheme_name": "Freedom Fighter Family Pension Program",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "Relatives of registered freedom fighters aged 50 and above can receive pension support in Uttarakhand. Applicants must not be employed or availing other state benefits.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": ">=", "value": 50, "rule_expression": "age >= 50", "confidence": 0.91},
+      {"rule_type": "STATE", "operator": "=", "value": "UTTARAKHAND", "rule_expression": "state == 'UTTARAKHAND'", "confidence": 0.9},
+      {"rule_type": "EMPLOYMENT_STATUS", "operator": "=", "value": "UNEMPLOYED", "rule_expression": "employment_status == 'UNEMPLOYED'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_262",
+    "scheme_code": "PENSION_262",
+    "scheme_name": "Widow Resilience Support Program",
+    "scheme_category": "PENSION",
+    "department": "Women & Child Development",
+    "natural_language_criteria": "Supports widowed women aged 35 to 65 in rural Bihar. Only eligible for first-time applicants with household income below ₹100,000.",
+    "extracted_rules": [
+      {"rule_type": "MARITAL_STATUS", "operator": "=", "value": "WIDOWED", "rule_expression": "marital_status == 'WIDOWED'", "confidence": 0.94},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [35, 65], "rule_expression": "age >= 35 AND age <= 65", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "BIHAR", "rule_expression": "state == 'BIHAR'", "confidence": 0.9},
+      {"rule_type": "ANNUAL_INCOME", "operator": "<=", "value": 100000, "rule_expression": "annual_income <= 100000", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_263",
+    "scheme_code": "PENSION_263",
+    "scheme_name": "Gramin Senior Life Support Pension",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "Provides pension to rural senior citizens aged 65 years and above from BPL households. Available to permanent residents of Haryana villages.",
+    "extracted_rules": [
+      {"rule_type": "STATE", "operator": "=", "value": "HARYANA", "rule_expression": "state == 'HARYANA'", "confidence": 0.9},
+      {"rule_type": "AGE", "operator": ">=", "value": 65, "rule_expression": "age >= 65", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_264",
+    "scheme_code": "PENSION_264",
+    "scheme_name": "Farm Widow Pension Yojana",
+    "scheme_category": "PENSION",
+    "department": "Women & Child Development",
+    "natural_language_criteria": "For widows of deceased farmers aged 30 to 60 belonging to BPL families in Madhya Pradesh. Only one member per family can claim benefits.",
+    "extracted_rules": [
+      {"rule_type": "MARITAL_STATUS", "operator": "=", "value": "WIDOWED", "rule_expression": "marital_status == 'WIDOWED'", "confidence": 0.93},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [30, 60], "rule_expression": "age >= 30 AND age <= 60", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "MADHYA_PRADESH", "rule_expression": "state == 'MADHYA_PRADESH'", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_265",
+    "scheme_code": "PENSION_265",
+    "scheme_name": "Single Women Pension Relief Scheme",
+    "scheme_category": "PENSION",
+    "department": "Women & Child Development",
+    "natural_language_criteria": "Financial support offered to unmarried women aged 40 to 70 from poor families in Uttar Pradesh. The applicant should not be receiving any other social benefit.",
+    "extracted_rules": [
+      {"rule_type": "MARITAL_STATUS", "operator": "=", "value": "UNMARRIED", "rule_expression": "marital_status == 'UNMARRIED'", "confidence": 0.93},
+      {"rule_type": "STATE", "operator": "=", "value": "UTTAR_PRADESH", "rule_expression": "state == 'UTTAR_PRADESH'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_266",
+    "scheme_code": "PENSION_266",
+    "scheme_name": "Senior Artisan Pension Initiative",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "Provides pension for senior citizens aged 65 and above who previously worked in traditional crafts. Must belong to BPL family and reside in Rajasthan.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": ">=", "value": 65, "rule_expression": "age >= 65", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "RAJASTHAN", "rule_expression": "state == 'RAJASTHAN'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_267",
+    "scheme_code": "PENSION_267",
+    "scheme_name": "Disabled Farmer Pension Scheme",
+    "scheme_category": "PENSION",
+    "department": "Agriculture",
+    "natural_language_criteria": "For disabled farmers aged 25 to 65 with disability above 40%. Landholding should not exceed two hectares and applicant must reside in Punjab.",
+    "extracted_rules": [
+      {"rule_type": "DISABILITY", "operator": ">=", "value": 40, "rule_expression": "disability_percent >= 40", "confidence": 0.92},
+      {"rule_type": "LAND_SIZE", "operator": "<=", "value": 5, "rule_expression": "land_size <= 5", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "PUNJAB", "rule_expression": "state == 'PUNJAB'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_268",
+    "scheme_code": "PENSION_268",
+    "scheme_name": "Transgender Community Social Pension",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "Designed to assist transgender individuals aged 18 and above belonging to BPL households in Kerala. Must not be enrolled in any other pension scheme.",
+    "extracted_rules": [
+      {"rule_type": "CATEGORY", "operator": "=", "value": "TRANSGENDER", "rule_expression": "category == 'TRANSGENDER'", "confidence": 0.93},
+      {"rule_type": "AGE", "operator": ">=", "value": 18, "rule_expression": "age >= 18", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "KERALA", "rule_expression": "state == 'KERALA'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_269",
+    "scheme_code": "PENSION_269",
+    "scheme_name": "National Widow Livelihood Pension Scheme",
+    "scheme_category": "PENSION",
+    "department": "Women & Child Development",
+    "natural_language_criteria": "Offers monthly income support to widows aged between 25 and 60 across Chhattisgarh. The family’s annual income must be within BPL limits.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [25, 60], "rule_expression": "age >= 25 AND age <= 60", "confidence": 0.9},
+      {"rule_type": "MARITAL_STATUS", "operator": "=", "value": "WIDOWED", "rule_expression": "marital_status == 'WIDOWED'", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "CHHATTISGARH", "rule_expression": "state == 'CHHATTISGARH'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_270",
+    "scheme_code": "PENSION_270",
+    "scheme_name": "Elderly Artisan Family Pension Plan",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "Available to retired craftspeople aged 65 and above with low family income and no alternate pension. Residents of Udaipur district are prioritized.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": ">=", "value": 65, "rule_expression": "age >= 65", "confidence": 0.9},
+      {"rule_type": "DISTRICT", "operator": "=", "value": "UDAIPUR", "rule_expression": "district == 'UDAIPUR'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_271",
+    "scheme_code": "PENSION_271",
+    "scheme_name": "BPL Senior Pension Benefit Yojana",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "Provides financial support to citizens aged 60 years or above belonging to BPL classes. Residents of Gujarat are eligible under this scheme.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": ">=", "value": 60, "rule_expression": "age >= 60", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "GUJARAT", "rule_expression": "state == 'GUJARAT'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_272",
+    "scheme_code": "PENSION_272",
+    "scheme_name": "Social Security Pension for Marginalized Communities",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "Ensures regular financial support for citizens aged above 58 years from SC, ST, or OBC categories living in Assam. Only one family member can avail the benefit.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": ">=", "value": 58, "rule_expression": "age >= 58", "confidence": 0.9},
+      {"rule_type": "CATEGORY", "operator": "IN", "value": ["SC", "ST", "OBC"], "rule_expression": "category IN ['SC','ST','OBC']", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "ASSAM", "rule_expression": "state == 'ASSAM'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_273",
+    "scheme_code": "PENSION_273",
+    "scheme_name": "State Senior Widows Support Program",
+    "scheme_category": "PENSION",
+    "department": "Women & Child Development",
+    "natural_language_criteria": "Assists elderly widows aged above 60 across Uttarakhand. Applicants must belong to low-income groups and not receive other assistance.",
+    "extracted_rules": [
+      {"rule_type": "MARITAL_STATUS", "operator": "=", "value": "WIDOWED", "rule_expression": "marital_status == 'WIDOWED'", "confidence": 0.9},
+      {"rule_type": "AGE", "operator": ">=", "value": 60, "rule_expression": "age >= 60", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "UTTARAKHAND", "rule_expression": "state == 'UTTARAKHAND'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_274",
+    "scheme_code": "PENSION_274",
+    "scheme_name": "National Pension Scheme for Handloom Workers",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "A contributory pension for handloom workers aged 18 to 59 years with a low annual income. Applicable in Andhra Pradesh for those not under other coverage.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [18, 59], "rule_expression": "age >= 18 AND age <= 59", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "ANDHRA_PRADESH", "rule_expression": "state == 'ANDHRA_PRADESH'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_275",
+    "scheme_code": "PENSION_275",
+    "scheme_name": "Elder Welfare Pension Mission",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "Provides financial assistance to persons aged 62 years or older residing in Telangana. The income threshold for eligibility is ₹180,000 per annum.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": ">=", "value": 62, "rule_expression": "age >= 62", "confidence": 0.92},
+      {"rule_type": "ANNUAL_INCOME", "operator": "<=", "value": 180000, "rule_expression": "annual_income <= 180000", "confidence": 0.9},
+      {"rule_type": "STATE", "operator": "=", "value": "TELANGANA", "rule_expression": "state == 'TELANGANA'", "confidence": 0.9}
+    ]
+  }
+]

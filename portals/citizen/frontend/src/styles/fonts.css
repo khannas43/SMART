@@ -1,0 +1,59 @@
+/**
+ * Font Configuration for SMART Citizen Portal
+ * Includes Hindi (Devanagari) font support
+ */
+
+/* Import Hindi Font - Noto Sans Devanagari from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap');
+
+/* Base font stack */
+:root {
+  /* English font stack */
+  --font-family-en: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  
+  /* Hindi font stack (Devanagari script) */
+  --font-family-hi: 'Noto Sans Devanagari', 'Mangal', 'Arial Unicode MS', 
+    'Nirmala UI', 'Arial', sans-serif;
+  
+  /* Combined font stack (supports both) */
+  --font-family-base: var(--font-family-hi), var(--font-family-en);
+}
+
+/* Base body styles */
+body {
+  font-family: var(--font-family-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Language-specific font classes (if needed) */
+.lang-en {
+  font-family: var(--font-family-en);
+}
+
+.lang-hi {
+  font-family: var(--font-family-hi);
+  /* Hindi text may need different line-height */
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+/* Code font (monospace) */
+code {
+  font-family: 'Courier New', 'Courier', monospace;
+}
+
+/* Font size adjustments for different languages (if needed) */
+/* Hindi text rendering might need slight adjustments */
+html[lang="hi"] {
+  /* Optional: Adjust base font size for Hindi if needed */
+  /* font-size: 16px; */
+}
+
+html[lang="en"] {
+  /* English default */
+  /* font-size: 16px; */
+}
+

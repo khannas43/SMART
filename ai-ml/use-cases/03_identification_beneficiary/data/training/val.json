@@ -1,0 +1,1496 @@
+[
+  {
+    "scheme_id": "SCHEME_143",
+    "scheme_code": "FOOD_143",
+    "scheme_name": "Madhya Pradesh Grain Subsidy Yojana",
+    "scheme_category": "FOOD",
+    "department": "Food & Civil Supplies",
+    "natural_language_criteria": "Ensures subsidized grains for BPL households with family size less than 7. Beneficiaries must belong to Jabalpur district.",
+    "extracted_rules": [
+      {
+        "rule_type": "DISTRICT",
+        "operator": "==",
+        "value": "JABALPUR",
+        "rule_expression": "district == 'JABALPUR'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "FAMILY_SIZE",
+        "operator": "<=",
+        "value": 7,
+        "rule_expression": "family_size <= 7",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "==",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_030",
+    "scheme_code": "HEALTH_030",
+    "scheme_name": "Mukhyamantri Amrutum (MA) Yojana",
+    "scheme_category": "HEALTH",
+    "department": "Health",
+    "natural_language_criteria": "For families with annual income less than ₹120,000 in Gujarat. Scheme provides comprehensive coverage for tertiary care treatment in empaneled hospitals.",
+    "extracted_rules": [
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "<=",
+        "value": 120000,
+        "rule_expression": "annual_income <= 120000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "DISTRICT",
+        "operator": "==",
+        "value": "AHMEDABAD",
+        "rule_expression": "district == 'AHMEDABAD'",
+        "confidence": 0.87
+      },
+      {
+        "rule_type": "FAMILY_SIZE",
+        "operator": "<=",
+        "value": 7,
+        "rule_expression": "family_size <= 7",
+        "confidence": 0.85
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_019",
+    "scheme_code": "PENSION_019",
+    "scheme_name": "Gramin Vridh Pension Scheme",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "Provides old age pension to elderly rural residents aged 60 years and above from Below Poverty Line households in Gujarat.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": ">=",
+        "value": 60,
+        "rule_expression": "age >= 60",
+        "rule_type_category": "ELIGIBILITY",
+        "confidence": 0.91
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "==",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "rule_type_category": "SOCIOECONOMIC",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "STATE",
+        "operator": "==",
+        "value": "GUJARAT",
+        "rule_expression": "state == 'GUJARAT'",
+        "rule_type_category": "GEOGRAPHIC",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_045",
+    "scheme_code": "HEALTH_045",
+    "scheme_name": "Tribal Health & Nutrition Scheme",
+    "scheme_category": "HEALTH",
+    "department": "Health",
+    "natural_language_criteria": "Focuses on improving health of ST category families in tribal districts with income under ₹70,000. Includes food supplement and medical facilities.",
+    "extracted_rules": [
+      {
+        "rule_type": "CATEGORY",
+        "operator": "==",
+        "value": "ST",
+        "rule_expression": "category == 'ST'",
+        "confidence": 0.94
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "<=",
+        "value": 70000,
+        "rule_expression": "annual_income <= 70000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "DISTRICT",
+        "operator": "==",
+        "value": "DUNGARPUR",
+        "rule_expression": "district == 'DUNGARPUR'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_178",
+    "scheme_code": "AGRICULTURE_178",
+    "scheme_name": "Kisan Credit Card Scheme",
+    "scheme_category": "AGRICULTURE",
+    "department": "Rural Development",
+    "natural_language_criteria": "Provides credit access to farmers owning at least 1 acre of land. Applicants must be aged 18-60 with active cultivation rights.",
+    "extracted_rules": [
+      {
+        "rule_type": "LAND_OWNERSHIP",
+        "operator": "==",
+        "value": true,
+        "rule_expression": "owns_land == true",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "LAND_OWNERSHIP",
+        "operator": "==",
+        "value": true,
+        "rule_expression": "land_ownership == true",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          60
+        ],
+        "rule_expression": "age >= 18 AND age <= 60",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_485",
+    "scheme_code": "EDUCATION_485",
+    "scheme_name": "Rural Girls Higher Study Incentive",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Scholarship for rural girls aged 18–25 pursuing graduate studies. Family income must be under ₹180,000 and applicants must belong to SC or OBC category.",
+    "extracted_rules": [
+      {
+        "rule_type": "GENDER",
+        "operator": "==",
+        "value": "FEMALE",
+        "rule_expression": "gender == 'FEMALE'",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "CATEGORY",
+        "operator": "IN",
+        "value": [
+          "SC",
+          "OBC"
+        ],
+        "rule_expression": "category IN ['SC','OBC']",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 180000,
+        "rule_expression": "annual_income <= 180000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_276",
+    "scheme_code": "HEALTH_276",
+    "scheme_name": "Ayushman Bharat Swasthya Suraksha Abhiyan",
+    "scheme_category": "HEALTH",
+    "department": "Health",
+    "natural_language_criteria": "For families with annual income below ₹150,000 and family size not exceeding 6 members. Individuals should belong to BPL category and possess valid ration cards.",
+    "extracted_rules": [
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 150000,
+        "rule_expression": "annual_income <= 150000",
+        "confidence": 0.94
+      },
+      {
+        "rule_type": "FAMILY_SIZE",
+        "operator": "<=",
+        "value": 6,
+        "rule_expression": "family_size <= 6",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "==",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.92
+      },
+      {
+        "rule_type": "RATION_CARD",
+        "operator": "==",
+        "value": true,
+        "rule_expression": "has_ration_card == true",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_477",
+    "scheme_code": "HEALTH_477",
+    "scheme_name": "Comprehensive Rural Disability Health Support Scheme",
+    "scheme_category": "HEALTH",
+    "department": "Health",
+    "natural_language_criteria": "A health insurance program for rural residents with over 50% disability. Eligible families must have income below ₹180,000 and family size under six members residing in designated districts.",
+    "extracted_rules": [
+      {
+        "rule_type": "DISABILITY",
+        "operator": ">=",
+        "value": 50,
+        "rule_expression": "disability_percent >= 50",
+        "confidence": 0.94
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 180000,
+        "rule_expression": "annual_income <= 180000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "FAMILY_SIZE",
+        "operator": "<=",
+        "value": 6,
+        "rule_expression": "family_size <= 6",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "DISTRICT",
+        "operator": "IN",
+        "value": [
+          "UDAIPUR",
+          "BANSWARA"
+        ],
+        "rule_expression": "district IN ['UDAIPUR','BANSWARA']",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_254",
+    "scheme_code": "PENSION_254",
+    "scheme_name": "Disability Pension Support Program",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "Residents aged 20 to 60 with a disability of at least 40% qualify for this pension. Applicants should belong to BPL categories within Tamil Nadu.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          20,
+          60
+        ],
+        "rule_expression": "age >= 20 AND age <= 60",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "DISABILITY",
+        "operator": ">=",
+        "value": 40,
+        "rule_expression": "disability_percent >= 40",
+        "confidence": 0.93
+      },
+      {
+        "rule_type": "STATE",
+        "operator": "==",
+        "value": "TAMIL_NADU",
+        "rule_expression": "state == 'TAMIL_NADU'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_304",
+    "scheme_code": "EDUCATION_304",
+    "scheme_name": "Tribal Area Education Development Program",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Aims at improving education access for ST community children aged 6 to 18 in Udaipur and Banswara districts. Must be studying in primary or secondary level.",
+    "extracted_rules": [
+      {
+        "rule_type": "CATEGORY",
+        "operator": "==",
+        "value": "ST",
+        "rule_expression": "category == 'ST'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "DISTRICT",
+        "operator": "IN",
+        "value": [
+          "UDAIPUR",
+          "BANSWARA"
+        ],
+        "rule_expression": "district IN ['UDAIPUR','BANSWARA']",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          6,
+          18
+        ],
+        "rule_expression": "age >= 6 AND age <= 18",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_308",
+    "scheme_code": "EDUCATION_308",
+    "scheme_name": "Girls Secondary School Admission Grant",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Incentive-based program for girls aged 12 to 17 enrolling in secondary education. Designed for Below Poverty Line families with preference to SC category.",
+    "extracted_rules": [
+      {
+        "rule_type": "GENDER",
+        "operator": "==",
+        "value": "FEMALE",
+        "rule_expression": "gender == 'FEMALE'",
+        "confidence": 0.96
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          12,
+          17
+        ],
+        "rule_expression": "age >= 12 AND age <= 17",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "==",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_242",
+    "scheme_code": "HEALTH_242",
+    "scheme_name": "Critical Illness Medical Grant Scheme",
+    "scheme_category": "HEALTH",
+    "department": "Health",
+    "natural_language_criteria": "Supports adults aged 25 to 60 suffering from severe illnesses with annual family income below ₹300,000. Disabled individuals get priority. Cannot combine with insurance claims.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          25,
+          60
+        ],
+        "rule_expression": "age >= 25 AND age <= 60",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 300000,
+        "rule_expression": "annual_income <= 300000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "DISABILITY",
+        "operator": "==",
+        "value": true,
+        "rule_expression": "is_disabled == true",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "PRIOR_PARTICIPATION",
+        "operator": "==",
+        "value": false,
+        "rule_expression": "insurance_claimed == false",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_307",
+    "scheme_code": "EDUCATION_307",
+    "scheme_name": "Rajasthan College Tuition Fee Waiver Scheme",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Provides tuition fee waivers for graduate-level students belonging to BPL families. Applicable to all public universities in Rajasthan.",
+    "extracted_rules": [
+      {
+        "rule_type": "EDUCATION_LEVEL",
+        "operator": "==",
+        "value": "GRADUATE",
+        "rule_expression": "education_level == 'GRADUATE'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "==",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "STATE",
+        "operator": "==",
+        "value": "RAJASTHAN",
+        "rule_expression": "state == 'RAJASTHAN'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_083",
+    "scheme_code": "HOUSING_083",
+    "scheme_name": "Gramin Housing Assistance Scheme",
+    "scheme_category": "HOUSING",
+    "department": "Housing",
+    "natural_language_criteria": "For rural families with annual income below ₹150,000 and no land ownership. Beneficiaries must have family size ranging between 4 and 7 members.",
+    "extracted_rules": [
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 150000,
+        "rule_expression": "annual_income <= 150000",
+        "confidence": 0.92
+      },
+      {
+        "rule_type": "LAND_OWNERSHIP",
+        "operator": "==",
+        "value": false,
+        "rule_expression": "owns_land == false",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "FAMILY_SIZE",
+        "operator": "BETWEEN",
+        "value": [
+          4,
+          7
+        ],
+        "rule_expression": "family_size >= 4 AND family_size <= 7",
+        "confidence": 0.88
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_038",
+    "scheme_code": "HEALTH_038",
+    "scheme_name": "Urban Health Assurance Program",
+    "scheme_category": "HEALTH",
+    "department": "Health",
+    "natural_language_criteria": "Urban low-income families in Jaipur city earning below ₹150,000 annually are covered under the scheme. Family size should not exceed six members.",
+    "extracted_rules": [
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "<=",
+        "value": 150000,
+        "rule_expression": "annual_income <= 150000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "FAMILY_SIZE",
+        "operator": "<=",
+        "value": 6,
+        "rule_expression": "family_size <= 6",
+        "confidence": 0.89
+      },
+      {
+        "rule_type": "DISTRICT",
+        "operator": "==",
+        "value": "JAIPUR",
+        "rule_expression": "district == 'JAIPUR'",
+        "confidence": 0.87
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_353",
+    "scheme_code": "FINANCIAL_353",
+    "scheme_name": "Women Financial Inclusion Grant Scheme",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "Financial literacy and grant provision for unemployed women aged 20–45 with annual income below ₹150,000. Beneficiaries should belong to Below Poverty Line households.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          20,
+          45
+        ],
+        "rule_expression": "age >= 20 AND age <= 45",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "==",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.93
+      },
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "==",
+        "value": "UNEMPLOYED",
+        "rule_expression": "employment_status == 'UNEMPLOYED'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "GENDER",
+        "operator": "==",
+        "value": "FEMALE",
+        "rule_expression": "gender == 'FEMALE'",
+        "confidence": 0.95
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_216",
+    "scheme_code": "AGRICULTURE_216",
+    "scheme_name": "Farm Mechanization Subsidy Yojana",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "Provides equipment subsidy to small famers with land area between 1–5 acres. Must hold valid land registration and belong to EWS category.",
+    "extracted_rules": [
+      {
+        "rule_type": "LAND_OWNERSHIP",
+        "operator": "==",
+        "value": true,
+        "rule_expression": "land_ownership == true",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "LAND_OWNERSHIP",
+        "operator": "==",
+        "value": true,
+        "rule_expression": "owns_land == true",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "==",
+        "value": "EWS",
+        "rule_expression": "income_group == 'EWS'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_313",
+    "scheme_code": "EDUCATION_313",
+    "scheme_name": "Minority Education Infrastructure Program",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Encourages education infrastructure improvements for minority students aged 6–18 in Banswara district schools. Special preference to OBC category students.",
+    "extracted_rules": [
+      {
+        "rule_type": "DISTRICT",
+        "operator": "==",
+        "value": "BANSWARA",
+        "rule_expression": "district == 'BANSWARA'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "CATEGORY",
+        "operator": "==",
+        "value": "OBC",
+        "rule_expression": "category == 'OBC'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          6,
+          18
+        ],
+        "rule_expression": "age >= 6 AND age <= 18",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_226",
+    "scheme_code": "PENSION_226",
+    "scheme_name": "Senior and Disabled Citizen Pension Scheme",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "Provides financial aid to senior citizens aged 60 and above or disabled adults aged 18 to 60 with at least 40% disability. The applicant must belong to a BPL family, reside in Rajasthan, and not be receiving any other pension benefit.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          60
+        ],
+        "rule_expression": "(age >= 18 AND age <= 60)",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "AGE",
+        "operator": ">=",
+        "value": 60,
+        "rule_expression": "age >= 60",
+        "confidence": 0.92
+      },
+      {
+        "rule_type": "DISABILITY",
+        "operator": ">=",
+        "value": 40,
+        "rule_expression": "disability_percent >= 40",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "==",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.93
+      },
+      {
+        "rule_type": "STATE",
+        "operator": "==",
+        "value": "RAJASTHAN",
+        "rule_expression": "state == 'RAJASTHAN'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "PRIOR_PARTICIPATION",
+        "operator": "==",
+        "value": false,
+        "rule_expression": "receives_other_pension == false",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_261",
+    "scheme_code": "PENSION_261",
+    "scheme_name": "Freedom Fighter Family Pension Program",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "Relatives of registered freedom fighters aged 50 and above can receive pension support in Uttarakhand. Applicants must not be employed or availing other state benefits.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": ">=",
+        "value": 50,
+        "rule_expression": "age >= 50",
+        "confidence": 0.91
+      },
+      {
+        "rule_type": "STATE",
+        "operator": "==",
+        "value": "UTTARAKHAND",
+        "rule_expression": "state == 'UTTARAKHAND'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "==",
+        "value": "UNEMPLOYED",
+        "rule_expression": "employment_status == 'UNEMPLOYED'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_090",
+    "scheme_code": "HOUSING_090",
+    "scheme_name": "PM Rural Housing Scheme",
+    "scheme_category": "HOUSING",
+    "department": "Housing",
+    "natural_language_criteria": "For rural families with annual income up to ₹150,000. The applicant should not own any residential land or house property and must hold a BPL ration card.",
+    "extracted_rules": [
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 150000,
+        "rule_expression": "annual_income <= 150000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "LAND_OWNERSHIP",
+        "operator": "==",
+        "value": false,
+        "rule_expression": "owns_land == false",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "RATION_CARD",
+        "operator": "==",
+        "value": "BPL",
+        "rule_expression": "ration_card == 'BPL'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_125",
+    "scheme_code": "FINANCIAL_125",
+    "scheme_name": "SC Women Financial Empowerment Program",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "Designed for Scheduled Caste women aged 25 to 55 with annual income under ₹180,000. Offers credit and training support for self-employment.",
+    "extracted_rules": [
+      {
+        "rule_type": "CATEGORY",
+        "operator": "==",
+        "value": "SC",
+        "rule_expression": "category == 'SC'",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "GENDER",
+        "operator": "==",
+        "value": "FEMALE",
+        "rule_expression": "gender == 'FEMALE'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          25,
+          55
+        ],
+        "rule_expression": "age >= 25 AND age <= 55",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 180000,
+        "rule_expression": "annual_income <= 180000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_283",
+    "scheme_code": "HEALTH_283",
+    "scheme_name": "Pradhan Mantri Gramin Health Suraksha Yojana",
+    "scheme_category": "HEALTH",
+    "department": "Health",
+    "natural_language_criteria": "Ensures coverage for rural BPL families with family size limited to 7 members and income not exceeding ₹120,000 per year.",
+    "extracted_rules": [
+      {
+        "rule_type": "FAMILY_SIZE",
+        "operator": "<=",
+        "value": 7,
+        "rule_expression": "family_size <= 7",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 120000,
+        "rule_expression": "annual_income <= 120000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "==",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_058",
+    "scheme_code": "EDUCATION_058",
+    "scheme_name": "Pre-Matric Disability Scholarship",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "For differently-abled students aged 8 to 18 pursuing primary or secondary education. Annual family income should not exceed ₹120,000.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          8,
+          18
+        ],
+        "rule_expression": "age >= 8 AND age <= 18",
+        "confidence": 0.93
+      },
+      {
+        "rule_type": "EDUCATION_LEVEL",
+        "operator": "IN",
+        "value": [
+          "PRIMARY",
+          "SECONDARY"
+        ],
+        "rule_expression": "education_level IN ['PRIMARY','SECONDARY']",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "<=",
+        "value": 120000,
+        "rule_expression": "annual_income <= 120000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_260",
+    "scheme_code": "PENSION_260",
+    "scheme_name": "Elderly Care Pension Support",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "Provides care-based pensions for elderly couples aged above 75 belonging to low-income groups in West Bengal. Applicants should not receive any related benefit.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": ">=",
+        "value": 75,
+        "rule_expression": "age >= 75",
+        "confidence": 0.93
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "==",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "STATE",
+        "operator": "==",
+        "value": "WEST_BENGAL",
+        "rule_expression": "state == 'WEST_BENGAL'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_050",
+    "scheme_code": "HEALTH_050",
+    "scheme_name": "State Disability Medical Assistance Scheme",
+    "scheme_category": "HEALTH",
+    "department": "Health",
+    "natural_language_criteria": "Targets disabled individuals with 50% or higher disability, annual income up to ₹130,000, and BPL ration cardholders across Gujarat.",
+    "extracted_rules": [
+      {
+        "rule_type": "DISABILITY",
+        "operator": ">=",
+        "value": 50,
+        "rule_expression": "disability_percent >= 50",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "<=",
+        "value": 130000,
+        "rule_expression": "annual_income <= 130000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "RATION_CARD",
+        "operator": "==",
+        "value": "BPL",
+        "rule_expression": "ration_card == 'BPL'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_132",
+    "scheme_code": "FOOD_132",
+    "scheme_name": "Food Security for Tribals Scheme",
+    "scheme_category": "FOOD",
+    "department": "Food & Civil Supplies",
+    "natural_language_criteria": "Provides monthly food grains to Scheduled Tribe families in tribal-dominated blocks. Beneficiaries must hold valid BPL or AAY ration cards.",
+    "extracted_rules": [
+      {
+        "rule_type": "CATEGORY",
+        "operator": "==",
+        "value": "ST",
+        "rule_expression": "category == 'ST'",
+        "confidence": 0.93
+      },
+      {
+        "rule_type": "BLOCK",
+        "operator": "==",
+        "value": "DUNGARPUR",
+        "rule_expression": "block == 'DUNGARPUR'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "RATION_CARD",
+        "operator": "==",
+        "value": true,
+        "rule_expression": "has_ration_card == true",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_018",
+    "scheme_code": "PENSION_018",
+    "scheme_name": "Viklang Nagrik Sahay Yojana",
+    "scheme_category": "PENSION",
+    "department": "Social Welfare",
+    "natural_language_criteria": "Assistance for disabled citizens with over 60% disability belonging to BPL groups in Madhya Pradesh.",
+    "extracted_rules": [
+      {
+        "rule_type": "DISABILITY",
+        "operator": ">=",
+        "value": 60,
+        "rule_expression": "disability_percent >= 60",
+        "rule_type_category": "HEALTH",
+        "confidence": 0.96
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "==",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "rule_type_category": "SOCIOECONOMIC",
+        "confidence": 0.91
+      },
+      {
+        "rule_type": "STATE",
+        "operator": "==",
+        "value": "MADHYA_PRADESH",
+        "rule_expression": "state == 'MADHYA_PRADESH'",
+        "rule_type_category": "GEOGRAPHIC",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_486",
+    "scheme_code": "FINANCIAL_486",
+    "scheme_name": "Self-Employment Subsidy Program for Youth",
+    "scheme_category": "FINANCIAL",
+    "department": "Finance",
+    "natural_language_criteria": "Offers subsidy on startup loans for unemployed youth aged 20–35 from BPL households. Applicants must not have attended any government-sponsored entrepreneurship programs earlier.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          20,
+          35
+        ],
+        "rule_expression": "age >= 20 AND age <= 35",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "==",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.93
+      },
+      {
+        "rule_type": "PRIOR_PARTICIPATION",
+        "operator": "==",
+        "value": false,
+        "rule_expression": "prior_training_participation == false",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_150",
+    "scheme_code": "FOOD_150",
+    "scheme_name": "Integrated BPL Ration Distribution Scheme",
+    "scheme_category": "FOOD",
+    "department": "Food & Civil Supplies",
+    "natural_language_criteria": "Distribution of monthly food grains to BPL cardholders across Rajasthan. Valid district-block level registration mandatory for participation.",
+    "extracted_rules": [
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "==",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "RATION_CARD",
+        "operator": "==",
+        "value": true,
+        "rule_expression": "has_ration_card == true",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "BLOCK",
+        "operator": "==",
+        "value": "JHUNJHUNU",
+        "rule_expression": "block == 'JHUNJHUNU'",
+        "confidence": 0.88
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_456",
+    "scheme_code": "FOOD_456",
+    "scheme_name": "Community Nutrition Assistance Initiative",
+    "scheme_category": "FOOD",
+    "department": "Food & Civil Supplies",
+    "natural_language_criteria": "Supports households holding valid BPL or AAY ration cards in Jodhpur district. Family size should be less than or equal to 6 members.",
+    "extracted_rules": [
+      {
+        "rule_type": "RATION_CARD",
+        "operator": "IN",
+        "value": [
+          "BPL",
+          "AAY"
+        ],
+        "rule_expression": "ration_card IN ['BPL','AAY']",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "DISTRICT",
+        "operator": "==",
+        "value": "JODHPUR",
+        "rule_expression": "district == 'JODHPUR'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "FAMILY_SIZE",
+        "operator": "<=",
+        "value": 6,
+        "rule_expression": "family_size <= 6",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_306",
+    "scheme_code": "EDUCATION_306",
+    "scheme_name": "National Scholarship for OBC Students",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Available for OBC students aged 10–22 pursuing primary to graduate education. Parental income must be below ₹200,000 per year.",
+    "extracted_rules": [
+      {
+        "rule_type": "CATEGORY",
+        "operator": "==",
+        "value": "OBC",
+        "rule_expression": "category == 'OBC'",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          10,
+          22
+        ],
+        "rule_expression": "age >= 10 AND age <= 22",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 200000,
+        "rule_expression": "annual_income <= 200000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_092",
+    "scheme_code": "HOUSING_092",
+    "scheme_name": "Scheduled Caste Housing Grant",
+    "scheme_category": "HOUSING",
+    "department": "Housing",
+    "natural_language_criteria": "For Scheduled Caste families with income up to ₹100,000 who do not own any property. Grants are provided to build new houses in rural areas.",
+    "extracted_rules": [
+      {
+        "rule_type": "CATEGORY",
+        "operator": "==",
+        "value": "SC",
+        "rule_expression": "category == 'SC'",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 100000,
+        "rule_expression": "annual_income <= 100000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "PROPERTY_OWNERSHIP",
+        "operator": "==",
+        "value": false,
+        "rule_expression": "owns_property == false",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_102",
+    "scheme_code": "FINANCIAL_102",
+    "scheme_name": "National Rural Livelihood Mission",
+    "scheme_category": "FINANCIAL",
+    "department": "Rural Development",
+    "natural_language_criteria": "Targets unemployed women aged 18 to 50 belonging to Below Poverty Line families in rural areas. Provides financial assistance and self-employment training.",
+    "extracted_rules": [
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "==",
+        "value": "UNEMPLOYED",
+        "rule_expression": "employment_status == 'UNEMPLOYED'",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "GENDER",
+        "operator": "==",
+        "value": "FEMALE",
+        "rule_expression": "gender == 'FEMALE'",
+        "confidence": 0.96
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          50
+        ],
+        "rule_expression": "age >= 18 AND age <= 50",
+        "confidence": 0.93
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "==",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_033",
+    "scheme_code": "HEALTH_033",
+    "scheme_name": "Child Health Immunization Program",
+    "scheme_category": "HEALTH",
+    "department": "Health",
+    "natural_language_criteria": "Provides free immunization for children under 5 years across rural Madhya Pradesh regions. Priority for families with income below ₹50,000.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "<=",
+        "value": 5,
+        "rule_expression": "age <= 5",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "<=",
+        "value": 50000,
+        "rule_expression": "annual_income <= 50000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "DISTRICT",
+        "operator": "==",
+        "value": "SEHORE",
+        "rule_expression": "district == 'SEHORE'",
+        "confidence": 0.88
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_035",
+    "scheme_code": "HEALTH_035",
+    "scheme_name": "Ayushman Rural Seva Yojana",
+    "scheme_category": "HEALTH",
+    "department": "Health",
+    "natural_language_criteria": "Beneficiaries are families in Rajasthan with annual income less than ₹70,000 and family size below 6 members. Prioritized for SC/ST categories.",
+    "extracted_rules": [
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "<=",
+        "value": 70000,
+        "rule_expression": "annual_income <= 70000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "CATEGORY",
+        "operator": "IN",
+        "value": [
+          "SC",
+          "ST"
+        ],
+        "rule_expression": "category IN ['SC','ST']",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "FAMILY_SIZE",
+        "operator": "<=",
+        "value": 6,
+        "rule_expression": "family_size <= 6",
+        "confidence": 0.88
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_081",
+    "scheme_code": "HOUSING_081",
+    "scheme_name": "Indira Awas Yojana",
+    "scheme_category": "HOUSING",
+    "department": "Housing",
+    "natural_language_criteria": "For rural Below Poverty Line families without any permanent home structure. Priority given to SC/ST categories.",
+    "extracted_rules": [
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "==",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "LAND_OWNERSHIP",
+        "operator": "==",
+        "value": false,
+        "rule_expression": "owns_land == false",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "CATEGORY",
+        "operator": "IN",
+        "value": [
+          "SC",
+          "ST"
+        ],
+        "rule_expression": "category IN ['SC','ST']",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_284",
+    "scheme_code": "HEALTH_284",
+    "scheme_name": "Special Health Relief for Disabled Program",
+    "scheme_category": "HEALTH",
+    "department": "Medical",
+    "natural_language_criteria": "For persons aged above 18 having certified disability over 40%. Beneficiaries must belong to Below Poverty Line category.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": ">=",
+        "value": 18,
+        "rule_expression": "age >= 18",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "DISABILITY",
+        "operator": ">=",
+        "value": 40,
+        "rule_expression": "disability_percent >= 40",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "==",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_435",
+    "scheme_code": "AGRICULTURE_435",
+    "scheme_name": "Farm Mechanization Loan Subsidy Program",
+    "scheme_category": "AGRICULTURE",
+    "department": "Rural Development",
+    "natural_language_criteria": "Offers 50% subsidy on farm equipment to BPL farmers owning land up to 6 acres. Applicants must reside in Banswara block region.",
+    "extracted_rules": [
+      {
+        "rule_type": "BLOCK",
+        "operator": "==",
+        "value": "BANSWARA",
+        "rule_expression": "block == 'BANSWARA'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "LAND_OWNERSHIP",
+        "operator": "==",
+        "value": true,
+        "rule_expression": "land_ownership == true",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "==",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_021",
+    "scheme_code": "PENSION_021",
+    "scheme_name": "Senior Women Citizen Scheme",
+    "scheme_category": "PENSION",
+    "department": "Women & Child Development",
+    "natural_language_criteria": "Provides monthly pension to women aged 70 years and above from low-income families in Rajasthan. Not eligible for women drawing other state pensions.",
+    "extracted_rules": [
+      {
+        "rule_type": "GENDER",
+        "operator": "==",
+        "value": "FEMALE",
+        "rule_expression": "gender == 'FEMALE'",
+        "rule_type_category": "DEMOGRAPHIC",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "AGE",
+        "operator": ">=",
+        "value": 70,
+        "rule_expression": "age >= 70",
+        "rule_type_category": "ELIGIBILITY",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "STATE",
+        "operator": "==",
+        "value": "RAJASTHAN",
+        "rule_expression": "state == 'RAJASTHAN'",
+        "rule_type_category": "GEOGRAPHIC",
+        "confidence": 0.89
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_311",
+    "scheme_code": "EDUCATION_311",
+    "scheme_name": "Rural Digital Literacy through Schools",
+    "scheme_category": "EDUCATION",
+    "department": "Education",
+    "natural_language_criteria": "Introduces computer education for secondary students aged 12–18 in rural districts. Applicable to families classified under APL and BPL.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          12,
+          18
+        ],
+        "rule_expression": "age >= 12 AND age <= 18",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "EDUCATION_LEVEL",
+        "operator": "==",
+        "value": "SECONDARY",
+        "rule_expression": "education_level == 'SECONDARY'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "IN",
+        "value": [
+          "APL",
+          "BPL"
+        ],
+        "rule_expression": "income_group IN ['APL','BPL']",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_119",
+    "scheme_code": "FINANCIAL_119",
+    "scheme_name": "PM SVANidhi Scheme",
+    "scheme_category": "FINANCIAL",
+    "department": "Urban Development",
+    "natural_language_criteria": "Offers microcredit to street vendors and hawkers aged 18 to 55 with income up to ₹150,000. Aimed at promoting self-employment.",
+    "extracted_rules": [
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "==",
+        "value": "SELF_EMPLOYED",
+        "rule_expression": "employment_status == 'SELF_EMPLOYED'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          55
+        ],
+        "rule_expression": "age >= 18 AND age <= 55",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 150000,
+        "rule_expression": "annual_income <= 150000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_232",
+    "scheme_code": "EMPLOYMENT_232",
+    "scheme_name": "Youth Skill Enhancement & Placement Scheme",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Skill Development",
+    "natural_language_criteria": "Targets unemployed youth aged 18–35 who completed at least secondary education. Prior participation in similar training schemes disqualifies applicants. Family annual income must not exceed ₹200,000.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          18,
+          35
+        ],
+        "rule_expression": "age >= 18 AND age <= 35",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "EDUCATION_LEVEL",
+        "operator": ">=",
+        "value": "SECONDARY",
+        "rule_expression": "education_level >= 'SECONDARY'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "PRIOR_PARTICIPATION",
+        "operator": "==",
+        "value": false,
+        "rule_expression": "prior_training_participation == false",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 200000,
+        "rule_expression": "annual_income <= 200000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "EMPLOYMENT_STATUS",
+        "operator": "==",
+        "value": "UNEMPLOYED",
+        "rule_expression": "employment_status == 'UNEMPLOYED'",
+        "confidence": 0.9
+      }
+    ]
+  }
+]

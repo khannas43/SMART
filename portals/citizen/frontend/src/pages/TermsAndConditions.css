@@ -1,0 +1,21 @@
+/**
+ * Terms and Conditions Page Styles
+ */
+
+.terms-conditions-page {
+  min-height: 100vh;
+}
+
+.content-note {
+  background-color: #fff3cd;
+  border-left: 4px solid #ffc107;
+}
+
+.content-note a {
+  color: #856404;
+  text-decoration: underline;
+}
+
+.content-note a:hover {
+  color: #533f03;
+}

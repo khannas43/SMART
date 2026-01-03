@@ -1,0 +1,767 @@
+[
+  {
+    "scheme_id": "SCHEME_276",
+    "scheme_code": "HEALTH_276",
+    "scheme_name": "Ayushman Bharat Swasthya Suraksha Abhiyan",
+    "scheme_category": "HEALTH",
+    "department": "Health",
+    "natural_language_criteria": "For families with annual income below ₹150,000 and family size not exceeding 6 members. Individuals should belong to BPL category and possess valid ration cards.",
+    "extracted_rules": [
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 150000,
+        "rule_expression": "annual_income <= 150000",
+        "confidence": 0.94
+      },
+      {
+        "rule_type": "FAMILY_SIZE",
+        "operator": "<=",
+        "value": 6,
+        "rule_expression": "family_size <= 6",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.92
+      },
+      {
+        "rule_type": "RATION_CARD",
+        "operator": "=",
+        "value": true,
+        "rule_expression": "has_ration_card == true",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_277",
+    "scheme_code": "HEALTH_277",
+    "scheme_name": "Chief Minister’s Urban Health Assistance Scheme",
+    "scheme_category": "HEALTH",
+    "department": "Medical",
+    "natural_language_criteria": "Applicable for urban families residing in Jaipur district with annual income up to ₹120,000. Family size should be less than 8 members.",
+    "extracted_rules": [
+      {
+        "rule_type": "DISTRICT",
+        "operator": "=",
+        "value": "JAIPUR",
+        "rule_expression": "district == 'JAIPUR'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 120000,
+        "rule_expression": "annual_income <= 120000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "FAMILY_SIZE",
+        "operator": "<=",
+        "value": 8,
+        "rule_expression": "family_size <= 8",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_278",
+    "scheme_code": "HEALTH_278",
+    "scheme_name": "Rajasthan Rural Mobile Health Clinics",
+    "scheme_category": "HEALTH",
+    "department": "Health",
+    "natural_language_criteria": "Provides free rural healthcare to patients aged 10 years and above belonging to Below Poverty Line families. Applicable only in Ajmer and Tonk districts.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": ">=",
+        "value": 10,
+        "rule_expression": "age >= 10",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "DISTRICT",
+        "operator": "IN",
+        "value": [
+          "AJMER",
+          "TONK"
+        ],
+        "rule_expression": "district IN ['AJMER','TONK']",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_279",
+    "scheme_code": "HEALTH_279",
+    "scheme_name": "National Tuberculosis Eradication Support",
+    "scheme_category": "HEALTH",
+    "department": "Health",
+    "natural_language_criteria": "Targets patients diagnosed with tuberculosis among low-income households. Annual family income must be within ₹100,000 with family size up to 5 members.",
+    "extracted_rules": [
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 100000,
+        "rule_expression": "annual_income <= 100000",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "FAMILY_SIZE",
+        "operator": "<=",
+        "value": 5,
+        "rule_expression": "family_size <= 5",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_280",
+    "scheme_code": "HEALTH_280",
+    "scheme_name": "District Health Welfare Yojana",
+    "scheme_category": "HEALTH",
+    "department": "Health",
+    "natural_language_criteria": "Implemented in Jodhpur district for families with annual income below ₹180,000. Priority given to OBC or SC categories.",
+    "extracted_rules": [
+      {
+        "rule_type": "DISTRICT",
+        "operator": "=",
+        "value": "JODHPUR",
+        "rule_expression": "district == 'JODHPUR'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 180000,
+        "rule_expression": "annual_income <= 180000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "CATEGORY",
+        "operator": "IN",
+        "value": [
+          "OBC",
+          "SC"
+        ],
+        "rule_expression": "category IN ['OBC','SC']",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_281",
+    "scheme_code": "HEALTH_281",
+    "scheme_name": "Free Child Healthcare Program",
+    "scheme_category": "HEALTH",
+    "department": "Medical",
+    "natural_language_criteria": "Provides essential medical treatment for children aged up to 10 years from families earning under ₹80,000 annually in Tonk district.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "<=",
+        "value": 10,
+        "rule_expression": "age <= 10",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 80000,
+        "rule_expression": "annual_income <= 80000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "DISTRICT",
+        "operator": "=",
+        "value": "TONK",
+        "rule_expression": "district == 'TONK'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_282",
+    "scheme_code": "HEALTH_282",
+    "scheme_name": "Senior Health Card Assistance Scheme",
+    "scheme_category": "HEALTH",
+    "department": "Health",
+    "natural_language_criteria": "For citizens aged above 60 residing in Udaipur district. Annual income limit fixed at ₹150,000 for eligibility.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": ">=",
+        "value": 60,
+        "rule_expression": "age >= 60",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 150000,
+        "rule_expression": "annual_income <= 150000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "DISTRICT",
+        "operator": "=",
+        "value": "UDAIPUR",
+        "rule_expression": "district == 'UDAIPUR'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_283",
+    "scheme_code": "HEALTH_283",
+    "scheme_name": "Pradhan Mantri Gramin Health Suraksha Yojana",
+    "scheme_category": "HEALTH",
+    "department": "Health",
+    "natural_language_criteria": "Ensures coverage for rural BPL families with family size limited to 7 members and income not exceeding ₹120,000 per year.",
+    "extracted_rules": [
+      {
+        "rule_type": "FAMILY_SIZE",
+        "operator": "<=",
+        "value": 7,
+        "rule_expression": "family_size <= 7",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 120000,
+        "rule_expression": "annual_income <= 120000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_284",
+    "scheme_code": "HEALTH_284",
+    "scheme_name": "Special Health Relief for Disabled Program",
+    "scheme_category": "HEALTH",
+    "department": "Medical",
+    "natural_language_criteria": "For persons aged above 18 having certified disability over 40%. Beneficiaries must belong to Below Poverty Line category.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": ">=",
+        "value": 18,
+        "rule_expression": "age >= 18",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "DISABILITY",
+        "operator": ">=",
+        "value": 40,
+        "rule_expression": "disability_percent >= 40",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_285",
+    "scheme_code": "HEALTH_285",
+    "scheme_name": "National Health Solidarity Program",
+    "scheme_category": "HEALTH",
+    "department": "Health",
+    "natural_language_criteria": "A health coverage initiative for Below Poverty Line citizens under 45 years. Family income must be below ₹100,000 with valid ration card status.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "<=",
+        "value": 45,
+        "rule_expression": "age <= 45",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 100000,
+        "rule_expression": "annual_income <= 100000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "RATION_CARD",
+        "operator": "=",
+        "value": true,
+        "rule_expression": "has_ration_card == true",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_286",
+    "scheme_code": "HEALTH_286",
+    "scheme_name": "Mukhya Mantri Mahila Swasthya Karyakram",
+    "scheme_category": "HEALTH",
+    "department": "Health",
+    "natural_language_criteria": "Designed for women aged 20 to 60 belonging to Below Poverty Line families. The program includes free diagnostics and health check-ups in Rajasthan districts.",
+    "extracted_rules": [
+      {
+        "rule_type": "GENDER",
+        "operator": "=",
+        "value": "FEMALE",
+        "rule_expression": "gender == 'FEMALE'",
+        "confidence": 0.96
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          20,
+          60
+        ],
+        "rule_expression": "age >= 20 AND age <= 60",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "STATE",
+        "operator": "=",
+        "value": "RAJASTHAN",
+        "rule_expression": "state == 'RAJASTHAN'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_287",
+    "scheme_code": "HEALTH_287",
+    "scheme_name": "Child and Adolescent Vaccination Initiative",
+    "scheme_category": "HEALTH",
+    "department": "Medical",
+    "natural_language_criteria": "Provides free immunization to children below 15 years. Special focus on families with income below ₹70,000 belonging to Scheduled Tribe categories.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "<=",
+        "value": 15,
+        "rule_expression": "age <= 15",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "CATEGORY",
+        "operator": "=",
+        "value": "ST",
+        "rule_expression": "category == 'ST'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 70000,
+        "rule_expression": "annual_income <= 70000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_288",
+    "scheme_code": "HEALTH_288",
+    "scheme_name": "Jan Aarogya Suraksha Scheme",
+    "scheme_category": "HEALTH",
+    "department": "Health",
+    "natural_language_criteria": "Affordable healthcare for OBC families having income less than ₹130,000 per year. Available across Alwar and Bharatpur districts.",
+    "extracted_rules": [
+      {
+        "rule_type": "CATEGORY",
+        "operator": "=",
+        "value": "OBC",
+        "rule_expression": "category == 'OBC'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 130000,
+        "rule_expression": "annual_income <= 130000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "DISTRICT",
+        "operator": "IN",
+        "value": [
+          "ALWAR",
+          "BHARATPUR"
+        ],
+        "rule_expression": "district IN ['ALWAR','BHARATPUR']",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_289",
+    "scheme_code": "HEALTH_289",
+    "scheme_name": "National Disability Health Insurance",
+    "scheme_category": "HEALTH",
+    "department": "Health",
+    "natural_language_criteria": "Health insurance scheme for persons with disability over 50% with income up to ₹200,000. Applicants should hold a valid disability certificate.",
+    "extracted_rules": [
+      {
+        "rule_type": "DISABILITY",
+        "operator": ">=",
+        "value": 50,
+        "rule_expression": "disability_percent >= 50",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 200000,
+        "rule_expression": "annual_income <= 200000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_290",
+    "scheme_code": "HEALTH_290",
+    "scheme_name": "Tribal Healthcare and Nutrition Scheme",
+    "scheme_category": "HEALTH",
+    "department": "Medical",
+    "natural_language_criteria": "For Scheduled Tribe households having income within ₹90,000 per year. Provides nutrition supplements for children and pregnant women.",
+    "extracted_rules": [
+      {
+        "rule_type": "CATEGORY",
+        "operator": "=",
+        "value": "ST",
+        "rule_expression": "category == 'ST'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 90000,
+        "rule_expression": "annual_income <= 90000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_291",
+    "scheme_code": "HEALTH_291",
+    "scheme_name": "Rural Sanitation and Health Outreach Program",
+    "scheme_category": "HEALTH",
+    "department": "Health",
+    "natural_language_criteria": "Ensures regular health check-ups and sanitation drives in tribal villages. Beneficiaries must belong to Below Poverty Line families with family size ≤8.",
+    "extracted_rules": [
+      {
+        "rule_type": "FAMILY_SIZE",
+        "operator": "<=",
+        "value": 8,
+        "rule_expression": "family_size <= 8",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "CATEGORY",
+        "operator": "=",
+        "value": "ST",
+        "rule_expression": "category == 'ST'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_292",
+    "scheme_code": "HEALTH_292",
+    "scheme_name": "Child Malnutrition Reduction Campaign",
+    "scheme_category": "HEALTH",
+    "department": "Medical",
+    "natural_language_criteria": "Children below 12 years old from SC communities are eligible for nutritional support. Household income should not exceed ₹50,000 annually.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "<=",
+        "value": 12,
+        "rule_expression": "age <= 12",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "CATEGORY",
+        "operator": "=",
+        "value": "SC",
+        "rule_expression": "category == 'SC'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 50000,
+        "rule_expression": "annual_income <= 50000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_293",
+    "scheme_code": "HEALTH_293",
+    "scheme_name": "Women Health Facility Expansion Scheme",
+    "scheme_category": "HEALTH",
+    "department": "Health",
+    "natural_language_criteria": "Targets adult women aged 30 to 60 with income up to ₹150,000. Special camps organized in Barmer district for free blood tests and consultancy.",
+    "extracted_rules": [
+      {
+        "rule_type": "GENDER",
+        "operator": "=",
+        "value": "FEMALE",
+        "rule_expression": "gender == 'FEMALE'",
+        "confidence": 0.94
+      },
+      {
+        "rule_type": "AGE",
+        "operator": "BETWEEN",
+        "value": [
+          30,
+          60
+        ],
+        "rule_expression": "age >= 30 AND age <= 60",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "DISTRICT",
+        "operator": "=",
+        "value": "BARMER",
+        "rule_expression": "district == 'BARMER'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_294",
+    "scheme_code": "HEALTH_294",
+    "scheme_name": "Ayushman Jan Seva Kendra Initiative",
+    "scheme_category": "HEALTH",
+    "department": "Medical",
+    "natural_language_criteria": "Supports people from families earning up to ₹140,000 with free OPD consultations in local Jan Seva Kendras. Applicable across Rajasthan.",
+    "extracted_rules": [
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 140000,
+        "rule_expression": "annual_income <= 140000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "STATE",
+        "operator": "=",
+        "value": "RAJASTHAN",
+        "rule_expression": "state == 'RAJASTHAN'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_295",
+    "scheme_code": "HEALTH_295",
+    "scheme_name": "OBC Health Emergency Aid Program",
+    "scheme_category": "HEALTH",
+    "department": "Health",
+    "natural_language_criteria": "OBC citizens across Rajasthan below income level ₹160,000 can avail emergency treatment aid for major diseases. Proof of category required.",
+    "extracted_rules": [
+      {
+        "rule_type": "CATEGORY",
+        "operator": "=",
+        "value": "OBC",
+        "rule_expression": "category == 'OBC'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 160000,
+        "rule_expression": "annual_income <= 160000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_296",
+    "scheme_code": "HEALTH_296",
+    "scheme_name": "Urban Health Inclusion Scheme",
+    "scheme_category": "HEALTH",
+    "department": "Health",
+    "natural_language_criteria": "Provides basic public health coverage for Below Poverty Line families living in Gandhinagar and Ahmedabad districts of Gujarat.",
+    "extracted_rules": [
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.93
+      },
+      {
+        "rule_type": "DISTRICT",
+        "operator": "IN",
+        "value": [
+          "GANDHINAGAR",
+          "AHMEDABAD"
+        ],
+        "rule_expression": "district IN ['GANDHINAGAR','AHMEDABAD']",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_297",
+    "scheme_code": "HEALTH_297",
+    "scheme_name": "Disabled Family Health Coverage Scheme",
+    "scheme_category": "HEALTH",
+    "department": "Medical",
+    "natural_language_criteria": "Applicable for families with at least one disabled member having over 40% disability and income below ₹150,000. Families must not exceed 6 members.",
+    "extracted_rules": [
+      {
+        "rule_type": "DISABILITY",
+        "operator": ">=",
+        "value": 40,
+        "rule_expression": "disability_percent >= 40",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 150000,
+        "rule_expression": "annual_income <= 150000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "FAMILY_SIZE",
+        "operator": "<=",
+        "value": 6,
+        "rule_expression": "family_size <= 6",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_298",
+    "scheme_code": "HEALTH_298",
+    "scheme_name": "Maternal and Neonatal Care Program",
+    "scheme_category": "HEALTH",
+    "department": "Health",
+    "natural_language_criteria": "Focused on pregnant women from BPL households in district Pali. Beneficiaries must have registered under government maternity centers.",
+    "extracted_rules": [
+      {
+        "rule_type": "DISTRICT",
+        "operator": "=",
+        "value": "PALI",
+        "rule_expression": "district == 'PALI'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "GENDER",
+        "operator": "=",
+        "value": "FEMALE",
+        "rule_expression": "gender == 'FEMALE'",
+        "confidence": 0.94
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_299",
+    "scheme_code": "HEALTH_299",
+    "scheme_name": "Child Health Insurance and Wellness Plan",
+    "scheme_category": "HEALTH",
+    "department": "Health",
+    "natural_language_criteria": "Covers children up to 12 years aged belonging to families earning under ₹90,000 per year. Priority to BPL ration card holders.",
+    "extracted_rules": [
+      {
+        "rule_type": "AGE",
+        "operator": "<=",
+        "value": 12,
+        "rule_expression": "age <= 12",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 90000,
+        "rule_expression": "annual_income <= 90000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "RATION_CARD",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "ration_card == 'BPL'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_300",
+    "scheme_code": "HEALTH_300",
+    "scheme_name": "Public Health Nutritional Aid Initiative",
+    "scheme_category": "HEALTH",
+    "department": "Health",
+    "natural_language_criteria": "Assists low-income families with nutritional supplements and consulting services. BPL families with up to 8 members are eligible in Rajasthan.",
+    "extracted_rules": [
+      {
+        "rule_type": "STATE",
+        "operator": "=",
+        "value": "RAJASTHAN",
+        "rule_expression": "state == 'RAJASTHAN'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "FAMILY_SIZE",
+        "operator": "<=",
+        "value": 8,
+        "rule_expression": "family_size <= 8",
+        "confidence": 0.9
+      }
+    ]
+  }
+]

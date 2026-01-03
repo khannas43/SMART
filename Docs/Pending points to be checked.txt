@@ -1,0 +1,21 @@
+Pending points to be checked
+1. Scheme Eligibility---review DYNAMIC_ELIGIBILITY_CRITERIA_SOLUTION.md
+Can you check, which all AIML use cases are involved for checking eligibility criteria of a scheme for citizen.....because on frontend of citizen portal i only see 8 points
+1. Age
+2. Gender
+3. Income Group
+4. District
+5. Disability
+6. Annual Income
+7. Family Size
+8. Do you have Ration Card
+
+Can we make it more robust like based on new schemes getting added with their eligibility criteria, Departmental user can view the new criteria getting added and once they approve newly added criteria, it will be shown in citizen portal to user. But all new criteria to be pulled out by AIML model based on scheme eligibility criteria getting defined.
+May be we can revisit citizen portal - Scheme eligibility criteria screen once again after develop scheme builder in Departmental portal
+https://jansoochna.rajasthan.gov.in/Scheme/Index?txt=AtoZ_Asc&departmentId=0
+
+Integrate with AI-PLATFORM-02 API to fetch real family relationships
+Add Family Benefit Sankey Diagram (as per CIT-PROF-03 spec)
+Add Consent Toggles for data sharing controls
+Add GR Audit Timeline for change history
+Add ML-Suggested Relations feature

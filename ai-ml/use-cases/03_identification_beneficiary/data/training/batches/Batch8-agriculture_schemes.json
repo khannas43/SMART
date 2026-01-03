@@ -1,0 +1,310 @@
+[
+  {
+    "scheme_id": "SCHEME_176",
+    "scheme_code": "AGRICULTURE_176",
+    "scheme_name": "Pradhan Mantri Kisan Samman Nidhi",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "Provides financial assistance to small and marginal farmers owning cultivable land up to 2 hectares. Beneficiary must be an adult farmer aged 18–65.",
+    "extracted_rules": [
+      {"rule_type": "LAND_OWNERSHIP", "operator": "=", "value": true, "rule_expression": "owns_land == true", "confidence": 0.95},
+      {"rule_type": "LAND_SIZE", "operator": "<=", "value": 5, "rule_expression": "land_size <= 5", "confidence": 0.93},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [18, 65], "rule_expression": "age >= 18 AND age <= 65", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_177",
+    "scheme_code": "AGRICULTURE_177",
+    "scheme_name": "PM Fasal Bima Yojana",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "Offers crop insurance to farmers owning agricultural land between 1 and 10 acres. Beneficiaries must be from active farming households.",
+    "extracted_rules": [
+      {"rule_type": "LAND_OWNERSHIP", "operator": "=", "value": true, "rule_expression": "owns_land == true", "confidence": 0.9},
+      {"rule_type": "LAND_SIZE", "operator": "BETWEEN", "value": [1, 10], "rule_expression": "land_size BETWEEN 1 AND 10", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_178",
+    "scheme_code": "AGRICULTURE_178",
+    "scheme_name": "Kisan Credit Card Scheme",
+    "scheme_category": "AGRICULTURE",
+    "department": "Rural Development",
+    "natural_language_criteria": "Provides credit access to farmers owning at least 1 acre of land. Applicants must be aged 18-60 with active cultivation rights.",
+    "extracted_rules": [
+      {"rule_type": "LAND_OWNERSHIP", "operator": "=", "value": true, "rule_expression": "owns_land == true", "confidence": 0.9},
+      {"rule_type": "LAND_SIZE", "operator": ">=", "value": 1, "rule_expression": "land_size >= 1", "confidence": 0.9},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [18, 60], "rule_expression": "age >= 18 AND age <= 60", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_179",
+    "scheme_code": "AGRICULTURE_179",
+    "scheme_name": "Soil Health Card Scheme",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "Applicable for farmers with own agricultural lands registered under local panchayats. Must have cultivable area between 0.5 and 8 acres.",
+    "extracted_rules": [
+      {"rule_type": "LAND_OWNERSHIP", "operator": "=", "value": true, "rule_expression": "owns_land == true", "confidence": 0.9},
+      {"rule_type": "LAND_SIZE", "operator": "BETWEEN", "value": [0.5, 8], "rule_expression": "land_size BETWEEN 0.5 AND 8", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_180",
+    "scheme_code": "AGRICULTURE_180",
+    "scheme_name": "Rajasthan Irrigation Support Scheme",
+    "scheme_category": "AGRICULTURE",
+    "department": "Rural Development",
+    "natural_language_criteria": "Targets small and medium farmers with land size up to 5 acres in Tonk district. Beneficiary must be registered landholder.",
+    "extracted_rules": [
+      {"rule_type": "DISTRICT", "operator": "=", "value": "TONK", "rule_expression": "district == 'TONK'", "confidence": 0.9},
+      {"rule_type": "LAND_SIZE", "operator": "<=", "value": 5, "rule_expression": "land_size <= 5", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_181",
+    "scheme_code": "AGRICULTURE_181",
+    "scheme_name": "National Horticulture Mission",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "For farmers aged 18 to 60 engaged in horticulture production. Land size should be between 1 and 10 acres within the selected district.",
+    "extracted_rules": [
+      {"rule_type": "LAND_SIZE", "operator": "BETWEEN", "value": [1, 10], "rule_expression": "land_size BETWEEN 1 AND 10", "confidence": 0.9},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [18, 60], "rule_expression": "age >= 18 AND age <= 60", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_182",
+    "scheme_code": "AGRICULTURE_182",
+    "scheme_name": "PM Krishi Sinchai Yojana",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "Promotes efficient irrigation for farmers owning up to 7 acres of cultivable land. Applicants must be in BPL or EWS category.",
+    "extracted_rules": [
+      {"rule_type": "LAND_OWNERSHIP", "operator": "=", "value": true, "rule_expression": "owns_land == true", "confidence": 0.9},
+      {"rule_type": "LAND_SIZE", "operator": "<=", "value": 7, "rule_expression": "land_size <= 7", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "IN", "value": ["BPL", "EWS"], "rule_expression": "income_group IN ['BPL','EWS']", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_183",
+    "scheme_code": "AGRICULTURE_183",
+    "scheme_name": "Organic Farming Promotion Scheme",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "Farmers aged 21–55 with 1–6 acres of land are eligible for organic farming assistance. Must be registered cultivators within the block area.",
+    "extracted_rules": [
+      {"rule_type": "LAND_SIZE", "operator": "BETWEEN", "value": [1, 6], "rule_expression": "land_size BETWEEN 1 AND 6", "confidence": 0.9},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [21, 55], "rule_expression": "age >= 21 AND age <= 55", "confidence": 0.9},
+      {"rule_type": "BLOCK", "operator": "=", "value": "BUNDI", "rule_expression": "block == 'BUNDI'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_184",
+    "scheme_code": "AGRICULTURE_184",
+    "scheme_name": "National Agro Forestry Scheme",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "Applicable for small and medium farmers with 2 to 8 acres landholding. The farmer must reside in registered project villages.",
+    "extracted_rules": [
+      {"rule_type": "LAND_SIZE", "operator": "BETWEEN", "value": [2, 8], "rule_expression": "land_size BETWEEN 2 AND 8", "confidence": 0.9},
+      {"rule_type": "VILLAGE", "operator": "=", "value": "BALOTRA", "rule_expression": "village == 'BALOTRA'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_185",
+    "scheme_code": "AGRICULTURE_185",
+    "scheme_name": "State-level Farm Mechanization Program",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "Subsidy for small farmers owning land up to 6 acres. Applicants should be aged 18–60 and registered under district agriculture office.",
+    "extracted_rules": [
+      {"rule_type": "LAND_SIZE", "operator": "<=", "value": 6, "rule_expression": "land_size <= 6", "confidence": 0.9},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [18, 60], "rule_expression": "age >= 18 AND age <= 60", "confidence": 0.9},
+      {"rule_type": "DISTRICT", "operator": "=", "value": "AJMER", "rule_expression": "district == 'AJMER'", "confidence": 0.88}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_186",
+    "scheme_code": "AGRICULTURE_186",
+    "scheme_name": "SC/ST Farmer Empowerment Scheme",
+    "scheme_category": "AGRICULTURE",
+    "department": "Rural Development",
+    "natural_language_criteria": "Reserved for Scheduled Caste and Scheduled Tribe farmers owning up to 5 acres. Applicants must be aged 18-60 with valid category certificates.",
+    "extracted_rules": [
+      {"rule_type": "CATEGORY", "operator": "IN", "value": ["SC", "ST"], "rule_expression": "category IN ['SC','ST']", "confidence": 0.95},
+      {"rule_type": "LAND_SIZE", "operator": "<=", "value": 5, "rule_expression": "land_size <= 5", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_187",
+    "scheme_code": "AGRICULTURE_187",
+    "scheme_name": "District Agricultural Development Plan",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "Assists farmers in Bhilwara district with landholdings between 1 and 10 acres. Must be registered under the district agriculture program.",
+    "extracted_rules": [
+      {"rule_type": "DISTRICT", "operator": "=", "value": "BHILWARA", "rule_expression": "district == 'BHILWARA'", "confidence": 0.9},
+      {"rule_type": "LAND_SIZE", "operator": "BETWEEN", "value": [1, 10], "rule_expression": "land_size BETWEEN 1 AND 10", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_188",
+    "scheme_code": "AGRICULTURE_188",
+    "scheme_name": "PM Kisan Maandhan Yojana",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "Pension scheme for small and marginal farmers aged 18 to 40 owning land below 2 hectares. Registration under PM-Kisan portal required.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [18, 40], "rule_expression": "age >= 18 AND age <= 40", "confidence": 0.9},
+      {"rule_type": "LAND_SIZE", "operator": "<=", "value": 5, "rule_expression": "land_size <= 5", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_189",
+    "scheme_code": "AGRICULTURE_189",
+    "scheme_name": "Integrated Watershed Management Scheme",
+    "scheme_category": "AGRICULTURE",
+    "department": "Rural Development",
+    "natural_language_criteria": "For farmers in drought-prone blocks with 2–10 acres of land registered under the watershed management committee.",
+    "extracted_rules": [
+      {"rule_type": "BLOCK", "operator": "=", "value": "BARMER", "rule_expression": "block == 'BARMER'", "confidence": 0.9},
+      {"rule_type": "LAND_SIZE", "operator": "BETWEEN", "value": [2, 10], "rule_expression": "land_size BETWEEN 2 AND 10", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_190",
+    "scheme_code": "AGRICULTURE_190",
+    "scheme_name": "Rural Organic Crop Promotion Program",
+    "scheme_category": "AGRICULTURE",
+    "department": "Rural Development",
+    "natural_language_criteria": "Encourages organic farming among smallholders owning 0.5–3 acres. Must be living in project villages under registered rural blocks.",
+    "extracted_rules": [
+      {"rule_type": "VILLAGE", "operator": "=", "value": "LALSOT", "rule_expression": "village == 'LALSOT'", "confidence": 0.9},
+      {"rule_type": "LAND_SIZE", "operator": "BETWEEN", "value": [0.5, 3], "rule_expression": "land_size BETWEEN 0.5 AND 3", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_191",
+    "scheme_code": "AGRICULTURE_191",
+    "scheme_name": "Farm Water Harvesting Incentive Scheme",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "Offers benefits for farmers with farm ponds, owning 2-10 acres of land. Priority to BPL farmers residing in Jodhpur block area.",
+    "extracted_rules": [
+      {"rule_type": "BLOCK", "operator": "=", "value": "JODHPUR", "rule_expression": "block == 'JODHPUR'", "confidence": 0.9},
+      {"rule_type": "LAND_SIZE", "operator": "BETWEEN", "value": [2, 10], "rule_expression": "land_size BETWEEN 2 AND 10", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_192",
+    "scheme_code": "AGRICULTURE_192",
+    "scheme_name": "Agro Equipment Subsidy Program",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "For farmers aged 18 to 55 possessing agricultural land less than 6 acres. Applicants must belong to EWS or OBC categories.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [18, 55], "rule_expression": "age >= 18 AND age <= 55", "confidence": 0.9},
+      {"rule_type": "LAND_SIZE", "operator": "<=", "value": 6, "rule_expression": "land_size <= 6", "confidence": 0.9},
+      {"rule_type": "CATEGORY", "operator": "IN", "value": ["EWS", "OBC"], "rule_expression": "category IN ['EWS','OBC']", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_193",
+    "scheme_code": "AGRICULTURE_193",
+    "scheme_name": "Farmers Crop Diversification Scheme",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "Encourages farmers to diversify crops on holdings between 2 and 8 acres. Applicants must be landowners from Bikaner district.",
+    "extracted_rules": [
+      {"rule_type": "DISTRICT", "operator": "=", "value": "BIKANER", "rule_expression": "district == 'BIKANER'", "confidence": 0.9},
+      {"rule_type": "LAND_SIZE", "operator": "BETWEEN", "value": [2, 8], "rule_expression": "land_size BETWEEN 2 AND 8", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_194",
+    "scheme_code": "AGRICULTURE_194",
+    "scheme_name": "Krishi Yantra Vitaran Yojana",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "Subsidized farm machinery for small farmers with 1–5 acres of land. Preference for SC/ST and BPL households.",
+    "extracted_rules": [
+      {"rule_type": "LAND_SIZE", "operator": "BETWEEN", "value": [1, 5], "rule_expression": "land_size BETWEEN 1 AND 5", "confidence": 0.9},
+      {"rule_type": "CATEGORY", "operator": "IN", "value": ["SC", "ST"], "rule_expression": "category IN ['SC','ST']", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_195",
+    "scheme_code": "AGRICULTURE_195",
+    "scheme_name": "State Pest Control Subsidy Scheme",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "Provides pest control subsidies to farmers with 2–10 acres cultivable land. Only applicable to registered cultivators aged 18–65.",
+    "extracted_rules": [
+      {"rule_type": "LAND_SIZE", "operator": "BETWEEN", "value": [2, 10], "rule_expression": "land_size BETWEEN 2 AND 10", "confidence": 0.9},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [18, 65], "rule_expression": "age >= 18 AND age <= 65", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_196",
+    "scheme_code": "AGRICULTURE_196",
+    "scheme_name": "Farmer Solar Pump Subsidy Scheme",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "Supports small landowning farmers up to 5 acres for solar-powered irrigation. Must belong to registered rural districts.",
+    "extracted_rules": [
+      {"rule_type": "LAND_SIZE", "operator": "<=", "value": 5, "rule_expression": "land_size <= 5", "confidence": 0.9},
+      {"rule_type": "DISTRICT", "operator": "=", "value": "CHITTORGARH", "rule_expression": "district == 'CHITTORGARH'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_197",
+    "scheme_code": "AGRICULTURE_197",
+    "scheme_name": "Rural Agri Infrastructure Development Scheme",
+    "scheme_category": "AGRICULTURE",
+    "department": "Rural Development",
+    "natural_language_criteria": "For rural farmers with 2–10 acres of land in designated project villages. Age limit between 18 and 60 years.",
+    "extracted_rules": [
+      {"rule_type": "LAND_SIZE", "operator": "BETWEEN", "value": [2, 10], "rule_expression": "land_size BETWEEN 2 AND 10", "confidence": 0.9},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [18, 60], "rule_expression": "age >= 18 AND age <= 60", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_198",
+    "scheme_code": "AGRICULTURE_198",
+    "scheme_name": "PM Farm Micro Irrigation Support Scheme",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "Assists farmers aged 18 to 55 owning land between 1 and 7 acres in implementing micro-irrigation systems.",
+    "extracted_rules": [
+      {"rule_type": "LAND_SIZE", "operator": "BETWEEN", "value": [1, 7], "rule_expression": "land_size BETWEEN 1 AND 7", "confidence": 0.9},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [18, 55], "rule_expression": "age >= 18 AND age <= 55", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_199",
+    "scheme_code": "AGRICULTURE_199",
+    "scheme_name": "Crop Storage and Transport Assistance Scheme",
+    "scheme_category": "AGRICULTURE",
+    "department": "Rural Development",
+    "natural_language_criteria": "Provides logistic and storage aid for farmers with holdings under 6 acres in Alwar block villages.",
+    "extracted_rules": [
+      {"rule_type": "LAND_SIZE", "operator": "<=", "value": 6, "rule_expression": "land_size <= 6", "confidence": 0.9},
+      {"rule_type": "BLOCK", "operator": "=", "value": "ALWAR", "rule_expression": "block == 'ALWAR'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_200",
+    "scheme_code": "AGRICULTURE_200",
+    "scheme_name": "Village Agri Extension Program",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "Implements technical and training support for smallholder farmers in registered villages. Eligible farmers must own at least 1 acre.",
+    "extracted_rules": [
+      {"rule_type": "VILLAGE", "operator": "=", "value": "NAGAUR", "rule_expression": "village == 'NAGAUR'", "confidence": 0.9},
+      {"rule_type": "LAND_SIZE", "operator": ">=", "value": 1, "rule_expression": "land_size >= 1", "confidence": 0.9}
+    ]
+  }
+]

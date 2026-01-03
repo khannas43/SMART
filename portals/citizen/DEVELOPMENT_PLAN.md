@@ -219,32 +219,117 @@ This document outlines the comprehensive development plan for the Citizen Portal
 
 ### Phase 9: Internationalization (Week 15)
 
-#### 9.1 Translation Files
-- [ ] English translations (all UI text)
-- [ ] Hindi translations
-- [ ] Rajasthani translations
-- [ ] Date/time localization
-- [ ] Number formatting
+#### 9.1 Translation Files Structure
+- [ ] Create translation file structure (en/, hi/ directories)
+- [ ] Create common.json (common terms, buttons, labels, errors)
+- [ ] Create auth.json (authentication screens)
+- [ ] Create profile.json (profile screens)
+- [ ] Create schemes.json (scheme discovery screens)
+- [ ] Create applications.json (application screens)
+- [ ] Create documents.json (document screens)
+- [ ] Create benefits.json (benefits screens)
+- [ ] Create services.json (service delivery screens)
+- [ ] Create settings.json (settings screens)
+- [ ] Create help.json (help & support screens)
 
-#### 9.2 Frontend i18n
-- [ ] Language switcher
-- [ ] RTL support (if needed)
-- [ ] Dynamic content translation
+#### 9.2 Translation Content (English + Hindi)
+- [ ] English translations (all UI text for 20 screens)
+- [ ] Hindi translations (all UI text for 20 screens)
+- [ ] Date/time localization (Indian locale)
+- [ ] Number formatting (Indian numbering system: ₹1,23,456.78)
+- [ ] Currency formatting (INR with proper symbols)
 
-### Phase 10: Mobile Responsiveness & UX (Week 16)
+#### 9.3 Frontend i18n Implementation
+- [ ] Install and configure i18next library
+- [ ] Add Hindi fonts (Noto Sans Devanagari) to frontend
+- [ ] Language switcher component (EN/HI dropdown in header)
+- [ ] Language detection (browser/device preference)
+- [ ] Language persistence (localStorage/cookies)
+- [ ] i18n configuration for React components
+- [ ] Hindi typography CSS (line-height, spacing adjustments)
 
-#### 10.1 Responsive Design
-- [ ] Mobile-first approach
-- [ ] Tablet layouts
-- [ ] Desktop layouts
-- [ ] Touch-friendly interactions
+#### 9.4 Backend i18n Support
+- [ ] Accept-Language header support in APIs
+- [ ] API response language handling
+- [ ] Error message translations (English + Hindi)
+- [ ] Email template translations (English + Hindi)
+- [ ] SMS template translations (English + Hindi)
+- [ ] PDF/document generation with Hindi font support
+- [ ] Coordinate with AI/ML team for content translation strategy
 
-#### 10.2 Performance Optimization
-- [ ] Code splitting
-- [ ] Lazy loading
-- [ ] Image optimization
-- [ ] Caching strategies
-- [ ] API response optimization
+#### 9.5 Testing
+- [ ] Test language switching on all 20 screens
+- [ ] Test Hindi text rendering and layout
+- [ ] Test date/number formatting in both languages
+- [ ] Test email/SMS templates in Hindi
+- [ ] Accessibility testing with screen readers (Hindi)
+
+### Phase 10: PWA & Mobile Responsiveness (Week 16)
+
+#### 10.1 PWA Setup
+- [ ] Create manifest.json with app metadata
+- [ ] Generate app icons (all sizes: 72x72 to 512x512)
+- [ ] Apple touch icon (180x180)
+- [ ] Configure PWA display mode (standalone)
+- [ ] Set theme colors and background colors
+- [ ] Define start URL and scope
+
+#### 10.2 Service Worker Implementation
+- [ ] Install/configure service worker library (Workbox recommended)
+- [ ] Cache First strategy for static assets (JS, CSS, images, fonts)
+- [ ] Network First with Cache Fallback for API responses
+- [ ] Stale-While-Revalidate for dynamic content
+- [ ] Cache versioning and cleanup strategy
+- [ ] Offline fallback pages
+- [ ] Service worker update notification
+
+#### 10.3 Offline Support Strategy
+- [ ] Define offline capabilities (cached views vs online-only)
+- [ ] Offline detection and UI indicators
+- [ ] Queue form submissions when offline
+- [ ] Background sync implementation (for critical actions)
+- [ ] Sync queue when connection restored
+- [ ] Handle offline errors gracefully
+
+#### 10.4 PWA Features
+- [ ] Installation prompt ("Add to Home Screen")
+- [ ] BeforeInstallPrompt event handling
+- [ ] Installation analytics tracking
+- [ ] Push notifications setup (optional but recommended)
+- [ ] Push notification service worker registration
+- [ ] Notification permission handling
+- [ ] Web Push API integration
+
+#### 10.5 Responsive Design
+- [ ] Mobile-first approach implementation
+- [ ] Breakpoint definitions (<480px, 480-1024px, >1024px)
+- [ ] Tablet layouts (480px - 1024px)
+- [ ] Desktop layouts (>1024px)
+- [ ] Touch-friendly interactions (minimum 44x44px touch targets)
+- [ ] Swipe gestures support (navigation, refresh)
+- [ ] Pull-to-refresh functionality
+- [ ] Long press context menus
+
+#### 10.6 Mobile Performance Optimization
+- [ ] Code splitting (route-based and component-based)
+- [ ] Lazy loading for images (intersection observer)
+- [ ] Image optimization (WebP format, responsive images)
+- [ ] Bundle size optimization (< 200KB initial bundle)
+- [ ] Tree shaking for unused code
+- [ ] API response optimization (pagination, field selection)
+- [ ] Lighthouse PWA score > 90
+- [ ] Mobile performance testing (Lighthouse, WebPageTest)
+
+#### 10.7 PWA Testing
+- [ ] Test PWA installation on Android Chrome
+- [ ] Test PWA installation on iOS Safari
+- [ ] Test PWA installation on Desktop Chrome/Edge
+- [ ] Test offline functionality (airplane mode)
+- [ ] Test push notifications (all platforms)
+- [ ] Test service worker updates
+- [ ] Test background sync
+- [ ] Test cached content behavior
+- [ ] Cross-browser testing (Chrome, Firefox, Safari, Edge)
 
 ### Phase 11: Testing (Week 17-18)
 

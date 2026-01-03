@@ -1,0 +1,82 @@
+issues
+1. On eligibility checker result page, somewhere we should be showing reason for 50% confidence also --http://localhost:3000/citizen/schemes
+2. Payment History page -- Receipt not getting downloaded
+3. Update Dashboard with list of eligible schemes
+4. Logic for golden record extraction
+5. logic for network relationship
+6. Check for Benefits and Entitlements
+7. Life cycle of tickets raised
+
+Using WatsonX
+1. Implement speech to text
+2. Chat
+
+
+
+Resolved
+Profile
+1. In profile tree view, change the family member name so that it should reflect properly in tree view
+2. Entire Profile dashboard (http://localhost:3000/citizen/profile/dashboard) for both tabs and family member profile (http://localhost:3000/citizen/profile/family/f6a3f5f2-4b2e-4ce3-931b-1f28bb169f2c) is coming in English irrespective of Hindi language selected
+9. Error "Failed to update Consent preference" when updating data sharing consent for "Address", "Email" etc. for all components
+1. at top right corner, U is coming which looks like is user. this should changed to user name abbreviations of first + last name like for Rani Thakur, this should be RT. RT should be available both in English and Hindi
+
+2. For Profile menu, submenus can be removed and let top level menu of Profile be linked to Profile Dashboard (http://localhost:3000/citizen/profile/dashboard)
+3. on Profile Dashboard (http://localhost:3000/citizen/profile/dashboard), quick actions can be removed
+
+5. On profile Dashboard, only scheme enrolled should be shown to used, what is the point in showing all schemes
+6.For family snapshot, name of family member to be shown
+4. when profile dashboard is loaded, message pop up - Server Error. please try again
+7. Bring data sharing consent from 36o degree view page to summary page
+8. we don't need to provide hyperlink to seed name as their details are already available in Profile dashboard, which is the starting point for any tree or relationship
+
+
+Scheme
+1. All scheme are still showing in English even when portal is in Hindi mode. So all scheme snapshot should be available in Hindi
+2. scheme details page (http://localhost:3000/citizen/schemes/1b909003-204b-463b-a7f3-933bba0fd0a2)- everything need to be shown in Hindi
+4. For eligibly checker, for logged in user, data should be filled automatically, as this data is already available with us. whatever data we have, let's populate that and rest can be filled by user. User can also edit populated data
+3. Eligibility criteria-- should be shown in plain English not in some code format, the way its coming now
+{
+  "max_age": null,
+  "min_age": null,
+  "min_marks": null,
+  "income_max": 100000,
+  "benefit_type": "Financial Aid",
+  "bpl_required": true,
+  "target_caste": null,
+  "benefit_amount": 24000,
+  "farmer_required": false,
+  "house_type_required": null
+}
+5. In eligibly checker, for family size use should be selecting the value from drop down of numbers
+
+
+Services
+1. for Submit application (http://localhost:3000/citizen/applications/submit) -- let have drop down values for Service type, Application type, 
+2. In download payment receipt-- nothing happens. Receipt in PDF format should be downloaded 
+3. My application (http://localhost:3000/citizen/applications) -- entire text is in English even after selecting Hindi
+4. In Submit application (http://localhost:3000/citizen/applications/submit) - Additional informational should be after Documents and should be visible only if some query is raised by Department for application submitted.
+
+
+Benefits
+1. refer to URL http://localhost:3000/citizen/benefits for Benefits & Entitlements -- All 3 tabs be to transliterated to Hindi along with landing page
+2. check "Total Payment" status, looks like it's not picking up values from DB and value coming in top 3 boxes
+3. Current Benefits -- check implementation, it should show current benefits
+4. Forecast - Can we show some logic, on what basis forecast is done, as a last column with remarks column
+5. History -- check implementation, it should show payment History and past benefits if any
+
+
+6. Government Services ---3
+1. http://localhost:3000/citizen/services/catalog --Government Services -- All 3 tabs to have transliteration implemented
+2. If we are not showing on Request Service tab, as entry point for this screen is service catalogue, then we remove this screen
+3, For doing payment of Service request, link it to Payment
+4. How do we link required document for Service request
+5. whatever service request are completed, user should be able to download those certificate from Service status, which are completed
+
+5.Feedback -- 2
+1. http://localhost:3000/citizen/feedback --Feedback -- All 2 tabs to have transliteration implemented along with their drop down
+2. Server error when clicked on My Feedback page, refer to console log
+
+4.Help & Support --3
+1. http://localhost:3000/citizen/help --Help & Support -- All 3 tabs to have transliteration implemented along with their drop down
+2. Let's Keep FAQ only and remove announcements
+3.

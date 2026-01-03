@@ -1,0 +1,62 @@
+/**
+ * Footer Component Template
+ * 
+ * Footer component with Terms & Conditions, Sitemap, and Website Policy links
+ * Appears on every page of the portal
+ */
+
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import './Footer.css';
+
+const Footer: React.FC = () => {
+  const { t } = useTranslation();
+
+  return (
+    <footer className="footer" role="contentinfo">
+      <div className="footer-container">
+        <div className="footer-links">
+          {/* Terms and Conditions */}
+          <Link 
+            to="/citizen/terms-conditions" 
+            className="footer-link"
+          >
+            {t('footer.termsConditions')}
+          </Link>
+
+          <span className="footer-separator">|</span>
+
+          {/* Sitemap */}
+          <Link 
+            to="/citizen/sitemap" 
+            className="footer-link"
+          >
+            {t('footer.sitemap')}
+          </Link>
+
+          <span className="footer-separator">|</span>
+
+          {/* Website Policy - Opens in new tab */}
+          <a 
+            href="https://rajasthan.gov.in/pages/website-policies" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="footer-link"
+            aria-label={t('footer.websitePolicy') + ' ' + t('common.opensInNewTab')}
+          >
+            {t('footer.websitePolicy')}
+            <span className="external-link-icon" aria-hidden="true">↗</span>
+          </a>
+        </div>
+
+        <div className="footer-copyright">
+          <p>{t('footer.copyright', { year: new Date().getFullYear() })}</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
+

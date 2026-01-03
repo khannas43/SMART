@@ -1,0 +1,314 @@
+[
+  {
+    "scheme_id": "SCHEME_401",
+    "scheme_code": "EMPLOYMENT_401",
+    "scheme_name": "National Youth Employment Guarantee Scheme",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Labour",
+    "natural_language_criteria": "Targets unemployed youth aged 18 to 35 seeking wage or skill-based work. Beneficiaries must belong to Below Poverty Line families with secondary education or higher.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [18, 35], "rule_expression": "age >= 18 AND age <= 35", "confidence": 0.94},
+      {"rule_type": "EMPLOYMENT_STATUS", "operator": "=", "value": "UNEMPLOYED", "rule_expression": "employment_status == 'UNEMPLOYED'", "confidence": 0.95},
+      {"rule_type": "EDUCATION_LEVEL", "operator": ">=", "value": "SECONDARY", "rule_expression": "education_level >= 'SECONDARY'", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_402",
+    "scheme_code": "EMPLOYMENT_402",
+    "scheme_name": "Rajasthan Rural Skill Development Mission",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Skill Development",
+    "natural_language_criteria": "Provides skill training to rural youth aged 20–40 with basic education. Priority is given to SC and ST categories residing in Udaipur district.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [20, 40], "rule_expression": "age >= 20 AND age <= 40", "confidence": 0.9},
+      {"rule_type": "CATEGORY", "operator": "IN", "value": ["SC", "ST"], "rule_expression": "category IN ['SC','ST']", "confidence": 0.94},
+      {"rule_type": "DISTRICT", "operator": "=", "value": "UDAIPUR", "rule_expression": "district == 'UDAIPUR'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_403",
+    "scheme_code": "EMPLOYMENT_403",
+    "scheme_name": "Urban Women Entrepreneurship Program",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Skill Development",
+    "natural_language_criteria": "Supports self-employment initiatives by urban women aged 21 to 45 who are currently unemployed. Education level must be secondary or above.",
+    "extracted_rules": [
+      {"rule_type": "GENDER", "operator": "=", "value": "FEMALE", "rule_expression": "gender == 'FEMALE'", "confidence": 0.96},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [21, 45], "rule_expression": "age >= 21 AND age <= 45", "confidence": 0.9},
+      {"rule_type": "EMPLOYMENT_STATUS", "operator": "=", "value": "UNEMPLOYED", "rule_expression": "employment_status == 'UNEMPLOYED'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_404",
+    "scheme_code": "EMPLOYMENT_404",
+    "scheme_name": "Chief Minister Youth Internship Program",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Labour",
+    "natural_language_criteria": "For graduates and postgraduates aged 22–30 currently unemployed. Designed to offer short-term internships with government institutions.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [22, 30], "rule_expression": "age >= 22 AND age <= 30", "confidence": 0.9},
+      {"rule_type": "EDUCATION_LEVEL", "operator": ">=", "value": "GRADUATE", "rule_expression": "education_level >= 'GRADUATE'", "confidence": 0.9},
+      {"rule_type": "EMPLOYMENT_STATUS", "operator": "=", "value": "UNEMPLOYED", "rule_expression": "employment_status == 'UNEMPLOYED'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_405",
+    "scheme_code": "EMPLOYMENT_405",
+    "scheme_name": "SC/ST Skill Empowerment Initiative",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Skill Development",
+    "natural_language_criteria": "Provides certified vocational training for SC and ST youth aged 18–40. Candidates should be jobless or seeking formal employment.",
+    "extracted_rules": [
+      {"rule_type": "CATEGORY", "operator": "IN", "value": ["SC", "ST"], "rule_expression": "category IN ['SC','ST']", "confidence": 0.95},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [18, 40], "rule_expression": "age >= 18 AND age <= 40", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_406",
+    "scheme_code": "EMPLOYMENT_406",
+    "scheme_name": "PM Urban Vocational Employment Scheme",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Skill Development",
+    "natural_language_criteria": "Encourages skill-based employment in urban sectors for youth aged 18–35 with secondary school completion. Focused on APL group families.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [18, 35], "rule_expression": "age >= 18 AND age <= 35", "confidence": 0.9},
+      {"rule_type": "EDUCATION_LEVEL", "operator": ">=", "value": "SECONDARY", "rule_expression": "education_level >= 'SECONDARY'", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "APL", "rule_expression": "income_group == 'APL'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_407",
+    "scheme_code": "EMPLOYMENT_407",
+    "scheme_name": "Rural Employment Assurance Mission",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Labour",
+    "natural_language_criteria": "Ensures employment opportunities for rural BPL families with adults aged 18 to 45. Applicable to residents of Barmer and Jalore districts.",
+    "extracted_rules": [
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "confidence": 0.9},
+      {"rule_type": "DISTRICT", "operator": "IN", "value": ["BARMER", "JALORE"], "rule_expression": "district IN ['BARMER','JALORE']", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_408",
+    "scheme_code": "EMPLOYMENT_408",
+    "scheme_name": "Women Skill Training and Employment Program",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Skill Development",
+    "natural_language_criteria": "Provides free job-oriented training for women aged 18–40 belonging to BPL families. Training centers available in Alwar district.",
+    "extracted_rules": [
+      {"rule_type": "GENDER", "operator": "=", "value": "FEMALE", "rule_expression": "gender == 'FEMALE'", "confidence": 0.96},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [18, 40], "rule_expression": "age >= 18 AND age <= 40", "confidence": 0.9},
+      {"rule_type": "DISTRICT", "operator": "=", "value": "ALWAR", "rule_expression": "district == 'ALWAR'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_409",
+    "scheme_code": "EMPLOYMENT_409",
+    "scheme_name": "Graduate Employment Placement Drive",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Labour",
+    "natural_language_criteria": "Facilitates private and government placements for unemployed graduates in Rajasthan. Applicable for applicants aged 21–35.",
+    "extracted_rules": [
+      {"rule_type": "EDUCATION_LEVEL", "operator": "=", "value": "GRADUATE", "rule_expression": "education_level == 'GRADUATE'", "confidence": 0.9},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [21, 35], "rule_expression": "age >= 21 AND age <= 35", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_410",
+    "scheme_code": "EMPLOYMENT_410",
+    "scheme_name": "Skill Empowerment for Construction Workers",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Skill Development",
+    "natural_language_criteria": "Trains and certifies construction workers aged 18–45 belonging to Below Poverty Line communities. Provides skill certification and job matching support.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [18, 45], "rule_expression": "age >= 18 AND age <= 45", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_411",
+    "scheme_code": "EMPLOYMENT_411",
+    "scheme_name": "Youth Job Readiness Fellowship",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Skill Development",
+    "natural_language_criteria": "A fellowship for unemployed youth aged 22–30 who have completed higher secondary or equivalent education. Open to all income groups.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [22, 30], "rule_expression": "age >= 22 AND age <= 30", "confidence": 0.9},
+      {"rule_type": "EDUCATION_LEVEL", "operator": ">=", "value": "SECONDARY", "rule_expression": "education_level >= 'SECONDARY'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_412",
+    "scheme_code": "EMPLOYMENT_412",
+    "scheme_name": "Rajasthan Handicraft Employment Creation Scheme",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Labour",
+    "natural_language_criteria": "Promotes handicraft and handloom sector jobs for unemployed youth aged 18 to 40 residing in Jaisalmer district.",
+    "extracted_rules": [
+      {"rule_type": "DISTRICT", "operator": "=", "value": "JAISALMER", "rule_expression": "district == 'JAISALMER'", "confidence": 0.9},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [18, 40], "rule_expression": "age >= 18 AND age <= 40", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_413",
+    "scheme_code": "EMPLOYMENT_413",
+    "scheme_name": "Apprenticeship Skill Enrichment Program",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Skill Development",
+    "natural_language_criteria": "For technical diploma holders aged 18–30 seeking apprenticeship training. Applicable to APL candidates across Rajasthan.",
+    "extracted_rules": [
+      {"rule_type": "EDUCATION_LEVEL", "operator": "=", "value": "DIPLOMA", "rule_expression": "education_level == 'DIPLOMA'", "confidence": 0.9},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [18, 30], "rule_expression": "age >= 18 AND age <= 30", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_414",
+    "scheme_code": "EMPLOYMENT_414",
+    "scheme_name": "SC Youth Job Facilitation Mission",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Labour",
+    "natural_language_criteria": "Designed for unemployed Scheduled Caste youth aged 18–35. Offers placement assistance and entrepreneurship training.",
+    "extracted_rules": [
+      {"rule_type": "CATEGORY", "operator": "=", "value": "SC", "rule_expression": "category == 'SC'", "confidence": 0.95},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [18, 35], "rule_expression": "age >= 18 AND age <= 35", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_415",
+    "scheme_code": "EMPLOYMENT_415",
+    "scheme_name": "Employment for Graduate Minority Women",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Skill Development",
+    "natural_language_criteria": "Supports unemployed minority women aged 21–40 holding graduate degrees. Helps them secure salaried or self-employment roles.",
+    "extracted_rules": [
+      {"rule_type": "CATEGORY", "operator": "=", "value": "MINORITY", "rule_expression": "category == 'MINORITY'", "confidence": 0.9},
+      {"rule_type": "EDUCATION_LEVEL", "operator": "=", "value": "GRADUATE", "rule_expression": "education_level == 'GRADUATE'", "confidence": 0.9},
+      {"rule_type": "GENDER", "operator": "=", "value": "FEMALE", "rule_expression": "gender == 'FEMALE'", "confidence": 0.95}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_416",
+    "scheme_code": "EMPLOYMENT_416",
+    "scheme_name": "Tribal Rural Employment Scheme",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Labour",
+    "natural_language_criteria": "Provides guaranteed work under employment programs to rural ST populations aged 18–45. Limited to tribal blocks in Udaipur district.",
+    "extracted_rules": [
+      {"rule_type": "CATEGORY", "operator": "=", "value": "ST", "rule_expression": "category == 'ST'", "confidence": 0.9},
+      {"rule_type": "DISTRICT", "operator": "=", "value": "UDAIPUR", "rule_expression": "district == 'UDAIPUR'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_417",
+    "scheme_code": "EMPLOYMENT_417",
+    "scheme_name": "Urban Skill Employment Acceleration Plan",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Skill Development",
+    "natural_language_criteria": "Provides 3-month fast-track training to unemployed youth in urban centers aged 18–35. Minimum education required is secondary school level.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [18, 35], "rule_expression": "age >= 18 AND age <= 35", "confidence": 0.9},
+      {"rule_type": "EDUCATION_LEVEL", "operator": ">=", "value": "SECONDARY", "rule_expression": "education_level >= 'SECONDARY'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_418",
+    "scheme_code": "EMPLOYMENT_418",
+    "scheme_name": "PM Digital Employment Advancement Program",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Skill Development",
+    "natural_language_criteria": "For young individuals aged 18–45 seeking employment in digital and IT sectors. Minimum education is secondary level or higher.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [18, 45], "rule_expression": "age >= 18 AND age <= 45", "confidence": 0.9},
+      {"rule_type": "EDUCATION_LEVEL", "operator": ">=", "value": "SECONDARY", "rule_expression": "education_level >= 'SECONDARY'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_419",
+    "scheme_code": "EMPLOYMENT_419",
+    "scheme_name": "Women Self Employment Encouragement Scheme",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Skill Development",
+    "natural_language_criteria": "Encourages unemployed women aged 21–45 for small business setup. Special training programs available for SC and OBC women.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [21, 45], "rule_expression": "age >= 21 AND age <= 45", "confidence": 0.9},
+      {"rule_type": "GENDER", "operator": "=", "value": "FEMALE", "rule_expression": "gender == 'FEMALE'", "confidence": 0.93},
+      {"rule_type": "CATEGORY", "operator": "IN", "value": ["SC", "OBC"], "rule_expression": "category IN ['SC','OBC']", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_420",
+    "scheme_code": "EMPLOYMENT_420",
+    "scheme_name": "Rajasthan Rural Employment Exchange",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Labour",
+    "natural_language_criteria": "Maintains rural job registry for youth aged 18–40 from Below Poverty Line households. Ensures linkage to private and public sector employers.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [18, 40], "rule_expression": "age >= 18 AND age <= 40", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_421",
+    "scheme_code": "EMPLOYMENT_421",
+    "scheme_name": "Graduate Apprenticeship Promotion Scheme",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Skill Development",
+    "natural_language_criteria": "Provides internship stipends to unemployed graduates aged 20–30. Candidates must belong to APL income group families in Rajasthan.",
+    "extracted_rules": [
+      {"rule_type": "EDUCATION_LEVEL", "operator": "=", "value": "GRADUATE", "rule_expression": "education_level == 'GRADUATE'", "confidence": 0.9},
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [20, 30], "rule_expression": "age >= 20 AND age <= 30", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_422",
+    "scheme_code": "EMPLOYMENT_422",
+    "scheme_name": "Tribal Women Employment Empowerment Program",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Labour",
+    "natural_language_criteria": "Focuses on unemployed tribal women aged 18–35 for livelihoods through skill-based jobs. Available in tribal areas of Banswara and Dungarpur.",
+    "extracted_rules": [
+      {"rule_type": "GENDER", "operator": "=", "value": "FEMALE", "rule_expression": "gender == 'FEMALE'", "confidence": 0.94},
+      {"rule_type": "CATEGORY", "operator": "=", "value": "ST", "rule_expression": "category == 'ST'", "confidence": 0.9},
+      {"rule_type": "DISTRICT", "operator": "IN", "value": ["BANSWARA", "DUNGARPUR"], "rule_expression": "district IN ['BANSWARA','DUNGARPUR']", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_423",
+    "scheme_code": "EMPLOYMENT_423",
+    "scheme_name": "IT Sector Employment Linkage Plan",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Skill Development",
+    "natural_language_criteria": "Facilitates IT job opportunities for trained youth aged 20–35 with graduate degrees. Special focus on SC category applicants in Jaipur.",
+    "extracted_rules": [
+      {"rule_type": "EDUCATION_LEVEL", "operator": "=", "value": "GRADUATE", "rule_expression": "education_level == 'GRADUATE'", "confidence": 0.9},
+      {"rule_type": "CATEGORY", "operator": "=", "value": "SC", "rule_expression": "category == 'SC'", "confidence": 0.9},
+      {"rule_type": "DISTRICT", "operator": "=", "value": "JAIPUR", "rule_expression": "district == 'JAIPUR'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_424",
+    "scheme_code": "EMPLOYMENT_424",
+    "scheme_name": "PM National Employment Promotion Mission",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Labour",
+    "natural_language_criteria": "Provides job opportunities in the private and public sectors to unemployed youth nationwide. Age limit between 18 and 40 years with secondary education.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [18, 40], "rule_expression": "age >= 18 AND age <= 40", "confidence": 0.9},
+      {"rule_type": "EDUCATION_LEVEL", "operator": ">=", "value": "SECONDARY", "rule_expression": "education_level >= 'SECONDARY'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_425",
+    "scheme_code": "EMPLOYMENT_425",
+    "scheme_name": "Handloom Weaver Employment Assistance",
+    "scheme_category": "EMPLOYMENT",
+    "department": "Skill Development",
+    "natural_language_criteria": "Supports handloom weavers with skill modernization and livelihood creation. Eligible weavers aged 18–45 belonging to OBC category in Churu district.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [18, 45], "rule_expression": "age >= 18 AND age <= 45", "confidence": 0.9},
+      {"rule_type": "CATEGORY", "operator": "=", "value": "OBC", "rule_expression": "category == 'OBC'", "confidence": 0.9},
+      {"rule_type": "DISTRICT", "operator": "=", "value": "CHURU", "rule_expression": "district == 'CHURU'", "confidence": 0.9}
+    ]
+  }
+]

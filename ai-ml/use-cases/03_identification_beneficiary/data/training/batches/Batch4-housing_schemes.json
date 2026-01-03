@@ -1,0 +1,729 @@
+[
+  {
+    "scheme_id": "SCHEME_076",
+    "scheme_code": "HOUSING_076",
+    "scheme_name": "Pradhan Mantri Awas Yojana - Urban",
+    "scheme_category": "HOUSING",
+    "department": "Urban Development",
+    "natural_language_criteria": "Provides affordable housing to urban poor families with annual income below ₹300,000. Beneficiaries must not own any house or land in their name.",
+    "extracted_rules": [
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "<=",
+        "value": "EWS",
+        "rule_expression": "income_group == 'EWS'",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 300000,
+        "rule_expression": "annual_income <= 300000",
+        "confidence": 0.94
+      },
+      {
+        "rule_type": "PROPERTY_OWNERSHIP",
+        "operator": "=",
+        "value": false,
+        "rule_expression": "owns_property == false",
+        "confidence": 0.93
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_077",
+    "scheme_code": "HOUSING_077",
+    "scheme_name": "Mukhyamantri Gramin Awas Yojana",
+    "scheme_category": "HOUSING",
+    "department": "Housing",
+    "natural_language_criteria": "Covers rural families from Below Poverty Line category without any pucca house. Beneficiaries should not own residential land.",
+    "extracted_rules": [
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.96
+      },
+      {
+        "rule_type": "LAND_OWNERSHIP",
+        "operator": "=",
+        "value": false,
+        "rule_expression": "owns_land == false",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "FAMILY_SIZE",
+        "operator": "<=",
+        "value": 6,
+        "rule_expression": "family_size <= 6",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_078",
+    "scheme_code": "HOUSING_078",
+    "scheme_name": "Rajiv Awas Yojana",
+    "scheme_category": "HOUSING",
+    "department": "Urban Development",
+    "natural_language_criteria": "Aimed at eradicating slums by providing permanent housing for low-income urban families without existing property ownership.",
+    "extracted_rules": [
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 200000,
+        "rule_expression": "annual_income <= 200000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "PROPERTY_OWNERSHIP",
+        "operator": "=",
+        "value": false,
+        "rule_expression": "owns_property == false",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_079",
+    "scheme_code": "HOUSING_079",
+    "scheme_name": "Affordable Housing for All Scheme",
+    "scheme_category": "HOUSING",
+    "department": "Urban Development",
+    "natural_language_criteria": "Targets economically weaker section (EWS) families with income under ₹250,000 per annum residing in city limits.",
+    "extracted_rules": [
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "EWS",
+        "rule_expression": "income_group == 'EWS'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 250000,
+        "rule_expression": "annual_income <= 250000",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_080",
+    "scheme_code": "HOUSING_080",
+    "scheme_name": "Rajasthan Low-Cost Housing Scheme",
+    "scheme_category": "HOUSING",
+    "department": "Housing",
+    "natural_language_criteria": "Enables low-income families in Rajasthan to acquire affordable homes. Families must not own land or an existing property in any district.",
+    "extracted_rules": [
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 180000,
+        "rule_expression": "annual_income <= 180000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "PROPERTY_OWNERSHIP",
+        "operator": "=",
+        "value": false,
+        "rule_expression": "owns_property == false",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "DISTRICT",
+        "operator": "=",
+        "value": "JAIPUR",
+        "rule_expression": "district == 'JAIPUR'",
+        "confidence": 0.87
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_081",
+    "scheme_code": "HOUSING_081",
+    "scheme_name": "Indira Awas Yojana",
+    "scheme_category": "HOUSING",
+    "department": "Housing",
+    "natural_language_criteria": "For rural Below Poverty Line families without any permanent home structure. Priority given to SC/ST categories.",
+    "extracted_rules": [
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "LAND_OWNERSHIP",
+        "operator": "=",
+        "value": false,
+        "rule_expression": "owns_land == false",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "CATEGORY",
+        "operator": "IN",
+        "value": [
+          "SC",
+          "ST"
+        ],
+        "rule_expression": "category IN ['SC','ST']",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_082",
+    "scheme_code": "HOUSING_082",
+    "scheme_name": "Urban Homeless Shelter Program",
+    "scheme_category": "HOUSING",
+    "department": "Urban Development",
+    "natural_language_criteria": "Provides housing support to families in urban slum areas earning less than ₹100,000 annually without any property ownership.",
+    "extracted_rules": [
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 100000,
+        "rule_expression": "annual_income <= 100000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "PROPERTY_OWNERSHIP",
+        "operator": "=",
+        "value": false,
+        "rule_expression": "owns_property == false",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_083",
+    "scheme_code": "HOUSING_083",
+    "scheme_name": "Gramin Housing Assistance Scheme",
+    "scheme_category": "HOUSING",
+    "department": "Housing",
+    "natural_language_criteria": "For rural families with annual income below ₹150,000 and no land ownership. Beneficiaries must have family size ranging between 4 and 7 members.",
+    "extracted_rules": [
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 150000,
+        "rule_expression": "annual_income <= 150000",
+        "confidence": 0.92
+      },
+      {
+        "rule_type": "LAND_OWNERSHIP",
+        "operator": "=",
+        "value": false,
+        "rule_expression": "owns_land == false",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "FAMILY_SIZE",
+        "operator": "BETWEEN",
+        "value": [
+          4,
+          7
+        ],
+        "rule_expression": "family_size >= 4 AND family_size <= 7",
+        "confidence": 0.88
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_084",
+    "scheme_code": "HOUSING_084",
+    "scheme_name": "Affordable Urban Housing Mission",
+    "scheme_category": "HOUSING",
+    "department": "Urban Development",
+    "natural_language_criteria": "Residents of urban Rajasthan with annual income less than ₹250,000 and who do not already own a pucca house are eligible.",
+    "extracted_rules": [
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 250000,
+        "rule_expression": "annual_income <= 250000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "PROPERTY_OWNERSHIP",
+        "operator": "=",
+        "value": false,
+        "rule_expression": "owns_property == false",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_085",
+    "scheme_code": "HOUSING_085",
+    "scheme_name": "SC/ST Housing Subsidy Scheme",
+    "scheme_category": "HOUSING",
+    "department": "Housing",
+    "natural_language_criteria": "Provides subsidized housing loans for SC/ST families with income less than ₹150,000. Applicant must not own residential property anywhere.",
+    "extracted_rules": [
+      {
+        "rule_type": "CATEGORY",
+        "operator": "IN",
+        "value": [
+          "SC",
+          "ST"
+        ],
+        "rule_expression": "category IN ['SC','ST']",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 150000,
+        "rule_expression": "annual_income <= 150000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "PROPERTY_OWNERSHIP",
+        "operator": "=",
+        "value": false,
+        "rule_expression": "owns_property == false",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_086",
+    "scheme_code": "HOUSING_086",
+    "scheme_name": "Chief Minister Housing Support Scheme",
+    "scheme_category": "HOUSING",
+    "department": "Housing",
+    "natural_language_criteria": "For families in Madhya Pradesh with annual income up to ₹200,000 and no existing home ownership. Priority given to Below Poverty Line families.",
+    "extracted_rules": [
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 200000,
+        "rule_expression": "annual_income <= 200000",
+        "confidence": 0.91
+      },
+      {
+        "rule_type": "PROPERTY_OWNERSHIP",
+        "operator": "=",
+        "value": false,
+        "rule_expression": "owns_property == false",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "DISTRICT",
+        "operator": "=",
+        "value": "BHOPAL",
+        "rule_expression": "district == 'BHOPAL'",
+        "confidence": 0.87
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_087",
+    "scheme_code": "HOUSING_087",
+    "scheme_name": "Women Housing Empowerment Scheme",
+    "scheme_category": "HOUSING",
+    "department": "Urban Development",
+    "natural_language_criteria": "Female applicants belonging to Below Poverty Line households with income less than ₹120,000 and without house ownership are eligible.",
+    "extracted_rules": [
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.92
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 120000,
+        "rule_expression": "annual_income <= 120000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "PROPERTY_OWNERSHIP",
+        "operator": "=",
+        "value": false,
+        "rule_expression": "owns_property == false",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_088",
+    "scheme_code": "HOUSING_088",
+    "scheme_name": "Eco-Friendly Rural Housing Yojana",
+    "scheme_category": "HOUSING",
+    "department": "Housing",
+    "natural_language_criteria": "Targets rural families with income up to ₹100,000 to construct eco-friendly homes using sustainable materials. Applicants must not own existing house property.",
+    "extracted_rules": [
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 100000,
+        "rule_expression": "annual_income <= 100000",
+        "confidence": 0.91
+      },
+      {
+        "rule_type": "PROPERTY_OWNERSHIP",
+        "operator": "=",
+        "value": false,
+        "rule_expression": "owns_property == false",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_089",
+    "scheme_code": "HOUSING_089",
+    "scheme_name": "Urban Slum Rehabilitation Scheme",
+    "scheme_category": "HOUSING",
+    "department": "Urban Development",
+    "natural_language_criteria": "Provides residential units to families relocated from slums in Rajasthan. Must belong to low-income group and lack formal house ownership.",
+    "extracted_rules": [
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "EWS",
+        "rule_expression": "income_group == 'EWS'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "PROPERTY_OWNERSHIP",
+        "operator": "=",
+        "value": false,
+        "rule_expression": "owns_property == false",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "DISTRICT",
+        "operator": "=",
+        "value": "UDAIPUR",
+        "rule_expression": "district == 'UDAIPUR'",
+        "confidence": 0.87
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_090",
+    "scheme_code": "HOUSING_090",
+    "scheme_name": "PM Rural Housing Scheme",
+    "scheme_category": "HOUSING",
+    "department": "Housing",
+    "natural_language_criteria": "For rural families with annual income up to ₹150,000. The applicant should not own any residential land or house property and must hold a BPL ration card.",
+    "extracted_rules": [
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 150000,
+        "rule_expression": "annual_income <= 150000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "LAND_OWNERSHIP",
+        "operator": "=",
+        "value": false,
+        "rule_expression": "owns_land == false",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "RATION_CARD",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "ration_card == 'BPL'",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_091",
+    "scheme_code": "HOUSING_091",
+    "scheme_name": "Low-Income Group Flat Allotment Scheme",
+    "scheme_category": "HOUSING",
+    "department": "Urban Development",
+    "natural_language_criteria": "Applicants from low-income group with annual family income up to ₹200,000 and no property ownership are eligible for flats under this program.",
+    "extracted_rules": [
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "LIG",
+        "rule_expression": "income_group == 'LIG'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 200000,
+        "rule_expression": "annual_income <= 200000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "PROPERTY_OWNERSHIP",
+        "operator": "=",
+        "value": false,
+        "rule_expression": "owns_property == false",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_092",
+    "scheme_code": "HOUSING_092",
+    "scheme_name": "Scheduled Caste Housing Grant",
+    "scheme_category": "HOUSING",
+    "department": "Housing",
+    "natural_language_criteria": "For Scheduled Caste families with income up to ₹100,000 who do not own any property. Grants are provided to build new houses in rural areas.",
+    "extracted_rules": [
+      {
+        "rule_type": "CATEGORY",
+        "operator": "=",
+        "value": "SC",
+        "rule_expression": "category == 'SC'",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 100000,
+        "rule_expression": "annual_income <= 100000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "PROPERTY_OWNERSHIP",
+        "operator": "=",
+        "value": false,
+        "rule_expression": "owns_property == false",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_093",
+    "scheme_code": "HOUSING_093",
+    "scheme_name": "Middle Income Group Housing Loan Subsidy",
+    "scheme_category": "HOUSING",
+    "department": "Housing",
+    "natural_language_criteria": "Families belonging to the Middle Income Group (₹200,000–₹300,000 annual income) without any existing home can avail of loan interest subsidies.",
+    "extracted_rules": [
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "MIG",
+        "rule_expression": "income_group == 'MIG'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "BETWEEN",
+        "value": [
+          200000,
+          300000
+        ],
+        "rule_expression": "annual_income BETWEEN 200000 AND 300000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "PROPERTY_OWNERSHIP",
+        "operator": "=",
+        "value": false,
+        "rule_expression": "owns_property == false",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_094",
+    "scheme_code": "HOUSING_094",
+    "scheme_name": "Senior Citizen Housing Support Scheme",
+    "scheme_category": "HOUSING",
+    "department": "Urban Development",
+    "natural_language_criteria": "Supports senior citizens from low-income families who do not own a house. Applicable to households earning up to ₹150,000 annually.",
+    "extracted_rules": [
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 150000,
+        "rule_expression": "annual_income <= 150000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "PROPERTY_OWNERSHIP",
+        "operator": "=",
+        "value": false,
+        "rule_expression": "owns_property == false",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_095",
+    "scheme_code": "HOUSING_095",
+    "scheme_name": "Urban Rental Housing Policy",
+    "scheme_category": "HOUSING",
+    "department": "Urban Development",
+    "natural_language_criteria": "A program providing affordable rental houses to low-income workers and migrant families in Jaipur and surrounding districts.",
+    "extracted_rules": [
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "EWS",
+        "rule_expression": "income_group == 'EWS'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "DISTRICT",
+        "operator": "IN",
+        "value": [
+          "JAIPUR",
+          "ALWAR"
+        ],
+        "rule_expression": "district IN ['JAIPUR','ALWAR']",
+        "confidence": 0.88
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_096",
+    "scheme_code": "HOUSING_096",
+    "scheme_name": "BPL Housing Financial Aid Scheme",
+    "scheme_category": "HOUSING",
+    "department": "Housing",
+    "natural_language_criteria": "Provides financial assistance to Below Poverty Line families with no land or house ownership and income less than ₹120,000 annually.",
+    "extracted_rules": [
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "BPL",
+        "rule_expression": "income_group == 'BPL'",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 120000,
+        "rule_expression": "annual_income <= 120000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "LAND_OWNERSHIP",
+        "operator": "=",
+        "value": false,
+        "rule_expression": "owns_land == false",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_097",
+    "scheme_code": "HOUSING_097",
+    "scheme_name": "ST Community Housing Development Plan",
+    "scheme_category": "HOUSING",
+    "department": "Housing",
+    "natural_language_criteria": "Designed for Scheduled Tribe families earning below ₹150,000 without owning any property. Implemented across tribal districts of Gujarat.",
+    "extracted_rules": [
+      {
+        "rule_type": "CATEGORY",
+        "operator": "=",
+        "value": "ST",
+        "rule_expression": "category == 'ST'",
+        "confidence": 0.95
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 150000,
+        "rule_expression": "annual_income <= 150000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "PROPERTY_OWNERSHIP",
+        "operator": "=",
+        "value": false,
+        "rule_expression": "owns_property == false",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_098",
+    "scheme_code": "HOUSING_098",
+    "scheme_name": "Urban Poor Housing Reinforcement Scheme",
+    "scheme_category": "HOUSING",
+    "department": "Urban Development",
+    "natural_language_criteria": "Low-income families in Rajasthan urban areas with annual income below ₹200,000 and no residential property ownership can apply.",
+    "extracted_rules": [
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 200000,
+        "rule_expression": "annual_income <= 200000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "PROPERTY_OWNERSHIP",
+        "operator": "=",
+        "value": false,
+        "rule_expression": "owns_property == false",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_099",
+    "scheme_code": "HOUSING_099",
+    "scheme_name": "Eco Housing Subsidy Program",
+    "scheme_category": "HOUSING",
+    "department": "Urban Development",
+    "natural_language_criteria": "Offers subsidies to low-income households constructing eco-friendly homes with income under ₹250,000 annually. Beneficiaries must not own another house.",
+    "extracted_rules": [
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 250000,
+        "rule_expression": "annual_income <= 250000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "PROPERTY_OWNERSHIP",
+        "operator": "=",
+        "value": false,
+        "rule_expression": "owns_property == false",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_100",
+    "scheme_code": "HOUSING_100",
+    "scheme_name": "Urban Reconstruction Housing Initiative",
+    "scheme_category": "HOUSING",
+    "department": "Urban Development",
+    "natural_language_criteria": "Provides housing benefits to low-income families affected by redevelopment projects. Families must have income below ₹180,000 and no alternate property.",
+    "extracted_rules": [
+      {
+        "rule_type": "INCOME_GROUP",
+        "operator": "=",
+        "value": "LIG",
+        "rule_expression": "income_group == 'LIG'",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "ANNUAL_INCOME",
+        "operator": "<=",
+        "value": 180000,
+        "rule_expression": "annual_income <= 180000",
+        "confidence": 0.9
+      },
+      {
+        "rule_type": "PROPERTY_OWNERSHIP",
+        "operator": "=",
+        "value": false,
+        "rule_expression": "owns_property == false",
+        "confidence": 0.9
+      }
+    ]
+  }
+]

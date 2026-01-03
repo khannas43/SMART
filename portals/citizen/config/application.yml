@@ -9,7 +9,7 @@ spring:
     active: dev
   
   datasource:
-    url: jdbc:postgresql://localhost:5432/smart
+    url: jdbc:postgresql://localhost:5432/smart_citizen
     username: sameer
     password: anjali143
     driver-class-name: org.postgresql.Driver
@@ -22,7 +22,7 @@ spring:
   
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: none
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     show-sql: false

@@ -1,0 +1,44 @@
+/**
+ * Language Switcher Component Template
+ * 
+ * Usage:
+ * <LanguageSwitcher />
+ */
+
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import './LanguageSwitcher.css';
+
+interface LanguageSwitcherProps {
+  className?: string;
+}
+
+const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ className }) => {
+  const { i18n } = useTranslation();
+
+  const handleLanguageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedLanguage = event.target.value;
+    i18n.changeLanguage(selectedLanguage);
+    
+    // Update HTML lang attribute
+    document.documentElement.lang = selectedLanguage;
+    
+    // Save to localStorage (handled by i18next LanguageDetector)
+    localStorage.setItem('i18nextLng', selectedLanguage);
+  };
+
+  return (
+    <select
+      className={`language-switcher ${className || ''}`}
+      value={i18n.language}
+      onChange={handleLanguageChange}
+      aria-label="Select language"
+    >
+      <option value="en">English</option>
+      <option value="hi">हिंदी</option>
+    </select>
+  );
+};
+
+export default LanguageSwitcher;
+

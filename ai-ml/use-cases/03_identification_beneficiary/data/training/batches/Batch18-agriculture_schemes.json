@@ -1,0 +1,303 @@
+[
+  {
+    "scheme_id": "SCHEME_426",
+    "scheme_code": "AGRICULTURE_426",
+    "scheme_name": "PM Kisan Irrigation Support Mission",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "Provides financial aid for installing micro-irrigation systems for farmers with 1 to 5 acres of land. Applicable only to land-owning farmers from Below Poverty Line households.",
+    "extracted_rules": [
+      {"rule_type": "LAND_OWNERSHIP", "operator": "=", "value": true, "rule_expression": "owns_land == true", "confidence": 0.95},
+      {"rule_type": "LAND_SIZE", "operator": "BETWEEN", "value": [1, 5], "rule_expression": "land_size BETWEEN 1 AND 5", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_427",
+    "scheme_code": "AGRICULTURE_427",
+    "scheme_name": "Rajasthan Small Farmer Fertilizer Subsidy",
+    "scheme_category": "AGRICULTURE",
+    "department": "Rural Development",
+    "natural_language_criteria": "Facilitates a partial subsidy on fertilizers to small farmers owning less than 4 acres of land. Available to families in Tonk and Bhilwara districts.",
+    "extracted_rules": [
+      {"rule_type": "LAND_SIZE", "operator": "<=", "value": 4, "rule_expression": "land_size <= 4", "confidence": 0.9},
+      {"rule_type": "DISTRICT", "operator": "IN", "value": ["TONK", "BHILWARA"], "rule_expression": "district IN ['TONK','BHILWARA']", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_428",
+    "scheme_code": "AGRICULTURE_428",
+    "scheme_name": "Women Farmers Empowerment Plan",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "Encourages women farmers aged 20–50 owning up to 6 acres of agricultural land to adopt advanced farming techniques. Priority for Below Poverty Line families.",
+    "extracted_rules": [
+      {"rule_type": "GENDER", "operator": "=", "value": "FEMALE", "rule_expression": "gender == 'FEMALE'", "confidence": 0.95},
+      {"rule_type": "LAND_SIZE", "operator": "<=", "value": 6, "rule_expression": "land_size <= 6", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_429",
+    "scheme_code": "AGRICULTURE_429",
+    "scheme_name": "Tribal Agricultural Productivity Enhancement Scheme",
+    "scheme_category": "AGRICULTURE",
+    "department": "Rural Development",
+    "natural_language_criteria": "Supports Scheduled Tribe farmers owning less than 3 acres of land with organic farming kits. Must belong to BPL family and reside in Dungarpur district.",
+    "extracted_rules": [
+      {"rule_type": "CATEGORY", "operator": "=", "value": "ST", "rule_expression": "category == 'ST'", "confidence": 0.9},
+      {"rule_type": "LAND_SIZE", "operator": "<=", "value": 3, "rule_expression": "land_size <= 3", "confidence": 0.9},
+      {"rule_type": "DISTRICT", "operator": "=", "value": "DUNGARPUR", "rule_expression": "district == 'DUNGARPUR'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_430",
+    "scheme_code": "AGRICULTURE_430",
+    "scheme_name": "PM Krishi Vikas Yojana",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "Assists farmers aged 18–60 with modern farming equipment purchases. Must own 1–10 acres of land and belong to general or OBC category.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [18, 60], "rule_expression": "age >= 18 AND age <= 60", "confidence": 0.9},
+      {"rule_type": "LAND_SIZE", "operator": "BETWEEN", "value": [1, 10], "rule_expression": "land_size BETWEEN 1 AND 10", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_431",
+    "scheme_code": "AGRICULTURE_431",
+    "scheme_name": "Rainfed Area Watershed Management Plan",
+    "scheme_category": "AGRICULTURE",
+    "department": "Rural Development",
+    "natural_language_criteria": "Targets farmers owning up to 5 acres of land in rainfed regions of Barmer and Jaisalmer districts. Beneficiaries should belong to EWS or BPL groups.",
+    "extracted_rules": [
+      {"rule_type": "DISTRICT", "operator": "IN", "value": ["BARMER", "JAISALMER"], "rule_expression": "district IN ['BARMER','JAISALMER']", "confidence": 0.9},
+      {"rule_type": "LAND_SIZE", "operator": "<=", "value": 5, "rule_expression": "land_size <= 5", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_432",
+    "scheme_code": "AGRICULTURE_432",
+    "scheme_name": "Organic Agriculture Promotion Scheme",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "Encourages farmers with 1–8 acres of agricultural land to adopt organic methods. Participation open to land-owning families across all income groups.",
+    "extracted_rules": [
+      {"rule_type": "LAND_SIZE", "operator": "BETWEEN", "value": [1, 8], "rule_expression": "land_size BETWEEN 1 AND 8", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_433",
+    "scheme_code": "AGRICULTURE_433",
+    "scheme_name": "Rural Farmer Livelihood Support Mission",
+    "scheme_category": "AGRICULTURE",
+    "department": "Rural Development",
+    "natural_language_criteria": "Provides grants for BPL farmers owning 0.5–5 acres of cultivable land. Available in Tonk and Kota blocks.",
+    "extracted_rules": [
+      {"rule_type": "BLOCK", "operator": "IN", "value": ["TONK", "KOTA"], "rule_expression": "block IN ['TONK','KOTA']", "confidence": 0.9},
+      {"rule_type": "LAND_SIZE", "operator": "BETWEEN", "value": [0.5, 5], "rule_expression": "land_size BETWEEN 0.5 AND 5", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_434",
+    "scheme_code": "AGRICULTURE_434",
+    "scheme_name": "Soil Health Management Yojana",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "Provides financial assistance for soil testing and improvement for farmers with land up to 10 acres. Available for owners residing in Udaipur and Rajsamand districts.",
+    "extracted_rules": [
+      {"rule_type": "LAND_SIZE", "operator": "<=", "value": 10, "rule_expression": "land_size <= 10", "confidence": 0.9},
+      {"rule_type": "DISTRICT", "operator": "IN", "value": ["UDAIPUR", "RAJSAMAND"], "rule_expression": "district IN ['UDAIPUR','RAJSAMAND']", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_435",
+    "scheme_code": "AGRICULTURE_435",
+    "scheme_name": "Farm Mechanization Loan Subsidy Program",
+    "scheme_category": "AGRICULTURE",
+    "department": "Rural Development",
+    "natural_language_criteria": "Offers 50% subsidy on farm equipment to BPL farmers owning land up to 6 acres. Applicants must reside in Banswara block region.",
+    "extracted_rules": [
+      {"rule_type": "BLOCK", "operator": "=", "value": "BANSWARA", "rule_expression": "block == 'BANSWARA'", "confidence": 0.9},
+      {"rule_type": "LAND_SIZE", "operator": "<=", "value": 6, "rule_expression": "land_size <= 6", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_436",
+    "scheme_code": "AGRICULTURE_436",
+    "scheme_name": "Krishi Jal Samagra Yojana",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "Promotes water-efficient irrigation systems for land-owning farmers with 0.5–7 acres of land. Applicable to all farmers aged 18–60.",
+    "extracted_rules": [
+      {"rule_type": "LAND_SIZE", "operator": "BETWEEN", "value": [0.5, 7], "rule_expression": "land_size BETWEEN 0.5 AND 7", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_437",
+    "scheme_code": "AGRICULTURE_437",
+    "scheme_name": "PM Integrated Crop Insurance Program",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "Covers farmers owning land between 1 and 8 acres for crop loss insurance. Available to both SC and OBC categories in Rajasthan.",
+    "extracted_rules": [
+      {"rule_type": "LAND_SIZE", "operator": "BETWEEN", "value": [1, 8], "rule_expression": "land_size BETWEEN 1 AND 8", "confidence": 0.9},
+      {"rule_type": "CATEGORY", "operator": "IN", "value": ["SC", "OBC"], "rule_expression": "category IN ['SC','OBC']", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_438",
+    "scheme_code": "AGRICULTURE_438",
+    "scheme_name": "Organic Seed Distribution Program",
+    "scheme_category": "AGRICULTURE",
+    "department": "Rural Development",
+    "natural_language_criteria": "Provides free distribution of seeds for organic farming to EWS farmers owning less than 5 acres of land in Ganganagar district.",
+    "extracted_rules": [
+      {"rule_type": "DISTRICT", "operator": "=", "value": "GANGANAGAR", "rule_expression": "district == 'GANGANAGAR'", "confidence": 0.9},
+      {"rule_type": "LAND_SIZE", "operator": "<=", "value": 5, "rule_expression": "land_size <= 5", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "EWS", "rule_expression": "income_group == 'EWS'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_439",
+    "scheme_code": "AGRICULTURE_439",
+    "scheme_name": "Rural Agricultural Infrastructure Grant",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "Supports construction of storage units for farmers with 2–10 acres of land. Open to general, OBC, and SC category farmers.",
+    "extracted_rules": [
+      {"rule_type": "LAND_SIZE", "operator": "BETWEEN", "value": [2, 10], "rule_expression": "land_size BETWEEN 2 AND 10", "confidence": 0.9},
+      {"rule_type": "CATEGORY", "operator": "IN", "value": ["GENERAL", "OBC", "SC"], "rule_expression": "category IN ['GENERAL','OBC','SC']", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_440",
+    "scheme_code": "AGRICULTURE_440",
+    "scheme_name": "PM Greenhouse Assistance Scheme",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "Helps farmers develop greenhouse units owning at least 2 acres of land. Priority is given to BPL and EWS families in Sikar and Jhunjhunu districts.",
+    "extracted_rules": [
+      {"rule_type": "LAND_SIZE", "operator": ">=", "value": 2, "rule_expression": "land_size >= 2", "confidence": 0.9},
+      {"rule_type": "DISTRICT", "operator": "IN", "value": ["SIKAR", "JHUNJHUNU"], "rule_expression": "district IN ['SIKAR','JHUNJHUNU']", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_441",
+    "scheme_code": "AGRICULTURE_441",
+    "scheme_name": "Harit Rajasthan Plantation Drive",
+    "scheme_category": "AGRICULTURE",
+    "department": "Rural Development",
+    "natural_language_criteria": "Encourages plantation among farmers owning 0.5–4 acres of land. Special benefit for SC category farmers aged 18–55.",
+    "extracted_rules": [
+      {"rule_type": "LAND_SIZE", "operator": "BETWEEN", "value": [0.5, 4], "rule_expression": "land_size BETWEEN 0.5 AND 4", "confidence": 0.9},
+      {"rule_type": "CATEGORY", "operator": "=", "value": "SC", "rule_expression": "category == 'SC'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_442",
+    "scheme_code": "AGRICULTURE_442",
+    "scheme_name": "Water Conservation Farm Grant",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "Grants funds to land-owning farmers with 1–8 acres for creating water harvesting ponds. Available across all rural Rajasthan villages.",
+    "extracted_rules": [
+      {"rule_type": "LAND_SIZE", "operator": "BETWEEN", "value": [1, 8], "rule_expression": "land_size BETWEEN 1 AND 8", "confidence": 0.9},
+      {"rule_type": "VILLAGE", "operator": "=", "value": "RURAL", "rule_expression": "village_type == 'RURAL'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_443",
+    "scheme_code": "AGRICULTURE_443",
+    "scheme_name": "Farm Input Credit Facilitation Scheme",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "Provides low-interest loans for purchase of seeds and fertilizers. Open to farmers owning 1–7 acres of land and belonging to Below Poverty Line group.",
+    "extracted_rules": [
+      {"rule_type": "LAND_SIZE", "operator": "BETWEEN", "value": [1, 7], "rule_expression": "land_size BETWEEN 1 AND 7", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "=", "value": "BPL", "rule_expression": "income_group == 'BPL'", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_444",
+    "scheme_code": "AGRICULTURE_444",
+    "scheme_name": "Agricultural Training for Youth Farmers",
+    "scheme_category": "AGRICULTURE",
+    "department": "Rural Development",
+    "natural_language_criteria": "Empowers young farmers aged 18–35 to implement modern technologies in farming. Eligibility requires land size within 0.5–6 acres.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "BETWEEN", "value": [18, 35], "rule_expression": "age >= 18 AND age <= 35", "confidence": 0.9},
+      {"rule_type": "LAND_SIZE", "operator": "BETWEEN", "value": [0.5, 6], "rule_expression": "land_size BETWEEN 0.5 AND 6", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_445",
+    "scheme_code": "AGRICULTURE_445",
+    "scheme_name": "Cooperative Farmer Development Fund",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "Provides financial support to registered cooperative groups comprising small farmers with average landholding below 5 acres.",
+    "extracted_rules": [
+      {"rule_type": "LAND_SIZE", "operator": "<=", "value": 5, "rule_expression": "land_size <= 5", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_446",
+    "scheme_code": "AGRICULTURE_446",
+    "scheme_name": "SC Farmer Solar Pump Subsidy Initiative",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "Offers solar water pump subsidies to Scheduled Caste farmers with 1–8 acres of land. Must possess land ownership proof and BPL income certificate.",
+    "extracted_rules": [
+      {"rule_type": "CATEGORY", "operator": "=", "value": "SC", "rule_expression": "category == 'SC'", "confidence": 0.9},
+      {"rule_type": "LAND_SIZE", "operator": "BETWEEN", "value": [1, 8], "rule_expression": "land_size BETWEEN 1 AND 8", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_447",
+    "scheme_code": "AGRICULTURE_447",
+    "scheme_name": "PM Soil Fertility Enhancement Scheme",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "Assists farmers with soil enrichment by organic material usage. Applies to EWS and BPL farmers owning less than 10 acres of land.",
+    "extracted_rules": [
+      {"rule_type": "LAND_SIZE", "operator": "<=", "value": 10, "rule_expression": "land_size <= 10", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "IN", "value": ["EWS", "BPL"], "rule_expression": "income_group IN ['EWS','BPL']", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_448",
+    "scheme_code": "AGRICULTURE_448",
+    "scheme_name": "Rural Agro Processing Cluster Program",
+    "scheme_category": "AGRICULTURE",
+    "department": "Rural Development",
+    "natural_language_criteria": "Develops agro-processing centers for small farmers aged up to 65 owning land below 6 acres. Beneficiaries should belong to EWS category.",
+    "extracted_rules": [
+      {"rule_type": "AGE", "operator": "<=", "value": 65, "rule_expression": "age <= 65", "confidence": 0.9},
+      {"rule_type": "LAND_SIZE", "operator": "<=", "value": 6, "rule_expression": "land_size <= 6", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_449",
+    "scheme_code": "AGRICULTURE_449",
+    "scheme_name": "PM Kisan Digital Record Initiative",
+    "scheme_category": "AGRICULTURE",
+    "department": "Agriculture",
+    "natural_language_criteria": "Encourages digital registration of agricultural plots for farmers owning 0.5–10 acres. Available for both APL and BPL income groups in state blocks.",
+    "extracted_rules": [
+      {"rule_type": "LAND_SIZE", "operator": "BETWEEN", "value": [0.5, 10], "rule_expression": "land_size BETWEEN 0.5 AND 10", "confidence": 0.9},
+      {"rule_type": "INCOME_GROUP", "operator": "IN", "value": ["APL", "BPL"], "rule_expression": "income_group IN ['APL','BPL']", "confidence": 0.9}
+    ]
+  },
+  {
+    "scheme_id": "SCHEME_450",
+    "scheme_code": "AGRICULTURE_450",
+    "scheme_name": "Kisan Cooperative Irrigation Development Scheme",
+    "scheme_category": "AGRICULTURE",
+    "department": "Rural Development",
+    "natural_language_criteria": "Supports cooperative irrigation projects for small and marginal farmers having up to 5 acres of cultivable land in Bikaner village regions.",
+    "extracted_rules": [
+      {"rule_type": "LAND_SIZE", "operator": "<=", "value": 5, "rule_expression": "land_size <= 5", "confidence": 0.9},
+      {"rule_type": "DISTRICT", "operator": "=", "value": "BIKANER", "rule_expression": "district == 'BIKANER'", "confidence": 0.9}
+    ]
+  }
+]

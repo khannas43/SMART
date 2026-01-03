@@ -1,0 +1,13 @@
+/**
+ * Footer Component Styles
+ * (Additional styles beyond Material-UI)
+ */
+
+.footer-link {
+  transition: opacity 0.2s ease;
+}
+
+.footer-link:hover {
+  opacity: 0.8;
+}
+

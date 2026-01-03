@@ -1,0 +1,55 @@
+{
+  "payments": {
+    "title": "Payments",
+    "history": "Payment History",
+    "makePayment": "Make Payment",
+    "search": "Search transactions...",
+    "filter": {
+      "status": "Status",
+      "all": "All"
+    },
+    "status": {
+      "success": "Success",
+      "pending": "Pending",
+      "processing": "Processing",
+      "failed": "Failed"
+    },
+    "table": {
+      "transactionId": "Transaction ID",
+      "amount": "Amount",
+      "method": "Method",
+      "status": "Status",
+      "date": "Date",
+      "actions": "Actions"
+    },
+    "form": {
+      "application": "Application (Optional)",
+      "none": "None (Standalone Payment)",
+      "amount": "Amount",
+      "currency": "Currency",
+      "method": "Payment Method",
+      "description": "Description (Optional)"
+    },
+    "makePayment": {
+      "title": "Initiate New Payment",
+      "description": "Make a payment for an application or standalone payment"
+    },
+    "submit": "Initiate Payment",
+    "noPayments": "No payments found",
+    "receipt": {
+      "comingSoon": "Receipt download feature coming soon"
+    },
+    "success": {
+      "initiated": "Payment initiated successfully!"
+    },
+    "errors": {
+      "loadFailed": "Failed to load payment history",
+      "notAuthenticated": "Please log in to make a payment",
+      "invalidAmount": "Please enter a valid amount",
+      "selectMethod": "Please select a payment method",
+      "initiateFailed": "Failed to initiate payment"
+    },
+    "notAuthenticated": "Please log in to view your payments."
+  }
+}
+
